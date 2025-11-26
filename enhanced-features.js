@@ -1,42 +1,121 @@
 // ========================================
-// ENHANCED FEATURES FOR SEVEN DESTINATION
+// ENHANCED FEATURES V2 - CLEAN & MINIMAL
+// Seven Destination
 // ========================================
 
 // ==========================================
-// 1. CURRENCY CONVERTER
+// 1. FLOATING TOGGLE BUTTON (Controls all)
 // ==========================================
-const CurrencyConverter = {
-    rates: { USD: 83.12, EUR: 90.45, GBP: 105.23 }, // Updated rates
-    currentCurrency: 'INR',
+const FloatingControls = {
+    weatherEnabled: false,
+    currencyEnabled: false,
 
     init() {
-        this.createUI();
+        this.createButton();
         this.attachEvents();
-        this.fetchLiveRates();
     },
 
-    createUI() {
-        const converterHTML = `
-            <div class="currency-converter">
-                <div class="currency-toggle">
-                    <i class="fas fa-exchange-alt"></i>
-                    <select id="currencySelect">
-                        <option value="INR">₹ INR</option>
-                        <option value="USD">$ USD</option>
-                        <option value="EUR">€ EUR</option>
-                        <option value="GBP">£ GBP</option>
-                    </select>
+    createButton() {
+        const html = `
+            <div class="float-controls">
+                <button class="control-toggle" id="controlToggle">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="control-menu" id="controlMenu">
+                    <div class="control-item">
+                        <label>
+                            <input type="checkbox" id="toggleWeather">
+                            <span>🌤️ Weather</span>
+                        </label>
+                    </div>
+                    <div class="control-item">
+                        <label>
+                            <input type="checkbox" id="toggleCurrency">
+                            <span>💱 Currency</span>
+                        </label>
+                    </div>
                 </div>
             </div>
         `;
-        document.body.insertAdjacentHTML('beforeend', converterHTML);
+        document.body.insertAdjacentHTML('beforeend', html);
     },
 
     attachEvents() {
+        const toggle = document.getElementById('controlToggle');
+        const menu = document.getElementById('controlMenu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        document.getElementById('toggleWeather').addEventListener('change', (e) => {
+            this.weatherEnabled = e.target.checked;
+            if (this.weatherEnabled) {
+                WeatherWidget.show();
+            } else {
+                WeatherWidget.hide();
+            }
+        });
+
+        document.getElementById('toggleCurrency').addEventListener('change', (e) => {
+            this.currencyEnabled = e.target.checked;
+            CurrencyConverter.toggle(this.currencyEnabled);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.float-controls')) {
+                menu.classList.remove('show');
+            }
+        });
+    }
+};
+
+// ==========================================
+// 2. CURRENCY CONVERTER
+// ==========================================
+const CurrencyConverter = {
+    rates: { USD: 83.12, EUR: 90.45, GBP: 105.23 },
+    currentCurrency: 'INR',
+    active: false,
+
+    init() {
+        this.fetchLiveRates();
+        this.createSelector();
+    },
+
+    createSelector() {
+        const html = `
+            <div class="currency-selector" id="currencySelector" style="display:none;">
+                <select id="currencySelect">
+                    <option value="INR">₹ INR</option>
+                    <option value="USD">$ USD</option>
+                    <option value="EUR">€ EUR</option>
+                    <option value="GBP">£ GBP</option>
+                </select>
+            </div>
+        `;
+
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.insertAdjacentHTML('afterend', html);
+        }
+
         document.getElementById('currencySelect').addEventListener('change', (e) => {
             this.currentCurrency = e.target.value;
             this.convertAllPrices();
         });
+    },
+
+    toggle(enabled) {
+        this.active = enabled;
+        const selector = document.getElementById('currencySelector');
+        selector.style.display = enabled ? 'block' : 'none';
+
+        if (!enabled) {
+            this.currentCurrency = 'INR';
+            this.convertAllPrices();
+        }
     },
 
     convertAllPrices() {
@@ -55,7 +134,9 @@ const CurrencyConverter = {
                 symbol = this.currentCurrency === 'USD' ? '$' : this.currentCurrency === 'EUR' ? '€' : '£';
             }
 
-            priceEl.innerHTML = `${symbol}${convertedPrice.toLocaleString()} <span class="text-muted">/person</span>`;
+            const perPerson = priceEl.querySelector('.text-muted');
+            const perPersonText = perPerson ? perPerson.outerHTML : '';
+            priceEl.innerHTML = `${symbol}${convertedPrice.toLocaleString()} ${perPersonText}`;
         });
     },
 
@@ -75,20 +156,23 @@ const CurrencyConverter = {
 };
 
 // ==========================================
-// 2. LIVE WEATHER WIDGET
+// 3. WEATHER WIDGET (Minimal Card)
 // ==========================================
 const WeatherWidget = {
-    apiKey: 'demo', // Replace with your OpenWeatherMap API key
     destinations: {
-        'punjab': { city: 'Amritsar', lat: 31.6340, lon: 74.8723 },
-        'tamil-nadu': { city: 'Chennai', lat: 13.0827, lon: 80.2707 },
-        'default': { city: 'New Delhi', lat: 28.6139, lon: 77.2090 }
+        'punjab': { city: 'Amritsar', emoji: '☀️' },
+        'tamil-nadu': { city: 'Chennai', emoji: '🌤️' },
+        'kerala': { city: 'Kochi', emoji: '🌧️' },
+        'rajasthan': { city: 'Jaipur', emoji: '☀️' },
+        'himachal': { city: 'Shimla', emoji: '❄️' },
+        'uttarakhand': { city: 'Dehradun', emoji: '⛰️' },
+        'goa': { city: 'Goa', emoji: '🏖️' },
+        'default': { city: 'Delhi', emoji: '🌤️' }
     },
 
     init() {
         this.detectDestination();
-        this.createWidget();
-        this.fetchWeather();
+        this.createCard();
     },
 
     detectDestination() {
@@ -102,142 +186,44 @@ const WeatherWidget = {
         this.currentDest = this.destinations.default;
     },
 
-    createWidget() {
-        const widgetHTML = `
-            <div class="weather-widget" id="weatherWidget">
-                <div class="weather-loading">
-                    <i class="fas fa-spinner fa-spin"></i> Loading weather...
+    createCard() {
+        const temp = Math.round(18 + Math.random() * 18); // 18-36°C
+
+        const html = `
+            <div class="weather-card" id="weatherCard" style="display:none;">
+                <span class="weather-emoji">${this.currentDest.emoji}</span>
+                <div class="weather-info">
+                    <div class="weather-city">${this.currentDest.city}</div>
+                    <div class="weather-temp">${temp}°C</div>
                 </div>
             </div>
         `;
+
         const searchSection = document.querySelector('.search-section');
         if (searchSection) {
-            searchSection.insertAdjacentHTML('afterend', widgetHTML);
+            searchSection.insertAdjacentHTML('afterend', html);
         }
     },
 
-    async fetchWeather() {
-        try {
-            // Using a demo endpoint - replace with actual API call
-            const mockWeather = {
-                temp: Math.round(20 + Math.random() * 15),
-                condition: ['Clear', 'Cloudy', 'Rainy'][Math.floor(Math.random() * 3)],
-                humidity: Math.round(40 + Math.random() * 40)
-            };
-
-            this.displayWeather(mockWeather);
-        } catch (error) {
-            document.getElementById('weatherWidget').style.display = 'none';
+    show() {
+        const card = document.getElementById('weatherCard');
+        if (card) {
+            card.style.display = 'flex';
         }
     },
 
-    displayWeather(data) {
-        const widget = document.getElementById('weatherWidget');
-        const icon = data.condition === 'Clear' ? 'sun' : data.condition === 'Rainy' ? 'cloud-rain' : 'cloud';
-
-        widget.innerHTML = `
-            <div class="weather-content">
-                <div class="weather-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    ${this.currentDest.city}
-                </div>
-                <div class="weather-info">
-                    <div class="weather-temp">
-                        <i class="fas fa-${icon}"></i>
-                        <span>${data.temp}°C</span>
-                    </div>
-                    <div class="weather-condition">${data.condition}</div>
-                    <div class="weather-humidity">
-                        <i class="fas fa-tint"></i> ${data.humidity}% Humidity
-                    </div>
-                </div>
-            </div>
-        `;
+    hide() {
+        const card = document.getElementById('weatherCard');
+        if (card) {
+            card.style.display = 'none';
+        }
     }
 };
 
 // ==========================================
-// 3. COUNTDOWN TIMER FOR OFFERS
+// 4. EXIT-INTENT POPUP (Simple)
 // ==========================================
-const CountdownTimer = {
-    init() {
-        this.createTimer();
-        this.startCountdown();
-    },
-
-    createTimer() {
-        const timerHTML = `
-            <div class="offer-countdown" id="offerCountdown">
-                <div class="countdown-content">
-                    <div class="countdown-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <div class="countdown-text">
-                        <strong>Limited Time Offer!</strong>
-                        <p>Book now and save 10%</p>
-                    </div>
-                    <div class="countdown-timer">
-                        <div class="time-unit">
-                            <span id="hours">00</span>
-                            <small>Hours</small>
-                        </div>
-                        <span class="time-separator">:</span>
-                        <div class="time-unit">
-                            <span id="minutes">00</span>
-                            <small>Minutes</small>
-                        </div>
-                        <span class="time-separator">:</span>
-                        <div class="time-unit">
-                            <span id="seconds">00</span>
-                            <small>Seconds</small>
-                        </div>
-                    </div>
-                    <button class="countdown-close" onclick="this.closest('.offer-countdown').style.display='none'">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', timerHTML);
-    },
-
-    startCountdown() {
-        // Set countdown to 2 hours from now
-        const endTime = new Date().getTime() + (2 * 60 * 60 * 1000);
-
-        const updateTimer = () => {
-            const now = new Date().getTime();
-            const distance = endTime - now;
-
-            if (distance < 0) {
-                // Reset to 2 hours when expired
-                location.reload();
-                return;
-            }
-
-            const hours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        };
-
-        updateTimer();
-        setInterval(updateTimer, 1000);
-
-        // Show countdown after 3 seconds
-        setTimeout(() => {
-            document.getElementById('offerCountdown').classList.add('show');
-        }, 3000);
-    }
-};
-
-// ==========================================
-// 4. EXIT-INTENT POPUP
-// ==========================================
-const ExitIntentPopup = {
+const ExitPopup = {
     shown: false,
 
     init() {
@@ -246,72 +232,41 @@ const ExitIntentPopup = {
     },
 
     createPopup() {
-        const popupHTML = `
+        const html = `
             <div class="exit-popup" id="exitPopup">
-                <div class="exit-popup-overlay"></div>
-                <div class="exit-popup-content">
-                    <button class="exit-popup-close" onclick="ExitIntentPopup.close()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    <div class="exit-popup-body">
-                        <div class="exit-popup-icon">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <h2>Wait! Don't Miss Out!</h2>
-                        <p class="exit-popup-subtitle">Get an exclusive <strong>15% discount</strong> on your first booking</p>
-                        <div class="exit-popup-features">
-                            <div class="feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Free Visa Assistance</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>24/7 Customer Support</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Flexible Payment Options</span>
-                            </div>
-                        </div>
-                        <div class="exit-popup-coupon">
-                            <div class="coupon-code">
-                                <span>Use Code:</span>
-                                <strong id="couponCode">SAVE15NOW</strong>
-                            </div>
-                            <button class="copy-coupon" onclick="ExitIntentPopup.copyCoupon()">
-                                <i class="fas fa-copy"></i> Copy Code
-                            </button>
-                        </div>
-                        <div class="exit-popup-cta">
-                            <a href="tel:+918585858400" class="btn-call">
-                                <i class="fas fa-phone"></i> Call Now
-                            </a>
-                            <a href="https://wa.me/918585858400?text=I want to use the SAVE15NOW coupon" class="btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> WhatsApp Us
-                            </a>
-                        </div>
-                        <p class="exit-popup-footer">
-                            <i class="fas fa-clock"></i> Offer valid for 24 hours only!
-                        </p>
+                <div class="exit-overlay" onclick="ExitPopup.close()"></div>
+                <div class="exit-content">
+                    <button class="exit-close" onclick="ExitPopup.close()">×</button>
+                    <h3>🎁 Special Offer!</h3>
+                    <p>Get <strong>15% OFF</strong> on your first booking</p>
+                    <div class="exit-code">
+                        <span>Code: <strong>SAVE15NOW</strong></span>
+                        <button onclick="ExitPopup.copyCoupon()">Copy</button>
+                    </div>
+                    <div class="exit-actions">
+                        <a href="tel:+918585858400" class="exit-btn">📞 Call Now</a>
+                        <a href="https://wa.me/918585858400?text=I want to use SAVE15NOW" target="_blank" class="exit-btn exit-btn-wa">💬 WhatsApp</a>
                     </div>
                 </div>
             </div>
         `;
-        document.body.insertAdjacentHTML('beforeend', popupHTML);
+        document.body.insertAdjacentHTML('beforeend', html);
     },
 
     attachEvents() {
+        let lastScrollTop = 0;
+
+        // Desktop: Mouse leave
         document.addEventListener('mouseleave', (e) => {
             if (e.clientY <= 0 && !this.shown) {
                 this.show();
             }
         });
 
-        // Also show on mobile when user scrolls back to top quickly
-        let lastScrollTop = 0;
+        // Mobile: Scroll up fast
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop < lastScrollTop - 100 && scrollTop < 200 && !this.shown) {
+            const scrollTop = window.pageYOffset;
+            if (scrollTop < lastScrollTop - 150 && scrollTop < 300 && !this.shown) {
                 this.show();
             }
             lastScrollTop = scrollTop;
@@ -319,11 +274,12 @@ const ExitIntentPopup = {
     },
 
     show() {
-        if (!this.shown) {
+        const lastShown = localStorage.getItem('exitPopupShown');
+        const shouldShow = !lastShown || (new Date().getTime() - lastShown > 24 * 60 * 60 * 1000);
+
+        if (shouldShow && !this.shown) {
             document.getElementById('exitPopup').classList.add('show');
             this.shown = true;
-
-            // Save to localStorage to not show again for 24 hours
             localStorage.setItem('exitPopupShown', new Date().getTime());
         }
     },
@@ -333,32 +289,18 @@ const ExitIntentPopup = {
     },
 
     copyCoupon() {
-        const code = document.getElementById('couponCode').textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            const btn = document.querySelector('.copy-coupon');
-            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            btn.style.background = '#28a745';
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
-                btn.style.background = '';
-            }, 2000);
+        navigator.clipboard.writeText('SAVE15NOW').then(() => {
+            alert('✓ Coupon code copied!');
         });
     }
 };
 
 // ==========================================
-// INITIALIZE ALL FEATURES
+// INITIALIZE
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if exit popup was shown in last 24 hours
-    const lastShown = localStorage.getItem('exitPopupShown');
-    const shouldShowExitPopup = !lastShown || (new Date().getTime() - lastShown > 24 * 60 * 60 * 1000);
-
+    FloatingControls.init();
     CurrencyConverter.init();
     WeatherWidget.init();
-    CountdownTimer.init();
-
-    if (shouldShowExitPopup) {
-        ExitIntentPopup.init();
-    }
+    ExitPopup.init();
 });
