@@ -638,3 +638,22 @@ footer {
         opacity: 1;
     }
 }
+
+
+.package-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.package-rating div {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.rating-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
