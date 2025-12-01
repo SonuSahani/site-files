@@ -754,3 +754,70 @@ input[type="range"]::-moz-range-thumb {
 .modal-content:focus {
     outline: none !important;
 }
+
+/* Package Specific Styles */
+body {
+    padding-top: 80px;
+}
+
+/* Fix for fixed-top nav overlap */
+.package-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1578960127868-0c91ea7f374a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+}
+
+.package-header {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.package-price h2 {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.btn-book {
+    background: var(--primary-color);
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 50px;
+    transition: transform 0.3s;
+}
+
+.btn-book:hover {
+    transform: scale(1.05);
+}
+
+.package-meta span {
+    margin-right: 20px;
+}
+
+.gallery-section img {
+    transition: transform 0.3s;
+}
+
+.gallery-section img:hover {
+    transform: scale(1.05);
+}
+
+.accordion-button {
+    font-weight: bold;
+}
+
+.footer {
+    background: #333;
+    color: white;
+    padding: 50px 0 20px;
+}
+/* Utility Classes */
+.text-brand {
+    color: var(--primary-color) !important;
+}
+
+.bg-brand {
+    background-color: var(--primary-color) !important;
+    color: white;
+}
