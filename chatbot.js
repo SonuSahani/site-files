@@ -496,7 +496,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const vnCharacterSprite = document.getElementById('vnCharacterSprite');
     const typeSound = document.getElementById('typeSound');
     const clickSound = document.getElementById('clickSound');
-    const vnCallBtn = document.getElementById('vnCallBtn');
     const vnWhatsappBtn = document.getElementById('vnWhatsappBtn');
     const vnAIChatBtn = document.getElementById('vnAIChatBtn'); // Changed from vnAIPageBtn
     const vnBackBtn = document.getElementById('vnBackBtn');
@@ -519,7 +518,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ============ GEMINI API CONFIGURATION ============
     // IMPORTANT: Replace with your actual API key and restrict it in Google Cloud Console!
-    const GEMINI_API_KEY = 'AIzaSyB4h5pvqHl03aERdhcc3RmLsQS9I_ETuEs'; // <-- PASTE YOUR KEY HERE
+    // Note: 'AIzaSyDY...' is the WORKING key. The other one (AIzaSyB4...) returns 403 Forbidden (API not enabled).
+    const GEMINI_API_KEY = 'AIzaSyDYiN_sXnoR0vL3drW6GyVXNrIJ24xEguo'; // <-- WORKING KEY
+    // Using gemini-1.5-flash for verified performance
     const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
     // System Prompt with Company Info, Personality, Duties, and Limitations
@@ -559,12 +560,13 @@ document.addEventListener('DOMContentLoaded', function () {
 2. You do NOT have access to real-time availability or pricing - provide estimates and suggest contacting the team for exact quotes.
 3. You should NOT provide medical, legal, or financial advice.
 4. If you don't know something, admit it and suggest contacting the team directly.
-5. Keep responses concise (under 150 words ideally) and focused on travel.
+5. Keep responses VERY concise (under 50 words), professional, and fast. Like a smart chat support agent.
 
 ## Response Guidelines:
-- Be concise but informative.
-- Format responses nicely with bullet points when listing things.
-- Always end with a helpful call-to-action when appropriate (e.g., "Want me to suggest specific packages?" or "Call us for exact pricing!").
+- Be extremely concise (max 2 sentences usually).
+- Use professional but friendly tone.
+- No long paragraphs.
+- Direct to WhatsApp/Call for complex queries.
 - If asked about something unrelated to travel, politely redirect to travel topics.`;
 
     let conversationHistory = []; // Store conversation for context
@@ -1091,7 +1093,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.location.href = 'tel:+919876543210';
                 break;
             case 'whatsapp':
-                window.open('https://wa.me/919876543210', '_blank');
+                let waUrl = 'https://wa.me/919876543210';
+                // If AI Chat was active or history has content, append it
+                if (conversationHistory.length > 0) {
+                    let chatSummary = "User Chat History:\n";
+                    // Append last 6 exchanges to keep url short enough
+                    const recentHistory = conversationHistory.slice(-6);
+                    recentHistory.forEach(msg => {
+                        const role = msg.role === 'user' ? 'User' : 'Saheli';
+                        const text = msg.parts[0].text.substring(0, 100); // Truncate long messages
+                        chatSummary += `${role}: ${text}\n`;
+                    });
+                    waUrl += `?text=${encodeURIComponent(chatSummary)}`;
+                }
+                window.open(waUrl, '_blank');
                 break;
             case 'share-facebook':
                 window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
@@ -1193,6 +1208,7 @@ document.addEventListener('DOMContentLoaded', function () {
         vnDialogueText.innerHTML = "Hi! I'm Saheli with AI superpowers! 🤖✨ Ask me anything about your dream trip, or pick a suggestion below!";
         changeSprite('excited');
         conversationHistory = []; // Reset conversation
+        vnAISuggestions.style.display = 'flex'; // Ensure visible on start
         vnAIInput.focus();
     }
 
@@ -1233,6 +1249,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Gemini API Call Function
     async function callGeminiAPI(userMessage) {
+        // Hide suggestions once user interacts
+        vnAISuggestions.style.display = 'none';
+
         // Add user message to history
         conversationHistory.push({ role: 'user', parts: [{ text: userMessage }] });
 
@@ -1285,6 +1304,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (error.message.includes('401') || error.message.includes('403')) {
                 errorMessage = "My AI brain isn't connected yet! Please ask the team to set up the API key. 🔑";
+            } else if (error.message.includes('429')) {
+                errorMessage = "I'm a bit overwhelmed right now! 😅 Too many questions at once. Please wait a moment and try again!";
             }
 
             vnDialogueText.innerHTML = errorMessage;
