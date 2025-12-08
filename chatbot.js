@@ -1090,10 +1090,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         switch (action) {
             case 'call':
-                window.location.href = 'tel:+919876543210';
+                window.location.href = 'tel:+8585858400';
                 break;
             case 'whatsapp':
-                let waUrl = 'https://wa.me/919876543210';
+                let waUrl = 'https://wa.me/8585858400';
                 // If AI Chat was active or history has content, append it
                 if (conversationHistory.length > 0) {
                     let chatSummary = "User Chat History:\n";
