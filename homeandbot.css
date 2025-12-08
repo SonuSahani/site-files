@@ -1450,8 +1450,12 @@
             pointer-events: none;
             z-index: 10001;
             display: flex;
-            align-items: flex-end;
-            /* Align bar to bottom */
+            flex-direction: column;
+            /* Stack vertically */
+            justify-content: flex-end;
+            /* Push to bottom */
+            align-items: stretch;
+            /* Full width children */
         }
 
         .vn-dialogue.active {
@@ -1659,15 +1663,20 @@
         }
 
         /* Fixed Action Buttons - Top Right Above Dialogue (Like VN Save/Load) */
+        /* Fixed Action Buttons - Top Right Above Dialogue (Relative to Container) */
+        /* Fixed Action Buttons - Top Right Above Dialogue (Relative to Container) */
         .vn-fixed-actions {
-            position: fixed;
-            bottom: 190px;
-            right: 15px;
+            position: absolute;
+            top: -42px;
+            /* Adjusted to be closer to dialogue box */
+            right: 0;
             display: flex;
             flex-direction: row;
             gap: 8px;
-            z-index: 10002;
-            opacity: 1;
+            /* Slightly closer gap */
+            z-index: 10005;
+            padding-right: 15px;
+            pointer-events: auto;
         }
 
         .vn-fixed-actions.visible {
@@ -1675,25 +1684,34 @@
         }
 
         .vn-action-btn {
-            /* Glassmorphic Action Button */
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.6), rgba(229, 90, 43, 0.5));
+            /* Glassmorphic Action Button - Bigger & Rectangular */
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.7), rgba(229, 90, 43, 0.6));
+            /* Slightly more opaque for clarity */
             backdrop-filter: blur(15px) saturate(150%);
             -webkit-backdrop-filter: blur(15px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: #ffffff;
-            font-size: 1.3rem;
+            font-size: 1rem;
+            /* Larger text */
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 8px;
-            border-radius: 14px;
-            width: 48px;
-            height: 48px;
+            transition: all 0.2s ease;
+            padding: 10px 20px;
+            /* Larger padding */
+            border-radius: 10px;
+            /* Slightly more rounded */
+            min-width: 100px;
+            /* Requested width */
+            width: auto;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow:
-                0 4px 20px rgba(0, 0, 0, 0.3),
+                0 4px 15px rgba(0, 0, 0, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .vn-action-btn:hover {
@@ -1701,6 +1719,29 @@
             border-color: #ffffff;
             transform: scale(1.1) translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Custom Button Colors */
+        #vnWhatsappBtn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        #vnWhatsappBtn:hover {
+            background: linear-gradient(135deg, #2af074, #15a897);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        #vnAIChatBtn {
+            background: linear-gradient(135deg, #EA4335, #B31412);
+            box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        #vnAIChatBtn:hover {
+            background: linear-gradient(135deg, #ff5747, #d91a18);
+            box-shadow: 0 6px 20px rgba(234, 67, 53, 0.5);
         }
 
         .vn-action-btn::before {
@@ -2471,7 +2512,7 @@
         }
 
         .btn-book-outline:hover {
-            background: #198754;
+            background: #000000;
             color: #fff;
         }
 
