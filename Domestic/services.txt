@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Destination - Our Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff6600; /* Orange */
+            --secondary-color: #000000; /* Black */
+            --accent-color: #ff9933; /* Lighter orange */
+            --light-color: #ffffff; /* White */
+            --dark-color: #333333; /* Dark gray for text */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            margin-top: 76px; /* Fixed navbar height */
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--light-color) !important;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,.8) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Hero Section with Carousel */
+        .hero-section {
+            position: relative;
+            color: var(--light-color);
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+        
+        .carousel-item {
+            height: 500px;
+        }
+        
+        .carousel-item img {
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .carousel-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .carousel-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--primary-color);
+        }
+        
+        .carousel-content p {
+            font-size: 1.3rem;
+            color: var(--light-color);
+        }
+        
+        .carousel-indicators button {
+            background-color: var(--primary-color);
+        }
+        
+        /* Search Section Styles */
+        .search-section {
+            background-color: var(--secondary-color);
+            padding: 50px 0;
+            margin-top: 0;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border-radius: 50px;
+            padding: 15px 25px;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            height: 60px;
+        }
+        
+        .search-input:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25);
+            color: #fff;
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .search-title {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        
+        .search-title h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .search-title p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            background-color: var(--light-color);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-card .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .service-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .service-card .card-body {
+            padding: 20px;
+        }
+        
+        .service-card .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-card .card-text {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .btn-learn {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-learn:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        /* Service Highlights Section */
+        .service-highlights {
+            padding: 80px 0;
+            background-color: #f8f8f8;
+        }
+        
+        .highlight-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .highlight-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .highlight-count {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .footer-links h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-contact h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .footer-contact h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .contact-info a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: var(--light-color);
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            /* Mobile Full Screen Carousel */
+            .carousel-item {
+                height: calc(100vh - 76px); /* Full viewport height minus navbar */
+                min-height: 500px; /* Minimum height for very small screens */
+            }
+            
+            .carousel-content h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+            
+            .carousel-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                margin-bottom: 20px;
+            }
+            
+            .navbar-brand img {
+                height: 30px;
+            }
+            
+            .search-section {
+                padding: 40px 0;
+            }
+            
+            .search-title h3 {
+                font-size: 1.5rem;
+            }
+            
+            .search-title p {
+                font-size: 1rem;
+            }
+            
+            .search-input {
+                font-size: 1rem;
+                padding: 12px 20px;
+                height: 50px;
+            }
+            
+            .search-input::placeholder {
+                font-size: 1rem;
+            }
+            
+            .search-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            /* Adjust body margin for mobile */
+            body {
+                margin-top: 76px;
+            }
+        }
+        
+        /* For very small mobile devices */
+        @media (max-width: 480px) {
+            .carousel-item {
+                height: calc(100vh - 76px);
+                min-height: 400px;
+            }
+            
+            .carousel-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .carousel-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://picsum.photos/seed/sevendestination/180/40.jpg" alt="Seven Destination Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tour Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="Travel Planning">
+                    <div class="carousel-overlay">
+                        <div class="carousel-content">
+                            <h1>DISCOVER OUR COMPREHENSIVE SERVICES</h1>
+                            <p>As your trusted travel agent, we handle every detail of your journey, from customized packages to seamless bookings, ensuring a stress-free and memorable experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="Global Destinations">
+                    <div class="carousel-overlay">
+                        <div class="carousel-content">
+                            <h1>TAILORED TRAVEL SOLUTIONS</h1>
+                            <p>Explore worldwide destinations with our expert-curated itineraries, visa support, and local insights designed specifically for discerning travelers like you.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="Support and Safety">
+                    <div class="carousel-overlay">
+                        <div class="carousel-content">
+                            <h1>UNMATCHED SUPPORT & SECURITY</h1>
+                            <p>Enjoy 24/7 assistance, comprehensive insurance, and hassle-free currency services, so you can focus on creating unforgettable memories.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-title">
+                <h3>Find Your Ideal Service</h3>
+                <p>Search from our wide range of travel services tailored for agents and clients</p>
+            </div>
+            <div class="search-container">
+                <form role="search" method="get" class="jetpack-search-form" action="https://example.com/">
+                    <input type="search" class="search-input" placeholder="Search for services, bookings, support..." name="s" id="search-input">
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>OUR PREMIUM SERVICES</h2>
+            </div>
+            <div class="row">
+                <!-- Customized International Tour Packages -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Customized Tour Packages">
+                        <div class="card-body">
+                            <h5 class="card-title">Customized International Tour Packages</h5>
+                            <p class="card-text">We create tailored packages for destinations worldwide, including attractions, accommodations, activities, and itineraries—all at competitive rates.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Transportation Bookings -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca6e53?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Transportation Bookings">
+                        <div class="card-body">
+                            <h5 class="card-title">Transportation Bookings</h5>
+                            <p class="card-text">Secure flights, train tickets, and bus reservations (including AC, sleeper, and economy options) with exclusive discounts and seamless integration into your package.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visa Assistance -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Visa Assistance">
+                        <div class="card-body">
+                            <h5 class="card-title">Visa Assistance</h5>
+                            <p class="card-text">Expert guidance for visas to popular destinations like Europe, the USA, Australia, and Canada, ensuring timely approvals and compliance with all requirements.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Local Partnerships -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Local Partnerships">
+                        <div class="card-body">
+                            <h5 class="card-title">Local Partnerships</h5>
+                            <p class="card-text">Exclusive connections with restaurants, cab services, and more for the best local deals and personalized experiences.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 24/7 Online Support -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="24/7 Support">
+                        <div class="card-body">
+                            <h5 class="card-title">24/7 Online Support</h5>
+                            <p class="card-text">Instant assistance via chat, email, or phone— from trip planning and bookings to real-time query resolution and post-trip feedback.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Travel Insurance Options -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Travel Insurance">
+                        <div class="card-body">
+                            <h5 class="card-title">Travel Insurance Options</h5>
+                            <p class="card-text">Comprehensive coverage for medical emergencies, trip cancellations, lost luggage, flight delays, and more to keep you protected.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Currency Exchange Services -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Currency Exchange">
+                        <div class="card-body">
+                            <h5 class="card-title">Currency Exchange Services</h5>
+                            <p class="card-text">Hassle-free forex solutions, including doorstep delivery of foreign currency or convenient travel cards.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Insights -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Destination Insights">
+                        <div class="card-body">
+                            <h5 class="card-title">Destination Insights</h5>
+                            <p class="card-text">In-depth information on vaccinations, cultural etiquette, efficient routes, and must-do activities to prepare you fully for your journey.</p>
+                            <a href="#" class="btn btn-learn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Highlights Section -->
+    <section class="service-highlights">
+        <div class="container">
+            <div class="section-title">
+                <h2>WHY CHOOSE OUR SERVICES</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="highlight-card">
+                        <i class="fas fa-globe"></i>
+                        <h4>Global Reach</h4>
+                        <div class="highlight-count">100+</div>
+                        <p>Destinations Covered</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="highlight-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Expert Team</h4>
+                        <div class="highlight-count">5000+</div>
+                        <p>Satisfied Clients</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="highlight-card">
+                        <i class="fas fa-headset"></i>
+                        <h4>Round-the-Clock</h4>
+                        <div class="highlight-count">24/7</div>
+                        <p>Support Available</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="highlight-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Secure & Safe</h4>
+                        <div class="highlight-count">100%</div>
+                        <p>Secure Transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-about">
+                        <div class="footer-logo">SEVEN DESTINATION</div>
+                        <p>Your trusted travel partner for exploring the world with ease. We specialize in comprehensive services that make every journey seamless, from planning to execution.</p>
+                        <p>A leading travel agency based in Howrah, serving travelers since 2005.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Destinations</a></li>
+                            <li><a href="#">Tour Packages</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Hotels</a></li>
+                            <li><a href="#">Transportation</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-contact">
+                        <h5>Contact Information</h5>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/uG5PFmipeQUcmSLB9" target="_blank">13, 29/A, Mohanlal Bahalwalla Rd, Belur, Bally, Howrah, West Bengal 711201</a></p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+918585858400">+91 8585858400</a></p>
+                            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/918585858400" target="_blank">+91 8585858400</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:email@sevendestination.com">email@sevendestination.com</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:travellersharma@gmail.com">travellersharma@gmail.com</a></p>
+                            <p><i class="fas fa-clock"></i> Mon - Sat: 9:30 AM - 6:30 PM</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Seven Destination. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation to service cards on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.service-card, .highlight-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

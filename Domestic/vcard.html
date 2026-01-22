@@ -1,0 +1,1109 @@
+<!-- 
+  Elementor HTML Snippet: vCard with AR (Refactored)
+  Dependencies: Bootstrap 5, FontAwesome, Three.js
+-->
+
+<!-- Styles -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://sevendestination.com/wp-content/uploads/custom-css/elementor_styles.css">
+<link rel="stylesheet" href="https://sevendestination.com/wp-content/uploads/custom-css/mainpage_styles.css">
+
+<style>
+  /* Scoped Styles for 3D Container */
+  #vcard-3d-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 600px;
+    background: radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 40%, #0f0f23 100%);
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 215, 0, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    margin: 40px auto;
+    touch-action: none;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+  }
+
+  /* Ambient particles effect */
+  #vcard-3d-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, rgba(255, 215, 0, 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.2), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 130px 80px, rgba(255, 215, 0, 0.2), transparent),
+      radial-gradient(1px 1px at 160px 120px, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 200px 150px;
+    animation: sparkle 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  @keyframes sparkle {
+
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* AR Button */
+  #arBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  #arBtn:active {
+    transform: scale(0.95);
+  }
+
+  #arBtn:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Status Message */
+  #status {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    display: none;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /* Override any body margins from the snippet context */
+  .elementor-widget-container {
+    overflow: visible !important;
+  }
+
+  /* --- Standard Snippet Styles (Header/Footer) --- */
+  .snippet-body {
+    font-family: "Outfit", sans-serif;
+    color: #e0e0e0;
+    background-color: #121212;
+    overflow-x: hidden;
+  }
+
+  /* Navbar Styles */
+  .navbar {
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  }
+
+  .navbar-brand {
+    font-weight: 700;
+    color: #ffd700 !important;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .nav-link {
+    color: #e0e0e0 !important;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #ffd700 !important;
+  }
+
+  .btn-gold {
+    background: linear-gradient(45deg, #ffd700, #ffaa00);
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    color: #000;
+  }
+
+  /* Page Header Styles */
+  .page-header {
+    position: relative;
+    padding: 100px 0 60px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://sevendestination.com/wp-content/uploads/2025/10/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Footer Styles */
+  .footer {
+    background: #0a0a0a;
+    padding: 80px 0 30px;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    margin-top: 50px;
+  }
+
+  .footer h5 {
+    color: #ffd700;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+  }
+
+  .footer p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 15px;
+  }
+
+  .footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-links a:hover {
+    color: #ffd700;
+  }
+
+  .footer-links i {
+    width: 25px;
+    color: #ffd700;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffd700;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .social-links a:hover {
+    background: #ffd700;
+    color: #000;
+    transform: translateY(-3px);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+    margin-top: 50px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="snippet-body">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="https://sevendestination.com/">
+        <i class="fas fa-paper-plane me-2"></i>Seven Destination
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/about-us/">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/services/">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/contact-us/">Contact</a></li>
+          <li class="nav-item ms-lg-3">
+            <a href="https://sevendestination.com/contact-us/" class="btn btn-gold">Book Now</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="page-title">Digital vCard</h1>
+      <p class="lead text-white-50">Interact with our AR-enabled business card.</p>
+    </div>
+  </header>
+
+  <!-- Main Content: 3D Canvas -->
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div id="vcard-3d-container">
+          <div id="status"></div>
+          <button id="arBtn" hidden>📷</button>
+        </div>
+        <div class="text-center mt-3 text-muted">
+          <small><i class="fas fa-info-circle me-1"></i> Drag to rotate • Scroll/Pinch to zoom • Click button for
+            AR</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h5>About Seven Destination</h5>
+          <p>We craft unforgettable journeys tailored to your dreams. Experience the world with our premium travel
+            services and expert guidance.</p>
+          <div class="social-links mt-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://sevendestination.com/"><i class="fas fa-chevron-right me-2"></i>Home</a></li>
+            <li><a href="https://sevendestination.com/about-us/"><i class="fas fa-chevron-right me-2"></i>About Us</a>
+            </li>
+            <li><a href="https://sevendestination.com/services/"><i class="fas fa-chevron-right me-2"></i>Services</a>
+            </li>
+            <li><a href="https://sevendestination.com/contact-us/"><i class="fas fa-chevron-right me-2"></i>Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Our Services</h5>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right me-2"></i>Tour Packages</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right me-2"></i>Hotel Booking</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right me-2"></i>Flight Booking</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right me-2"></i>Travel Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Contact Info</h5>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i>13/29, A Mohanlal Bahalwala Road, Bally, Howrah
+                711201</a></li>
+            <li><a href="tel:8585858400"><i class="fas fa-phone me-2"></i>8585858400</a></li>
+            <li><a href="mailto:email@sevendestination.com"><i
+                  class="fas fa-envelope me-2"></i>email@sevendestination.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-md-start mb-3 mb-md-0">
+            &copy; 2025 Seven Destination. All Rights Reserved.
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#" class="text-decoration-none text-muted me-3">Privacy Policy</a>
+            <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Three.js + AR Scripts -->
+<script src="https://unpkg.com/three@0.148.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.148.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://unpkg.com/three@0.148.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+  // Scoping logic to avoid polluting global namespace too much
+  (function () {
+    const CONFIG = {
+      logoUrl: "https://i0.wp.com/www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png?w=800",
+      website: "https://sevendestination.com",
+      phone: "8585858400",
+      email: "email@sevendestination.com",
+      address1: "13/29, A Mohanlal Bahalwala Road,",
+      address2: "Bally, Howrah 711201",
+      LOGO_TARGET_WIDTH: 180, LOGO_LEFT: 30, LOGO_TOP: 30,
+      WEB_LEFT_X: 50, WEB_TEXT_WIDTH: 420, WEB_TEXT_HEIGHT: 36, BODY_START_Y: 260,
+      ROTATION_SPEED_NORMAL: 0.32, ROTATION_SPEED_SLOW: 0.01, SLOW_DURATION_MS: 5000,
+      DRAG_SENSITIVITY: 600,
+      AUDIO_PARAMS: { noiseGainMax: 0.18, bpBaseFreq: 600, bpFreqRange: 1800, lpCutMax: 7000, smoothing: 0.12, expectedMaxAngular: 6 },
+      TAP_GAIN: 0.028, TAP_FREQ: 1400, TAP_NOISE_GAIN: 0.006, TAP_DURATION: 0.07,
+      AR_DESIRED_WIDTH_METERS: 0.30
+    };
+
+    // Container Reference
+    const container = document.getElementById('vcard-3d-container');
+    const arBtn = document.getElementById('arBtn');
+    const statusEl = document.getElementById('status');
+
+    // Scene Setup
+    const scene = new THREE.Scene();
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    const camera = new THREE.PerspectiveCamera(52, width / height, 0.1, 1000);
+    camera.position.set(0, 1.6, 5.0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio || 1);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.xr.enabled = true;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.target.set(0, 1, 0);
+
+    // Initial Audio System
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let windOsc, windGain, windFilter, windMetaGain;
+    let initializedAudio = false;
+
+    // Card Geometry
+    const CARD_W = 3.5, CARD_H = 2.0, CARD_THICK = 0.02;
+    const boxGeo = new THREE.BoxGeometry(CARD_W, CARD_H, CARD_THICK);
+    const LOGICAL_W = 600, LOGICAL_H = 350; // High res canvas dimensions
+
+    // Canvases
+    const frontCanvas = document.createElement('canvas'); frontCanvas.width = LOGICAL_W; frontCanvas.height = LOGICAL_H;
+    const f = frontCanvas.getContext('2d');
+    const backCanvas = document.createElement('canvas'); backCanvas.width = LOGICAL_W; backCanvas.height = LOGICAL_H;
+    const b = backCanvas.getContext('2d');
+
+    // Materials
+    function configureTexture(tex) {
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+      tex.encoding = THREE.sRGBEncoding;
+    }
+    const frontTex = new THREE.CanvasTexture(frontCanvas); configureTexture(frontTex);
+    const backTex = new THREE.CanvasTexture(backCanvas); configureTexture(backTex);
+    // Premium metallic gold edge material
+    const sideMat = new THREE.MeshStandardMaterial({
+      color: 0xffd700,
+      roughness: 0.15,
+      metalness: 0.9,
+      emissive: 0x332200,
+      emissiveIntensity: 0.15
+    });
+    // Slightly glossy front with subtle sheen
+    const frontMat = new THREE.MeshStandardMaterial({
+      map: frontTex,
+      roughness: 0.25,
+      metalness: 0.05,
+      envMapIntensity: 0.3
+    });
+    // Back with similar premium feel
+    const backMat = new THREE.MeshStandardMaterial({
+      map: backTex,
+      roughness: 0.25,
+      metalness: 0.05,
+      envMapIntensity: 0.3
+    });
+    const materials = [sideMat, sideMat, sideMat, sideMat, frontMat, backMat];
+
+    const card = new THREE.Mesh(boxGeo, materials);
+    card.position.y = 1;
+    scene.add(card);
+
+    // Enhanced Lighting for Premium Look
+    // Soft ambient fill
+    const amb = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(amb);
+
+    // Main key light (warm white)
+    const keyLight = new THREE.DirectionalLight(0xfff5e0, 1.4);
+    keyLight.position.set(3, 5, 4);
+    scene.add(keyLight);
+
+    // Gold accent light from left
+    const goldLight = new THREE.PointLight(0xffd700, 1.2, 15);
+    goldLight.position.set(-4, 2, 3);
+    scene.add(goldLight);
+
+    // Cool rim light from back-right for depth
+    const rimLight = new THREE.PointLight(0x88ccff, 0.6, 12);
+    rimLight.position.set(3, 1, -3);
+    scene.add(rimLight);
+
+    // Subtle bottom fill
+    const fillLight = new THREE.PointLight(0xffeedd, 0.4, 10);
+    fillLight.position.set(0, -2, 4);
+    scene.add(fillLight);
+
+    // Hotspot
+    const hotspotGeo = new THREE.PlaneGeometry(
+      (CONFIG.WEB_TEXT_WIDTH / LOGICAL_W) * CARD_W,
+      (CONFIG.WEB_TEXT_HEIGHT * 1.5 / LOGICAL_H) * CARD_H
+    );
+    const hotspotMat = new THREE.MeshBasicMaterial({ color: 0x00ff00, visible: false });
+    const hotspot = new THREE.Mesh(hotspotGeo, hotspotMat);
+
+    // Position hotspot relative to card center
+    // CONFIG coords are from top-left. Threejs origin is center.
+    // X center of text block: WEB_LEFT_X + WIDTH/2
+    const centerX = CONFIG.WEB_LEFT_X + CONFIG.WEB_TEXT_WIDTH / 2;
+    const centerY = CONFIG.BODY_START_Y + 140; // Approx location of website link
+    // Normalize to [-0.5, 0.5] space then scale
+    const normX = (centerX / LOGICAL_W) - 0.5;
+    const normY = 0.5 - (centerY / LOGICAL_H); // Invert Y
+    hotspot.position.set(normX * CARD_W, normY * CARD_H, CARD_THICK / 2 + 0.005);
+    card.add(hotspot);
+
+    // --- Drawing Logic ---
+    let logoImg = null;
+    function loadLogoLeftTop(url) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => { logoImg = img; resolve(true); };
+        img.onerror = () => { console.warn("Logo load fail"); resolve(false); };
+        img.src = url;
+      });
+    }
+
+    function drawSoftBG(ctx) {
+      // Premium cream-gold gradient background
+      const grad = ctx.createLinearGradient(0, 0, LOGICAL_W, LOGICAL_H);
+      grad.addColorStop(0, "#fffef8");
+      grad.addColorStop(0.3, "#fdfcf0");
+      grad.addColorStop(0.7, "#faf6e8");
+      grad.addColorStop(1, "#f5efd8");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, LOGICAL_W, LOGICAL_H);
+
+      // Subtle inner shadow effect
+      const innerGrad = ctx.createRadialGradient(LOGICAL_W / 2, LOGICAL_H / 2, 50, LOGICAL_W / 2, LOGICAL_H / 2, 400);
+      innerGrad.addColorStop(0, "rgba(255,255,255,0)");
+      innerGrad.addColorStop(1, "rgba(180,160,120,0.08)");
+      ctx.fillStyle = innerGrad;
+      ctx.fillRect(0, 0, LOGICAL_W, LOGICAL_H);
+
+      // Double gold border with gradient effect
+      ctx.lineWidth = 16;
+      const borderGrad = ctx.createLinearGradient(0, 0, LOGICAL_W, LOGICAL_H);
+      borderGrad.addColorStop(0, "#c9a227");
+      borderGrad.addColorStop(0.5, "#f4d03f");
+      borderGrad.addColorStop(1, "#c9a227");
+      ctx.strokeStyle = borderGrad;
+      ctx.strokeRect(8, 8, LOGICAL_W - 16, LOGICAL_H - 16);
+
+      // Thin inner accent line
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(212, 175, 55, 0.4)";
+      ctx.strokeRect(20, 20, LOGICAL_W - 40, LOGICAL_H - 40);
+    }
+
+    function drawBrandTop() {
+      if (logoImg) {
+        // preserve aspect with subtle shadow
+        const asp = logoImg.width / logoImg.height;
+        const w = CONFIG.LOGO_TARGET_WIDTH;
+        const h = w / asp;
+        // Subtle drop shadow for logo
+        f.shadowColor = 'rgba(0, 0, 0, 0.15)';
+        f.shadowBlur = 8;
+        f.shadowOffsetX = 2;
+        f.shadowOffsetY = 2;
+        f.drawImage(logoImg, CONFIG.LOGO_LEFT, CONFIG.LOGO_TOP, w, h);
+        f.shadowColor = 'transparent';
+        f.shadowBlur = 0;
+      } else {
+        // Text fallback with gold gradient
+        f.fillStyle = "#1a1a1a";
+        f.font = "bold 42px 'Outfit', sans-serif";
+        f.fillText("Seven Destination", CONFIG.LOGO_LEFT, CONFIG.LOGO_TOP + 40);
+      }
+
+      // Top Right - Name with premium styling
+      f.textAlign = "right";
+      // Name with subtle shadow
+      f.shadowColor = 'rgba(0, 0, 0, 0.1)';
+      f.shadowBlur = 4;
+      f.shadowOffsetY = 1;
+      f.fillStyle = "#1a1a1a";
+      f.font = "bold 34px 'Outfit', sans-serif";
+      f.fillText("Manoj Kumar Singh", LOGICAL_W - 45, 72);
+      f.shadowColor = 'transparent';
+      f.shadowBlur = 0;
+
+      // Title with gold accent
+      f.font = "600 17px 'Outfit', sans-serif";
+      f.fillStyle = "#b8860b";
+      f.fillText("✦ Founder & CEO ✦", LOGICAL_W - 45, 100);
+      f.textAlign = "left";
+
+      // Decorative line under name
+      const lineGrad = f.createLinearGradient(LOGICAL_W - 200, 0, LOGICAL_W - 45, 0);
+      lineGrad.addColorStop(0, "transparent");
+      lineGrad.addColorStop(0.3, "#d4af37");
+      lineGrad.addColorStop(1, "#d4af37");
+      f.strokeStyle = lineGrad;
+      f.lineWidth = 2;
+      f.beginPath();
+      f.moveTo(LOGICAL_W - 200, 110);
+      f.lineTo(LOGICAL_W - 45, 110);
+      f.stroke();
+    }
+
+    function drawFrontBody() {
+      const startY = CONFIG.BODY_START_Y - 40;
+      let y = startY;
+      const leftMargin = 55;
+      const iconSize = 22;
+
+      // Helper to draw styled contact line
+      function drawContactLine(icon, text, isLink = false) {
+        // Icon with gold circle background
+        f.beginPath();
+        f.arc(leftMargin + 12, y - 8, 16, 0, Math.PI * 2);
+        f.fillStyle = 'rgba(212, 175, 55, 0.12)';
+        f.fill();
+
+        // Icon
+        f.font = `${iconSize}px sans-serif`;
+        f.fillStyle = '#c9a227';
+        f.fillText(icon, leftMargin, y);
+
+        // Text
+        f.font = isLink ? "500 22px 'Outfit', sans-serif" : "400 21px 'Outfit', sans-serif";
+        f.fillStyle = isLink ? '#1a5490' : '#2d2d2d';
+        f.fillText(text, leftMargin + 45, y);
+
+        if (isLink) {
+          // Underline for links
+          const textWidth = f.measureText(text).width;
+          f.strokeStyle = '#1a5490';
+          f.lineWidth = 1.5;
+          f.beginPath();
+          f.moveTo(leftMargin + 45, y + 4);
+          f.lineTo(leftMargin + 45 + textWidth, y + 4);
+          f.stroke();
+        }
+
+        y += 48;
+      }
+
+      // Section header
+      f.font = "600 14px 'Outfit', sans-serif";
+      f.fillStyle = '#b8860b';
+      f.fillText('CONTACT INFORMATION', leftMargin, y - 15);
+      y += 20;
+
+      // Contact details with styled icons
+      drawContactLine('📍', CONFIG.address1);
+      f.font = "400 20px 'Outfit', sans-serif";
+      f.fillStyle = '#555';
+      f.fillText(CONFIG.address2, leftMargin + 45, y - 28);
+
+      drawContactLine('📞', CONFIG.phone);
+      drawContactLine('✉️', CONFIG.email);
+      drawContactLine('🌐', CONFIG.website, true);
+    }
+
+    function drawBackPlaceholder() {
+      drawSoftBG(b);
+
+      // Decorative corner flourishes
+      b.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+      b.lineWidth = 2;
+      const cornerSize = 40;
+      // Top-left corner
+      b.beginPath();
+      b.moveTo(35, 55); b.lineTo(35, 35); b.lineTo(55, 35);
+      b.stroke();
+      // Top-right corner
+      b.beginPath();
+      b.moveTo(LOGICAL_W - 55, 35); b.lineTo(LOGICAL_W - 35, 35); b.lineTo(LOGICAL_W - 35, 55);
+      b.stroke();
+      // Bottom-left
+      b.beginPath();
+      b.moveTo(35, LOGICAL_H - 55); b.lineTo(35, LOGICAL_H - 35); b.lineTo(55, LOGICAL_H - 35);
+      b.stroke();
+      // Bottom-right
+      b.beginPath();
+      b.moveTo(LOGICAL_W - 55, LOGICAL_H - 35); b.lineTo(LOGICAL_W - 35, LOGICAL_H - 35); b.lineTo(LOGICAL_W - 35, LOGICAL_H - 55);
+      b.stroke();
+
+      // Center branding with shadow
+      b.textAlign = "center";
+      b.shadowColor = 'rgba(212, 175, 55, 0.3)';
+      b.shadowBlur = 15;
+
+      // Gold gradient text effect
+      const textGrad = b.createLinearGradient(LOGICAL_W / 2 - 150, LOGICAL_H / 2, LOGICAL_W / 2 + 150, LOGICAL_H / 2);
+      textGrad.addColorStop(0, "#b8860b");
+      textGrad.addColorStop(0.5, "#f4d03f");
+      textGrad.addColorStop(1, "#b8860b");
+      b.fillStyle = textGrad;
+      b.font = "bold 48px 'Outfit', sans-serif";
+      b.fillText("Seven Destination", LOGICAL_W / 2, LOGICAL_H / 2 - 15);
+
+      b.shadowColor = 'transparent';
+      b.shadowBlur = 0;
+
+      // Tagline
+      b.font = "italic 22px 'Outfit', sans-serif";
+      b.fillStyle = "#555";
+      b.fillText("Your Journey, Our Creation", LOGICAL_W / 2, LOGICAL_H / 2 + 35);
+
+      // Small decorative stars
+      b.font = "16px sans-serif";
+      b.fillStyle = '#d4af37';
+      b.fillText("✦", LOGICAL_W / 2 - 180, LOGICAL_H / 2 - 10);
+      b.fillText("✦", LOGICAL_W / 2 + 175, LOGICAL_H / 2 - 10);
+
+      b.textAlign = "left";
+    }
+
+    function updateTextures() {
+      if (frontTex) frontTex.needsUpdate = true;
+      if (backTex) backTex.needsUpdate = true;
+    }
+
+    // --- Audio Logic ---
+    function ensureWindEngine() {
+      if (initializedAudio) return;
+      initializedAudio = true;
+      audioCtx.resume();
+      windOsc = audioCtx.createBufferSource(); // Noise buffer
+      const bufferSize = audioCtx.sampleRate * 2;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+      windOsc.buffer = buffer;
+      windOsc.loop = true;
+
+      windFilter = audioCtx.createBiquadFilter();
+      windFilter.type = 'lowpass';
+      windFilter.frequency.value = 600;
+
+      windGain = audioCtx.createGain();
+      windGain.gain.value = 0;
+
+      windMetaGain = audioCtx.createGain();
+      windMetaGain.gain.value = 0.5; // Master volume
+
+      windOsc.connect(windFilter);
+      windFilter.connect(windGain);
+      windGain.connect(windMetaGain);
+      windMetaGain.connect(audioCtx.destination);
+      windOsc.start();
+    }
+
+    function updateWindBySpeed(normSpeed, dt) {
+      if (!initializedAudio) return;
+      const p = CONFIG.AUDIO_PARAMS;
+      const targetGain = normSpeed * p.noiseGainMax;
+      windGain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, p.smoothing);
+      const targetFreq = p.bpBaseFreq + normSpeed * p.bpFreqRange;
+      windFilter.frequency.setTargetAtTime(targetFreq, audioCtx.currentTime, p.smoothing);
+    }
+
+    function playTapSound() {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      osc.frequency.setValueAtTime(CONFIG.TAP_FREQ, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + CONFIG.TAP_DURATION);
+      g.gain.setValueAtTime(CONFIG.TAP_GAIN, audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + CONFIG.TAP_DURATION);
+      osc.connect(g); g.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + CONFIG.TAP_DURATION + 0.1);
+    }
+
+    // --- Interaction Logic ---
+    let isDragging = false, lastMouseX = 0, rotationSpeed = CONFIG.ROTATION_SPEED_NORMAL;
+    let autoRotationSpeed = CONFIG.ROTATION_SPEED_NORMAL;
+    let lastYForAV = 0;
+
+    // Raycasting for Desktop
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    function onMouseMove(e) {
+      // Calc mouse relative to renderer canvas
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+      if (isDragging) {
+        const dx = e.clientX - lastMouseX;
+        card.rotation.y += dx * 0.005;
+        rotationSpeed = dx * 0.05; // Spin effect
+        lastMouseX = e.clientX;
+        autoRotationSpeed = 0; // stop auto rotate temporarily
+      }
+    }
+
+    function onMouseDown(e) {
+      // Check if clicked strictly inside canvas
+      const rect = renderer.domElement.getBoundingClientRect();
+      if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) return;
+
+      isDragging = true;
+      lastMouseX = e.clientX;
+      if (audioCtx) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        ensureWindEngine();
+      }
+    }
+
+    function onMouseUp() {
+      isDragging = false;
+      // Resume auto rotation slowly
+      setTimeout(() => { autoRotationSpeed = CONFIG.ROTATION_SPEED_NORMAL; }, CONFIG.SLOW_DURATION_MS);
+
+      // Click detection for hotspot
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(hotspot);
+      if (intersects.length > 0) {
+        window.open(CONFIG.website, "_blank");
+      }
+    }
+
+    // Add listeners to container/window
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mouseup', onMouseUp);
+
+    // Desktop Animation
+    let lastTS = 0;
+    function animate(ts) {
+      renderer.setAnimationLoop(renderLoop);
+    }
+
+    function renderLoop(ts, frame) {
+      // XR Mode handled separately inside setAnimationLoop if session active? 
+      // Actually ThreeJS automatically switches if we use renderer.setAnimationLoop
+
+      const dtMs = Math.min(60, ts - lastTS);
+      const dt = Math.max(1e-6, dtMs / 1000);
+      lastTS = ts;
+
+      if (renderer.xr.isPresenting) {
+        // XR Logic (Hit Test, etc handled below)
+      } else {
+        // Desktop Logic
+        card.visible = true; // ensure visible
+        if (!isDragging) {
+          rotationSpeed += (autoRotationSpeed - rotationSpeed) * 0.05;
+          card.rotation.y += rotationSpeed * dt;
+        }
+
+        // Calculate angular velocity for audio
+        let d = card.rotation.y - lastYForAV;
+        // Wrapping
+        if (d > Math.PI) d -= Math.PI * 2;
+        if (d < -Math.PI) d += Math.PI * 2;
+
+        const angVel = Math.abs(d) / dt;
+        lastYForAV = card.rotation.y;
+
+        const norm = Math.min(1, angVel / CONFIG.AUDIO_PARAMS.expectedMaxAngular);
+        updateWindBySpeed(norm, dt);
+
+        controls.update();
+        renderer.render(scene, camera);
+      }
+    }
+
+    animate(0); // Kickoff
+
+    // --- AR LOGIC ---
+    let xrSession = null;
+    let hitTestSource = null;
+    let hitTestSourceRequested = false;
+    let reticle = null;
+    let placedRoot = null; // The anchor for the AR card
+    let xrController;
+    let twoFingerTapTimer = null;
+    let lastTouchDist = null;
+    let arTouchStart = null;
+
+    function createReticle() {
+      const g = new THREE.RingGeometry(0.15, 0.2, 32).rotateX(-Math.PI / 2);
+      const m = new THREE.MeshBasicMaterial({ color: 0xffd700 }); // gold reticle
+      const mesh = new THREE.Mesh(g, m);
+      mesh.matrixAutoUpdate = false;
+      mesh.visible = false;
+      return mesh;
+    }
+
+    function createARCardClone() {
+      // Re-create card for AR with double sided materials
+      const cloneGeo = boxGeo.clone();
+      const sideMatAR = sideMat.clone();
+      const frontMatAR = frontMat.clone();
+      const backMatAR = backMat.clone();
+      sideMatAR.side = frontMatAR.side = backMatAR.side = THREE.DoubleSide;
+      const mats = [sideMatAR, sideMatAR, sideMatAR, sideMatAR, frontMatAR, backMatAR];
+      const arCard = new THREE.Mesh(cloneGeo, mats);
+
+      // Update maps
+      arCard.material[4].map = frontTex;
+      arCard.material[5].map = backTex;
+
+      // Scale down to meters
+      // Default: Card width 3.5 units. Desired: 0.3 meters. Scale = 0.3/3.5
+      const s = CONFIG.AR_DESIRED_WIDTH_METERS / CARD_W;
+      arCard.scale.set(s, s, s);
+      arCard.position.y = (CARD_H * s) / 2; // Sit on floor
+
+      return arCard;
+    }
+
+    function onSelect() {
+      if (reticle.visible && !placedRoot) {
+        // Place
+        placedRoot = new THREE.Group();
+        // Position at reticle
+        reticle.matrix.decompose(placedRoot.position, placedRoot.quaternion, placedRoot.scale);
+
+        const arMesh = createARCardClone();
+        arMesh.userData.isARCard = true;
+        placedRoot.add(arMesh);
+        placedRoot.userData.arCard = arMesh;
+        scene.add(placedRoot);
+
+        playTapSound();
+        statusEl.style.display = 'block'; statusEl.innerText = 'Card Placed. Pinch to Scale, Drag to Rotate.';
+        setTimeout(() => statusEl.style.display = 'none', 3000);
+      }
+    }
+
+    // Touch Handlers for AR
+    function onXRTouchStart(e) {
+      if (!renderer.xr.isPresenting) return;
+      if (!placedRoot) return;
+      if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        lastTouchDist = Math.sqrt(dx * dx + dy * dy);
+        twoFingerTapTimer = performance.now();
+        e.preventDefault();
+      } else if (e.touches.length === 1) {
+        arTouchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    }
+
+    function onXRTouchMove(e) {
+      if (!renderer.xr.isPresenting || !placedRoot) return;
+
+      if (e.touches.length === 2 && lastTouchDist) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const newDist = Math.sqrt(dx * dx + dy * dy);
+        const delta = (newDist - lastTouchDist) * 0.005;
+        lastTouchDist = newDist;
+
+        const mesh = placedRoot.userData.arCard;
+        mesh.scale.multiplyScalar(1 + delta);
+        e.preventDefault();
+      } else if (e.touches.length === 1 && arTouchStart) {
+        const dx = e.touches[0].clientX - arTouchStart.x;
+        const ang = dx * 0.01;
+        placedRoot.userData.arCard.rotation.y += ang;
+        arTouchStart.x = e.touches[0].clientX;
+        e.preventDefault();
+      }
+    }
+
+    function onXRTouchEnd(e) {
+      if (e.touches.length === 0 && twoFingerTapTimer) {
+        if (performance.now() - twoFingerTapTimer < 300) {
+          // Reset
+          if (placedRoot) {
+            scene.remove(placedRoot);
+            placedRoot = null;
+            playTapSound();
+            statusEl.innerText = "Reset. Scan to place again.";
+            statusEl.style.display = 'block';
+            setTimeout(() => statusEl.style.display = 'none', 2000);
+          }
+        }
+        twoFingerTapTimer = null;
+      }
+      if (e.touches.length < 2) lastTouchDist = null;
+      if (e.touches.length === 0) arTouchStart = null;
+    }
+
+    // AR Button Logic
+    async function checkAR() {
+      if (navigator.xr && await navigator.xr.isSessionSupported('immersive-ar')) {
+        arBtn.hidden = false;
+      } else {
+        arBtn.hidden = true;
+      }
+    }
+    checkAR();
+
+    arBtn.addEventListener('click', async () => {
+      // If already presenting, take photo
+      if (renderer.xr.isPresenting) {
+        const data = renderer.domElement.toDataURL('image/png');
+        const a = document.createElement('a'); a.href = data; a.download = 'ar-card.png';
+        document.body.appendChild(a); a.click(); a.remove();
+        statusEl.innerText = "Photo Saved"; statusEl.style.display = 'block';
+        setTimeout(() => statusEl.style.display = 'none', 1500);
+        return;
+      }
+
+      // Start AR
+      if (!navigator.xr) return;
+      try {
+        const s = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['hit-test', 'local-floor'] });
+        xrSession = s;
+        renderer.xr.setSession(s);
+
+        card.visible = false; // hide desktop card
+
+        // Hooks
+        s.addEventListener('end', () => {
+          xrSession = null;
+          card.visible = true; // restore desktop
+          if (placedRoot) { scene.remove(placedRoot); placedRoot = null; }
+          hitTestSourceRequested = false;
+          hitTestSource = null;
+          if (reticle) reticle.visible = false;
+        });
+
+        // Controller for tap
+        xrController = renderer.xr.getController(0);
+        xrController.addEventListener('select', onSelect);
+        scene.add(xrController);
+
+        // Add Reticle
+        if (!reticle) { reticle = createReticle(); scene.add(reticle); }
+
+        // Add Touch listeners
+        // Note: In XR, we listen to canvas usually, or window? 
+        // For DOM Overlay types, it's different, but standard immersive-ar without DOM overlay 
+        // essentially uses the canvas. However, many browsers don't fire touch events in immersive mode 
+        // unless 'dom-overlay' is used. For this snippet, we will try adding to window/canvas.
+        // But since we didn't request dom-overlay, standard handling via controller is default.
+        // The user code, however, used touch listeners on existing domElement.
+        renderer.domElement.addEventListener('touchstart', onXRTouchStart);
+        renderer.domElement.addEventListener('touchmove', onXRTouchMove);
+        renderer.domElement.addEventListener('touchend', onXRTouchEnd);
+
+      } catch (e) { console.error(e); statusEl.innerText = "AR Failed"; statusEl.style.display = 'block'; }
+    });
+
+    // XR Render Loop Logic augmentation
+    const originalRender = renderer.render.bind(renderer);
+    renderer.setAnimationLoop((t, frame) => {
+      if (renderer.xr.isPresenting) {
+        if (frame) {
+          const session = frame.session;
+          if (!hitTestSourceRequested) {
+            session.requestReferenceSpace('viewer').then(refSpace => {
+              session.requestHitTestSource({ space: refSpace }).then(src => hitTestSource = src);
+            });
+            hitTestSourceRequested = true;
+            session.requestReferenceSpace('local-floor').then(s => {/* just ensures it's ready */ });
+          }
+          if (hitTestSource) {
+            const hits = frame.getHitTestResults(hitTestSource);
+            if (hits.length > 0) {
+              const pose = hits[0].getPose(renderer.xr.getReferenceSpace());
+              reticle.visible = true;
+              reticle.matrix.fromArray(pose.transform.matrix);
+            } else {
+              reticle.visible = false;
+            }
+          }
+        }
+        renderer.render(scene, camera);
+      } else {
+        renderLoop(t, null);
+      }
+    });
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      if (!renderer.xr.isPresenting) {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      }
+    });
+
+    // Initialize Card content
+    (async function initContent() {
+      const ok = await loadLogoLeftTop(CONFIG.logoUrl);
+      // Always draw
+      drawSoftBG(f); drawBrandTop(); drawFrontBody(); drawBackPlaceholder(); updateTextures();
+    })();
+
+  })();
+</script>

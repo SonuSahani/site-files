@@ -1,0 +1,652 @@
+<!-- Required CSS for Elementor -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/style.css?v=20251126141532">
+<!-- Start of Page Content -->
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://i0.wp.com/www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png?w=800"
+                    alt="Seven Destination Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://sevendestination.com">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/package/">Tour Package</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/destinations/">Destination</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section with Full Screen Carousel -->
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+                        class="d-block w-100" alt="Gangtok & Tsomgo Lake">
+                    <div class="carousel-overlay">
+                        <div class="carousel-content">
+                            <h1>SIKKIM TOUR PACKAGES</h1>
+                            <p>Discover the land of hidden paradises in Sikkim. From Gangtok's vibrant monasteries to
+                                Tsomgo Lake's alpine serenity, embark on a Himalayan odyssey of culture and nature.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+                        class="d-block w-100" alt="Nathula Pass & Baba Mandir">
+                    <div class="carousel-overlay">
+                        <div class="carousel-content">
+                            <h1>HIGH PASSES & SACRED SITES</h1>
+                            <p>Cross Nathula Pass, visit Baba Mandir, trek Dzongri trails, and unwind in Pelling's
+                                viewpoints. Our packages include permits, yak rides, and eco-luxury stays.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1571003117499-9a9e8e93b054?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+                        class="d-block w-100" alt="Lachung & Yumthang Valley">
+                    <div class="carousel-overlay">
+                        <div class="carousel-content">
+                            <h1>ALPINE ESCAPES</h1>
+                            <p>Yumthang's hot springs, Ravangla's Buddha Park, and 360Â° Himalayan vistas. Book now for
+                                limited slots and immerse in Sikkim's untouched beauty and Buddhist heritage!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <!-- Search Section - Separate from Carousel -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-title">
+                <h3>Find Your Sikkim Getaway</h3>
+                <p>Search from our curated range of Himalayan packages</p>
+            </div>
+            <div class="search-container">
+                <form role="search" method="get" class="jetpack-search-form" action="https://example.com/">
+                    <input type="search" class="search-input"
+                        placeholder="Search for Gangtok, Nathula, trekking, lakes..." name="s" id="search-input">
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Tour Packages Section -->
+    <section class="tour-packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Tour Packages</h2>
+            </div>
+            <div class="row">
+                <!-- Package 1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card package-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="card-img-top" alt="Gangtok & Tsomgo Lake">
+                        <div class="card-body">
+                            <h5 class="card-title">Gangtok & Tsomgo Lake</h5>
+                            <div class="package-details">
+                                <span><i class="fas fa-calendar-alt"></i> 4 Days</span>
+                                <span><i class="fas fa-users"></i> 2-6 People</span>
+                            </div>
+                            <div class="package-rating">
+                                <div>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-text">4.5 <!--(234 Reviews) --></span>
+                            </div>
+                            <div class="package-price">&#8377;12,999 <span class="text-muted">/person</span></div>
+                            <a href="#" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                                data-title="Gangtok & Tsomgo Lake"
+                                data-image="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                data-duration="4 Days / 3 Nights"
+                                data-description="Explore Gangtok's Rumtek Monastery and Enchey Gompa, then head to sacred Tsomgo Lake for yak rides and alpine views."
+                                data-price="12,999"
+                                data-inclusions="Transport from Siliguri, hotel stays, meals, lake permit & entry">Book
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card package-card">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="card-img-top" alt="Nathula Pass & Baba Mandir">
+                        <div class="card-body">
+                            <h5 class="card-title">Nathula Pass & Baba Mandir</h5>
+                            <div class="package-details">
+                                <span><i class="fas fa-calendar-alt"></i> 5 Days</span>
+                                <span><i class="fas fa-users"></i> 2-8 People</span>
+                            </div>
+                            <div class="package-rating">
+                                <div>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">5.0 <!--(189 Reviews) --></span>
+                            </div>
+                            <div class="package-price">&#8377;15,499 <span class="text-muted">/person</span></div>
+                            <a href="#" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                                data-title="Nathula Pass & Baba Mandir"
+                                data-image="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                data-duration="5 Days / 4 Nights"
+                                data-description="Cross the Indo-China border at Nathula Pass (14,000 ft) and pay homage at the legendary Baba Mandir."
+                                data-price="15,499"
+                                data-inclusions="Protected area permits, transport, hotels, meals, guided pass tour">Book
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card package-card">
+                        <img src="https://images.unsplash.com/photo-1571003117499-9a9e8e93b054?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="card-img-top" alt="Lachung & Yumthang Valley">
+                        <div class="card-body">
+                            <h5 class="card-title">Lachung & Yumthang Valley</h5>
+                            <div class="package-details">
+                                <span><i class="fas fa-calendar-alt"></i> 6 Days</span>
+                                <span><i class="fas fa-users"></i> 2-10 People</span>
+                            </div>
+                            <div class="package-rating">
+                                <div>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">4.0 <!--(267 Reviews) --></span>
+                            </div>
+                            <div class="package-price">&#8377;18,999 <span class="text-muted">/person</span></div>
+                            <a href="#" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                                data-title="Lachung & Yumthang Valley"
+                                data-image="https://images.unsplash.com/photo-1571003117499-9a9e8e93b054?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                data-duration="6 Days / 5 Nights"
+                                data-description="Journey to North Sikkim's Yumthang Valley (Valley of Flowers) with hot springs and rhododendron blooms."
+                                data-price="18,999"
+                                data-inclusions="Restricted area permit, transport, guesthouses, meals, valley excursion">Book
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card package-card">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="card-img-top" alt="Pelling & Ravangla">
+                        <div class="card-body">
+                            <h5 class="card-title">Pelling & Ravangla</h5>
+                            <div class="package-details">
+                                <span><i class="fas fa-calendar-alt"></i> 5 Days</span>
+                                <span><i class="fas fa-users"></i> 2-6 People</span>
+                            </div>
+                            <div class="package-rating">
+                                <div>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-text">4.7 <!--(145 Reviews) --></span>
+                            </div>
+                            <div class="package-price">&#8377;14,499 <span class="text-muted">/person</span></div>
+                            <a href="#" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                                data-title="Pelling & Ravangla"
+                                data-image="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                data-duration="5 Days / 4 Nights"
+                                data-description="West Sikkim's Kanchenjunga views from Pemayangtse Monastery and Buddha Park in Ravangla."
+                                data-price="14,499"
+                                data-inclusions="Transport, hotels, meals, monastery entries, viewpoint hikes">Book
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 5 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card package-card">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="card-img-top" alt="Dzongri Trek">
+                        <div class="card-body">
+                            <h5 class="card-title">Dzongri Trek</h5>
+                            <div class="package-details">
+                                <span><i class="fas fa-calendar-alt"></i> 7 Days</span>
+                                <span><i class="fas fa-users"></i> 4-8 People</span>
+                            </div>
+                            <div class="package-rating">
+                                <div>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">4.2 <!--(178 Reviews) --></span>
+                            </div>
+                            <div class="package-price">&#8377;22,799 <span class="text-muted">/person</span></div>
+                            <a href="#" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                                data-title="Dzongri Trek"
+                                data-image="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                data-duration="7 Days / 6 Nights"
+                                data-description="Classic trek to Dzongri (13,000 ft) with Kanchenjunga vistas, passing through rhododendron forests and alpine meadows."
+                                data-price="22,799"
+                                data-inclusions="Trek permits, guides, porters, camping gear, meals, transport">Book
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 6 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card package-card">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="card-img-top" alt="Sikkim Complete Experience">
+                        <div class="card-body">
+                            <h5 class="card-title">Sikkim Complete Experience</h5>
+                            <div class="package-details">
+                                <span><i class="fas fa-calendar-alt"></i> 8 Days</span>
+                                <span><i class="fas fa-users"></i> 4-12 People</span>
+                            </div>
+                            <div class="package-rating">
+                                <div>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">4.9 <!--(234 Reviews) --></span>
+                            </div>
+                            <div class="package-price">&#8377;26,999 <span class="text-muted">/person</span></div>
+                            <a href="#" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                                data-title="Sikkim Complete Experience"
+                                data-image="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                data-duration="8 Days / 7 Nights"
+                                data-description="Ultimate Sikkim: Gangtok, Nathula, Yumthang, Pelling, Dzongri trek, and monastery circuit."
+                                data-price="26,999"
+                                data-inclusions="Flights, all permits, luxury transport & stays, comprehensive meals & activities">Book
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Adventure & Activity Section -->
+    <section class="adventure-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>ATTRACTIONS & ACTIVITIES</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="activity-card">
+                        <i class="fas fa-landmark"></i>
+                        <h4>Buddhist Monasteries</h4>
+                        <div class="activity-count">30+</div>
+                        <p>Sacred Sites</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="activity-card">
+                        <i class="fas fa-water"></i>
+                        <h4>Alpine Lakes</h4>
+                        <div class="activity-count">15+</div>
+                        <p>Pristine Waters</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="activity-card">
+                        <i class="fas fa-hiking"></i>
+                        <h4>Trekking Trails</h4>
+                        <div class="activity-count">20+</div>
+                        <p>Adventure Routes</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="activity-card">
+                        <i class="fas fa-mountain-sun"></i>
+                        <h4>Himalayan Views</h4>
+                        <div class="activity-count">360Â°</div>
+                        <p>Mountain Panoramas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-about">
+                        <div class="footer-logo">SEVEN DESTINATION</div>
+                        <p>Your trusted travel partner for mystical Sikkim tours. We create Himalayan journeys with our
+                            permit-inclusive packages.</p>
+                        <p>A leading travel agency based in Howrah, serving travelers since 2019.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="https://sevendestination.com">Home</a></li>
+                            <li><a href="https://www.sevendestination.com/about/">About Us</a></li>
+                            <li><a href="https://www.sevendestination.com/destinations/">Destinations</a></li>
+                            <li><a href="https://www.sevendestination.com/package/">Tour Packages</a></li>
+                            <li><a href="https://www.sevendestination.com/hotels/">Hotels</a></li>
+                            <li><a href="https://www.sevendestination.com/car-rental/">Transportation</a></li>
+                            <li><a href="https://www.sevendestination.com/guide/">Travel Guide</a></li>
+                            <li><a href="https://www.sevendestination.com/query/">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-contact">
+                        <h5>Contact Information</h5>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/uG5PFmipeQUcmSLB9"
+                                    target="_blank">13, 29/A, Mohanlal Bahalwalla Rd, Belur, Bally, Howrah, West Bengal
+                                    711201</a></p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+918585858400">+91 8585858400</a></p>
+                            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/918585858400" target="_blank">+91
+                                    8585858400</a></p>
+                            <p><i class="fas fa-envelope"></i> <a
+                                    href="mailto:email@sevendestination.com">email@sevendestination.com</a></p>
+                            <p><i class="fas fa-envelope"></i> <a
+                                    href="mailto:travellersharma@gmail.com">travellersharma@gmail.com</a></p>
+                            <p><i class="fas fa-clock"></i> Mon - Sat: 9:30 AM - 6:30 PM</p>
+                        </div>
+                                                <div class="social-links">
+                            <a href="https://www.facebook.com/sevendestination" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/sevendestination" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/sevendestination" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/sevendestination" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.youtube.com/@sevendestination" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Seven Destination. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Booking Modal (Generic) -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">Book Package</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="" class="img-fluid rounded mb-3" id="modalImage" alt="Package Image">
+                            <h4 id="modalTitle">Package Title</h4>
+                            <p class="text-muted" id="modalDuration">Duration</p>
+                            <p id="modalDescription">Description</p>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="package-price me-2" id="modalPrice">Price</span>
+                                <small class="text-muted">/person</small>
+                            </div>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Inclusions:</strong> <span id="modalInclusions">Inclusions</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <form id="bookingForm" action="https://formspree.io/f/xdkwygar" method="POST">
+                                <input type="hidden" name="tourPackage" id="formPackageTitle" value="">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pax" class="form-label">Number of Pax</label>
+                                    <input type="number" class="form-control" id="pax" name="pax" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="travelDate" class="form-label">Preferred Travel Date</label>
+                                    <input type="date" class="form-control" id="travelDate" name="travelDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message" class="form-label">Special Requirements</label>
+                                    <textarea class="form-control" id="message" name="message" rows="3"
+                                        placeholder="Any dietary restrictions, medical conditions, or special requests"></textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-submit">Submit Booking</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Success Alert -->
+    <div class="success-alert" id="successAlert">
+        <i class="fas fa-check-circle me-2"></i>
+        Booking request submitted successfully! We'll contact you within 24 hours.
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('data-bs-toggle') === 'modal') return; // Skip for modal triggers
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation to package cards on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.package-card, .activity-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            observer.observe(card);
+        });
+
+        // Dynamic Modal Population
+        const bookingModal = document.getElementById('bookingModal');
+        bookingModal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+
+            // Extract info from data-* attributes
+            const title = button.getAttribute('data-title');
+            const image = button.getAttribute('data-image');
+            const duration = button.getAttribute('data-duration');
+            const description = button.getAttribute('data-description');
+            const price = button.getAttribute('data-price');
+            const inclusions = button.getAttribute('data-inclusions');
+
+            // Update the modal's content
+            const modalTitle = bookingModal.querySelector('.modal-title');
+            const modalBodyTitle = bookingModal.querySelector('#modalTitle');
+            const modalImage = bookingModal.querySelector('#modalImage');
+            const modalDuration = bookingModal.querySelector('#modalDuration');
+            const modalDescription = bookingModal.querySelector('#modalDescription');
+            const modalPrice = bookingModal.querySelector('#modalPrice');
+            const modalInclusions = bookingModal.querySelector('#modalInclusions');
+            const formPackageTitle = bookingModal.querySelector('#formPackageTitle');
+
+            modalTitle.textContent = 'Book ' + title;
+            modalBodyTitle.textContent = title;
+            modalImage.src = image;
+            modalImage.alt = title;
+            modalDuration.textContent = duration;
+            modalDescription.textContent = description;
+            modalPrice.textContent = '\u20B9' + price;
+            modalInclusions.textContent = inclusions;
+            formPackageTitle.value = title;
+        });
+
+        // Handle form submissions
+        document.querySelectorAll('[id^="bookingForm"]').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            const successAlert = document.getElementById('successAlert');
+                            successAlert.style.display = 'block';
+
+                            // Hide success message after 5 seconds
+                            setTimeout(() => {
+                                successAlert.style.display = 'none';
+                            }, 5000);
+
+                            // Close modal
+                            const modalId = this.closest('.modal').id;
+                            const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+                            modal.hide();
+
+                            // Reset form
+                            this.reset();
+                        } else {
+                            response.json().then(data => {
+                                if (data.errors) {
+                                    alert(data.errors.map(error => error.message).join(", "));
+                                } else {
+                                    alert('Oops! There was a problem submitting your form');
+                                }
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        alert('Oops! There was a problem submitting your form');
+                    });
+            });
+        });
+
+        // Handle mobile back button issue - Only apply on mobile
+        let modalOpen = false;
+
+        // Check if mobile
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            // Add event listeners to all modals
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('show.bs.modal', function () {
+                    modalOpen = true;
+                    // Push state to history when modal opens
+                    history.pushState({ modalOpen: true }, '');
+                });
+
+                modal.addEventListener('hidden.bs.modal', function () {
+                    modalOpen = false;
+                    // Remove state when modal closes
+                    if (history.state && history.state.modalOpen) {
+                        history.back();
+                    }
+                });
+            });
+
+            // Listen for popstate event (back button)
+            window.addEventListener('popstate', function (event) {
+                if (modalOpen) {
+                    // Close any open modal
+                    const openModal = document.querySelector('.modal.show');
+                    if (openModal) {
+                        const modalInstance = bootstrap.Modal.getInstance(openModal);
+                        if (modalInstance) {
+                            modalInstance.hide();
+                        }
+                    }
+                }
+            });
+        }
+    </script>

@@ -1,0 +1,508 @@
+<!-- Privacy Policy Snippet -->
+<link rel="stylesheet" href="elementor_styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<style>
+    /* Footer & Header Styles specific to this snippet */
+    .hand-drawn-highlight {
+        position: relative;
+        display: inline-block;
+        padding: 6px 16px;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% + 24px);
+        height: calc(100% + 20px);
+        transform: translate(-50%, -50%) rotate(-5deg);
+        pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+        fill: none;
+        stroke: #e74c3c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+        stroke: rgba(231, 76, 60, 0.4);
+        stroke-width: 2;
+        stroke-dasharray: 320;
+        stroke-dashoffset: 320;
+        animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+        0% {
+            stroke-dashoffset: 300;
+        }
+
+        40% {
+            stroke-dashoffset: 0;
+        }
+
+        60% {
+            stroke-dashoffset: 0;
+        }
+
+        100% {
+            stroke-dashoffset: -300;
+        }
+    }
+
+    .trust-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 15px 0;
+        align-items: center;
+    }
+
+    .trust-badges img {
+        height: auto;
+        max-width: 120px;
+        max-height: 70px;
+        object-fit: contain;
+        filter: grayscale(1);
+        transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .popular-destinations {
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .popular-destinations p {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .popular-destinations span {
+        color: #adb5bd;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .travel-agencies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 15px 0;
+    }
+
+    .travel-agencies div {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .travel-agencies p {
+        color: #808080;
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+        color: var(--accent-color);
+    }
+
+    .copyright-text {
+        color: #ffcccc;
+        font-size: 0.7rem;
+        text-align: center;
+        margin: 10px 0;
+        line-height: 1.4;
+        background: rgba(255, 0, 0, 0.1);
+        padding: 8px;
+        border-radius: 8px;
+        border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        margin: 10px 0;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #adb5bd;
+        font-size: 0.8rem;
+    }
+</style>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="https://sevendestination.com/" aria-label="Seven Destination Home">
+            <img src="http://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+                alt="Seven Destination">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/packages">Packages</a></li>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://sevendestination.com/destinations">Destinations</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/car-rental">Car Rental</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/hotel-booking">Hotel
+                        Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/ticket-service">Ticket
+                        Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/group-tours">Group Tours</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://sevendestination.com/contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="section-title">Privacy Policy</h1>
+        <p class="section-subtitle">Your privacy is important to us</p>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="content-section">
+    <div class="container">
+        <div class="card-box">
+            <h3 class="mb-4">Privacy Policy for Seven Destination</h3>
+            <p>At Seven Destination, accessible from <a
+                    href="https://www.sevendestination.com">https://www.sevendestination.com</a>, one of our main
+                priorities is the privacy of our visitors. This Privacy Policy document contains types of information
+                that is collected and recorded by Seven Destination and how we use it.</p>
+
+            <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to
+                contact us.</p>
+
+            <h4 class="mt-5 mb-3">Log Files</h4>
+            <p>Seven Destination follows a standard procedure of using log files. These files log visitors when they
+                visit websites. All hosting companies do this and a part of hosting services' analytics. The information
+                collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider
+                (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not
+                linked to any information that is personally identifiable. The purpose of the information is for
+                analyzing trends, administering the site, tracking users' movement on the website, and gathering
+                demographic information.</p>
+
+            <h4 class="mt-5 mb-3">Cookies and Web Beacons</h4>
+            <p>Like any other website, Seven Destination uses 'cookies'. These cookies are used to store information
+                including visitors' preferences, and the pages on the website that the visitor accessed or visited. The
+                information is used to optimize the users' experience by customizing our web page content based on
+                visitors' browser type and/or other information.</p>
+
+            <h4 class="mt-5 mb-3">Google DoubleClick DART Cookie</h4>
+            <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve
+                ads to our site visitors based upon their visit to www.website.com and other sites on the internet.
+                However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content
+                network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads"
+                    target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a></p>
+
+            <h4 class="mt-5 mb-3">Privacy Policies</h4>
+            <p>You may consult this list to find the Privacy Policy for each of the advertising partners of Seven
+                Destination.</p>
+            <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are
+                used in their respective advertisements and links that appear on Seven Destination, which are sent
+                directly to users' browser. They automatically receive your IP address when this occurs. These
+                technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize
+                the advertising content that you see on websites that you visit.</p>
+            <p>Note that Seven Destination has no access to or control over these cookies that are used by third-party
+                advertisers.</p>
+
+            <h4 class="mt-5 mb-3">Third Party Privacy Policies</h4>
+            <p>Seven Destination's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising
+                you to consult the respective Privacy Policies of these third-party ad servers for more detailed
+                information. It may include their practices and instructions about how to opt-out of certain options.
+            </p>
+            <p>You can choose to disable cookies through your individual browser options. To know more detailed
+                information about cookie management with specific web browsers, it can be found at the browsers'
+                respective websites.</p>
+
+            <h4 class="mt-5 mb-3">Children's Information</h4>
+            <p>Another part of our priority is adding protection for children while using the internet. We encourage
+                parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+            <p>Seven Destination does not knowingly collect any Personal Identifiable Information from children under
+                the age of 13. If you think that your child provided this kind of information on our website, we
+                strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such
+                information from our records.</p>
+
+            <div class="alert alert-light mt-4 border" role="alert">
+                If you have any questions about this Privacy Policy, You can contact us: <a
+                    href="mailto:email@sevendestination.com" class="fw-bold text-primary">email@sevendestination.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <!-- Footer Heading -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="footer-heading">Seven Destination: Premier Tour & Travel in Kolkata, West Bengal</h2>
+            </div>
+        </div>
+
+        <!-- Footer Sections -->
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="footer-section">
+                    <h5>Get In Touch</h5>
+                    <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                                class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40"
+                                    preserveAspectRatio="none">
+                                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                                </svg></span></a></p>
+                    <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2"
+                                aria-hidden="true"></i> email@sevendestination.com</a></p>
+                    <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                                class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala
+                            Road, Bally, Howrah 711201</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#car-rental">Car Rental</a></li>
+                        <li><a href="#hotel-booking">Hotel Booking</a></li>
+                        <li><a href="#ticket-service">Ticket Service</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener"
+                            title="Facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                            aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener"
+                            title="YouTube" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                            aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener"
+                            title="Instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener"
+                            title="LinkedIn" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener"
+                            title="Pinterest" aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trusted By Badges -->
+        <div class="row mt-5 text-center">
+            <div class="col-12">
+                <h5 class="mb-4 text-white-50">Trusted By</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+                    <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+                        class="trust-badge text-white text-decoration-none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                            alt="Google Reviews" class="mb-2" style="height: 30px;" loading="lazy">
+                        <div class="small">Google Reviews</div>
+                    </a>
+                    <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+                        target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg"
+                            alt="TripAdvisor" class="mb-2"
+                            style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+                        <div class="small">TripAdvisor</div>
+                    </a>
+                    <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+                        target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                        <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial"
+                            class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;"
+                            loading="lazy">
+                        <div class="small">JustDial Verified</div>
+                    </a>
+                    <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+                        class="trust-badge text-white text-decoration-none">
+                        <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart"
+                            class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;"
+                            loading="lazy">
+                        <div class="small">IndiaMart Trusted</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="400">
+            <a href="#home">Home</a> |
+            <a href="#about">Our Profile</a> |
+            <a href="#packages">Tour Package</a> |
+            <a href="#car-rental">Car Rental</a> |
+            <a href="#hotel-booking">Hotel Booking</a> |
+            <a href="#ticket-service">Ticketing</a> |
+            <a href="#testimonials">News & Events</a> |
+            <a href="#destinations">Photo Gallery</a> |
+            <a href="#testimonials">Videos</a> |
+            <a href="#testimonials">Testimonials</a> |
+            <a href="#destinations">Destinations</a> |
+            <a href="#about">Site Map</a> |
+            <a href="#contact">Contact us</a> |
+            <a href="#about">Career</a>
+        </div>
+
+        <!-- Popular Destinations -->
+        <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+            <p><strong>Popular Destinations</strong></p>
+            <div class="dest-list">
+                <span>Jaipur</span>
+                <span>Agra</span>
+                <span>Goa</span>
+                <span>Kerala</span>
+                <span>Varanasi</span>
+                <span>Mumbai</span>
+                <span>Delhi</span>
+                <span>Udaipur</span>
+                <span>Shimla</span>
+                <span>Rishikesh & Haridwar</span>
+                <span>Amritsar</span>
+                <span>Kolkata</span>
+                <span>Jodhpur</span>
+                <span>Ooty</span>
+                <span>Leh-Ladakh</span>
+                <span>Mysore</span>
+                <span>Darjeeling</span>
+                <span>Rann of Kutch</span>
+                <span>Khajuraho</span>
+                <span>Puducherry</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Travel Agencies -->
+        <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+            <div>
+                <p>Travel Agency in Kolkata</p>
+                <p>Travel Agency in Howrah</p>
+                <p>Travel Agency in Liluah</p>
+                <p>Travel Agency in Balur</p>
+                <p>Travel Agency in Bally</p>
+                <p>Travel Agency in Barabazaar</p>
+                <p>Travel Agency in Tollygunge</p>
+            </div>
+            <div>
+                <p>Travel Agency in Sealdah</p>
+                <p>Travel Agency in New Alipore</p>
+                <p>Travel Agency in Dum Dum</p>
+                <p>Travel Agency in Shyam bazar</p>
+                <p>Travel Agency in Dunlop</p>
+                <p>Travel Agency in 24 South Pargana</p>
+                <p>Travel Agency in Khadagpur</p>
+            </div>
+            <div>
+                <p>Travel Agency in Shibpuir</p>
+                <p>Travel Agency in Hooghly</p>
+                <p>Travel Agency in Salt lake</p>
+                <p>Travel Agency in New Town</p>
+                <p>Travel Agency in Naihati</p>
+                <p>Travel Agency in Kalyani</p>
+            </div>
+            <div>
+                <p>Travel Agency in Konnagar</p>
+                <p>Travel Agency in Rishra</p>
+                <p>Travel Agency in Uttrapara</p>
+                <p>Travel Agency in Hindmotor</p>
+                <p>Travel Agency in Uluberia</p>
+            </div>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">
+            All content and images on this website are copyrighted by their respective owners. This website is
+            intended to promote these works, and no endorsement of the artist is implied. Unauthorized use is
+            prohibited by law.
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Copyright -->
+        <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+            <p>&copy; 2025 Seven Destination Tour & Travel. All rights reserved. | Designed with <i
+                    class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+        </div>
+    </div>
+</footer>

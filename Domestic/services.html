@@ -1,0 +1,746 @@
+<!-- Services Snippet -->
+<link rel="stylesheet" href="elementor_styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<style>
+    /* Footer & Header Styles specific to this snippet */
+    .hand-drawn-highlight {
+        position: relative;
+        display: inline-block;
+        padding: 6px 16px;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% + 24px);
+        height: calc(100% + 20px);
+        transform: translate(-50%, -50%) rotate(-5deg);
+        pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+        fill: none;
+        stroke: #e74c3c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+        stroke: rgba(231, 76, 60, 0.4);
+        stroke-width: 2;
+        stroke-dasharray: 320;
+        stroke-dashoffset: 320;
+        animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+        0% {
+            stroke-dashoffset: 300;
+        }
+
+        40% {
+            stroke-dashoffset: 0;
+        }
+
+        60% {
+            stroke-dashoffset: 0;
+        }
+
+        100% {
+            stroke-dashoffset: -300;
+        }
+    }
+
+    .trust-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 15px 0;
+        align-items: center;
+    }
+
+    .trust-badges img {
+        height: auto;
+        max-width: 120px;
+        max-height: 70px;
+        object-fit: contain;
+        filter: grayscale(1);
+        transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .popular-destinations {
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .popular-destinations p {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .popular-destinations span {
+        color: #adb5bd;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .travel-agencies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 15px 0;
+    }
+
+    .travel-agencies div {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .travel-agencies p {
+        color: #808080;
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+        color: var(--accent-color);
+    }
+
+    .copyright-text {
+        color: #ffcccc;
+        font-size: 0.7rem;
+        text-align: center;
+        margin: 10px 0;
+        line-height: 1.4;
+        background: rgba(255, 0, 0, 0.1);
+        padding: 8px;
+        border-radius: 8px;
+        border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        margin: 10px 0;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #adb5bd;
+        font-size: 0.8rem;
+    }
+
+    /* Service Page Specific Styles */
+    .service-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .service-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .service-card .card-body {
+        padding: 25px;
+    }
+
+    .service-card .card-title {
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .service-card .card-text {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .btn-learn {
+        color: #e74c3c;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 8px 0;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-learn:hover {
+        color: #c0392b;
+        letter-spacing: 0.5px;
+    }
+
+    .service-highlights {
+        padding: 80px 0;
+        background: #f9f9f9;
+        margin-top: 50px;
+    }
+
+    .highlight-card {
+        background: white;
+        padding: 30px 20px;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+
+    .highlight-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .highlight-card i {
+        font-size: 40px;
+        color: #e74c3c;
+        margin-bottom: 20px;
+    }
+
+    .highlight-card h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .highlight-count {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .highlight-card p {
+        color: #777;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+    }
+</style>
+
+<!-- Navbar -->
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="https://sevendestination.com/" aria-label="Seven Destination Home">
+            <img src="http://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+                alt="Seven Destination">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/packages">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/destinations">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/car-rental">Car Rental</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/hotel-booking">Hotel Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/ticket-service">Ticket Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/group-tours">Group Tours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sevendestination.com/contact">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="section-title">Our Premium Services</h1>
+        <p class="section-subtitle">Tailored Travel Solutions for Your Perfect Journey</p>
+    </div>
+</section>
+
+<!-- Content -->
+<!-- Services Section -->
+<section class="services-section content-section">
+    <div class="container">
+        <div class="row">
+            <!-- Customized International Tour Packages -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Customized Tour Packages">
+                    <div class="card-body">
+                        <h5 class="card-title">Customized Tour Packages</h5>
+                        <p class="card-text">We create tailored packages for destinations worldwide, including attractions,
+                            accommodations, activities, and itineraries—all at competitive rates.</p>
+                        <a href="https://sevendestination.com/packages" class="btn-learn">View Packages <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transportation Bookings -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca6e53?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Transportation Bookings">
+                    <div class="card-body">
+                        <h5 class="card-title">Transportation Bookings</h5>
+                        <p class="card-text">Secure flights, train tickets, and bus reservations (including AC, sleeper, and
+                            economy options) with exclusive discounts and seamless integration.</p>
+                        <a href="https://sevendestination.com/car-rental" class="btn-learn">Book Transport <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visa Assistance -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Visa Assistance">
+                    <div class="card-body">
+                        <h5 class="card-title">Visa Assistance</h5>
+                        <p class="card-text">Expert guidance for visas to popular destinations like Europe, the USA, Australia,
+                            and Canada, ensuring timely approvals and compliance.</p>
+                        <a href="https://sevendestination.com/contact" class="btn-learn">Get Assistance <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Partnerships -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Local Partnerships">
+                    <div class="card-body">
+                        <h5 class="card-title">Local Partnerships</h5>
+                        <p class="card-text">Exclusive connections with restaurants, cab services, and more for the best local
+                            deals and personalized experiences.</p>
+                        <a href="https://sevendestination.com/contact" class="btn-learn">Learn More <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 24/7 Online Support -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="24/7 Support">
+                    <div class="card-body">
+                        <h5 class="card-title">24/7 Online Support</h5>
+                        <p class="card-text">Instant assistance via chat, email, or phone—from trip planning and bookings to
+                            real-time query resolution and post-trip feedback.</p>
+                        <a href="https://sevendestination.com/contact" class="btn-learn">Contact Us <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Travel Insurance Options -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Travel Insurance">
+                    <div class="card-body">
+                        <h5 class="card-title">Travel Insurance Options</h5>
+                        <p class="card-text">Comprehensive coverage for medical emergencies, trip cancellations, lost luggage,
+                            flight delays, and more to keep you protected.</p>
+                        <a href="https://sevendestination.com/contact" class="btn-learn">Get Insured <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currency Exchange Services -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Currency Exchange">
+                    <div class="card-body">
+                        <h5 class="card-title">Currency Exchange</h5>
+                        <p class="card-text">Hassle-free forex solutions, including doorstep delivery of foreign currency or
+                            convenient travel cards.</p>
+                        <a href="https://sevendestination.com/contact" class="btn-learn">Learn More <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Insights -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card service-card">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Destination Insights">
+                    <div class="card-body">
+                        <h5 class="card-title">Destination Insights</h5>
+                        <p class="card-text">In-depth information on vaccinations, cultural etiquette, efficient routes, and
+                            must-do activities to prepare you fully.</p>
+                        <a href="https://sevendestination.com/destinations" class="btn-learn">Explore Destinations <i class="fas fa-arrow-right list-inline-item ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Highlights Section -->
+<section class="service-highlights">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2>WHY CHOOSE OUR SERVICES</h2>
+            <p class="text-muted">Excellence in every journey we craft</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="highlight-card">
+                    <i class="fas fa-globe"></i>
+                    <h4>Global Reach</h4>
+                    <div class="highlight-count">100+</div>
+                    <p>Destinations Covered</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="highlight-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Expert Team</h4>
+                    <div class="highlight-count">5000+</div>
+                    <p>Satisfied Clients</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="highlight-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Round-the-Clock</h4>
+                    <div class="highlight-count">24/7</div>
+                    <p>Support Available</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="highlight-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Secure & Safe</h4>
+                    <div class="highlight-count">100%</div>
+                    <p>Secure Transactions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <!-- Footer Heading -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="footer-heading">Seven Destination: Premier Tour & Travel in Kolkata, West Bengal</h2>
+            </div>
+        </div>
+
+        <!-- Footer Sections -->
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="footer-section">
+                    <h5>Get In Touch</h5>
+                    <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                                class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40"
+                                    preserveAspectRatio="none">
+                                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                                </svg></span></a></p>
+                    <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2"
+                                aria-hidden="true"></i> email@sevendestination.com</a></p>
+                    <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                                class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala
+                            Road, Bally, Howrah 711201</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#car-rental">Car Rental</a></li>
+                        <li><a href="#hotel-booking">Hotel Booking</a></li>
+                        <li><a href="#ticket-service">Ticket Service</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener"
+                            title="Facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                            aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener"
+                            title="YouTube" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                            aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener"
+                            title="Instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener"
+                            title="LinkedIn" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener"
+                            title="Pinterest" aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trusted By Badges -->
+        <div class="row mt-5 text-center">
+            <div class="col-12">
+                <h5 class="mb-4 text-white-50">Trusted By</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+                    <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+                        class="trust-badge text-white text-decoration-none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                            alt="Google Reviews" class="mb-2" style="height: 30px;" loading="lazy">
+                        <div class="small">Google Reviews</div>
+                    </a>
+                    <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+                        target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg"
+                            alt="TripAdvisor" class="mb-2"
+                            style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+                        <div class="small">TripAdvisor</div>
+                    </a>
+                    <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+                        target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                        <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial"
+                            class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;"
+                            loading="lazy">
+                        <div class="small">JustDial Verified</div>
+                    </a>
+                    <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+                        class="trust-badge text-white text-decoration-none">
+                        <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart"
+                            class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;"
+                            loading="lazy">
+                        <div class="small">IndiaMart Trusted</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="400">
+            <a href="#home">Home</a> |
+            <a href="#about">Our Profile</a> |
+            <a href="#packages">Tour Package</a> |
+            <a href="#car-rental">Car Rental</a> |
+            <a href="#hotel-booking">Hotel Booking</a> |
+            <a href="#ticket-service">Ticketing</a> |
+            <a href="#testimonials">News & Events</a> |
+            <a href="#destinations">Photo Gallery</a> |
+            <a href="#testimonials">Videos</a> |
+            <a href="#testimonials">Testimonials</a> |
+            <a href="#destinations">Destinations</a> |
+            <a href="#about">Site Map</a> |
+            <a href="#contact">Contact us</a> |
+            <a href="#about">Career</a>
+        </div>
+
+        <!-- Popular Destinations -->
+        <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+            <p><strong>Popular Destinations</strong></p>
+            <div class="dest-list">
+                <span>Jaipur</span>
+                <span>Agra</span>
+                <span>Goa</span>
+                <span>Kerala</span>
+                <span>Varanasi</span>
+                <span>Mumbai</span>
+                <span>Delhi</span>
+                <span>Udaipur</span>
+                <span>Shimla</span>
+                <span>Rishikesh & Haridwar</span>
+                <span>Amritsar</span>
+                <span>Kolkata</span>
+                <span>Jodhpur</span>
+                <span>Ooty</span>
+                <span>Leh-Ladakh</span>
+                <span>Mysore</span>
+                <span>Darjeeling</span>
+                <span>Rann of Kutch</span>
+                <span>Khajuraho</span>
+                <span>Puducherry</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Travel Agencies -->
+        <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+            <div>
+                <p>Travel Agency in Kolkata</p>
+                <p>Travel Agency in Howrah</p>
+                <p>Travel Agency in Liluah</p>
+                <p>Travel Agency in Balur</p>
+                <p>Travel Agency in Bally</p>
+                <p>Travel Agency in Barabazaar</p>
+                <p>Travel Agency in Tollygunge</p>
+            </div>
+            <div>
+                <p>Travel Agency in Sealdah</p>
+                <p>Travel Agency in New Alipore</p>
+                <p>Travel Agency in Dum Dum</p>
+                <p>Travel Agency in Shyam bazar</p>
+                <p>Travel Agency in Dunlop</p>
+                <p>Travel Agency in 24 South Pargana</p>
+                <p>Travel Agency in Khadagpur</p>
+            </div>
+            <div>
+                <p>Travel Agency in Shibpuir</p>
+                <p>Travel Agency in Hooghly</p>
+                <p>Travel Agency in Salt lake</p>
+                <p>Travel Agency in New Town</p>
+                <p>Travel Agency in Naihati</p>
+                <p>Travel Agency in Kalyani</p>
+            </div>
+            <div>
+                <p>Travel Agency in Konnagar</p>
+                <p>Travel Agency in Rishra</p>
+                <p>Travel Agency in Uttrapara</p>
+                <p>Travel Agency in Hindmotor</p>
+                <p>Travel Agency in Uluberia</p>
+            </div>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">
+            All content and images on this website are copyrighted by their respective owners. This website is
+            intended to promote these works, and no endorsement of the artist is implied. Unauthorized use is
+            prohibited by law.
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Copyright -->
+        <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+            <p>&copy; 2025 Seven Destination Tour & Travel. All rights reserved. | Designed with <i
+                    class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Add smooth scrolling to all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add animation to service cards on scroll (Simple Intersection Observer)
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .highlight-card').forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        observer.observe(card);
+    });
+</script>
