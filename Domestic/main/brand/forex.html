@@ -1,0 +1,2207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE-HEAD-INJECTED -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="elementor_styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+
+  <title>Forex Exchange — ThrillTrails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0f1623;
+      --surface2: #161e2e;
+      --border: #1e2d42;
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.12);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.12);
+      --sky: #38bdf8;
+      --rose: #f39c12;
+      --text: #f0f4ff;
+      --muted: #6b7f99;
+    }
+
+    /* Footer & Header Styles from Contact page */
+    .hand-drawn-highlight {
+      position: relative;
+      display: inline-block;
+      padding: 6px 16px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 24px);
+      height: calc(100% + 20px);
+      transform: translate(-50%, -50%) rotate(-5deg);
+      pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+      fill: none;
+      stroke: #e74c3c;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+      stroke: rgba(231, 76, 60, 0.4);
+      stroke-width: 2;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+      0% {
+        stroke-dashoffset: 300;
+      }
+
+      40% {
+        stroke-dashoffset: 0;
+      }
+
+      60% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+      align-items: center;
+    }
+
+    .trust-badges img {
+      height: auto;
+      max-width: 120px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: grayscale(1);
+      transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    .footer-links {
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .popular-destinations {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .popular-destinations p {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .popular-destinations span {
+      color: #adb5bd;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .travel-agencies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .travel-agencies div {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .travel-agencies p {
+      color: #808080;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+      color: var(--accent-color);
+    }
+
+    .copyright-text {
+      color: #ffcccc;
+      font-size: 0.7rem;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.4;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 10px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    .hero {
+      padding: 56px 40px 48px;
+      background: linear-gradient(135deg, #0f1c2e, #0d1b1a, #0c1a0f);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(245, 158, 11, 0.07), transparent 70%), radial-gradient(ellipse 40% 60% at 20% 50%, rgba(16, 185, 129, 0.05), transparent 70%)
+    }
+
+    .hero::after {
+      content: '₹ $ € £ ¥ ฿';
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(18px, 4vw, 44px);
+      font-weight: 800;
+      color: rgba(245, 158, 11, 0.05);
+      letter-spacing: .3em;
+      pointer-events: none
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber-dim);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      color: var(--amber);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px
+    }
+
+    .hero-tag span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: pulse 2s infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.7)
+      }
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 14px
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--amber)
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 520px
+    }
+
+    .api-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .api-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex-shrink: 0;
+      transition: background .3s
+    }
+
+    .api-dot.live {
+      background: var(--emerald);
+      animation: pulse 2s infinite
+    }
+
+    .api-dot.error {
+      background: var(--rose)
+    }
+
+    .api-dot.loading {
+      background: var(--amber);
+      animation: pulse 1s infinite
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px 80px
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .card-accent::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--emerald))
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border)
+    }
+
+    .converter-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 24px
+    }
+
+    @media(max-width:600px) {
+      .converter-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px
+    }
+
+    .input-wrap {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      transition: border-color .2s
+    }
+
+    .input-wrap:focus-within {
+      border-color: var(--amber)
+    }
+
+    .flag-cell {
+      padding: 0 14px;
+      font-size: 20px;
+      border-right: 1px solid var(--border);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0
+    }
+
+    .input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 0 16px;
+      height: 52px;
+      min-width: 0
+    }
+
+    .input-wrap select {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0 12px;
+      height: 52px;
+      cursor: pointer;
+      min-width: 0
+    }
+
+    .input-wrap select option {
+      background: #1a2233
+    }
+
+    .swap-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--amber);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s
+    }
+
+    .swap-btn:hover {
+      background: var(--amber-dim);
+      border-color: var(--amber);
+      transform: rotate(180deg)
+    }
+
+    .convert-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--amber), #e67e22);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .convert-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245, 158, 11, .35)
+    }
+
+    .convert-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none
+    }
+
+    .result-box {
+      margin-top: 22px;
+      padding: 22px;
+      background: var(--emerald-dim);
+      border: 1px solid rgba(16, 185, 129, .25);
+      border-radius: 14px;
+      display: none;
+      animation: fadeUp .3s ease
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .result-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      color: var(--emerald);
+      margin-bottom: 6px
+    }
+
+    .result-meta {
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 8px
+    }
+
+    .result-meta strong {
+      color: var(--text)
+    }
+
+    .result-tip {
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, .04)
+    }
+
+    .cache-note {
+      font-size: 11px;
+      color: var(--muted);
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px
+    }
+
+    .cache-note button {
+      background: none;
+      border: none;
+      color: var(--sky);
+      font-size: 11px;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0
+    }
+
+    .error-msg {
+      display: none;
+      color: var(--rose);
+      font-size: 12px;
+      margin-top: 6px
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .chart-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700
+    }
+
+    .chart-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px
+    }
+
+    .chart-tabs {
+      display: flex;
+      gap: 4px
+    }
+
+    .chart-tab {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .05em
+    }
+
+    .chart-tab.active {
+      background: var(--amber-dim);
+      border-color: rgba(245, 158, 11, .3);
+      color: var(--amber)
+    }
+
+    .chart-wrap {
+      height: 210px;
+      position: relative
+    }
+
+    .chart-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(8, 12, 20, .7);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      z-index: 2;
+      text-align: center;
+      padding: 16px
+    }
+
+    .rate-table-wrap {
+      overflow-x: auto
+    }
+
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px
+    }
+
+    .rate-table th {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      white-space: nowrap
+    }
+
+    .rate-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(30, 45, 66, .5);
+      font-size: 14px
+    }
+
+    .rate-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .rate-table tr:hover td {
+      background: rgba(255, 255, 255, .02)
+    }
+
+    .cur-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .cur-code {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700
+    }
+
+    .cur-name {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .rate-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600
+    }
+
+    .badge-up {
+      background: rgba(16, 185, 129, .15);
+      color: var(--emerald)
+    }
+
+    .badge-down {
+      background: rgba(243, 156, 18, .15);
+      color: var(--rose)
+    }
+
+    .badge-best {
+      background: var(--amber-dim);
+      color: var(--amber)
+    }
+
+    .tip-cell {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+      max-width: 180px
+    }
+
+    .table-footer {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px;
+      text-align: right
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface2) 25%, rgba(255, 255, 255, .04) 50%, var(--surface2) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 6px;
+      height: 20px;
+      margin: 8px 0
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0
+      }
+
+      100% {
+        background-position: -200% 0
+      }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px
+    }
+
+    .form-field input,
+    .form-field select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--amber)
+    }
+
+    .form-field select option {
+      background: #1a2233
+    }
+
+    .sec-btn {
+      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid var(--amber);
+      color: var(--amber);
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .sec-btn:hover {
+      background: var(--amber-dim)
+    }
+
+    .quotes-area {
+      display: none;
+      margin-top: 18px;
+      animation: fadeUp .3s ease
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px
+    }
+
+    .quote-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      transition: border-color .2s
+    }
+
+    .quote-item.best {
+      border-color: var(--amber)
+    }
+
+    .quote-provider {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .quote-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      font-size: 13px
+    }
+
+    .quote-row:last-child {
+      border-bottom: none
+    }
+
+    .quote-row .lbl {
+      color: var(--muted)
+    }
+
+    .quote-book {
+      margin-top: 12px;
+      width: 100%;
+      padding: 9px;
+      background: var(--amber-dim);
+      border: 1px solid rgba(245, 158, 11, .3);
+      color: var(--amber);
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .quote-book:hover {
+      background: rgba(245, 158, 11, .2)
+    }
+
+    .alerts-card {
+      background: linear-gradient(135deg, #0f1e14, #0e1a26);
+      border: 1px solid rgba(16, 185, 129, .2);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 28px
+    }
+
+    .alert-form {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap
+    }
+
+    .alert-form input {
+      flex: 1;
+      min-width: 180px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      padding: 11px 16px;
+      outline: none
+    }
+
+    .alert-form input:focus {
+      border-color: var(--emerald)
+    }
+
+    .alert-btn {
+      padding: 11px 24px;
+      background: var(--emerald);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap
+    }
+
+    .alert-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, .35)
+    }
+
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px
+    }
+
+    .guide-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: all .2s;
+      cursor: pointer
+    }
+
+    .guide-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-3px)
+    }
+
+    .guide-icon {
+      font-size: 26px;
+      margin-bottom: 10px
+    }
+
+    .guide-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 6px
+    }
+
+    .guide-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5
+    }
+
+    .guide-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--amber-dim);
+      color: var(--amber);
+      font-size: 11px;
+      font-weight: 600
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 12px;
+      color: var(--emerald);
+      font-size: 13px;
+      animation: fadeUp .3s ease
+    }
+
+    .disclaimer {
+      margin-top: 40px;
+      padding: 18px;
+      background: rgba(243, 156, 18, .05);
+      border: 1px solid rgba(243, 156, 18, .15);
+      border-radius: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    .disclaimer strong {
+      color: #f87171
+    }
+
+    /* BRAND-THEME-OVERRIDE */
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface2: #fffaf3;
+      --border: #f2dfc1;
+      --amber: #f39c12;
+      --amber-dim: rgba(243, 156, 18, 0.12);
+      --emerald: #f39c12;
+      --emerald-dim: rgba(243, 156, 18, 0.12);
+      --sky: #f39c12;
+      --sky-dim: rgba(243, 156, 18, 0.12);
+      --violet: #f39c12;
+      --violet-dim: rgba(243, 156, 18, 0.12);
+      --rose: #d68910;
+      --text: #212529;
+      --muted: #6c757d;
+    }
+
+    body {
+      padding-top: 86px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif !important;
+      background: linear-gradient(180deg, rgba(243, 156, 18, 0.10) 0%, rgba(243, 156, 18, 0.06) 220px, #f8f9fa 520px);
+    }
+
+    @media (max-width:991.98px) {
+      body {
+        padding-top: 78px;
+      }
+    }
+
+    p,
+    span,
+    li,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    small,
+    td,
+    th {
+      font-family: 'Poppins', sans-serif !important;
+      color: var(--text);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .section-title,
+    .hero-title,
+    .trip-title,
+    .poll-q,
+    .chart-title,
+    .rec-title,
+    .col-name,
+    .result-amount {
+      font-family: 'Playfair Display', serif !important;
+      color: var(--text);
+      letter-spacing: normal;
+    }
+
+    .hero-title em,
+    .section-label,
+    .trip-tag,
+    .hero-tag,
+    .poll-type,
+    .type-tag,
+    .rec-label,
+    .stat-val,
+    .result-amount,
+    .badge-best,
+    .vote-count,
+    .progress-pct,
+    .next-label,
+    .weather-temp,
+    .chart-tab.active {
+      color: var(--amber) !important;
+    }
+
+    .text-muted,
+    .hero-sub,
+    .result-meta,
+    .act-meta,
+    .weather-desc,
+    .guide-desc,
+    .item-sb,
+    .stat-lbl,
+    .data-status,
+    .api-bar,
+    .data-bar,
+    .table-footer,
+    .tip-cell,
+    .result-tip {
+      color: var(--muted) !important;
+    }
+
+    .hero,
+    .dash-hero,
+    #lockScreen {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.10), rgba(243, 156, 18, 0.06), rgba(255, 255, 255, 0.92)) !important;
+    }
+
+    .page,
+    .api-bar,
+    .data-bar,
+    .data-status {
+      background: rgba(243, 156, 18, 0.10) !important;
+    }
+
+    .wizard-card,
+    .card,
+    .poll-card,
+    .suggest-card,
+    .lock-card,
+    .progress-band,
+    .next-stop-banner,
+    .tabs-bar,
+    .activity-card,
+    .weather-card,
+    .check-item,
+    .sos-card,
+    .quote-item,
+    .guide-card,
+    .archive-item,
+    .stat-b,
+    .result-box,
+    .cmp-header-cell,
+    .cmp-data-row .val-cell,
+    .cmp-data-row .attr-cell,
+    .action-cell,
+    .action-lbl {
+      background-color: rgba(243, 156, 18, 0.10) !important;
+      border-color: rgba(243, 156, 18, 0.24) !important;
+      box-shadow: 0 10px 24px rgba(243, 156, 18, 0.08);
+    }
+
+    .alerts-card,
+    .rec-card {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.12), rgba(243, 156, 18, 0.08)) !important;
+      border-color: rgba(243, 156, 18, 0.30) !important;
+    }
+
+    .chart-overlay {
+      background: rgba(248, 249, 250, 0.9)
+    }
+
+    .compare-btn,
+    .vote-btn,
+    .submit-btn,
+    .unlock-btn,
+    .convert-btn,
+    .alert-btn,
+    .book-btn,
+    .quote-book {
+      color: #fff !important;
+      background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+      border-color: #e67e22 !important;
+    }
+
+    .step-num,
+    .item-check.selected .chk-box,
+    .poll-opt.winner-opt .opt-radio,
+    .check-item.checked .check-box,
+    .activity-card.done .act-check {
+      color: #fff;
+      background: var(--amber);
+    }
+
+    .fgroup select option,
+    .input-wrap select option,
+    .form-field select option {
+      background: #fff;
+      color: #212529
+    }
+
+    .thrill-bar {
+      background: #e5e7eb
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f5efe5 25%, #fffaf3 50%, #f5efe5 75%)
+    }
+
+    .disclaimer strong {
+      color: #f39c12
+    }
+
+    /* MOBILE-FRIENDLY-PATCH */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    video,
+    canvas,
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 767.98px) {
+      body {
+        padding-top: 76px !important;
+      }
+
+      .container,
+      .container-lg,
+      .page {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .hero,
+      .dash-hero,
+      .page-header {
+        padding: 88px 0 28px !important;
+      }
+
+      .hero h1,
+      .hero-title,
+      .trip-title,
+      .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.1rem) !important;
+        line-height: 1.2 !important;
+      }
+
+      .hero p,
+      .hero-sub,
+      .lead {
+        font-size: 0.95rem !important;
+      }
+
+      .search-section,
+      .card,
+      .wizard-card,
+      .poll-card,
+      .suggest-card,
+      .lock-card,
+      .progress-band,
+      .next-stop-banner {
+        padding: 16px !important;
+        border-radius: 14px !important;
+      }
+
+      .search-row,
+      .search-row.oneway,
+      .search-row.roundtrip,
+      .converter-grid,
+      .filters-row,
+      .form-grid,
+      .quotes-grid,
+      .guides-grid,
+      .polls-grid,
+      .item-grid,
+      .weather-cards,
+      .checklist-items,
+      .emergency-cards {
+        grid-template-columns: 1fr !important;
+      }
+
+      .airports-wrap {
+        flex-direction: column !important;
+      }
+
+      .swap-btn {
+        right: 12px !important;
+        top: auto !important;
+        bottom: -14px !important;
+        transform: none !important;
+      }
+
+      .trip-tabs {
+        flex-wrap: wrap;
+      }
+
+      .tabs-bar {
+        padding: 4px !important;
+        gap: 4px !important;
+      }
+
+      .tab-btn {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+      }
+
+      .trip-meta {
+        gap: 10px !important;
+        font-size: 12px !important;
+      }
+
+      .stats-cluster {
+        align-items: flex-start !important;
+      }
+
+      .flight-card {
+        grid-template-columns: 1fr !important;
+      }
+
+      .flight-route,
+      .flight-price-col {
+        width: 100%;
+      }
+
+      .cmp-table-outer,
+      .rate-table-wrap {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .cmp-header-row,
+      .cmp-data-row,
+      .cmp-action-row {
+        width: max-content;
+        min-width: 640px;
+      }
+
+      .rate-table {
+        min-width: 620px !important;
+      }
+
+      .modal-dialog {
+        margin: 0.5rem !important;
+      }
+
+      .modal-body {
+        padding: 1rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SITE-HEADER-INJECT -->
+  <!-- Navbar copied from About snippet -->
+  <!-- Navbar from Contact page -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+        <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+          alt="Seven Destination">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel Booking</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket
+              Service</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag"><span></span> Live Forex Rates</div>
+      <h1 class="hero-title">Currency Exchange<br>for <em>Bold Travelers</em></h1>
+      <p class="hero-sub">Real-time rates via Frankfurter API (European Central Bank). Convert, compare &amp; get
+        partner quotes.</p>
+    </div>
+  </div>
+
+  <div class="api-bar">
+    <div class="api-dot loading" id="apiDot"></div>
+    <span id="apiStatusText">Connecting to Frankfurter API…</span>
+  </div>
+
+  <!-- AD SLOT 1: Universal Ad Container (Top Banner) -->
+  <div class="text-center" style="max-width:1100px;margin:16px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 1 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <div class="page">
+
+    <!-- CONVERTER -->
+    <div class="card card-accent">
+      <div class="section-label">Real-Time Converter</div>
+      <div class="converter-grid">
+        <div class="field-group">
+          <label>Amount &amp; From</label>
+          <div class="input-wrap">
+            <div class="flag-cell" id="fromFlag">🇮🇳</div>
+            <input type="number" id="fromAmount" value="10000" min="0" aria-label="Amount to convert">
+            <select id="fromCurrency" aria-label="From currency">
+              <option value="INR" data-flag="🇮🇳">INR ₹</option>
+              <option value="USD" data-flag="🇺🇸">USD $</option>
+              <option value="EUR" data-flag="🇪🇺">EUR €</option>
+              <option value="GBP" data-flag="🇬🇧">GBP £</option>
+              <option value="JPY" data-flag="🇯🇵">JPY ¥</option>
+              <option value="THB" data-flag="🇹🇭">THB ฿</option>
+              <option value="AED" data-flag="🇦🇪">AED</option>
+              <option value="SGD" data-flag="🇸🇬">SGD S$</option>
+              <option value="AUD" data-flag="🇦🇺">AUD A$</option>
+            </select>
+          </div>
+          <div class="error-msg" id="amountErr">Please enter a valid positive amount.</div>
+        </div>
+        <button class="swap-btn" id="swapBtn" aria-label="Swap currencies">⇄</button>
+        <div class="field-group">
+          <label>To Currency</label>
+          <div class="input-wrap">
+            <div class="flag-cell" id="toFlag">🇺🇸</div>
+            <select id="toCurrency" aria-label="To currency">
+              <option value="USD" data-flag="🇺🇸">USD $</option>
+              <option value="EUR" data-flag="🇪🇺">EUR €</option>
+              <option value="GBP" data-flag="🇬🇧">GBP £</option>
+              <option value="INR" data-flag="🇮🇳">INR ₹</option>
+              <option value="JPY" data-flag="🇯🇵">JPY ¥</option>
+              <option value="THB" data-flag="🇹🇭">THB ฿</option>
+              <option value="AED" data-flag="🇦🇪">AED</option>
+              <option value="SGD" data-flag="🇸🇬">SGD S$</option>
+              <option value="AUD" data-flag="🇦🇺">AUD A$</option>
+              <option value="CAD" data-flag="🇨🇦">CAD C$</option>
+              <option value="CHF" data-flag="🇨🇭">CHF ₣</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="convert-btn" id="convertBtn" disabled>Loading rates…</button>
+      <div class="result-box" id="resultBox">
+        <div class="result-amount" id="resultAmount">—</div>
+        <div class="result-meta">
+          <span>Rate: <strong id="rateDisplay">—</strong></span>
+          <span>Date: <strong id="rateDate">—</strong></span>
+        </div>
+        <div class="result-tip">💡 Pre-booking a forex card online saves 2–3% vs airport counters.</div>
+      </div>
+      <div class="cache-note" id="cacheNote">
+        ⚡ Showing cached rates from <span id="cacheTime">—</span> ago.
+        <button id="refreshBtn">Refresh now</button>
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <!-- AD SLOT 2: Universal Ad Container (Mid-Content) -->
+    <div
+      style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;margin:0 0 20px;text-align:center">
+      <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+      <!-- OPTION A: Google AdSense -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- OPTION B: Monetag -->
+      <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+      <!-- OPTION C: Adstera (Adsterra) -->
+      <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+      <!-- OPTION D: AdMob (Web) -->
+      <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- Placeholder (remove when activating an ad network above) -->
+      <div style="color:var(--muted);font-size:13px">📢 Ad Slot 2 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+    </div>
+
+    <div class="card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Historical Rate Trend</div>
+          <div class="chart-subtitle" id="chartSubtitle">Convert a pair to load live chart data</div>
+        </div>
+        <div class="chart-tabs">
+          <button class="chart-tab active" data-days="7">7D</button>
+          <button class="chart-tab" data-days="14">14D</button>
+          <button class="chart-tab" data-days="30">30D</button>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-overlay" id="chartOverlay">Convert a currency pair above to load real ECB chart data</div>
+        <canvas id="rateChart"></canvas>
+      </div>
+    </div>
+
+    <!-- RATE TABLE -->
+    <div class="card">
+      <div class="section-label">Live Rate Comparison — Top Currencies vs INR</div>
+      <div class="rate-table-wrap">
+        <table class="rate-table" aria-label="Live currency rates">
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Live Rate (1 unit = ₹)</th>
+              <th>Bank Est. (↑0.7%)</th>
+              <th>Airport Est. (↑3.5%)</th>
+              <th>Shift (simulated)</th>
+              <th>Tip</th>
+            </tr>
+          </thead>
+          <tbody id="rateTableBody">
+            <tr>
+              <td colspan="6">
+                <div class="skeleton"></div>
+                <div class="skeleton" style="width:70%"></div>
+                <div class="skeleton" style="width:85%"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-footer" id="tableFooter"></div>
+      </div>
+    </div>
+
+    <!-- QUOTE FORM -->
+    <div class="card">
+      <div class="section-label">Get a Buy/Sell Quote</div>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:18px">Compare RBI-approved partner rates for your exact
+        trip needs.</p>
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Destination</label>
+          <select id="qDest">
+            <option value="">Select destination</option>
+            <option>Thailand (THB)</option>
+            <option>USA (USD)</option>
+            <option>Europe (EUR)</option>
+            <option>UK (GBP)</option>
+            <option>Japan (JPY)</option>
+            <option>Dubai (AED)</option>
+            <option>Singapore (SGD)</option>
+            <option>Australia (AUD)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Amount (₹)</label>
+          <input type="number" id="qAmount" placeholder="e.g. 50000">
+        </div>
+        <div class="form-field">
+          <label>Type</label>
+          <select id="qType">
+            <option>Cash</option>
+            <option>Forex Card</option>
+            <option>Wire Transfer</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" id="qEmail" placeholder="your@email.com">
+        </div>
+      </div>
+      <button class="sec-btn" id="getQuoteBtn">Get Partner Quotes →</button>
+      <div class="quotes-area" id="quotesArea">
+        <p class="text-muted" style="font-size:13px;margin-bottom:14px">Live rates from RBI-approved partners:</p>
+        <div class="quotes-grid" id="quotesGrid"></div>
+        <div class="text-success" style="font-size:13px;margin-top:14px">✓ Quotes also sent to your email.</div>
+      </div>
+    </div>
+
+    <!-- ALERTS -->
+    <div class="alerts-card">
+      <div class="section-label" style="color:var(--emerald);margin-bottom:14px">
+        Rate Alerts</div>
+      <h3 class="poll-q" style="font-size:20px;margin-bottom:6px">Never Miss the Right
+        Rate</h3>
+      <p class="text-muted" style="font-size:14px">Set a target — get email when it's hit. e.g. "1 USD &lt; ₹83"</p>
+      <div class="alert-form">
+        <input type="email" id="alertEmail" placeholder="your@email.com" aria-label="Email for alert">
+        <input type="text" id="alertCond" placeholder='e.g. "USD < ₹83"' aria-label="Alert condition">
+        <button class="alert-btn" id="alertBtn">Set Alert</button>
+      </div>
+      <div class="success-msg" id="alertSuccess">✓ Alert saved! We'll notify you when that rate is reached.</div>
+    </div>
+
+    <!-- GUIDES -->
+    <div class="section-label">Traveler Guides</div>
+    <div class="guides-grid">
+      <div class="guide-card">
+        <div class="guide-icon">🏝️</div>
+        <div class="guide-title">10-Day Bali Trek Budget</div>
+        <div class="guide-desc">₹50,000 breakdown — stay, food, activities &amp; emergency fund.</div><span
+          class="guide-tag">SE Asia</span>
+      </div>
+      <div class="guide-card">
+        <div class="guide-icon">🗺️</div>
+        <div class="guide-title">Europe Backpack: EUR Tips</div>
+        <div class="guide-desc">Forex card vs cash vs multi-currency wallet — which wins for EU?</div><span
+          class="guide-tag">Europe</span>
+      </div>
+      <div class="guide-card">
+        <div class="guide-icon">🗼</div>
+        <div class="guide-title">Japan Still Needs Cash</div>
+        <div class="guide-desc">Rural Japan, temples &amp; local eateries still prefer JPY cash.</div><span
+          class="guide-tag">Japan</span>
+      </div>
+      <div class="guide-card">
+        <div class="guide-icon">⚠️</div>
+        <div class="guide-title">5 Airport Forex Traps</div>
+        <div class="guide-desc">Insider tips to save 3–5% — hidden fees &amp; bad rate avoidance.</div><span
+          class="guide-tag">Essential</span>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> Live rates sourced from <strong>Frankfurter API</strong> (European Central Bank
+      data). Bank/airport rates are estimated markups for illustration. ThrillTrails is not an RBI-authorized forex
+      dealer. Transact only with licensed dealers. Affiliate commissions may apply.
+    </div>
+  </div>
+
+  <script>
+    const API = 'https://api.frankfurter.app';
+    const CACHE_KEY = 'tt_forex_rates_v2';
+    const CACHE_MINS = 30;
+    const FLAGS = { INR: '🇮🇳', USD: '🇺🇸', EUR: '🇪🇺', GBP: '🇬🇧', JPY: '🇯🇵', THB: '🇹🇭', AED: '🇦🇪', SGD: '🇸🇬', AUD: '🇦🇺', CAD: '🇨🇦', CHF: '🇨🇭' };
+    const NAMES = { USD: 'US Dollar', EUR: 'Euro', GBP: 'British Pound', JPY: 'Japanese Yen', THB: 'Thai Baht', AED: 'UAE Dirham', SGD: 'Singapore $', AUD: 'Australian $', CAD: 'Canadian $', CHF: 'Swiss Franc' };
+    const TIPS = { USD: 'Best for SE Asia emergencies', EUR: 'Pre-book Forex card for Europe', GBP: 'Higher markup at Heathrow', JPY: 'Carry cash — Japan prefers it', THB: 'Best rates via BookMyForex', AED: 'Pre-book for Dubai trips', SGD: 'Multi-currency card ideal', AUD: 'Cards accepted widely', CAD: 'Cash + card mix advised', CHF: 'Premium — book early' };
+    const TABLE_CURS = ['USD', 'EUR', 'GBP', 'JPY', 'THB', 'AED', 'SGD', 'AUD', 'CAD', 'CHF'];
+
+    let liveRates = null;
+    let chartInst = null;
+    let chartBase = 'INR', chartTarget = 'USD', currentDays = 7;
+
+    // ── CACHE ──
+    function saveCache(data) { try { localStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() })); } catch (e) { } }
+    function loadCache() {
+      try {
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (!raw) return null;
+        const { data, ts } = JSON.parse(raw);
+        const age = (Date.now() - ts) / 60000;
+        if (age > CACHE_MINS) return null;
+        return { data, ageMins: Math.round(age) };
+      } catch (e) { return null; }
+    }
+
+    // ── STATUS ──
+    function setStatus(state, msg) { document.getElementById('apiDot').className = 'api-dot ' + state; document.getElementById('apiStatusText').textContent = msg; }
+
+    // ── FETCH RATES ──
+    async function fetchRates(force = false) {
+      if (!force) {
+        const c = loadCache();
+        if (c) { liveRates = c.data; onRatesLoaded(`Cached · ${c.ageMins}m ago`, c.ageMins); return; }
+      }
+      setStatus('loading', 'Fetching live rates from Frankfurter API…');
+      try {
+        const r = await fetch(`${API}/latest?from=INR`);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const j = await r.json();
+        liveRates = j;
+        saveCache(liveRates);
+        onRatesLoaded(`Live · ${j.date}`, 0);
+      } catch (err) {
+        setStatus('error', 'Frankfurter API unavailable — using fallback rates');
+        liveRates = { base: 'INR', date: 'estimated', rates: { USD: 0.01195, EUR: 0.01098, GBP: 0.00938, JPY: 1.825, THB: 0.4285, AED: 0.04386, SGD: 0.01613, CAD: 0.01630, AUD: 0.01862, CHF: 0.01071 } };
+        onRatesLoaded('Estimated (offline)', null);
+      }
+    }
+
+    function onRatesLoaded(msg, ageMin) {
+      setStatus(ageMin === 0 ? 'live' : 'live', '✓ ' + msg);
+      const btn = document.getElementById('convertBtn');
+      btn.disabled = false; btn.textContent = 'Convert Now';
+      if (ageMin && ageMin > 0) {
+        const cn = document.getElementById('cacheNote');
+        cn.style.display = 'flex';
+        document.getElementById('cacheTime').textContent = ageMin + 'm';
+      }
+      document.getElementById('tableFooter').textContent = `Rates as of: ${liveRates.date} · Source: Frankfurter API / ECB`;
+      renderTable();
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      localStorage.removeItem(CACHE_KEY);
+      document.getElementById('cacheNote').style.display = 'none';
+      fetchRates(true);
+    });
+
+    // ── CONVERT ──
+    function getRate(from, to) {
+      if (from === to) return 1;
+      const inINR = from === 'INR' ? 1 : (1 / liveRates.rates[from]);
+      const toRate = to === 'INR' ? 1 : liveRates.rates[to];
+      return inINR * toRate;
+    }
+    function fmt(n, cur) { if (cur === 'JPY') return n.toFixed(0); if (n < 0.01) return n.toFixed(6); if (n < 1) return n.toFixed(4); return n.toFixed(2); }
+
+    function updateFlags() {
+      document.getElementById('fromFlag').textContent = FLAGS[document.getElementById('fromCurrency').value] || '💱';
+      document.getElementById('toFlag').textContent = FLAGS[document.getElementById('toCurrency').value] || '💱';
+    }
+    document.getElementById('fromCurrency').addEventListener('change', updateFlags);
+    document.getElementById('toCurrency').addEventListener('change', updateFlags);
+
+    document.getElementById('convertBtn').addEventListener('click', () => {
+      if (!liveRates) return;
+      const amount = parseFloat(document.getElementById('fromAmount').value);
+      const from = document.getElementById('fromCurrency').value;
+      const to = document.getElementById('toCurrency').value;
+      if (!amount || amount <= 0) { document.getElementById('amountErr').style.display = 'block'; return; }
+      document.getElementById('amountErr').style.display = 'none';
+      const rate = getRate(from, to);
+      document.getElementById('resultAmount').textContent = `${FLAGS[to] || ''} ${fmt(amount * rate, to)} ${to}`;
+      document.getElementById('rateDisplay').textContent = `1 ${from} = ${rate.toFixed(5)} ${to}`;
+      document.getElementById('rateDate').textContent = liveRates.date;
+      document.getElementById('resultBox').style.display = 'block';
+      chartBase = from; chartTarget = to;
+      loadChart(from, to, currentDays);
+    });
+
+    document.getElementById('swapBtn').addEventListener('click', () => {
+      const f = document.getElementById('fromCurrency'), t = document.getElementById('toCurrency');
+      const fOpts = Array.from(f.options).map(o => o.value), tOpts = Array.from(t.options).map(o => o.value);
+      if (fOpts.includes(t.value) && tOpts.includes(f.value)) { const tmp = f.value; f.value = t.value; t.value = tmp; updateFlags(); }
+    });
+
+    // ── RATE TABLE ──
+    function renderTable() {
+      const tbody = document.getElementById('rateTableBody');
+      tbody.innerHTML = '';
+      TABLE_CURS.forEach((code, i) => {
+        if (!liveRates.rates[code]) return;
+        const perUnit = 1 / liveRates.rates[code];
+        const bank = perUnit * 1.007, airport = perUnit * 1.035;
+        const delta = ((Math.random() - 0.48) * 0.008 * perUnit);
+        const up = delta >= 0;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td><div class="cur-cell"><span style="font-size:20px">${FLAGS[code] || '💱'}</span>
+        <div><div class="cur-code">${code}</div><div class="cur-name">${NAMES[code] || code}</div></div>
+      </div></td>
+      <td class="rate-val">₹${perUnit.toFixed(4)} ${i === 0 ? '<span class="badge badge-best">Best</span>' : ''}</td>
+      <td>₹${bank.toFixed(3)}</td>
+      <td>₹${airport.toFixed(2)}</td>
+      <td><span class="badge ${up ? 'badge-up' : 'badge-down'}">${up ? '▲' : '▼'} ₹${Math.abs(delta).toFixed(3)}</span></td>
+      <td><span class="tip-cell">${TIPS[code] || '—'}</span></td>
+    `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ── HISTORICAL CHART (real API) ──
+    function getDateRange(days) {
+      const dates = [];
+      for (let i = days + 6; i >= 0; i--) {
+        const d = new Date(); d.setDate(d.getDate() - i);
+        if (d.getDay() === 0 || d.getDay() === 6) continue;
+        dates.push(d.toISOString().split('T')[0]);
+      }
+      return dates;
+    }
+
+    async function loadChart(from, to, days) {
+      const overlay = document.getElementById('chartOverlay');
+      overlay.textContent = 'Loading historical data from ECB…';
+      overlay.style.display = 'flex';
+      const dates = getDateRange(days);
+      const start = dates[0], end = dates[dates.length - 1];
+      try {
+        const res = await fetch(`${API}/${start}..${end}?from=${from}&to=${to}`);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        const sorted = Object.keys(json.rates).sort();
+        const slice = sorted.slice(-days);
+        const labels = slice.map(d => { const [, m, day] = d.split('-'); return `${day}/${m}`; });
+        const vals = slice.map(d => json.rates[d][to]);
+        overlay.style.display = 'none';
+        drawChart(labels, vals, from, to);
+        document.getElementById('chartSubtitle').textContent = `${from} → ${to} · ${slice[0]} to ${slice[slice.length - 1]} · ECB data`;
+      } catch (err) {
+        overlay.textContent = 'Historical data unavailable (API offline)';
+      }
+    }
+
+    function drawChart(labels, data, from, to) {
+      const ctx = document.getElementById('rateChart').getContext('2d');
+      if (chartInst) chartInst.destroy();
+      const mn = Math.min(...data) * 0.998, mx = Math.max(...data) * 1.002;
+      chartInst = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels, datasets: [{
+            label: `${from}→${to}`, data,
+            borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)',
+            tension: 0.4, fill: true, pointBackgroundColor: '#f59e0b',
+            pointRadius: 3, pointHoverRadius: 6, borderWidth: 2,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a2233', titleColor: '#f0f4ff', bodyColor: '#6b7f99', borderColor: '#1e2d42', borderWidth: 1, callbacks: { label: c => `Rate: ${c.parsed.y.toFixed(5)}` } } },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7f99', font: { family: 'Plus Jakarta Sans', size: 11 } } },
+            y: { min: mn, max: mx, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7f99', font: { family: 'Plus Jakarta Sans', size: 11 }, callback: v => v.toFixed(4) } }
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll('.chart-tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.chart-tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      currentDays = parseInt(t.dataset.days);
+      if (liveRates && document.getElementById('resultBox').style.display !== 'none') {
+        loadChart(chartBase, chartTarget, currentDays);
+      }
+    }));
+
+    // ── QUOTES ──
+    document.getElementById('getQuoteBtn').addEventListener('click', () => {
+      const dest = document.getElementById('qDest').value;
+      const amount = document.getElementById('qAmount').value;
+      const type = document.getElementById('qType').value;
+      const email = document.getElementById('qEmail').value;
+      if (!dest || !amount || !email) { alert('Please fill in all fields.'); return; }
+      if (!liveRates) { alert('Rates not loaded yet.'); return; }
+      const match = dest.match(/\(([A-Z]{3})\)/);
+      const cur = match ? match[1] : 'USD';
+      const baseRate = 1 / (liveRates.rates[cur] || liveRates.rates['USD']);
+      const partners = [
+        { name: 'BookMyForex', markup: 0.001, fee: 0, delivery: '2–4 hrs · Kolkata', best: true },
+        { name: 'Thomas Cook', markup: 0.008, fee: 150, delivery: 'Same day · Office', best: false },
+        { name: 'EbixCash', markup: 0.012, fee: 200, delivery: '24 hrs · Courier', best: false },
+      ];
+      const grid = document.getElementById('quotesGrid');
+      grid.innerHTML = '';
+      partners.forEach(p => {
+        const r = (baseRate * (1 + p.markup)).toFixed(4);
+        const div = document.createElement('div');
+        div.className = 'quote-item' + (p.best ? ' best' : '');
+        div.innerHTML = `
+      <div class="quote-provider">${p.name}${p.best ? '<span class="badge badge-best">Best Rate</span>' : ''}</div>
+      <div class="quote-row"><span class="lbl">Rate</span><span>₹${r}</span></div>
+      <div class="quote-row"><span class="lbl">Fee</span><span>${p.fee ? '₹' + p.fee : 'Free'}</span></div>
+      <div class="quote-row"><span class="lbl">Type</span><span>${type}</span></div>
+      <div class="quote-row"><span class="lbl">Delivery</span><span>${p.delivery}</span></div>
+      <button class="quote-book">Book with ${p.name} →</button>
+    `;
+        grid.appendChild(div);
+      });
+      document.getElementById('quotesArea').style.display = 'block';
+    });
+
+    // ── ALERTS (cached in localStorage) ──
+    document.getElementById('alertBtn').addEventListener('click', () => {
+      const email = document.getElementById('alertEmail').value;
+      const cond = document.getElementById('alertCond').value;
+      if (!email || !cond) { alert('Please fill both fields.'); return; }
+      try {
+        const saved = JSON.parse(localStorage.getItem('tt_forex_alerts') || '[]');
+        saved.push({ email, condition: cond, created: new Date().toISOString() });
+        localStorage.setItem('tt_forex_alerts', JSON.stringify(saved));
+      } catch (e) { }
+      document.getElementById('alertSuccess').style.display = 'block';
+      document.getElementById('alertEmail').value = '';
+      document.getElementById('alertCond').value = '';
+    });
+
+    // ── INIT ──
+    fetchRates();
+    updateFlags();
+  </script>
+
+
+
+
+  <!-- AD SLOT 3: Universal Ad Container (Pre-Footer) -->
+  <div class="text-center" style="max-width:1100px;margin:20px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 3 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <!-- Footer from Contact page -->
+  <footer id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="footer-heading d-inline-block position-relative">
+            Seven Destination: Premier Tour & Travel in Kolkata, West Bengal
+          </h2>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Get In Touch -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="footer-section">
+            <h5>Get In Touch</h5>
+            <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                  class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                  </svg></span></a></p>
+            <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                email@sevendestination.com</a></p>
+            <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                  class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala Road, Bally,
+                Howrah 711201</a></p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-section">
+            <h5>Quick Links</h5>
+            <div class="row">
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li><a href="https://www.sevendestination.com/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Home</a></li>
+                  <li><a href="https://www.sevendestination.com/package/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Packages</a></li>
+                  <li><a href="https://www.sevendestination.com/car-rental/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Car Rental</a></li>
+                  <li><a href="https://www.sevendestination.com/hotels/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Hotel Booking</a></li>
+                  <li><a href="https://www.sevendestination.com/ticket-service/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Ticket Service</a></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li><a href="https://www.sevendestination.com/about-us/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>About Us</a></li>
+                  <li><a href="https://www.sevendestination.com/query/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Contact</a></li>
+                  <li><a href="https://www.sevendestination.com/terms-and-conditions/"><i
+                        class="fas fa-chevron-right me-2" style="font-size: 0.8rem;"></i>Terms & Conditions</a></li>
+                  <li><a href="https://www.sevendestination.com/privacy-policy/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Privacy Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Follow Us -->
+        <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+          <div class="footer-section">
+            <h5>Follow Us</h5>
+            <p class="mb-3 text-muted">Stay connected with us on social media for latest updates and travel tips.</p>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook"
+                aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube"
+                aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram"
+                aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn"
+                aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest"
+                aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="row mt-5">
+        <div class="col-12" data-aos="fade-up">
+          <div class="trust-badges text-center">
+            <span class="me-3 mb-2 d-inline-block text-muted">Trusted By:</span>
+            <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+              class="text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Reviews"
+                title="Google Reviews" loading="lazy">
+            </a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+              target="_blank" rel="noopener" class="text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor"
+                title="TripAdvisor Reviews" loading="lazy" style="background: white; border-radius: 4px; padding: 2px;">
+            </a>
+            <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+              target="_blank" rel="noopener" class="text-decoration-none">
+              <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial"
+                title="JustDial Verified" loading="lazy" style="background: white; border-radius: 4px; padding: 2px;">
+            </a>
+            <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+              class="text-decoration-none">
+              <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart"
+                title="IndiaMart Trusted" loading="lazy" style="background: white; border-radius: 4px; padding: 2px;">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://www.sevendestination.com/">Home</a> |
+            <a href="https://www.sevendestination.com/about-us/">Our Profile</a> |
+            <a href="https://www.sevendestination.com/package/">Tour Package</a> |
+            <a href="https://www.sevendestination.com/car-rental/">Car Rental</a> |
+            <a href="https://www.sevendestination.com/hotels/">Hotel Booking</a> |
+            <a href="https://www.sevendestination.com/ticket-service/">Ticketing</a> |
+            <a href="#">News & Events</a> |
+            <a href="#">Photo Gallery</a> |
+            <a href="#">Videos</a> |
+            <a href="#">Testimonials</a> |
+            <a href="#">Destinations</a> |
+            <a href="#">Site Map</a> |
+            <a href="https://www.sevendestination.com/query/">Contact us</a> |
+            <a href="#">Career</a>
+          </div>
+
+          <div class="popular-destinations" data-aos="fade-up" data-aos-delay="200">
+            <p>Popular Destinations</p>
+            <div class="dest-list">
+              <span>Jaipur</span><span>Agra</span><span>Goa</span><span>Kerala</span><span>Varanasi</span><span>Mumbai</span><span>Delhi</span><span>Udaipur</span><span>Shimla</span><span>Rishikesh
+                &
+                Haridwar</span><span>Amritsar</span><span>Kolkata</span><span>Jodhpur</span><span>Ooty</span><span>Leh-Ladakh</span><span>Mysore</span><span>Darjeeling</span><span>Rann
+                of Kutch</span><span>Khajuraho</span><span>Puducherry</span>
+            </div>
+          </div>
+
+          <div class="divider" data-aos="fade-up" data-aos-delay="300"></div>
+
+          <div class="travel-agencies" data-aos="fade-up" data-aos-delay="400">
+            <div>
+              <p>Travel Agency in Kolkata</p>
+              <p>Travel Agency in Howrah</p>
+              <p>Travel Agency in Liluah</p>
+              <p>Travel Agency in Balur</p>
+              <p>Travel Agency in Bally</p>
+              <p>Travel Agency in Barabazaar</p>
+              <p>Travel Agency in Tollygunge</p>
+            </div>
+            <div>
+              <p>Travel Agency in Sealdah</p>
+              <p>Travel Agency in New Alipore</p>
+              <p>Travel Agency in Dum Dum</p>
+              <p>Travel Agency in Shyam bazar</p>
+              <p>Travel Agency in Dunlop</p>
+              <p>Travel Agency in 24 South Pargana</p>
+              <p>Travel Agency in Khadagpur</p>
+            </div>
+            <div>
+              <p>Travel Agency in Shibpur</p>
+              <p>Travel Agency in Hooghly</p>
+              <p>Travel Agency in Salt lake</p>
+              <p>Travel Agency in New Town</p>
+              <p>Travel Agency in Naihati</p>
+              <p>Travel Agency in Kalyani</p>
+            </div>
+            <div>
+              <p>Travel Agency in Konnagar</p>
+              <p>Travel Agency in Rishra</p>
+              <p>Travel Agency in Uttarpara</p>
+              <p>Travel Agency in Hindmotor</p>
+              <p>Travel Agency in Uluberia</p>
+            </div>
+          </div>
+
+          <div class="copyright-text" data-aos="fade-up" data-aos-delay="500">
+            All content and images on this website are copyrighted by their respective owners. This website is intended
+            to promote these works, and no endorsement of the artist is implied. Unauthorized use is prohibited by law.
+          </div>
+
+          <div class="divider" data-aos="fade-up" data-aos-delay="600"></div>
+
+          <div class="copyright" data-aos="fade-up" data-aos-delay="700">
+            <p>&copy;
+              <script>document.write(new Date().getFullYear())</script> Seven Destination Tour & Travel. All rights
+              reserved. | Designed with <i class="fas fa-heart text-danger" aria-hidden="true"></i> in India
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background: transparent; border: none;">
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/OR0TQxVKRzc" title="Seven Destination Video" allowfullscreen
+              style="border-radius: 15px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    });
+
+    document.querySelectorAll('.timeline-item, .value-card, .founder-card').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "all 0.6s ease";
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>

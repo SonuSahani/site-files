@@ -1,0 +1,2463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE-HEAD-INJECTED -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="elementor_styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+
+  <title>Poll Hub — ThrillTrails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg: #050911;
+      --surface: #0a1020;
+      --surface2: #0f162a;
+      --border: #182038;
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.1);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.1);
+      --rose: #f39c12;
+      --sky: #38bdf8;
+      --violet: #a78bfa;
+      --violet-dim: rgba(167, 139, 250, 0.1);
+      --text: #edf2ff;
+      --muted: #5c6e8a;
+    }
+
+    /* Footer & Header Styles from Contact page */
+    .hand-drawn-highlight {
+      position: relative;
+      display: inline-block;
+      padding: 6px 16px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 24px);
+      height: calc(100% + 20px);
+      transform: translate(-50%, -50%) rotate(-5deg);
+      pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+      fill: none;
+      stroke: #e74c3c;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+      stroke: rgba(231, 76, 60, 0.4);
+      stroke-width: 2;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+      0% {
+        stroke-dashoffset: 300;
+      }
+
+      40% {
+        stroke-dashoffset: 0;
+      }
+
+      60% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+      align-items: center;
+    }
+
+    .trust-badges img {
+      height: auto;
+      max-width: 120px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: grayscale(1);
+      transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    .footer-links {
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .popular-destinations {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .popular-destinations p {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .popular-destinations span {
+      color: #adb5bd;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .travel-agencies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .travel-agencies div {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .travel-agencies p {
+      color: #808080;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+      color: var(--accent-color);
+    }
+
+    .copyright-text {
+      color: #ffcccc;
+      font-size: 0.7rem;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.4;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 10px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    .hero {
+      padding: 56px 40px 48px;
+      background: linear-gradient(135deg, #060d1e, #050b18, #07040d);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 70% 50%, rgba(167, 139, 250, 0.08), transparent 60%), radial-gradient(ellipse 30% 60% at 20% 50%, rgba(245, 158, 11, 0.05), transparent 60%)
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center
+    }
+
+    @media(max-width:600px) {
+      .hero-inner {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--violet-dim);
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      color: var(--violet);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose);
+      animation: blink 1s infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .2
+      }
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 5vw, 50px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 12px
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--violet)
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 480px
+    }
+
+    .stats-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end
+    }
+
+    @media(max-width:600px) {
+      .stats-cluster {
+        flex-direction: row
+      }
+    }
+
+    .stat-b {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      text-align: center
+    }
+
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--violet)
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .data-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .data-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted)
+    }
+
+    .data-dot.ok {
+      background: var(--emerald)
+    }
+
+    .data-dot.err {
+      background: var(--rose)
+    }
+
+    .data-dot.loading {
+      background: var(--amber);
+      animation: blink 1s infinite
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border)
+    }
+
+    /* ── POLLS GRID ── */
+    .polls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px
+    }
+
+    .poll-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s
+    }
+
+    .poll-card:hover {
+      border-color: rgba(167, 139, 250, 0.3)
+    }
+
+    .poll-card.voted {
+      border-color: var(--emerald)
+    }
+
+    .poll-card.featured {
+      border-color: rgba(245, 158, 11, 0.25)
+    }
+
+    .poll-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px
+    }
+
+    .poll-q {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.3;
+      flex: 1
+    }
+
+    .poll-type {
+      flex-shrink: 0;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--violet-dim);
+      color: var(--violet);
+    }
+
+    .poll-type.destination {
+      background: var(--amber-dim);
+      color: var(--amber);
+    }
+
+    .poll-type.package {
+      background: var(--emerald-dim);
+      color: var(--emerald);
+    }
+
+    .poll-meta {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap
+    }
+
+    .poll-meta span {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .vote-count {
+      color: var(--amber) !important;
+      font-weight: 600 !important
+    }
+
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+      margin-bottom: 16px
+    }
+
+    .poll-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 13px;
+      cursor: pointer;
+      transition: all .2s;
+      -webkit-user-select: none;
+      user-select: none;
+      position: relative;
+      overflow: hidden
+    }
+
+    .poll-opt:hover:not(.voted-state) {
+      border-color: var(--violet);
+      background: var(--violet-dim)
+    }
+
+    .poll-opt.voted-state {
+      cursor: default
+    }
+
+    .poll-opt.winner-opt {
+      border-color: var(--amber) !important
+    }
+
+    .opt-radio {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      transition: all .15s
+    }
+
+    .poll-opt.selected .opt-radio {
+      border-color: var(--violet);
+      background: var(--violet);
+      color: #fff
+    }
+
+    .poll-opt.winner-opt .opt-radio {
+      border-color: var(--amber);
+      background: var(--amber);
+      color: #000
+    }
+
+    .opt-icon {
+      font-size: 18px;
+      flex-shrink: 0
+    }
+
+    .opt-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      flex: 1
+    }
+
+    .opt-pct {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--violet);
+      display: none;
+      flex-shrink: 0
+    }
+
+    .poll-opt.voted-state .opt-pct {
+      display: block
+    }
+
+    .opt-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--violet), var(--amber));
+      transition: width .8s cubic-bezier(.34, 1.56, .64, 1);
+      width: 0
+    }
+
+    .voted-notice {
+      display: none;
+      padding: 9px 12px;
+      background: var(--emerald-dim);
+      border: 1px solid rgba(16, 185, 129, .25);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--emerald);
+      font-weight: 600;
+      margin-bottom: 12px
+    }
+
+    .already-notice {
+      display: none;
+      padding: 9px 12px;
+      background: rgba(245, 158, 11, .08);
+      border: 1px solid rgba(245, 158, 11, .2);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--amber);
+      font-weight: 600;
+      margin-bottom: 12px
+    }
+
+    .vote-btn {
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, var(--violet), #7c3aed);
+      color: #fff;
+      border: none;
+      border-radius: 11px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .04em;
+      margin-bottom: 10px
+    }
+
+    .vote-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(167, 139, 250, .4)
+    }
+
+    .vote-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none
+    }
+
+    .comment-toggle {
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      margin-bottom: 8px
+    }
+
+    .comment-toggle:hover {
+      color: var(--violet)
+    }
+
+    .comments-wrap {
+      display: none
+    }
+
+    .comments-wrap.open {
+      display: block;
+      animation: fadeUp .25s ease
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .comment-list {
+      margin-bottom: 8px
+    }
+
+    .comment-item {
+      padding: 9px 11px;
+      background: var(--surface2);
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 5px;
+      border-left: 2px solid var(--border)
+    }
+
+    .comment-item.user-comment {
+      border-left-color: var(--violet)
+    }
+
+    .c-author {
+      font-weight: 600;
+      color: var(--violet);
+      margin-right: 6px
+    }
+
+    .c-time {
+      color: var(--muted);
+      font-size: 11px;
+      margin-left: 6px
+    }
+
+    .comment-row {
+      display: flex;
+      gap: 8px
+    }
+
+    .comment-input {
+      flex: 1;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      padding: 8px 11px;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .comment-input:focus {
+      border-color: var(--violet)
+    }
+
+    .comment-post {
+      padding: 8px 12px;
+      background: var(--violet-dim);
+      border: 1px solid rgba(167, 139, 250, .3);
+      color: var(--violet);
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap
+    }
+
+    .comment-post:hover {
+      background: rgba(167, 139, 250, .2)
+    }
+
+    /* ── ARCHIVE ── */
+    .archive-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    .search-bar {
+      flex: 1;
+      min-width: 200px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      padding: 10px 16px;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .search-bar:focus {
+      border-color: var(--violet)
+    }
+
+    .filter-chip {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .filter-chip:hover,
+    .filter-chip.active {
+      background: var(--violet-dim);
+      border-color: rgba(167, 139, 250, .3);
+      color: var(--violet)
+    }
+
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .archive-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: border-color .2s;
+      flex-wrap: wrap
+    }
+
+    .archive-item:hover {
+      border-color: rgba(167, 139, 250, .3)
+    }
+
+    .arch-icon {
+      font-size: 22px;
+      flex-shrink: 0
+    }
+
+    .arch-q {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      flex: 1;
+      min-width: 180px
+    }
+
+    .arch-meta {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .arch-winner {
+      font-size: 11px;
+      background: var(--amber-dim);
+      color: var(--amber);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-weight: 600;
+      flex-shrink: 0
+    }
+
+    .archive-expanded {
+      display: none;
+      padding: 14px 18px;
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-radius: 0 0 12px 12px;
+      margin-top: -8px;
+      padding-top: 12px;
+      border: 1px solid var(--border);
+      border-top: none
+    }
+
+    .archive-expanded.open {
+      display: block
+    }
+
+    .arch-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 13px
+    }
+
+    .arch-bar-track {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .arch-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--violet), var(--amber))
+    }
+
+    .arch-pct {
+      width: 32px;
+      text-align: right;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted)
+    }
+
+    /* ── SUGGEST FORM ── */
+    .suggest-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .suggest-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 100% 0%, rgba(167, 139, 250, 0.06), transparent 60%)
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+      position: relative
+    }
+
+    .form-field label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--violet)
+    }
+
+    .form-field select option {
+      background: #111827
+    }
+
+    .form-field textarea {
+      min-height: 70px;
+      resize: vertical
+    }
+
+    .captcha-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .captcha-code {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 16px;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--sky);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .captcha-in {
+      width: 100px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      padding: 9px 13px;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .captcha-in:focus {
+      border-color: var(--violet)
+    }
+
+    .submit-btn {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, var(--violet), #7c3aed);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .04em
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(167, 139, 250, .4)
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 14px;
+      padding: 13px 16px;
+      background: var(--emerald-dim);
+      border: 1px solid rgba(16, 185, 129, .25);
+      border-radius: 10px;
+      color: var(--emerald);
+      font-size: 13px;
+      font-weight: 600;
+      animation: fadeUp .3s ease
+    }
+
+    .pending-ideas {
+      margin-top: 20px
+    }
+
+    .idea-item {
+      padding: 10px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 13px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .idea-q {
+      flex: 1
+    }
+
+    .idea-meta {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .idea-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: var(--amber-dim);
+      color: var(--amber);
+      font-weight: 600
+    }
+
+    /* BRAND-THEME-OVERRIDE */
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface2: #fffaf3;
+      --border: #f2dfc1;
+      --amber: #f39c12;
+      --amber-dim: rgba(243, 156, 18, 0.12);
+      --emerald: #f39c12;
+      --emerald-dim: rgba(243, 156, 18, 0.12);
+      --sky: #f39c12;
+      --sky-dim: rgba(243, 156, 18, 0.12);
+      --violet: #f39c12;
+      --violet-dim: rgba(243, 156, 18, 0.12);
+      --rose: #d68910;
+      --text: #212529;
+      --muted: #6c757d;
+    }
+
+    body {
+      padding-top: 86px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif !important;
+      background: linear-gradient(180deg, rgba(243, 156, 18, 0.10) 0%, rgba(243, 156, 18, 0.06) 220px, #f8f9fa 520px);
+    }
+
+    @media (max-width:991.98px) {
+      body {
+        padding-top: 78px;
+      }
+    }
+
+    p,
+    span,
+    li,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    small,
+    td,
+    th {
+      font-family: 'Poppins', sans-serif !important;
+      color: var(--text);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .section-title,
+    .hero-title,
+    .trip-title,
+    .poll-q,
+    .chart-title,
+    .rec-title,
+    .col-name,
+    .result-amount {
+      font-family: 'Playfair Display', serif !important;
+      color: var(--text);
+      letter-spacing: normal;
+    }
+
+    .hero-title em,
+    .section-label,
+    .trip-tag,
+    .hero-tag,
+    .poll-type,
+    .type-tag,
+    .rec-label,
+    .stat-val,
+    .result-amount,
+    .badge-best,
+    .vote-count,
+    .progress-pct,
+    .next-label,
+    .weather-temp,
+    .chart-tab.active {
+      color: var(--amber) !important;
+    }
+
+    .text-muted,
+    .hero-sub,
+    .result-meta,
+    .act-meta,
+    .weather-desc,
+    .guide-desc,
+    .item-sb,
+    .stat-lbl,
+    .data-status,
+    .api-bar,
+    .data-bar,
+    .table-footer,
+    .tip-cell,
+    .result-tip {
+      color: var(--muted) !important;
+    }
+
+    .hero,
+    .dash-hero,
+    #lockScreen {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.10), rgba(243, 156, 18, 0.06), rgba(255, 255, 255, 0.92)) !important;
+    }
+
+    .page,
+    .api-bar,
+    .data-bar,
+    .data-status {
+      background: rgba(243, 156, 18, 0.10) !important;
+    }
+
+    .wizard-card,
+    .card,
+    .poll-card,
+    .suggest-card,
+    .lock-card,
+    .progress-band,
+    .next-stop-banner,
+    .tabs-bar,
+    .activity-card,
+    .weather-card,
+    .check-item,
+    .sos-card,
+    .quote-item,
+    .guide-card,
+    .archive-item,
+    .stat-b,
+    .result-box,
+    .cmp-header-cell,
+    .cmp-data-row .val-cell,
+    .cmp-data-row .attr-cell,
+    .action-cell,
+    .action-lbl {
+      background-color: var(--amber-dim) !important;
+      border-color: rgba(243, 156, 18, 0.24) !important;
+      box-shadow: 0 10px 24px rgba(243, 156, 18, 0.08);
+    }
+
+    .alerts-card,
+    .rec-card {
+      background: var(--amber-dim) !important;
+      border-color: rgba(243, 156, 18, 0.30) !important;
+    }
+
+    .chart-overlay {
+      background: rgba(248, 249, 250, 0.9)
+    }
+
+    .compare-btn,
+    .vote-btn,
+    .submit-btn,
+    .unlock-btn,
+    .convert-btn,
+    .alert-btn,
+    .book-btn,
+    .quote-book {
+      color: #fff !important;
+      background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+      border-color: #e67e22 !important;
+    }
+
+    .step-num,
+    .item-check.selected .chk-box,
+    .poll-opt.winner-opt .opt-radio,
+    .check-item.checked .check-box,
+    .activity-card.done .act-check {
+      color: #fff;
+      background: var(--amber);
+    }
+
+    .fgroup select option,
+    .input-wrap select option,
+    .form-field select option {
+      background: #fff;
+      color: #212529
+    }
+
+    .thrill-bar {
+      background: #e5e7eb
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f5efe5 25%, #fffaf3 50%, #f5efe5 75%)
+    }
+
+    .disclaimer strong {
+      color: #f39c12
+    }
+
+    /* MOBILE-FRIENDLY-PATCH */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    video,
+    canvas,
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 767.98px) {
+      body {
+        padding-top: 76px !important;
+      }
+
+      .container,
+      .container-lg,
+      .page {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .hero,
+      .dash-hero,
+      .page-header {
+        padding: 88px 0 28px !important;
+      }
+
+      .hero h1,
+      .hero-title,
+      .trip-title,
+      .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.1rem) !important;
+        line-height: 1.2 !important;
+      }
+
+      .hero p,
+      .hero-sub,
+      .lead {
+        font-size: 0.95rem !important;
+      }
+
+      .search-section,
+      .card,
+      .wizard-card,
+      .poll-card,
+      .suggest-card,
+      .lock-card,
+      .progress-band,
+      .next-stop-banner {
+        padding: 16px !important;
+        border-radius: 14px !important;
+      }
+
+      .search-row,
+      .search-row.oneway,
+      .search-row.roundtrip,
+      .converter-grid,
+      .filters-row,
+      .form-grid,
+      .quotes-grid,
+      .guides-grid,
+      .polls-grid,
+      .item-grid,
+      .weather-cards,
+      .checklist-items,
+      .emergency-cards {
+        grid-template-columns: 1fr !important;
+      }
+
+      .airports-wrap {
+        flex-direction: column !important;
+      }
+
+      .swap-btn {
+        right: 12px !important;
+        top: auto !important;
+        bottom: -14px !important;
+        transform: none !important;
+      }
+
+      .trip-tabs {
+        flex-wrap: wrap;
+      }
+
+      .tabs-bar {
+        padding: 4px !important;
+        gap: 4px !important;
+      }
+
+      .tab-btn {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+      }
+
+      .trip-meta {
+        gap: 10px !important;
+        font-size: 12px !important;
+      }
+
+      .stats-cluster {
+        align-items: flex-start !important;
+      }
+
+      .flight-card {
+        grid-template-columns: 1fr !important;
+      }
+
+      .flight-route,
+      .flight-price-col {
+        width: 100%;
+      }
+
+      .cmp-table-outer,
+      .rate-table-wrap {
+        overflow-x: auto !important;
+      }
+
+      .cmp-header-row,
+      .cmp-data-row,
+      .cmp-action-row {
+        width: max-content;
+        min-width: 640px;
+      }
+
+      .rate-table {
+        min-width: 620px !important;
+      }
+
+      .modal-dialog {
+        margin: 0.5rem !important;
+      }
+
+      .modal-body {
+        padding: 1rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SITE-HEADER-INJECT -->
+  <!-- Navbar copied from About snippet -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+        <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+          alt="Seven Destination">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel Booking</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket
+              Service</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag"><span class="live-dot"></span> Live Community Polls</div>
+        <h1 class="hero-title">Your Opinion<br>Shapes <em>Our Adventures</em></h1>
+        <p class="hero-sub">Vote, comment &amp; suggest. All activity is saved to your browser — no login required.
+          Polls load from <code style="color:var(--amber);font-size:12px">polls.json</code>.</p>
+      </div>
+      <div class="stats-cluster">
+        <div class="stat-b">
+          <div class="stat-val" id="totalVotesDisplay">—</div>
+          <div class="stat-lbl">Total Votes</div>
+        </div>
+        <div class="stat-b">
+          <div class="stat-val" id="activePollsDisplay">—</div>
+          <div class="stat-lbl">Active Polls</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-bar">
+    <div class="data-dot loading" id="dataDot"></div>
+    <span id="dataStatusText">Loading polls.json…</span>
+  </div>
+
+  <!-- AD SLOT 1: Universal Ad Container (Top Banner) -->
+  <div class="text-center" style="max-width:1100px;margin:16px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 1 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <div class="page">
+    <div class="section-label">🔥 Active Polls — Vote Now</div>
+    <div class="polls-grid" id="pollsGrid">
+      <div style="grid-column:1/-1;color:var(--muted);font-size:13px;padding:20px 0;">Loading polls…</div>
+    </div>
+
+    <div class="section-label">📚 Past Poll Archive</div>
+    <div class="archive-controls">
+      <input type="search" class="search-bar" id="archSearch" placeholder="Search past polls…"
+        aria-label="Search polls">
+      <div class="filter-chip active" data-f="all">All</div>
+      <div class="filter-chip" data-f="destination">Destinations</div>
+      <div class="filter-chip" data-f="package">Packages</div>
+      <div class="filter-chip" data-f="gear">Gear</div>
+    </div>
+    <div class="archive-list" id="archiveList"></div>
+
+    <!-- AD SLOT 2: Universal Ad Container (Mid-Content) -->
+    <div
+      style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;margin:20px 0;text-align:center">
+      <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+      <!-- OPTION A: Google AdSense -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- OPTION B: Monetag -->
+      <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+      <!-- OPTION C: Adstera (Adsterra) -->
+      <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+      <!-- OPTION D: AdMob (Web) -->
+      <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- Placeholder (remove when activating an ad network above) -->
+      <div style="color:var(--muted);font-size:13px">📢 Ad Slot 2 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div class="section-label">💡 Suggest a New Poll</div>
+      <div class="suggest-card">
+        <h3 style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px;">Got a Question Worth
+          Polling?</h3>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:22px;">Submit your idea — popular ones become featured
+          polls! All submissions are stored locally.</p>
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Your Poll Question</label>
+            <input type="text" id="pollQ" placeholder='e.g. "Best Season for Spiti?"' aria-label="Poll question">
+          </div>
+          <div class="form-field">
+            <label>Category</label>
+            <select id="pollCat" title="Select Category">
+              <option value="">Select category</option>
+              <option value="destination">Destination</option>
+              <option value="package">Tour Package</option>
+              <option value="gear">Gear &amp; Packing</option>
+              <option value="seasonal">Seasonal</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Options (comma-separated)</label>
+            <input type="text" id="pollOpts" placeholder="Option A, Option B, Option C">
+          </div>
+          <div class="form-field">
+            <label>Your Name (optional)</label>
+            <input type="text" id="pollAuthor" placeholder="e.g. Ananya, Kolkata">
+          </div>
+        </div>
+        <div class="captcha-row">
+          <span style="font-size:13px;color:var(--muted);">Spam check — type this code:</span>
+          <div class="captcha-code" id="captchaDisplay"></div>
+          <input type="text" class="captcha-in" id="captchaIn" placeholder="Code" maxlength="5" aria-label="Captcha">
+        </div>
+        <button class="submit-btn" id="submitIdeaBtn">Submit Idea →</button>
+        <div class="success-msg" id="submitSuccess">✓ Idea saved! Our team will review and may publish it as a featured
+          poll.</div>
+        <div class="pending-ideas" id="pendingIdeas"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Optional globals before this script:
+    // window.POLL_SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+    // window.POLL_SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    // Optional fallback (e.g. in browser console):
+    // localStorage.setItem('POLL_SUPABASE_URL', 'https://YOUR_PROJECT.supabase.co');
+    // localStorage.setItem('POLL_SUPABASE_ANON_KEY', 'YOUR_SUPABASE_ANON_KEY');
+
+    // ─────────────────────────────────────────────
+    //  STORAGE KEYS
+    // ─────────────────────────────────────────────
+    const SK_VOTES = 'tt_poll_votes';
+    const SK_VCOUNTS = 'tt_poll_vcounts';
+    const SK_COMMENTS = 'tt_poll_comments';
+    const SK_IDEAS = 'tt_poll_ideas';
+    const SK_VISITOR = 'tt_poll_visitor_token';
+
+    function ls_get(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } }
+    function ls_set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { } }
+    function esc(v) { return String(v ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch])); }
+
+    function makeVisitorToken() {
+      if (window.crypto?.randomUUID) return crypto.randomUUID();
+      return `visitor_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+    }
+    const VISITOR_TOKEN = (() => {
+      const existing = ls_get(SK_VISITOR);
+      if (existing && typeof existing === 'string') return existing;
+      const generated = makeVisitorToken();
+      ls_set(SK_VISITOR, generated);
+      return generated;
+    })();
+
+    // ─────────────────────────────────────────────
+    //  GLOBAL STATE
+    // ─────────────────────────────────────────────
+    let pollsData = null;
+    let votes = ls_get(SK_VOTES) || {};
+    let vcounts = ls_get(SK_VCOUNTS) || {};
+    let comments = ls_get(SK_COMMENTS) || {};
+    let ideas = ls_get(SK_IDEAS) || [];
+    let remoteVoteCounts = {};
+    let remoteComments = {};
+    let supabase = null;
+    let supabaseReady = false;
+    let supabaseWarned = false;
+
+    const SUPABASE_URL = (window.POLL_SUPABASE_URL || localStorage.getItem('POLL_SUPABASE_URL') || '').trim();
+    const SUPABASE_ANON_KEY = (window.POLL_SUPABASE_ANON_KEY || localStorage.getItem('POLL_SUPABASE_ANON_KEY') || '').trim();
+
+    function isSupabaseConfigured() { return Boolean(SUPABASE_URL && SUPABASE_ANON_KEY); }
+
+    function formatDateShort(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return '';
+      return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    }
+    function formatDateFull(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return '';
+      return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    async function loadSupabaseSdk() {
+      if (window.supabase?.createClient) return;
+      await new Promise((resolve, reject) => {
+        const existing = document.querySelector('script[data-supabase-sdk="1"]');
+        if (existing) {
+          existing.addEventListener('load', resolve, { once: true });
+          existing.addEventListener('error', () => reject(new Error('Failed to load Supabase SDK')), { once: true });
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+        s.async = true;
+        s.dataset.supabaseSdk = '1';
+        s.onload = resolve;
+        s.onerror = () => reject(new Error('Failed to load Supabase SDK'));
+        document.head.appendChild(s);
+      });
+    }
+
+    async function initSupabase() {
+      if (!isSupabaseConfigured()) return false;
+      try {
+        await loadSupabaseSdk();
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth: { persistSession: false, autoRefreshToken: false }
+        });
+        supabaseReady = true;
+        return true;
+      } catch {
+        supabaseReady = false;
+        return false;
+      }
+    }
+
+    // ─────────────────────────────────────────────
+    //  LOAD POLLS.JSON + SUPABASE
+    // ─────────────────────────────────────────────
+    const POLLS_JSON_CANDIDATES = [
+      'polls.json',
+      './polls.json',
+      'files (1)/polls.json',
+      './files (1)/polls.json',
+      '../files (1)/polls.json',
+      'files%20(1)/polls.json',
+      './files%20(1)/polls.json'
+    ];
+
+    async function fetchJsonWithFallback(candidates) {
+      let lastError = null;
+      for (const url of candidates) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.json();
+        } catch (err) {
+          lastError = err;
+        }
+      }
+      if (window.location.protocol === 'file:') {
+        throw new Error('Browser blocked local JSON on file://. Run this page through a local server.');
+      }
+      throw lastError || new Error('Failed to load JSON');
+    }
+
+    async function loadRemoteVotes() {
+      if (!supabaseReady || !pollsData?.active?.length) return;
+      const pollIds = pollsData.active.map(p => p.id);
+      const { data, error } = await supabase
+        .from('poll_vote_totals')
+        .select('poll_id, option_id, votes')
+        .in('poll_id', pollIds);
+      if (error) throw error;
+      const counts = {};
+      (data || []).forEach(row => {
+        if (!counts[row.poll_id]) counts[row.poll_id] = {};
+        counts[row.poll_id][row.option_id] = Number(row.votes || 0);
+      });
+      remoteVoteCounts = counts;
+    }
+
+    async function loadRemoteComments() {
+      if (!supabaseReady || !pollsData?.active?.length) return;
+      const pollIds = pollsData.active.map(p => p.id);
+      const { data, error } = await supabase
+        .from('poll_comments')
+        .select('poll_id, author, comment_text, created_at, visitor_token')
+        .in('poll_id', pollIds)
+        .order('created_at', { ascending: true });
+      if (error) throw error;
+      const byPoll = {};
+      (data || []).forEach(row => {
+        const text = (row.comment_text || '').trim();
+        if (!text) return;
+        if (!byPoll[row.poll_id]) byPoll[row.poll_id] = [];
+        byPoll[row.poll_id].push({
+          author: row.author || 'Guest',
+          text,
+          time: formatDateShort(row.created_at),
+          isUser: row.visitor_token === VISITOR_TOKEN
+        });
+      });
+      remoteComments = byPoll;
+    }
+
+    async function loadRemoteIdeas() {
+      if (!supabaseReady) return;
+      const { data, error } = await supabase
+        .from('poll_ideas')
+        .select('question, category, options, author, created_at, status, visitor_token')
+        .eq('visitor_token', VISITOR_TOKEN)
+        .order('created_at', { ascending: false })
+        .limit(40);
+      if (error) throw error;
+
+      const remoteIdeas = (data || []).map(row => ({
+        question: row.question || '',
+        category: row.category || '',
+        options: Array.isArray(row.options) ? row.options : [],
+        author: row.author || 'Anonymous',
+        status: row.status || 'pending',
+        time: formatDateFull(row.created_at)
+      }));
+
+      const merged = [...remoteIdeas];
+      ideas.forEach(localIdea => {
+        const key = `${localIdea.question}|${localIdea.category}|${localIdea.author}|${localIdea.time}`;
+        const exists = merged.some(r => `${r.question}|${r.category}|${r.author}|${r.time}` === key);
+        if (!exists) merged.push(localIdea);
+      });
+      ideas = merged;
+    }
+
+    async function hydrateFromSupabase() {
+      await loadRemoteVotes();
+      await loadRemoteComments();
+      await loadRemoteIdeas();
+    }
+
+    async function loadPolls() {
+      setStatus('loading', 'Loading polls data...');
+      try {
+        pollsData = await fetchJsonWithFallback(POLLS_JSON_CANDIDATES);
+      } catch (err) {
+        setStatus('err', `✗ Could not load polls.json (${err.message})`);
+        document.getElementById('pollsGrid').innerHTML = `<div style="color:#f39c12;font-size:13px;grid-column:1/-1">⚠ ${esc(err.message)}</div>`;
+        return;
+      }
+
+      let statusText = `✓ polls.json loaded · ${pollsData.active.length} active · ${pollsData.archive.length} archived`;
+      if (await initSupabase()) {
+        try {
+          await hydrateFromSupabase();
+          statusText = `✓ Supabase connected · ${pollsData.active.length} active · ${pollsData.archive.length} archived`;
+        } catch (err) {
+          supabaseReady = false;
+          statusText = `⚠ Supabase read failed (${err.message}). Using browser-local storage.`;
+          setStatus('err', statusText);
+        }
+      } else if (isSupabaseConfigured()) {
+        setStatus('err', '⚠ Supabase SDK/config failed. Using browser-local storage.');
+      }
+
+      if (!document.getElementById('dataStatusText').textContent.includes('Supabase read failed') &&
+        !document.getElementById('dataStatusText').textContent.includes('Supabase SDK/config failed')) {
+        setStatus('ok', statusText);
+      }
+      renderPendingIdeas();
+      renderPolls();
+      renderArchive();
+      updateHeroStats();
+    }
+    function setStatus(s, m) {
+      document.getElementById('dataDot').className = 'data-dot ' + s;
+      document.getElementById('dataStatusText').textContent = m;
+    }
+
+    // ─────────────────────────────────────────────
+    //  VOTE HELPERS
+    // ─────────────────────────────────────────────
+    function getVoteCounts(poll) {
+      const localCounts = vcounts[poll.id] || {};
+      const remoteCounts = remoteVoteCounts[poll.id] || {};
+      return poll.options.map(opt => ({
+        ...opt,
+        totalVotes: (opt.baseVotes || 0) + (remoteCounts[opt.id] || 0) + (localCounts[opt.id] || 0)
+      }));
+    }
+    function getTotalVotes(poll) { return getVoteCounts(poll).reduce((s, o) => s + o.totalVotes, 0); }
+    function hasVoted(pollId) { return votes[pollId] !== undefined; }
+
+    async function castVote(pollId, optId) {
+      if (hasVoted(pollId)) {
+        return { ok: false, already: true, message: 'Already voted - one vote per poll.' };
+      }
+
+      if (supabaseReady) {
+        const { data: rpcData, error: rpcError } = await supabase.rpc('cast_poll_vote', {
+          p_poll_id: pollId,
+          p_option_id: optId,
+          p_voter_token: VISITOR_TOKEN
+        });
+
+        if (!rpcError) {
+          const payload = Array.isArray(rpcData) ? rpcData[0] : rpcData;
+          const inserted = payload?.inserted === true || payload?.inserted === 'true';
+          if (!inserted) {
+            votes[pollId] = optId;
+            ls_set(SK_VOTES, votes);
+            return { ok: false, already: true, message: 'Vote already exists for this poll.' };
+          }
+
+          if (!remoteVoteCounts[pollId]) remoteVoteCounts[pollId] = {};
+          remoteVoteCounts[pollId][optId] = (remoteVoteCounts[pollId][optId] || 0) + 1;
+          votes[pollId] = optId;
+          ls_set(SK_VOTES, votes);
+          updateHeroStats();
+          return { ok: true };
+        }
+
+        const msg = String(rpcError.message || 'Unknown error');
+        if (!supabaseWarned) {
+          setStatus('err', `⚠ Supabase vote RPC failed (${msg}). Saving vote locally.`);
+          supabaseWarned = true;
+        }
+        if (!vcounts[pollId]) vcounts[pollId] = {};
+        vcounts[pollId][optId] = (vcounts[pollId][optId] || 0) + 1;
+        votes[pollId] = optId;
+        ls_set(SK_VOTES, votes);
+        ls_set(SK_VCOUNTS, vcounts);
+        updateHeroStats();
+        return { ok: true, fallback: true };
+      }
+
+      votes[pollId] = optId;
+      if (!vcounts[pollId]) vcounts[pollId] = {};
+      vcounts[pollId][optId] = (vcounts[pollId][optId] || 0) + 1;
+      ls_set(SK_VOTES, votes);
+      ls_set(SK_VCOUNTS, vcounts);
+      updateHeroStats();
+      return { ok: true, local: true };
+    }
+
+    async function addComment(pollId, text) {
+      const entry = { author: 'You', text, time: 'just now', isUser: true };
+
+      if (supabaseReady) {
+        const { error } = await supabase
+          .from('poll_comments')
+          .insert({ poll_id: pollId, author: 'You', comment_text: text, visitor_token: VISITOR_TOKEN });
+
+        if (!error) {
+          if (!remoteComments[pollId]) remoteComments[pollId] = [];
+          remoteComments[pollId].push(entry);
+          return { ok: true };
+        }
+
+        if (!supabaseWarned) {
+          setStatus('err', `⚠ Supabase comment write failed (${error.message}). Saving comments locally.`);
+          supabaseWarned = true;
+        }
+      }
+
+      if (!comments[pollId]) comments[pollId] = [];
+      comments[pollId].push(entry);
+      ls_set(SK_COMMENTS, comments);
+      return { ok: true, fallback: true };
+    }
+
+    async function saveIdea(idea) {
+      if (supabaseReady) {
+        const { error } = await supabase
+          .from('poll_ideas')
+          .insert({
+            question: idea.question,
+            category: idea.category,
+            options: idea.options,
+            author: idea.author,
+            status: 'pending',
+            visitor_token: VISITOR_TOKEN
+          });
+        if (!error) {
+          ideas.push(idea);
+          ls_set(SK_IDEAS, ideas);
+          return { ok: true };
+        }
+
+        if (!supabaseWarned) {
+          setStatus('err', `⚠ Supabase idea write failed (${error.message}). Saving ideas locally.`);
+          supabaseWarned = true;
+        }
+      }
+
+      ideas.push(idea);
+      ls_set(SK_IDEAS, ideas);
+      return { ok: true, fallback: true };
+    }
+
+    // ─────────────────────────────────────────────
+    //  HERO STATS
+    // ─────────────────────────────────────────────
+    function updateHeroStats() {
+      if (!pollsData) return;
+      const total = pollsData.active.reduce((s, p) => s + getTotalVotes(p), 0) +
+        pollsData.archive.reduce((s, a) => s + (a.totalVotes || 0), 0);
+      document.getElementById('totalVotesDisplay').textContent = total.toLocaleString('en-IN');
+      document.getElementById('activePollsDisplay').textContent = pollsData.active.length;
+    }
+
+    // ─────────────────────────────────────────────
+    //  RENDER ACTIVE POLLS
+    // ─────────────────────────────────────────────
+    function renderPolls() {
+      const container = document.getElementById('pollsGrid');
+      container.innerHTML = '';
+      if (!pollsData?.active?.length) {
+        container.innerHTML = '<div style="color:var(--muted);font-size:14px;grid-column:1/-1">No active polls right now. Check back soon!</div>';
+        return;
+      }
+      pollsData.active.forEach(poll => container.appendChild(buildPollCard(poll)));
+    }
+
+    function buildPollCard(poll) {
+      const voted = hasVoted(poll.id);
+      const optData = getVoteCounts(poll);
+      const total = optData.reduce((s, o) => s + o.totalVotes, 0);
+      const winnerIdx = voted ? optData.indexOf(optData.reduce((a, b) => a.totalVotes > b.totalVotes ? a : b)) : -1;
+
+      const card = document.createElement('div');
+      card.className = `poll-card${voted ? ' voted' : ''}${poll.featured ? ' featured' : ''}`;
+      card.dataset.pollId = poll.id;
+
+      let tempSel = null;
+
+      let optsHTML = '';
+      optData.forEach((opt, i) => {
+        const pct = total > 0 ? Math.round((opt.totalVotes / total) * 100) : 0;
+        const isWinner = voted && i === winnerIdx;
+        const isMyVote = votes[poll.id] === opt.id;
+        optsHTML += `
+      <div class="poll-opt ${voted ? 'voted-state' : ''} ${isWinner ? 'winner-opt' : ''} ${isMyVote ? 'selected' : ''}"
+           data-opt="${esc(opt.id)}" role="radio" aria-checked="${isMyVote}" tabindex="0">
+        <div class="opt-radio">${isMyVote ? '✓' : (isWinner ? '★' : '')}</div>
+        <div class="opt-icon">${opt.icon || ''}</div>
+        <div class="opt-text">${esc(opt.text)}</div>
+        <div class="opt-pct">${pct}%</div>
+        <div class="opt-bar" style="width:${voted ? pct : 0}%"></div>
+      </div>`;
+      });
+
+      const storedComments = [...(remoteComments[poll.id] || []), ...(comments[poll.id] || [])];
+      const allComments = [
+        ...(poll.baseComments || []).map(c => ({ ...c, isUser: false })),
+        ...storedComments.map(c => ({ ...c, isUser: c.isUser === true || c.author === 'You' }))
+      ];
+      let commentsHTML = '<div class="comment-list">';
+      allComments.slice(-5).forEach(c => {
+        commentsHTML += `<div class="comment-item ${c.isUser ? 'user-comment' : ''}">
+      <span class="c-author">${esc(c.author)}</span>${esc(c.text)}<span class="c-time">${esc(c.time || '')}</span>
+    </div>`;
+      });
+      commentsHTML += `</div>
+    <div class="comment-row">
+      <input type="text" class="comment-input" id="ci-${esc(poll.id)}" placeholder="Add a comment..." aria-label="Add comment">
+      <button class="comment-post" data-poll="${esc(poll.id)}">Post</button>
+    </div>`;
+
+      card.innerHTML = `
+    <div class="poll-header">
+      <div class="poll-q">${esc(poll.question)}</div>
+      <div class="poll-type">${esc(poll.type || '')}</div>
+    </div>
+    <div class="poll-meta">
+      <span class="vote-count">🗳 ${total.toLocaleString()} votes</span>
+      <span>⏳ ${esc(poll.endsIn || '')}</span>
+      ${poll.featured ? '<span style="color:var(--amber)">⭐ Featured</span>' : ''}
+    </div>
+    <div class="voted-notice" id="vn-${esc(poll.id)}" style="${voted ? 'display:block' : ''}">✓ You voted - results revealed</div>
+    <div class="already-notice" id="an-${esc(poll.id)}">⚠ Already voted - one vote per poll.</div>
+    <div class="poll-options">${optsHTML}</div>
+    <button class="vote-btn" id="vb-${esc(poll.id)}" ${voted ? 'disabled' : ''}>
+      ${voted ? '✓ Voted' : 'Cast My Vote'}
+    </button>
+    <div class="comment-toggle" data-poll="${esc(poll.id)}">
+      💬 Comments (${allComments.length}) <span id="ctarrow-${esc(poll.id)}">▸</span>
+    </div>
+    <div class="comments-wrap" id="cw-${esc(poll.id)}">${commentsHTML}</div>
+  `;
+
+      card.querySelectorAll('.poll-opt').forEach(opt => {
+        opt.addEventListener('click', () => {
+          if (voted) return;
+          card.querySelectorAll('.poll-opt').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          tempSel = opt.dataset.opt;
+        });
+        opt.addEventListener('keypress', e => { if (e.key === 'Enter') { opt.click(); } });
+      });
+
+      card.querySelector(`#vb-${poll.id}`).addEventListener('click', async () => {
+        if (voted) {
+          const an = document.getElementById(`an-${poll.id}`);
+          an.style.display = 'block';
+          setTimeout(() => an.style.display = 'none', 2500);
+          return;
+        }
+        if (!tempSel) { alert('Please select an option first.'); return; }
+        const result = await castVote(poll.id, tempSel);
+        if (result.already) {
+          const an = document.getElementById(`an-${poll.id}`);
+          an.style.display = 'block';
+          setTimeout(() => an.style.display = 'none', 2500);
+        }
+        renderPolls();
+      });
+
+      card.querySelector('.comment-toggle').addEventListener('click', () => {
+        const cw = document.getElementById(`cw-${poll.id}`);
+        const arr = document.getElementById(`ctarrow-${poll.id}`);
+        cw.classList.toggle('open');
+        arr.textContent = cw.classList.contains('open') ? '▾' : '▸';
+      });
+
+      card.querySelector('.comment-post').addEventListener('click', async () => {
+        const inp = document.getElementById(`ci-${poll.id}`);
+        const txt = inp.value.trim();
+        if (!txt) return;
+        await addComment(poll.id, txt);
+        inp.value = '';
+        renderPolls();
+        setTimeout(() => {
+          const cw = document.getElementById(`cw-${poll.id}`);
+          const arr = document.getElementById(`ctarrow-${poll.id}`);
+          if (cw && arr) { cw.classList.add('open'); arr.textContent = '▾'; }
+        }, 20);
+      });
+
+      return card;
+    }
+
+    // ─────────────────────────────────────────────
+    //  ARCHIVE
+    // ─────────────────────────────────────────────
+    function renderArchive(filter = 'all', query = '') {
+      const list = document.getElementById('archiveList');
+      list.innerHTML = '';
+      if (!pollsData?.archive) return;
+      let items = pollsData.archive;
+      if (filter !== 'all') items = items.filter(a => a.category === filter);
+      if (query) items = items.filter(a => String(a.question || '').toLowerCase().includes(query.toLowerCase()));
+      if (!items.length) { list.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:16px 0">No polls match - try a different filter.</div>'; return; }
+      items.forEach(item => {
+        const wrapper = document.createElement('div');
+
+        const row = document.createElement('div');
+        row.className = 'archive-item';
+        row.innerHTML = `
+      <div class="arch-icon">${item.icon || ''}</div>
+      <div class="arch-q">${esc(item.question)}</div>
+      <div class="arch-meta">${esc(item.closedDate || '')} · ${(item.totalVotes || 0).toLocaleString()} votes</div>
+      <div class="arch-winner">🏆 ${esc(item.winner || '')} ${item.winnerPct ? esc(item.winnerPct + '%') : ''}</div>
+      <div style="color:var(--muted);font-size:12px;flex-shrink:0">▸ View</div>
+    `;
+
+        const expanded = document.createElement('div');
+        expanded.className = 'archive-expanded';
+        expanded.id = 'arch-exp-' + item.id;
+        if (item.options) {
+          item.options.forEach(opt => {
+            const pct = item.totalVotes ? Math.round((opt.votes / item.totalVotes) * 100) : 0;
+            const div = document.createElement('div');
+            div.className = 'arch-bar-row';
+            div.innerHTML = `<span style="min-width:140px;font-size:13px">${esc(opt.text)}</span>
+          <div class="arch-bar-track"><div class="arch-bar-fill" style="width:${pct}%"></div></div>
+          <span class="arch-pct">${pct}%</span>
+          <span style="font-size:11px;color:var(--muted);width:40px">${opt.votes}</span>`;
+            expanded.appendChild(div);
+          });
+        }
+
+        row.addEventListener('click', () => {
+          const isOpen = expanded.classList.contains('open');
+          document.querySelectorAll('.archive-expanded').forEach(e => e.classList.remove('open'));
+          if (!isOpen) expanded.classList.add('open');
+        });
+
+        wrapper.appendChild(row);
+        wrapper.appendChild(expanded);
+        list.appendChild(wrapper);
+      });
+    }
+
+    document.querySelectorAll('.filter-chip').forEach(chip => chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      renderArchive(chip.dataset.f, document.getElementById('archSearch').value);
+    }));
+    document.getElementById('archSearch').addEventListener('input', e => {
+      const active = document.querySelector('.filter-chip.active')?.dataset.f || 'all';
+      renderArchive(active, e.target.value);
+    });
+
+    // ─────────────────────────────────────────────
+    //  SUGGEST FORM
+    // ─────────────────────────────────────────────
+    const CAPTCHA = Math.random().toString(36).substring(2, 7).toUpperCase();
+    document.getElementById('captchaDisplay').textContent = CAPTCHA;
+
+    function renderPendingIdeas() {
+      const container = document.getElementById('pendingIdeas');
+      if (!ideas.length) { container.innerHTML = ''; return; }
+      container.innerHTML = `<div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:16px">Your Submitted Ideas (${ideas.length})</div>`;
+      ideas.slice().reverse().forEach(idea => {
+        const div = document.createElement('div');
+        div.className = 'idea-item';
+        div.innerHTML = `
+      <span class="idea-q">"${esc(idea.question)}"</span>
+      <span class="idea-meta">${esc(idea.category)} · ${esc(idea.time || '')}</span>
+      <span class="idea-badge">${esc(idea.status || 'Pending Review')}</span>
+    `;
+        container.appendChild(div);
+      });
+    }
+    renderPendingIdeas();
+
+    document.getElementById('submitIdeaBtn').addEventListener('click', async () => {
+      const q = document.getElementById('pollQ').value.trim();
+      const cat = document.getElementById('pollCat').value;
+      const opts = document.getElementById('pollOpts').value.trim();
+      const author = document.getElementById('pollAuthor').value.trim();
+      const cap = document.getElementById('captchaIn').value.trim().toUpperCase();
+
+      if (!q) { alert('Please enter a poll question.'); return; }
+      if (!cat) { alert('Please select a category.'); return; }
+      if (!opts) { alert('Please provide poll options.'); return; }
+      if (cap !== CAPTCHA) {
+        alert('Incorrect captcha code. Please try again.');
+        document.getElementById('captchaIn').value = '';
+        return;
+      }
+
+      const idea = {
+        question: q,
+        category: cat,
+        options: opts.split(',').map(s => s.trim()).filter(Boolean),
+        author: author || 'Anonymous',
+        status: 'Pending Review',
+        time: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+      };
+      await saveIdea(idea);
+
+      document.getElementById('submitSuccess').style.display = 'block';
+      document.getElementById('pollQ').value = '';
+      document.getElementById('pollCat').value = '';
+      document.getElementById('pollOpts').value = '';
+      document.getElementById('pollAuthor').value = '';
+      document.getElementById('captchaIn').value = '';
+
+      renderPendingIdeas();
+      setTimeout(() => document.getElementById('submitSuccess').style.display = 'none', 4000);
+    });
+
+    // ─────────────────────────────────────────────
+    //  INIT
+    // ─────────────────────────────────────────────
+    loadPolls();
+  </script>
+
+
+
+  <!-- AD SLOT 3: Universal Ad Container (Pre-Footer) -->
+  <div class="text-center" style="max-width:1100px;margin:20px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 3 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <!-- SITE-FOOTER-INJECT -->
+  <footer id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="footer-heading">Seven Destination: Premier Tour & Travel in Kolkata, West Bengal</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="footer-section">
+            <h5>Get In Touch</h5>
+            <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                  class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                  </svg></span></a></p>
+            <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                email@sevendestination.com</a></p>
+            <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                  class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala Road, Bally,
+                Howrah 711201</a></p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-section">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#packages">Packages</a></li>
+              <li><a href="#car-rental">Car Rental</a></li>
+              <li><a href="#hotel-booking">Hotel Booking</a></li>
+              <li><a href="#ticket-service">Ticket Service</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+          <div class="footer-section">
+            <h5>Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook"
+                aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube"
+                aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram"
+                aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn"
+                aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest"
+                aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 text-center">
+        <div class="col-12">
+          <h5 class="mb-4 text-white-50">Trusted By</h5>
+          <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+            <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+              class="trust-badge text-white text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Reviews"
+                class="mb-2" style="height: 30px;" loading="lazy">
+              <div class="small">Google Reviews</div>
+            </a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+              target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor"
+                class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+              <div class="small">TripAdvisor</div>
+            </a>
+            <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+              target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+              <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial" class="mb-2"
+                style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+              <div class="small">JustDial Verified</div>
+            </a>
+            <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+              class="trust-badge text-white text-decoration-none">
+              <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart" class="mb-2"
+                style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+              <div class="small">IndiaMart Trusted</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-links" data-aos="fade-up" data-aos-delay="400">
+        <a href="#home">Home</a> |
+        <a href="#about">Our Profile</a> |
+        <a href="#packages">Tour Package</a> |
+        <a href="#car-rental">Car Rental</a> |
+        <a href="#hotel-booking">Hotel Booking</a> |
+        <a href="#ticket-service">Ticketing</a> |
+        <a href="#testimonials">News & Events</a> |
+        <a href="#destinations">Photo Gallery</a> |
+        <a href="#testimonials">Videos</a> |
+        <a href="#testimonials">Testimonials</a> |
+        <a href="#destinations">Destinations</a> |
+        <a href="#about">Site Map</a> |
+        <a href="#contact">Contact us</a> |
+        <a href="#about">Career</a>
+      </div>
+      <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+        <p><strong>Popular Destinations</strong></p>
+        <div class="dest-list">
+          <span>Jaipur</span>
+          <span>Agra</span>
+          <span>Goa</span>
+          <span>Kerala</span>
+          <span>Varanasi</span>
+          <span>Mumbai</span>
+          <span>Delhi</span>
+          <span>Udaipur</span>
+          <span>Shimla</span>
+          <span>Rishikesh & Haridwar</span>
+          <span>Amritsar</span>
+          <span>Kolkata</span>
+          <span>Jodhpur</span>
+          <span>Ooty</span>
+          <span>Leh-Ladakh</span>
+          <span>Mysore</span>
+          <span>Darjeeling</span>
+          <span>Rann of Kutch</span>
+          <span>Khajuraho</span>
+          <span>Puducherry</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+        <div>
+          <p>Travel Agency in Kolkata</p>
+          <p>Travel Agency in Howrah</p>
+          <p>Travel Agency in Liluah</p>
+          <p>Travel Agency in Balur</p>
+          <p>Travel Agency in Bally</p>
+          <p>Travel Agency in Barabazaar</p>
+          <p>Travel Agency in Tollygunge</p>
+        </div>
+        <div>
+          <p>Travel Agency in Sealdah</p>
+          <p>Travel Agency in New Alipore</p>
+          <p>Travel Agency in Dum Dum</p>
+          <p>Travel Agency in Shyam bazar</p>
+          <p>Travel Agency in Dunlop</p>
+          <p>Travel Agency in 24 South Pargana</p>
+          <p>Travel Agency in Khadagpur</p>
+        </div>
+        <div>
+          <p>Travel Agency in Shibpuir</p>
+          <p>Travel Agency in Hooghly</p>
+          <p>Travel Agency in Salt lake</p>
+          <p>Travel Agency in New Town</p>
+          <p>Travel Agency in Naihati</p>
+          <p>Travel Agency in Kalyani</p>
+        </div>
+        <div>
+          <p>Travel Agency in Konnagar</p>
+          <p>Travel Agency in Rishra</p>
+          <p>Travel Agency in Uttrapara</p>
+          <p>Travel Agency in Hindmotor</p>
+          <p>Travel Agency in Uluberia</p>
+        </div>
+      </div>
+      <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">
+        All content and images on this website are copyrighted by their respective owners. This website is intended to
+        promote these works, and no endorsement of the artist is implied. Unauthorized use is prohibited by law.
+      </div>
+      <div class="divider"></div>
+      <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+        <p>&copy; 2025 Seven Destination Tour & Travel. All rights reserved. | Designed with <i
+            class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal (kept for video use on pages) -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background: transparent; border: none;">
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/OR0TQxVKRzc" title="Seven Destination Video" allowfullscreen
+              style="border-radius: 15px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    });
+
+    document.querySelectorAll('.timeline-item, .value-card, .founder-card').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "all 0.6s ease";
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "lastUpdated": "2026-03-03",
+    "note": "Add new polls to the 'active' array. Move finished polls to 'archive'. All vote counts here are baseline — user votes are added on top via localStorage."
+  },
+
+  "active": [
+    {
+      "id": "poll-001",
+      "question": "🏆 Best Thrill Spot in West Bengal?",
+      "category": "destination",
+      "type": "Multiple Choice",
+      "endsIn": "3 days",
+      "featured": true,
+      "options": [
+        { "id": "o1", "icon": "🏔️", "text": "Sandakphu Trek",         "baseVotes": 312 },
+        { "id": "o2", "icon": "🌿", "text": "Sunderbans Safari",       "baseVotes": 198 },
+        { "id": "o3", "icon": "🚣", "text": "Teesta River Rafting",    "baseVotes": 241 },
+        { "id": "o4", "icon": "🦅", "text": "Murti Jungle Camp",       "baseVotes": 96  }
+      ],
+      "baseComments": [
+        { "author": "Rahul K.", "text": "Sandakphu at dawn is absolutely surreal — worth every step.", "time": "2 days ago" },
+        { "author": "Priya M.", "text": "Teesta rafting gave me the biggest adrenaline rush of my life.", "time": "1 day ago" }
+      ]
+    },
+    {
+      "id": "poll-002",
+      "question": "🚗 Best Car Rental for Hill Drives?",
+      "category": "rental",
+      "type": "Rating Poll",
+      "endsIn": "5 days",
+      "featured": false,
+      "options": [
+        { "id": "o1", "icon": "🏕️", "text": "Mahindra Thar 4x4",     "baseVotes": 218 },
+        { "id": "o2", "icon": "🚐", "text": "Toyota Innova Crysta",   "baseVotes": 186 },
+        { "id": "o3", "icon": "🛻", "text": "Mahindra Scorpio N",     "baseVotes": 98  },
+        { "id": "o4", "icon": "🚗", "text": "Maruti Jimny",           "baseVotes": 32  }
+      ],
+      "baseComments": [
+        { "author": "Dev S.", "text": "Thar handles mountain roads like an absolute beast.", "time": "3 days ago" }
+      ]
+    },
+    {
+      "id": "poll-003",
+      "question": "🌧️ Favourite Monsoon Adventure?",
+      "category": "seasonal",
+      "type": "Multiple Choice",
+      "endsIn": "1 week",
+      "featured": false,
+      "options": [
+        { "id": "o1", "icon": "🏞️", "text": "Meghalaya Living Bridges", "baseVotes": 290 },
+        { "id": "o2", "icon": "🌊", "text": "Goa Beach Surfing",         "baseVotes": 164 },
+        { "id": "o3", "icon": "🌿", "text": "Coorg Waterfall Treks",     "baseVotes": 132 },
+        { "id": "o4", "icon": "⛺", "text": "Valley of Flowers",         "baseVotes": 35  }
+      ],
+      "baseComments": []
+    },
+    {
+      "id": "poll-004",
+      "question": "✈️ Dream International Destination from Kolkata?",
+      "category": "destination",
+      "type": "Multiple Choice",
+      "endsIn": "2 weeks",
+      "featured": false,
+      "options": [
+        { "id": "o1", "icon": "🏝️", "text": "Bali, Indonesia",          "baseVotes": 189 },
+        { "id": "o2", "icon": "🏯", "text": "Kyoto, Japan",              "baseVotes": 112 },
+        { "id": "o3", "icon": "🌉", "text": "Prague, Czech Republic",    "baseVotes": 68  },
+        { "id": "o4", "icon": "🐘", "text": "Sri Lanka Wildlife",        "baseVotes": 43  }
+      ],
+      "baseComments": [
+        { "author": "Arjun P.", "text": "Bali offers incredible value for Indian thrill seekers!", "time": "4 days ago" },
+        { "author": "Sneha R.", "text": "Japan is on my bucket list — the discipline there is inspiring.", "time": "2 days ago" }
+      ]
+    },
+    {
+      "id": "poll-005",
+      "question": "🎒 Most Underrated Trek in NE India?",
+      "category": "package",
+      "type": "Multiple Choice",
+      "endsIn": "10 days",
+      "featured": false,
+      "options": [
+        { "id": "o1", "icon": "🌄", "text": "Dzukou Valley, Nagaland",  "baseVotes": 145 },
+        { "id": "o2", "icon": "🏔️", "text": "Borasu Pass, Uttarkashi", "baseVotes": 89  },
+        { "id": "o3", "icon": "🌿", "text": "Ziro Valley, Arunachal",   "baseVotes": 48  },
+        { "id": "o4", "icon": "🌾", "text": "Phawngpui, Mizoram",       "baseVotes": 16  }
+      ],
+      "baseComments": []
+    }
+  ],
+
+  "archive": [
+    {
+      "id": "arch-001",
+      "icon": "🏨",
+      "question": "Best Adventure Hotel in Sikkim?",
+      "category": "destination",
+      "closedDate": "Feb 2026",
+      "totalVotes": 1204,
+      "winner": "High Camp Sikkim",
+      "winnerPct": 52,
+      "options": [
+        { "text": "High Camp Sikkim",     "votes": 626 },
+        { "text": "Tashi Deleg Hotel",    "votes": 289 },
+        { "text": "Modern Central Hotel", "votes": 193 },
+        { "text": "Elgin Nor Khill",      "votes": 96  }
+      ]
+    },
+    {
+      "id": "arch-002",
+      "icon": "🎿",
+      "question": "Top Trekking Month in Darjeeling?",
+      "category": "package",
+      "closedDate": "Jan 2026",
+      "totalVotes": 892,
+      "winner": "October",
+      "winnerPct": 41,
+      "options": [
+        { "text": "October",  "votes": 366 },
+        { "text": "March",    "votes": 214 },
+        { "text": "November", "votes": 189 },
+        { "text": "April",    "votes": 123 }
+      ]
+    },
+    {
+      "id": "arch-003",
+      "icon": "🧳",
+      "question": "Essential Gear for Jungle Treks?",
+      "category": "gear",
+      "closedDate": "Dec 2025",
+      "totalVotes": 677,
+      "winner": "Quick-dry clothing",
+      "winnerPct": 38,
+      "options": [
+        { "text": "Quick-dry clothing",  "votes": 257 },
+        { "text": "Trekking poles",      "votes": 198 },
+        { "text": "Water purifier",      "votes": 142 },
+        { "text": "Satellite phone",     "votes": 80  }
+      ]
+    },
+    {
+      "id": "arch-004",
+      "icon": "🚌",
+      "question": "Best Budget Transport: Bus vs Train vs Flight?",
+      "category": "package",
+      "closedDate": "Nov 2025",
+      "totalVotes": 1567,
+      "winner": "Train",
+      "winnerPct": 46,
+      "options": [
+        { "text": "Train",   "votes": 721 },
+        { "text": "Flight",  "votes": 489 },
+        { "text": "Bus",     "votes": 357 }
+      ]
+    },
+    {
+      "id": "arch-005",
+      "icon": "🌊",
+      "question": "Favourite Water Sport at Digha?",
+      "category": "destination",
+      "closedDate": "Oct 2025",
+      "totalVotes": 448,
+      "winner": "Jet Skiing",
+      "winnerPct": 33,
+      "options": [
+        { "text": "Jet Skiing",       "votes": 148 },
+        { "text": "Banana Boat",      "votes": 132 },
+        { "text": "Speed Boat",       "votes": 98  },
+        { "text": "Parasailing",      "votes": 70  }
+      ]
+    },
+    {
+      "id": "arch-006",
+      "icon": "🍜",
+      "question": "Best Post-Trek Meal in Gangtok?",
+      "category": "destination",
+      "closedDate": "Sep 2025",
+      "totalVotes": 321,
+      "winner": "Thukpa Soup",
+      "winnerPct": 44,
+      "options": [
+        { "text": "Thukpa Soup",  "votes": 141 },
+        { "text": "Momos",        "votes": 112 },
+        { "text": "Dal Bhat",     "votes": 68  }
+      ]
+    }
+  ]
+}

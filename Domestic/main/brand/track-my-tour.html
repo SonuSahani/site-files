@@ -1,0 +1,2269 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE-HEAD-INJECTED -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="elementor_styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+
+  <title>Track My Tour — ThrillTrails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #060b12;
+      --surface: #0b1521;
+      --surface2: #101e2e;
+      --border: #172033;
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.1);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.1);
+      --sky: #38bdf8;
+      --sky-dim: rgba(56, 189, 248, 0.1);
+      --rose: #f39c12;
+      --text: #e8f4ff;
+      --muted: #5a7494;
+    }
+
+    /* Footer & Header Styles from Contact page */
+    .hand-drawn-highlight {
+      position: relative;
+      display: inline-block;
+      padding: 6px 16px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 24px);
+      height: calc(100% + 20px);
+      transform: translate(-50%, -50%) rotate(-5deg);
+      pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+      fill: none;
+      stroke: #e74c3c;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+      stroke: rgba(231, 76, 60, 0.4);
+      stroke-width: 2;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+      0% {
+        stroke-dashoffset: 300;
+      }
+
+      40% {
+        stroke-dashoffset: 0;
+      }
+
+      60% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+      align-items: center;
+    }
+
+    .trust-badges img {
+      height: auto;
+      max-width: 120px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: grayscale(1);
+      transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    .footer-links {
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .popular-destinations {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .popular-destinations p {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .popular-destinations span {
+      color: #adb5bd;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .travel-agencies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .travel-agencies div {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .travel-agencies p {
+      color: #808080;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+      color: var(--accent-color);
+    }
+
+    .copyright-text {
+      color: #ffcccc;
+      font-size: 0.7rem;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.4;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 10px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh
+    }
+
+    /* ── LOCK SCREEN ── */
+    #lockScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, #0a1e35 0%, var(--bg) 70%);
+      padding: 24px;
+    }
+
+    .lock-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lock-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(56, 189, 248, 0.08), transparent 60%);
+      pointer-events: none;
+    }
+
+    .lock-card>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .lock-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block
+    }
+
+    .lock-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px
+    }
+
+    .lock-sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+      line-height: 1.6
+    }
+
+    .passcode-input-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .passcode-input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-align: center;
+      padding: 18px 50px 18px 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .passcode-input:focus {
+      border-color: var(--sky)
+    }
+
+    .passcode-input.error {
+      border-color: var(--rose);
+      animation: shake 0.3s ease
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      25% {
+        transform: translateX(-6px)
+      }
+
+      75% {
+        transform: translateX(6px)
+      }
+    }
+
+    .toggle-vis {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .unlock-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--sky), #0ea5e9);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .unlock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35)
+    }
+
+    .demo-hint {
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 10px 14px;
+      border: 1px dashed var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .demo-hint:hover {
+      border-color: var(--sky);
+      color: var(--sky)
+    }
+
+    .error-text {
+      color: var(--rose);
+      font-size: 13px;
+      margin-top: 10px;
+      display: none
+    }
+
+    .resend-link {
+      color: var(--sky);
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 16px;
+      display: block;
+      text-decoration: underline
+    }
+
+    /* ── DASHBOARD ── */
+    #dashboard {
+      display: none;
+      animation: fadeIn 0.5s ease
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* DASHBOARD HERO */
+    .dash-hero {
+      background: linear-gradient(135deg, #071525 0%, #060f1a 50%, #061510 100%);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dash-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(56, 189, 248, 0.07), transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 50%, rgba(16, 185, 129, 0.05), transparent 60%);
+    }
+
+    .dash-top {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .trip-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--emerald-dim);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--emerald);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .trip-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+      animation: pulse 2s infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.4
+      }
+    }
+
+    .trip-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 800;
+      margin-bottom: 6px
+    }
+
+    .trip-meta {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .trip-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .lock-out-btn {
+      padding: 9px 18px;
+      background: rgba(244, 63, 94, 0.1);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      color: var(--rose);
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .lock-out-btn:hover {
+      background: rgba(244, 63, 94, 0.2)
+    }
+
+    /* PROGRESS BAR */
+    .progress-band {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      position: relative;
+      background: var(--surface2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .progress-label-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .progress-pct {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      color: var(--sky);
+      font-size: 18px
+    }
+
+    .progress-track {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sky), var(--emerald));
+      border-radius: 4px;
+      transition: width 1s ease;
+      width: 0
+    }
+
+    /* NEXT STOP */
+    .next-stop-banner {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      position: relative;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(16, 185, 129, 0.05));
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .next-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 2px
+    }
+
+    .next-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 16px
+    }
+
+    .next-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border)
+    }
+
+    @media(max-width:500px) {
+      .next-divider {
+        display: none
+      }
+    }
+
+    /* TABS */
+    .tabs-bar {
+      max-width: 1100px;
+      margin: 28px auto 0;
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 6px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 10px 22px;
+      border-radius: 10px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text)
+    }
+
+    .tab-btn.active {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border)
+    }
+
+    /* TAB CONTENT */
+    .dash-body {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 0 80px
+    }
+
+    .tab-panel {
+      display: none
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn 0.25s ease
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 32px
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border)
+    }
+
+    .day-group {
+      margin-bottom: 32px
+    }
+
+    .day-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 14px;
+      margin-left: -32px;
+      padding-left: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .day-label::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--sky);
+      border: 3px solid var(--bg);
+      flex-shrink: 0;
+      margin-left: -32px;
+    }
+
+    .activity-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .activity-card:hover {
+      border-color: var(--sky)
+    }
+
+    .activity-card.done {
+      opacity: 0.5;
+      border-color: var(--emerald)
+    }
+
+    .act-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: all 0.15s;
+    }
+
+    .activity-card.done .act-check {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #000
+    }
+
+    .act-icon {
+      font-size: 24px;
+      flex-shrink: 0
+    }
+
+    .act-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 3px
+    }
+
+    .act-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .act-tips {
+      margin-top: 8px;
+      font-size: 12px;
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: var(--text);
+    }
+
+    .status-badge {
+      margin-left: auto;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .status-upcoming {
+      background: var(--sky-dim);
+      color: var(--sky)
+    }
+
+    .status-done {
+      background: var(--emerald-dim);
+      color: var(--emerald)
+    }
+
+    .status-now {
+      background: var(--amber-dim);
+      color: var(--amber);
+      animation: pulse 2s infinite
+    }
+
+    /* WEATHER */
+    .weather-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 4px
+    }
+
+    .weather-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .weather-card:hover {
+      border-color: var(--sky)
+    }
+
+    .weather-icon {
+      font-size: 32px;
+      margin-bottom: 8px
+    }
+
+    .weather-day {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px
+    }
+
+    .weather-temp {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--sky)
+    }
+
+    .weather-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px
+    }
+
+    .weather-alert {
+      margin-top: 12px;
+      padding: 14px 18px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--text);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    /* CHECKLIST */
+    .checklist-section {
+      margin-bottom: 28px
+    }
+
+    .checklist-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 14px;
+      color: var(--sky)
+    }
+
+    .checklist-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .check-item:hover {
+      border-color: var(--sky)
+    }
+
+    .check-item.checked {
+      opacity: 0.6;
+      text-decoration: line-through
+    }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      transition: all 0.15s;
+    }
+
+    .check-item.checked .check-box {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #000
+    }
+
+    /* NOTES */
+    .notes-area {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      padding: 16px;
+      outline: none;
+      resize: vertical;
+      min-height: 120px;
+      transition: border-color 0.2s;
+    }
+
+    .notes-area:focus {
+      border-color: var(--sky)
+    }
+
+    /* EMERGENCY */
+    .emergency-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px
+    }
+
+    .sos-card {
+      background: rgba(244, 63, 94, 0.06);
+      border: 1px solid rgba(244, 63, 94, 0.2);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .sos-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 6px
+    }
+
+    .sos-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--rose);
+      margin-bottom: 4px
+    }
+
+    .sos-note {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    /* EXPORT BTN */
+    .export-btn {
+      padding: 11px 24px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .export-btn:hover {
+      border-color: var(--sky);
+      color: var(--sky)
+    }
+
+    /* COMMON */
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border)
+    }
+
+    .card-base {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px
+    }
+
+    /* BRAND-THEME-OVERRIDE */
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface2: #fffaf3;
+      --border: #f2dfc1;
+      --amber: #f39c12;
+      --amber-dim: rgba(243, 156, 18, 0.12);
+      --emerald: #f39c12;
+      --emerald-dim: rgba(243, 156, 18, 0.12);
+      --sky: #f39c12;
+      --sky-dim: rgba(243, 156, 18, 0.12);
+      --violet: #f39c12;
+      --violet-dim: rgba(243, 156, 18, 0.12);
+      --rose: #d68910;
+      --text: #212529;
+      --muted: #6c757d;
+    }
+
+    body {
+      padding-top: 86px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif !important;
+      background: linear-gradient(180deg, rgba(243, 156, 18, 0.10) 0%, rgba(243, 156, 18, 0.06) 220px, #f8f9fa 520px);
+    }
+
+    @media (max-width:991.98px) {
+      body {
+        padding-top: 78px;
+      }
+    }
+
+    p,
+    span,
+    li,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    small,
+    td,
+    th {
+      font-family: 'Poppins', sans-serif !important;
+      color: var(--text);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .section-title,
+    .hero-title,
+    .trip-title,
+    .poll-q,
+    .chart-title,
+    .rec-title,
+    .col-name,
+    .result-amount {
+      font-family: 'Playfair Display', serif !important;
+      color: var(--text);
+      letter-spacing: normal;
+    }
+
+    .hero-title em,
+    .section-label,
+    .trip-tag,
+    .hero-tag,
+    .poll-type,
+    .type-tag,
+    .rec-label,
+    .stat-val,
+    .result-amount,
+    .badge-best,
+    .vote-count,
+    .progress-pct,
+    .next-label,
+    .weather-temp,
+    .chart-tab.active {
+      color: var(--amber) !important;
+    }
+
+    .text-muted,
+    .hero-sub,
+    .result-meta,
+    .act-meta,
+    .weather-desc,
+    .guide-desc,
+    .item-sb,
+    .stat-lbl,
+    .data-status,
+    .api-bar,
+    .data-bar,
+    .table-footer,
+    .tip-cell,
+    .result-tip {
+      color: var(--muted) !important;
+    }
+
+    .hero,
+    .dash-hero,
+    #lockScreen {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.10), rgba(243, 156, 18, 0.06), rgba(255, 255, 255, 0.92)) !important;
+    }
+
+    .page,
+    .api-bar,
+    .data-bar,
+    .data-status {
+      background: rgba(243, 156, 18, 0.10) !important;
+    }
+
+    .wizard-card,
+    .card,
+    .poll-card,
+    .suggest-card,
+    .lock-card,
+    .progress-band,
+    .next-stop-banner,
+    .tabs-bar,
+    .activity-card,
+    .weather-card,
+    .check-item,
+    .sos-card,
+    .quote-item,
+    .guide-card,
+    .archive-item,
+    .stat-b,
+    .result-box,
+    .cmp-header-cell,
+    .cmp-data-row .val-cell,
+    .cmp-data-row .attr-cell,
+    .action-cell,
+    .action-lbl {
+      background-color: var(--amber-dim) !important;
+      border-color: rgba(243, 156, 18, 0.24) !important;
+      box-shadow: 0 10px 24px rgba(243, 156, 18, 0.08);
+    }
+
+    .alerts-card,
+    .rec-card {
+      background: var(--amber-dim) !important;
+      border-color: rgba(243, 156, 18, 0.30) !important;
+    }
+
+    .chart-overlay {
+      background: rgba(248, 249, 250, 0.9)
+    }
+
+    .compare-btn,
+    .vote-btn,
+    .submit-btn,
+    .unlock-btn,
+    .convert-btn,
+    .alert-btn,
+    .book-btn,
+    .quote-book {
+      color: #fff !important;
+      background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+      border-color: #e67e22 !important;
+    }
+
+    .step-num,
+    .item-check.selected .chk-box,
+    .poll-opt.winner-opt .opt-radio,
+    .check-item.checked .check-box,
+    .activity-card.done .act-check {
+      color: #fff;
+      background: var(--amber);
+    }
+
+    .fgroup select option,
+    .input-wrap select option,
+    .form-field select option {
+      background: #fff;
+      color: #212529
+    }
+
+    .thrill-bar {
+      background: #e5e7eb
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f5efe5 25%, #fffaf3 50%, #f5efe5 75%)
+    }
+
+    .disclaimer strong {
+      color: #f39c12
+    }
+
+    /* MOBILE-FRIENDLY-PATCH */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    video,
+    canvas,
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 767.98px) {
+      body {
+        padding-top: 76px !important;
+      }
+
+      .container,
+      .container-lg,
+      .page {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .hero,
+      .dash-hero,
+      .page-header {
+        padding: 88px 0 28px !important;
+      }
+
+      .hero h1,
+      .hero-title,
+      .trip-title,
+      .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.1rem) !important;
+        line-height: 1.2 !important;
+      }
+
+      .hero p,
+      .hero-sub,
+      .lead {
+        font-size: 0.95rem !important;
+      }
+
+      .search-section,
+      .card,
+      .wizard-card,
+      .poll-card,
+      .suggest-card,
+      .lock-card,
+      .progress-band,
+      .next-stop-banner {
+        padding: 16px !important;
+        border-radius: 14px !important;
+      }
+
+      .search-row,
+      .search-row.oneway,
+      .search-row.roundtrip,
+      .converter-grid,
+      .filters-row,
+      .form-grid,
+      .quotes-grid,
+      .guides-grid,
+      .polls-grid,
+      .item-grid,
+      .weather-cards,
+      .checklist-items,
+      .emergency-cards {
+        grid-template-columns: 1fr !important;
+      }
+
+      .airports-wrap {
+        flex-direction: column !important;
+      }
+
+      .swap-btn {
+        right: 12px !important;
+        top: auto !important;
+        bottom: -14px !important;
+        transform: none !important;
+      }
+
+      .trip-tabs {
+        flex-wrap: wrap;
+      }
+
+      .tabs-bar {
+        padding: 4px !important;
+        gap: 4px !important;
+      }
+
+      .tab-btn {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+      }
+
+      .trip-meta {
+        gap: 10px !important;
+        font-size: 12px !important;
+      }
+
+      .stats-cluster {
+        align-items: flex-start !important;
+      }
+
+      .flight-card {
+        grid-template-columns: 1fr !important;
+      }
+
+      .flight-route,
+      .flight-price-col {
+        width: 100%;
+      }
+
+      .cmp-table-outer,
+      .rate-table-wrap {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .cmp-header-row,
+      .cmp-data-row,
+      .cmp-action-row {
+        width: max-content;
+        min-width: 640px;
+      }
+
+      .rate-table {
+        min-width: 620px !important;
+      }
+
+      .modal-dialog {
+        margin: 0.5rem !important;
+      }
+
+      .modal-body {
+        padding: 1rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar from Contact page -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+        <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+          alt="Seven Destination">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel Booking</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket
+              Service</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- LOCK SCREEN -->
+  <div id="lockScreen">
+    <div class="lock-card">
+      <span class="lock-icon">🔐</span>
+      <h1 class="lock-title">Track My Tour</h1>
+      <p class="lock-sub">Enter the passcode sent to your email or SMS after booking to access your personalized trip
+        dashboard.</p>
+
+      <div class="passcode-input-wrap">
+        <input type="password" class="passcode-input" id="passcodeInput" placeholder="••••••••" maxlength="8"
+          aria-label="Trip passcode">
+        <button class="toggle-vis" id="toggleVis" aria-label="Toggle visibility">👁</button>
+      </div>
+      <div class="error-text" id="errorText">Invalid passcode. Please try again or resend.</div>
+
+      <button class="unlock-btn" id="unlockBtn">Unlock My Trip →</button>
+
+      <div class="demo-hint" id="demoHint" role="button" tabindex="0">
+        🎯 <strong>Demo code:</strong> <strong>0000</strong> — or enter your tour access code
+      </div>
+      <span class="resend-link" id="resendLink">Didn't get a code? Contact support →</span>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+
+    <!-- DASH HERO (populated by JS from Supabase) -->
+    <div class="dash-hero">
+      <div class="dash-top">
+        <div>
+          <div class="trip-tag"><span class="dot"></span> <span id="tripStatusTag">Trip Active</span></div>
+          <h1 class="trip-title" id="tripTitle">Loading…</h1>
+          <div class="trip-meta" id="tripMeta">
+            <span>📅 —</span>
+            <span>👥 —</span>
+            <span>📍 —</span>
+            <span>🎫 —</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="export-btn" id="exportBtn">⬇ Export PDF</button>
+          <button class="lock-out-btn" id="lockOutBtn">🔒 Lock</button>
+        </div>
+      </div>
+
+      <div class="progress-band">
+        <div class="progress-label">
+          <div>
+            <div class="progress-label-text">Trip Progress</div>
+            <div style="font-size:12px;color:var(--muted)" id="progressSubText">—</div>
+          </div>
+          <div class="progress-pct" id="progressPct">0%</div>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="next-stop-banner" id="nextStopBanner">
+        <div>
+          <div class="next-label">⏭ Next Stop</div>
+          <div class="next-val" id="nextStopVal">—</div>
+        </div>
+        <div class="next-divider"></div>
+        <div>
+          <div class="next-label">ETA</div>
+          <div class="next-val" id="nextEtaVal">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <!-- AD SLOT 1: Universal Ad Container (Top Banner) -->
+    <div class="text-center" style="max-width:1100px;margin:16px auto;padding:10px 24px">
+      <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+      <!-- OPTION A: Google AdSense -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- OPTION B: Monetag -->
+      <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+      <!-- OPTION C: Adstera (Adsterra) -->
+      <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+      <!-- OPTION D: AdMob (Web) -->
+      <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- Placeholder (remove when activating an ad network above) -->
+      <div
+        style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+        📢 Ad Slot 1 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+    </div>
+
+    <div style="padding:0 24px">
+      <div class="tabs-bar">
+        <button class="tab-btn active" data-tab="schedule">📅 Schedule</button>
+        <button class="tab-btn" data-tab="weather">🌤 Weather</button>
+        <button class="tab-btn" data-tab="checklist">✅ Checklist</button>
+        <button class="tab-btn" data-tab="notes">📝 Notes</button>
+        <button class="tab-btn" data-tab="emergency">🆘 Emergency</button>
+      </div>
+    </div>
+
+    <!-- AD SLOT 2: Universal Ad Container (Mid-Content) -->
+    <div style="max-width:1100px;margin:10px auto;padding:0 24px">
+      <div
+        style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center">
+        <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+        <!-- OPTION A: Google AdSense -->
+        <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+        <!-- OPTION B: Monetag -->
+        <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+        <!-- OPTION C: Adstera (Adsterra) -->
+        <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+        <!-- OPTION D: AdMob (Web) -->
+        <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+        <!-- Placeholder (remove when activating an ad network above) -->
+        <div style="color:var(--muted);font-size:13px">📢 Ad Slot 2 — Supports: AdSense · Monetag · Adstera · AdMob
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-body" style="padding:20px 24px 80px">
+
+      <!-- SCHEDULE TAB -->
+      <div class="tab-panel active" id="tab-schedule">
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+          <div class="section-label" style="margin-bottom:0;flex:1">Day-by-Day Itinerary</div>
+          <div style="display:flex;gap:8px">
+            <span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><span
+                style="color:var(--amber)">●</span>In Progress</span>
+            <span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><span
+                style="color:var(--emerald)">●</span>Done</span>
+            <span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px"><span
+                style="color:var(--sky)">●</span>Upcoming</span>
+          </div>
+        </div>
+        <div class="timeline" id="itinerary"></div>
+      </div>
+
+      <!-- WEATHER TAB -->
+      <div class="tab-panel" id="tab-weather">
+        <div class="section-label">Weather Forecast — Sikkim Route</div>
+        <div class="weather-alert">
+          ⚠️ <div><strong>Weather Alert:</strong> Light snowfall expected at Dzongri (Day 3). Pack extra warm layers and
+            waterproof gear. Guide has been notified.</div>
+        </div>
+        <div class="weather-cards" style="margin-top:16px" id="weatherCards"></div>
+      </div>
+
+      <!-- CHECKLIST TAB -->
+      <div class="tab-panel" id="tab-checklist">
+        <div class="section-label">Packing Checklist</div>
+        <div id="checklistContent"></div>
+      </div>
+
+      <!-- NOTES TAB -->
+      <div class="tab-panel" id="tab-notes">
+        <div class="section-label">My Trip Notes</div>
+        <div class="card-base">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Jot down your memories, reminders, or anything
+            you want to remember from this trip.</p>
+          <textarea class="notes-area" id="notesArea" placeholder="Write your notes here... (auto-saved locally)"
+            aria-label="Trip notes"></textarea>
+          <div
+            style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:10px">
+            <span style="font-size:11px;color:var(--muted)" id="notesSaved"></span>
+            <button class="export-btn" onclick="exportNotes()">Save Notes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMERGENCY TAB -->
+      <div class="tab-panel" id="tab-emergency">
+        <div class="section-label">Emergency Contacts</div>
+        <div class="emergency-cards" id="emergencyCards"></div>
+        <div class="card-base" style="margin-top:20px" id="medicalFacilityCard">
+          <div class="section-label">Nearest Medical Facility</div>
+          <p style="font-size:14px;color:var(--text);margin-bottom:4px" id="medFacilityName"><strong>—</strong></p>
+          <p style="font-size:13px;color:var(--muted)" id="medFacilityAddr">—</p>
+          <p style="font-size:13px;color:var(--sky);margin-top:4px" id="medFacilityPhone">📞 —</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Global Error Handler for Mobile/Debug
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      alert("Error: " + msg + "\nLine: " + lineNo);
+      return false;
+    };
+
+    // ═══════════════════════════════════════════════════════
+    //  SUPABASE CONFIG — Set your project credentials here
+    // ═══════════════════════════════════════════════════════
+    const SUPABASE_URL = window.TOUR_SUPABASE_URL
+      || localStorage.getItem('TOUR_SUPABASE_URL')
+      || 'https://sekbkktlvntgkhdcrwpj.supabase.co';
+
+    const SUPABASE_ANON_KEY = window.TOUR_SUPABASE_ANON_KEY
+      || localStorage.getItem('TOUR_SUPABASE_ANON_KEY')
+      || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNla2Jra3Rsdm50Z2toZGNyd3BqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3MTQwMTQsImV4cCI6MjA4ODI5MDAxNH0.a5-zCFIq7JYx0pEiO3cF3fw4bT0226zSCHWlIrGE378';
+
+    let supabase = null;
+
+    function createSupabaseClientSafely() {
+      if (!window.supabase || !window.supabase.createClient) return null;
+      try {
+        return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth: { persistSession: false, autoRefreshToken: false }
+        });
+      } catch (e) {
+        console.error('Supabase init error:', e);
+        return null;
+      }
+    }
+
+    async function ensureSupabaseClient() {
+      if (supabase) return true;
+
+      if (!window.supabase || !window.supabase.createClient) {
+        try {
+          await new Promise((resolve, reject) => {
+            const existing = document.querySelector('script[data-supabase-sdk="1"]');
+            if (existing) {
+              existing.addEventListener('load', resolve, { once: true });
+              existing.addEventListener('error', () => reject(new Error('Failed to load Supabase SDK')), { once: true });
+              return;
+            }
+            const s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+            s.async = true;
+            s.dataset.supabaseSdk = '1';
+            s.onload = resolve;
+            s.onerror = () => reject(new Error('Failed to load Supabase SDK'));
+            document.head.appendChild(s);
+          });
+        } catch (e) {
+          console.error('Supabase SDK load error:', e);
+          showError('Unable to load tour service. Please refresh and try again.');
+          return false;
+        }
+      }
+
+      supabase = createSupabaseClientSafely();
+      if (!supabase) {
+        showError('Tour service initialization failed. Please contact support.');
+        return false;
+      }
+      return true;
+    }
+
+    supabase = createSupabaseClientSafely();
+
+    // ═══════════════════════════════════════════════════════
+    //  PASSCODE HANDLING
+    // ═══════════════════════════════════════════════════════
+    const passcodeInput = document.getElementById('passcodeInput');
+    const errorText = document.getElementById('errorText');
+    const unlockBtn = document.getElementById('unlockBtn');
+
+    if (!passcodeInput || !unlockBtn) {
+      alert("Critical Error: HTML elements not found (passcodeInput or unlockBtn).");
+    }
+
+    document.getElementById('toggleVis').addEventListener('click', () => {
+      passcodeInput.type = passcodeInput.type === 'password' ? 'text' : 'password';
+    });
+
+    unlockBtn.addEventListener('click', unlock);
+    document.getElementById('demoHint').addEventListener('click', () => {
+      passcodeInput.value = '0000';
+      passcodeInput.type = 'text';
+    });
+    document.getElementById('demoHint').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') { passcodeInput.value = '0000'; unlock(); }
+    });
+    passcodeInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') unlock(); });
+
+    document.getElementById('resendLink').addEventListener('click', () => {
+      alert('Please contact Seven Destination support at +91 8585858400 for your access code.');
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  UNLOCK — Query Supabase
+    // ═══════════════════════════════════════════════════════
+    let currentTrip = null;
+
+    async function unlock() {
+      const code = passcodeInput.value.trim().toUpperCase();
+      if (!code) { showError(); return; }
+
+      // Show loading state
+      unlockBtn.textContent = 'Loading…';
+      unlockBtn.disabled = true;
+      errorText.style.display = 'none';
+
+      try {
+        if (!(await ensureSupabaseClient())) return;
+
+        const { data, error } = await supabase
+          .from('tours')
+          .select('*')
+          .eq('access_code', code)
+          .single();
+
+        if (error) {
+          console.error('Supabase fetch error:', error);
+          showError('Supabase Error: ' + error.message);
+          return;
+        }
+        if (!data) {
+          showError('No tour found with code: ' + code);
+          return;
+        }
+
+        currentTrip = data;
+        document.getElementById('lockScreen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        initDashboard(data);
+
+      } catch (err) {
+        console.error('Supabase error:', err);
+        showError('Connection error. Please try again.');
+      } finally {
+        unlockBtn.textContent = 'Unlock My Trip →';
+        unlockBtn.disabled = false;
+      }
+    }
+
+    function showError(msg) {
+      errorText.textContent = msg || 'Invalid access code. Please check and try again.';
+      errorText.style.display = 'block';
+      passcodeInput.classList.add('error');
+      setTimeout(() => passcodeInput.classList.remove('error'), 400);
+    }
+
+    // Lock out
+    document.getElementById('lockOutBtn').addEventListener('click', () => {
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('lockScreen').style.display = 'flex';
+      passcodeInput.value = '';
+      currentTrip = null;
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  TABS
+    // ═══════════════════════════════════════════════════════
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  DASHBOARD INIT — Populate everything from Supabase data
+    // ═══════════════════════════════════════════════════════
+    function initDashboard(trip) {
+      // Hero section
+      document.getElementById('tripTitle').textContent = trip.name;
+      document.getElementById('tripMeta').innerHTML = `
+        <span>📅 ${trip.dates}</span>
+        <span>👥 ${trip.travelers} travelers</span>
+        <span>📍 ${trip.location}</span>
+        ${trip.booking_ref ? `<span>🎫 Booking: ${trip.booking_ref}</span>` : ''}
+      `;
+
+      // Progress
+      const pct = trip.progress || 0;
+      document.getElementById('progressPct').textContent = pct + '%';
+      const days = trip.days || [];
+      const doneCount = days.filter(d => d.status === 'done').length;
+      document.getElementById('progressSubText').textContent =
+        `Day ${doneCount + 1} of ${days.length} complete`;
+      setTimeout(() => {
+        document.getElementById('progressFill').style.width = pct + '%';
+      }, 300);
+
+      // Next stop
+      document.getElementById('nextStopVal').textContent = trip.next_stop || '—';
+      document.getElementById('nextEtaVal').textContent = trip.eta || '—';
+
+      // Build tab content
+      buildItinerary(trip);
+      buildWeather(trip);
+      buildChecklist(trip);
+      buildEmergency(trip);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  BUILD ITINERARY from trip.days (jsonb)
+    // ═══════════════════════════════════════════════════════
+    function buildItinerary(trip) {
+      const container = document.getElementById('itinerary');
+      container.innerHTML = '';
+      const days = trip.days || [];
+
+      if (!days.length) {
+        container.innerHTML = '<p style="color:var(--muted);padding:20px">No itinerary data available for this tour.</p>';
+        return;
+      }
+
+      days.forEach(day => {
+        const group = document.createElement('div');
+        group.className = 'day-group';
+        const dayLabel = document.createElement('div');
+        dayLabel.className = 'day-label';
+        dayLabel.textContent = day.label;
+        group.appendChild(dayLabel);
+
+        (day.activities || []).forEach(act => {
+          const card = document.createElement('div');
+          card.className = 'activity-card' + (act.status === 'done' ? ' done' : '');
+          const statusMap = { done: 'status-done', now: 'status-now', upcoming: 'status-upcoming' };
+          const statusLabel = { done: 'Done', now: 'In Progress', upcoming: 'Upcoming' };
+          card.innerHTML = `
+            <div class="act-check">${act.status === 'done' ? '✓' : ''}</div>
+            <div class="act-icon">${act.icon || '📌'}</div>
+            <div style="flex:1">
+              <div class="act-name">${act.name}</div>
+              <div class="act-meta">
+                <span>🕐 ${act.time || '—'}</span>
+                ${act.duration && act.duration !== '—' ? `<span>⏱ ${act.duration}</span>` : ''}
+              </div>
+              ${act.tip ? `<div class="act-tips">💡 ${act.tip}</div>` : ''}
+            </div>
+            <span class="status-badge ${statusMap[act.status] || 'status-upcoming'}">${statusLabel[act.status] || 'Upcoming'}</span>
+          `;
+          card.addEventListener('click', () => {
+            const isDone = card.classList.toggle('done');
+            card.querySelector('.act-check').textContent = isDone ? '✓' : '';
+          });
+          group.appendChild(card);
+        });
+        container.appendChild(group);
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  BUILD WEATHER from trip.weather (jsonb)
+    // ═══════════════════════════════════════════════════════
+    function buildWeather(trip) {
+      const container = document.getElementById('weatherCards');
+      container.innerHTML = '';
+      const data = trip.weather || [];
+
+      if (!data.length) {
+        container.innerHTML = '<p style="color:var(--muted);padding:20px">No weather data available.</p>';
+        return;
+      }
+
+      data.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'weather-card';
+        card.innerHTML = `
+          <div class="weather-icon">${d.icon || '🌤️'}</div>
+          <div class="weather-day">${d.day}</div>
+          <div class="weather-temp">${(d.temp || '—').split('/')[0]}</div>
+          <div style="font-size:10px;color:var(--muted)">${(d.temp || '—/—').split('/')[1] || ''} low</div>
+          <div class="weather-desc">${d.desc || ''}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">💧 Rain: ${d.rain || '—'}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  BUILD CHECKLIST from trip.checklist (jsonb)
+    // ═══════════════════════════════════════════════════════
+    function buildChecklist(trip) {
+      const container = document.getElementById('checklistContent');
+      container.innerHTML = '';
+      const sections = trip.checklist || [];
+
+      if (!sections.length) {
+        container.innerHTML = '<p style="color:var(--muted);padding:20px">No checklist data available.</p>';
+        return;
+      }
+
+      const saved = JSON.parse(localStorage.getItem('checklist_' + trip.access_code) || '{}');
+
+      sections.forEach(section => {
+        const sec = document.createElement('div');
+        sec.className = 'checklist-section';
+        sec.innerHTML = `<div class="checklist-title">${section.title}</div>`;
+        const grid = document.createElement('div');
+        grid.className = 'checklist-items';
+        (section.items || []).forEach(item => {
+          const div = document.createElement('div');
+          const key = 'chk_' + item.replace(/\s/g, '_');
+          div.className = 'check-item' + (saved[key] ? ' checked' : '');
+          div.innerHTML = `<div class="check-box">${saved[key] ? '✓' : ''}</div><span>${item}</span>`;
+          div.addEventListener('click', () => {
+            const isChecked = div.classList.toggle('checked');
+            div.querySelector('.check-box').textContent = isChecked ? '✓' : '';
+            saved[key] = isChecked;
+            try { localStorage.setItem('checklist_' + trip.access_code, JSON.stringify(saved)); } catch (e) { }
+          });
+          grid.appendChild(div);
+        });
+        sec.appendChild(grid);
+        container.appendChild(sec);
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  BUILD EMERGENCY from trip.emergency_contacts (jsonb)
+    // ═══════════════════════════════════════════════════════
+    function buildEmergency(trip) {
+      const container = document.getElementById('emergencyCards');
+      container.innerHTML = '';
+      const contacts = trip.emergency_contacts || [];
+
+      contacts.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'sos-card';
+        card.innerHTML = `
+          <div class="sos-name">${c.name}</div>
+          <div class="sos-number">${c.num}</div>
+          <div class="sos-note">${c.note}</div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Medical facility
+      const med = trip.medical_facility || {};
+      if (med.name) {
+        document.getElementById('medFacilityName').innerHTML = `<strong>${med.name}</strong>`;
+        document.getElementById('medFacilityAddr').textContent = med.address || '';
+        document.getElementById('medFacilityPhone').textContent = '📞 ' + (med.phone || '—');
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  NOTES (auto-save per tour code)
+    // ═══════════════════════════════════════════════════════
+    const notesArea = document.getElementById('notesArea');
+    let savedNotes = '';
+    try { savedNotes = localStorage.getItem('tripNotes') || ''; } catch (e) { }
+    notesArea.value = savedNotes;
+    notesArea.addEventListener('input', () => {
+      const key = currentTrip ? 'tripNotes_' + currentTrip.access_code : 'tripNotes';
+      try { localStorage.setItem(key, notesArea.value); } catch (e) { }
+      document.getElementById('notesSaved').textContent = 'Auto-saved ' + new Date().toLocaleTimeString();
+    });
+
+    function exportNotes() {
+      document.getElementById('notesSaved').textContent = '✓ Saved at ' + new Date().toLocaleTimeString();
+    }
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      alert('Trip PDF generated! In production, this would trigger a print/download of your full itinerary.');
+      window.print();
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  AUTO-UNLOCK from URL param (optional)
+    //  e.g. track-my-tour.html?code=THRLL23
+    // ═══════════════════════════════════════════════════════
+    (function autoUnlockFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const urlCode = params.get('code');
+      if (urlCode) {
+        passcodeInput.value = urlCode;
+        unlock();
+      }
+    })();
+  </script>
+
+
+
+
+  <!-- AD SLOT 3: Universal Ad Container (Pre-Footer) -->
+  <div class="text-center" style="max-width:1100px;margin:20px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 3 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <!-- Footer from Contact page -->
+  <footer id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="footer-heading d-inline-block position-relative">
+            Seven Destination: Premier Tour & Travel in Kolkata, West Bengal
+          </h2>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Get In Touch -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="footer-section">
+            <h5>Get In Touch</h5>
+            <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                  class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                  </svg></span></a></p>
+            <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                email@sevendestination.com</a></p>
+            <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                  class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala Road, Bally,
+                Howrah 711201</a></p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-section">
+            <h5>Quick Links</h5>
+            <div class="row">
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li><a href="https://www.sevendestination.com/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Home</a></li>
+                  <li><a href="https://www.sevendestination.com/package/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Packages</a></li>
+                  <li><a href="https://www.sevendestination.com/car-rental/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Car Rental</a></li>
+                  <li><a href="https://www.sevendestination.com/hotels/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Hotel Booking</a></li>
+                  <li><a href="https://www.sevendestination.com/ticket-service/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Ticket Service</a></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li><a href="https://www.sevendestination.com/about-us/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>About Us</a></li>
+                  <li><a href="https://www.sevendestination.com/query/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Contact</a></li>
+                  <li><a href="https://www.sevendestination.com/terms-and-conditions/"><i
+                        class="fas fa-chevron-right me-2" style="font-size: 0.8rem;"></i>Terms & Conditions</a></li>
+                  <li><a href="https://www.sevendestination.com/privacy-policy/"><i class="fas fa-chevron-right me-2"
+                        style="font-size: 0.8rem;"></i>Privacy Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Follow Us -->
+        <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+          <div class="footer-section">
+            <h5>Follow Us</h5>
+            <p class="mb-3 text-muted">Stay connected with us on social media for latest updates and travel tips.</p>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook"
+                aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube"
+                aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram"
+                aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn"
+                aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest"
+                aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="row mt-5">
+        <div class="col-12" data-aos="fade-up">
+          <div class="trust-badges text-center">
+            <span class="me-3 mb-2 d-inline-block text-muted">Trusted By:</span>
+            <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+              class="text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Reviews"
+                title="Google Reviews" loading="lazy">
+            </a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+              target="_blank" rel="noopener" class="text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor"
+                title="TripAdvisor Reviews" loading="lazy" style="background: white; border-radius: 4px; padding: 2px;">
+            </a>
+            <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+              target="_blank" rel="noopener" class="text-decoration-none">
+              <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial"
+                title="JustDial Verified" loading="lazy" style="background: white; border-radius: 4px; padding: 2px;">
+            </a>
+            <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+              class="text-decoration-none">
+              <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart"
+                title="IndiaMart Trusted" loading="lazy" style="background: white; border-radius: 4px; padding: 2px;">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://www.sevendestination.com/">Home</a> |
+            <a href="https://www.sevendestination.com/about-us/">Our Profile</a> |
+            <a href="https://www.sevendestination.com/package/">Tour Package</a> |
+            <a href="https://www.sevendestination.com/car-rental/">Car Rental</a> |
+            <a href="https://www.sevendestination.com/hotels/">Hotel Booking</a> |
+            <a href="https://www.sevendestination.com/ticket-service/">Ticketing</a> |
+            <a href="#">News & Events</a> |
+            <a href="#">Photo Gallery</a> |
+            <a href="#">Videos</a> |
+            <a href="#">Testimonials</a> |
+            <a href="#">Destinations</a> |
+            <a href="#">Site Map</a> |
+            <a href="https://www.sevendestination.com/query/">Contact us</a> |
+            <a href="#">Career</a>
+          </div>
+
+          <div class="popular-destinations" data-aos="fade-up" data-aos-delay="200">
+            <p>Popular Destinations</p>
+            <div class="dest-list">
+              <span>Jaipur</span><span>Agra</span><span>Goa</span><span>Kerala</span><span>Varanasi</span><span>Mumbai</span><span>Delhi</span><span>Udaipur</span><span>Shimla</span><span>Rishikesh
+                &
+                Haridwar</span><span>Amritsar</span><span>Kolkata</span><span>Jodhpur</span><span>Ooty</span><span>Leh-Ladakh</span><span>Mysore</span><span>Darjeeling</span><span>Rann
+                of Kutch</span><span>Khajuraho</span><span>Puducherry</span>
+            </div>
+          </div>
+
+          <div class="divider" data-aos="fade-up" data-aos-delay="300"></div>
+
+          <div class="travel-agencies" data-aos="fade-up" data-aos-delay="400">
+            <div>
+              <p>Travel Agency in Kolkata</p>
+              <p>Travel Agency in Howrah</p>
+              <p>Travel Agency in Liluah</p>
+              <p>Travel Agency in Balur</p>
+              <p>Travel Agency in Bally</p>
+              <p>Travel Agency in Barabazaar</p>
+              <p>Travel Agency in Tollygunge</p>
+            </div>
+            <div>
+              <p>Travel Agency in Sealdah</p>
+              <p>Travel Agency in New Alipore</p>
+              <p>Travel Agency in Dum Dum</p>
+              <p>Travel Agency in Shyam bazar</p>
+              <p>Travel Agency in Dunlop</p>
+              <p>Travel Agency in 24 South Pargana</p>
+              <p>Travel Agency in Khadagpur</p>
+            </div>
+            <div>
+              <p>Travel Agency in Shibpur</p>
+              <p>Travel Agency in Hooghly</p>
+              <p>Travel Agency in Salt lake</p>
+              <p>Travel Agency in New Town</p>
+              <p>Travel Agency in Naihati</p>
+              <p>Travel Agency in Kalyani</p>
+            </div>
+            <div>
+              <p>Travel Agency in Konnagar</p>
+              <p>Travel Agency in Rishra</p>
+              <p>Travel Agency in Uttarpara</p>
+              <p>Travel Agency in Hindmotor</p>
+              <p>Travel Agency in Uluberia</p>
+            </div>
+          </div>
+
+          <div class="copyright-text" data-aos="fade-up" data-aos-delay="500">
+            All content and images on this website are copyrighted by their respective owners. This website is intended
+            to promote these works, and no endorsement of the artist is implied. Unauthorized use is prohibited by law.
+          </div>
+
+          <div class="divider" data-aos="fade-up" data-aos-delay="600"></div>
+
+          <div class="copyright" data-aos="fade-up" data-aos-delay="700">
+            <p>&copy;
+              <script>document.write(new Date().getFullYear())</script> Seven Destination Tour & Travel. All rights
+              reserved. | Designed with <i class="fas fa-heart text-danger" aria-hidden="true"></i> in India
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal (kept for video use on pages) -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background: transparent; border: none;">
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/OR0TQxVKRzc" title="Seven Destination Video" allowfullscreen
+              style="border-radius: 15px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    });
+
+    document.querySelectorAll('.timeline-item, .value-card, .founder-card').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "all 0.6s ease";
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>

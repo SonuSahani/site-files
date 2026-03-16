@@ -1,0 +1,1728 @@
+﻿<!-- Travel Gear Shop Snippet -->
+<!-- Google Merchant Product Schemas -->
+
+
+<link rel="stylesheet" href="elementor_styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<style>
+    .hand-drawn-highlight {
+        position: relative;
+        display: inline-block;
+        padding: 6px 16px;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% + 24px);
+        height: calc(100% + 20px);
+        transform: translate(-50%, -50%) rotate(-5deg);
+        pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+        fill: none;
+        stroke: #e74c3c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+        stroke: rgba(231, 76, 60, 0.4);
+        stroke-width: 2;
+        stroke-dasharray: 320;
+        stroke-dashoffset: 320;
+        animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+        0% {
+            stroke-dashoffset: 300
+        }
+
+        40% {
+            stroke-dashoffset: 0
+        }
+
+        60% {
+            stroke-dashoffset: 0
+        }
+
+        100% {
+            stroke-dashoffset: -300
+        }
+    }
+
+    .trust-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 15px 0;
+        align-items: center;
+    }
+
+    .trust-badges img {
+        height: auto;
+        max-width: 120px;
+        max-height: 70px;
+        object-fit: contain;
+        filter: grayscale(1);
+        transition: all .3s ease;
+    }
+
+    .trust-badges img:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    /* Sticker Navbar */
+    .sticky-top {
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+    }
+
+    /* Product Card Enhancements (appended to base .product-card below) */
+
+    .product-card .quick-add-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+
+    .product-card:hover .quick-add-btn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .product-card .stars {
+        color: #ffc107;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .product-card .original-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 0.9em;
+        margin-right: 5px;
+    }
+
+    /* Toast Notification */
+    #toast-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1060;
+    }
+
+    .toast-msg {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 30px;
+        margin-top: 10px;
+        animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Value Proposition Bar */
+    .value-prop-bar {
+        background: var(--primary-color);
+        color: #fff;
+        padding: 12px 0;
+        font-size: 0.85rem;
+    }
+
+    .value-prop-bar .prop-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 5px 0;
+    }
+
+    .value-prop-bar .prop-item i {
+        font-size: 1.2rem;
+        color: #ffc107;
+    }
+
+    /* Trust Elements in Modal */
+    .modal-trust-strip {
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        padding: 12px 0;
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .modal-trust-strip .trust-item {
+        text-align: center;
+        font-size: 0.7rem;
+        color: #777;
+    }
+
+    .modal-trust-strip .trust-item i {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    /* Scroll To Top */
+    .scroll-top-btn {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 45px;
+        height: 45px;
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1050;
+        transition: all 0.3s;
+    }
+
+    .scroll-top-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .scroll-top-btn.visible {
+        display: flex;
+    }
+
+    /* Results Counter */
+    .results-counter {
+        text-align: center;
+        padding: 10px;
+        color: #666;
+        font-size: 0.9rem;
+        background: #f9f9f9;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .results-counter strong {
+        color: var(--primary-color);
+    }
+
+    .footer-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.95rem;
+        transition: color .3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .popular-destinations {
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .popular-destinations p {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .popular-destinations span {
+        color: #adb5bd;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: all .3s ease;
+    }
+
+    .popular-destinations span:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .travel-agencies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 15px 0;
+    }
+
+    .travel-agencies div {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .travel-agencies p {
+        color: #808080;
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        transition: color .3s ease;
+    }
+
+    .travel-agencies div:hover p {
+        color: var(--accent-color);
+    }
+
+    .copyright-text {
+        color: #ffcccc;
+        font-size: 0.7rem;
+        text-align: center;
+        margin: 10px 0;
+        line-height: 1.4;
+        background: rgba(255, 0, 0, 0.1);
+        padding: 8px;
+        border-radius: 8px;
+        border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        margin: 10px 0;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #adb5bd;
+        font-size: 0.8rem;
+    }
+
+    /* Product Cards */
+    .product-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform .3s ease, box-shadow .3s ease;
+        height: 100%;
+        border: none;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        transition: transform .5s ease;
+    }
+
+    .product-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .product-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: var(--accent-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        z-index: 10;
+    }
+
+    .product-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+
+    /* Modal */
+    .product-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        z-index: 2000;
+        display: none;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+
+    .product-modal-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .product-modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        background: #fff;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        transition: transform .3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-modal-overlay.active .product-modal-content {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    @media(max-width:768px) {
+        .product-modal-content {
+            width: 100%;
+            height: 100%;
+            max-height: 100%;
+            top: 0;
+            left: 0;
+            transform: translate(0, 100%);
+            border-radius: 0;
+        }
+
+        .product-modal-overlay.active .product-modal-content {
+            transform: translate(0, 0);
+        }
+    }
+
+    @media(min-width:769px) {
+        .product-modal-content {
+            width: 80%;
+            max-width: 80%;
+            height: 80vh;
+            max-height: 80vh;
+        }
+
+        .close-desktop {
+            display: flex
+        }
+
+        .close-mobile {
+            display: none
+        }
+
+        .modal-nav {
+            background: transparent;
+            position: absolute
+        }
+    }
+
+    .modal-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+        background: transparent;
+    }
+
+    .modal-close-btn {
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all .2s;
+    }
+
+    .modal-close-btn:hover {
+        background: var(--accent-color);
+        color: white;
+    }
+
+    .close-desktop {
+        display: none
+    }
+
+    .close-mobile {
+        display: block
+    }
+
+    .modal-body-custom {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    @media(min-width:769px) {
+        .modal-body-custom {
+            flex-direction: row;
+            height: 100%;
+        }
+    }
+
+    .modal-image {
+        flex: 1;
+        min-height: 300px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    @media(min-width:769px) {
+        .modal-image {
+            min-height: auto
+        }
+    }
+
+    .modal-info {
+        flex: 1;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    .modal-price {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .modal-desc {
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        flex-grow: 1;
+    }
+
+    .purchase-system {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #eee;
+    }
+
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .qty-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all .2s;
+    }
+
+    .qty-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    .qty-input {
+        width: 60px;
+        text-align: center;
+        border: 1px solid #ddd;
+        height: 40px;
+        margin: 0 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .total-price {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .total-price span {
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    /* Cart Badge */
+    .cart-nav-btn {
+        position: relative;
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        padding: 8px 12px;
+    }
+
+    .cart-badge {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        background: #e74c3c;
+        color: #fff;
+        font-size: 0.65rem;
+        font-weight: 700;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart-badge.hidden {
+        display: none;
+    }
+
+    /* Cart Drawer */
+    .cart-drawer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 3000;
+        display: none;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+
+    .cart-drawer-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .cart-drawer {
+        position: fixed;
+        top: 0;
+        right: -420px;
+        width: 400px;
+        max-width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 3001;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+        transition: right .35s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-drawer.active {
+        right: 0;
+    }
+
+    .cart-drawer-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cart-drawer-header h3 {
+        margin: 0;
+        font-family: 'Playfair Display', serif;
+        color: var(--primary-color);
+        font-size: 1.4rem;
+    }
+
+    .cart-drawer-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #999;
+        transition: color .2s;
+    }
+
+    .cart-drawer-close:hover {
+        color: var(--primary-color);
+    }
+
+    .cart-drawer-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+    }
+
+    .cart-empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: #999;
+    }
+
+    .cart-empty i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        display: block;
+        color: #ddd;
+    }
+
+    .cart-item {
+        display: flex;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+        align-items: center;
+    }
+
+    .cart-item-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+    }
+
+    .cart-item-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .cart-item-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #333;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cart-item-price {
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        font-weight: 600;
+    }
+
+    .cart-item-qty {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 5px;
+    }
+
+    .cart-item-qty button {
+        width: 26px;
+        height: 26px;
+        border: 1px solid #ddd;
+        background: #fff;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart-item-qty button:hover {
+        background: var(--primary-color);
+        color: #fff;
+        border-color: var(--primary-color);
+    }
+
+    .cart-item-qty span {
+        font-weight: 600;
+        font-size: 0.85rem;
+        min-width: 20px;
+        text-align: center;
+    }
+
+    .cart-item-remove {
+        background: none;
+        border: none;
+        color: #ccc;
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 5px;
+        transition: color .2s;
+    }
+
+    .cart-item-remove:hover {
+        color: #e74c3c;
+    }
+
+    .cart-drawer-footer {
+        padding: 15px 20px;
+        border-top: 1px solid #eee;
+        background: #f9f9f9;
+    }
+
+    .cart-total-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--primary-color);
+    }
+
+    .cart-checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background: #25D366;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .3s;
+        text-align: center;
+    }
+
+    .cart-checkout-btn:hover {
+        background: #1da851;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .cart-checkout-btn i {
+        margin-right: 8px;
+    }
+
+    .cart-clear-btn {
+        display: block;
+        text-align: center;
+        margin-top: 8px;
+        color: #999;
+        font-size: 0.8rem;
+        cursor: pointer;
+        border: none;
+        background: none;
+        text-decoration: underline;
+    }
+
+    .cart-clear-btn:hover {
+        color: #e74c3c;
+    }
+
+    .btn-whatsapp {
+        background: #25D366;
+        color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+        background: #1da851;
+        color: #fff;
+    }
+
+    .navbar {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbar.scrolled {
+        background-color: #fff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-brand img {
+        height: 40px;
+        transition: height 0.3s ease-in-out;
+    }
+
+    .navbar.scrolled .navbar-brand img {
+        height: 30px;
+    }
+</style>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+            <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png" alt="Seven Destination">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car
+                        Rental</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel
+                        Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket
+                        Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a></li>
+            </ul>
+            <button class="cart-nav-btn" onclick="toggleCartDrawer()" aria-label="Shopping Cart" title="Shopping Cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge hidden" id="cartBadge">0</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="page-header" style="padding:150px 0 100px; background:linear-gradient(135deg,var(--light-color),white);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0 text-start">
+                <h1 class="section-title mb-3" style="font-size:3.5rem;">Travel Gear Shop</h1>
+                <p class="lead mb-4">Seven Destination provides premium travel essentials. Equip yourself for the
+                    journey ahead.</p>
+                <div class="hero-stats">
+                    <div class="stat-item"><span class="stat-number">50+</span><span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Quality</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-number">Pan-India</span><span class="stat-label">Delivery</span></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--card-shadow);">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/Shop-Page.jpg" alt="Adventure Travel" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Value Proposition Bar -->
+<section class="value-prop-bar">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-6 col-md-3">
+                <div class="prop-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Free Shipping</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="prop-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Checkout</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="prop-item">
+                    <i class="fas fa-undo"></i>
+                    <span>Easy Returns</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="prop-item">
+                    <i class="fas fa-headset"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filter & Sort Toolbar -->
+<section class="py-3 bg-white border-bottom sticky-md-top" style="top:76px; z-index:990; box-shadow:0 2px 10px rgba(0,0,0,0.05);">
+    <div class="container">
+        <div class="row g-2 align-items-center">
+            <!-- Search -->
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" id="searchInput" class="form-control bg-light border-start-0 ps-0" placeholder="Search products...">
+                </div>
+            </div>
+            <!-- Category Filter -->
+            <div class="col-md-3">
+                <select id="categoryFilter" class="form-select bg-light border-0" title="Filter by Category" aria-label="Filter by Category">
+                    <option value="all">All Categories</option>
+                    <!-- Populated by JS -->
+                </select>
+            </div>
+            <!-- Sort -->
+            <div class="col-md-3">
+                <select id="sortFilter" class="form-select bg-light border-0" title="Sort products" aria-label="Sort products">
+                    <option value="default">Sort by: Featured</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A to Z</option>
+                </select>
+            </div>
+            <!-- Trending Toggle -->
+            <div class="col-md-2 text-md-end">
+                <div class="form-check form-switch d-inline-block p-2 rounded bg-light mb-0">
+                    <input class="form-check-input" type="checkbox" id="trendingToggle" style="cursor:pointer;">
+                    <label class="form-check-label fw-bold small text-uppercase" for="trendingToggle" style="cursor:pointer;">🔥 Trending</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product Sections (rendered by JS) -->
+<div id="productSections"></div>
+
+<!-- Product Modal -->
+<div id="productModal" class="product-modal-overlay" onclick="closeModalOutside(event)">
+    <div class="product-modal-content">
+        <div class="modal-nav">
+            <button class="modal-close-btn close-mobile" onclick="closeModal()"><i class="fas fa-arrow-left"></i></button>
+            <div style="flex-grow:1;"></div>
+            <button class="modal-close-btn close-desktop" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body-custom">
+            <div class="modal-image" id="modalImage"></div>
+            <div class="modal-info">
+                <h2 class="modal-title" id="modalTitle">Product Name</h2>
+                <div class="modal-price" id="modalPrice">₹0</div>
+                <p class="modal-desc" id="modalDesc">Description</p>
+                <div class="purchase-system">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                        <input type="number" id="qtyInput" class="qty-input" value="1" min="1" readonly="">
+                        <button class="qty-btn" onclick="updateQty(1)">+</button>
+                    </div>
+                    <div class="total-price">Total: <span id="totalPrice">₹0</span></div>
+                    <div class="d-grid gap-2">
+                        <button class="btn-custom" onclick="addToCartFromModal()"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        <button class="btn-custom btn-whatsapp" onclick="buyNow()"><i class="fab fa-whatsapp me-2"></i>Buy Now via WhatsApp</button>
+                    </div>
+                    <div class="modal-trust-strip">
+                        <div class="trust-item"><i class="fas fa-truck"></i>Free Delivery</div>
+                        <div class="trust-item"><i class="fas fa-shield-alt"></i>Secure</div>
+                        <div class="trust-item"><i class="fas fa-undo"></i>Easy Returns</div>
+                        <div class="trust-item"><i class="fas fa-check-circle"></i>Genuine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Drawer -->
+<div id="cartOverlay" class="cart-drawer-overlay" onclick="toggleCartDrawer()"></div>
+<div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+        <h3><i class="fas fa-shopping-cart me-2"></i>Your Cart</h3>
+        <button class="cart-drawer-close" onclick="toggleCartDrawer()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-drawer-body" id="cartBody"></div>
+
+    <!-- Checkout Form -->
+    <div id="checkoutForm" style="display:none; padding:15px; background:#f9f9f9; border-top:1px solid #eee;">
+        <h5 class="mb-3">Checkout Details</h5>
+        <div class="mb-3"><input type="text" id="custName" class="form-control" placeholder="Full Name *" required="">
+        </div>
+        <div class="mb-3"><input type="tel" id="custPhone" class="form-control" placeholder="Phone (10 digits) *" required="" pattern="[0-9]{10}"></div>
+        <div class="mb-3"><textarea id="custAddress" class="form-control" placeholder="Shipping Address *" rows="3" required=""></textarea></div>
+        <div class="d-grid">
+            <button class="cart-checkout-btn" onclick="submitCheckout()"><i class="fab fa-whatsapp"></i> Place Order on
+                WhatsApp</button>
+            <button class="btn btn-link text-muted mt-2" onclick="showCartItems()">Back to Cart</button>
+        </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cartFooter" style="display:none;">
+        <div class="cart-total-row"><span>Grand Total</span><span id="cartGrandTotal">₹0</span></div>
+        <div class="text-success small mb-3 fw-bold"><i class="fas fa-truck me-1"></i> Free Delivery by <span id="deliveryDate"></span></div>
+        <button class="cart-checkout-btn" onclick="showCheckoutForm()">Proceed to Checkout</button>
+        <button class="cart-clear-btn" onclick="clearCart()">Clear Cart</button>
+    </div>
+</div>
+
+<!-- Scroll To Top Button -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="footer-heading">Seven Destination: Premier Tour &amp; Travel in Kolkata, West Bengal</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="footer-section">
+                    <h5>Get In Touch</h5>
+                    <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                                    <ellipse cx="50" cy="20" rx="48" ry="18"></ellipse>
+                                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16"></ellipse>
+                                </svg></span></a></p>
+                    <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2" aria-hidden="true"></i> email@sevendestination.com</a></p>
+                    <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala
+                            Road, Bally, Howrah 711201</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#car-rental">Car Rental</a></li>
+                        <li><a href="#hotel-booking">Hotel Booking</a></li>
+                        <li><a href="#ticket-service">Ticket Service</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest" aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 text-center">
+            <div class="col-12">
+                <h5 class="mb-4 text-white-50">Trusted By</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+                    <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Reviews" class="mb-2" style="height:30px;" loading="lazy">
+                        <div class="small">Google Reviews</div>
+                    </a>
+                    <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor" class="mb-2" style="height:30px;background:white;border-radius:4px;padding:2px;" loading="lazy">
+                        <div class="small">TripAdvisor</div>
+                    </a>
+                    <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial" class="mb-2" style="height:30px;background:white;border-radius:4px;padding:2px;" loading="lazy">
+                        <div class="small">JustDial Verified</div>
+                    </a>
+                    <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart" class="mb-2" style="height:30px;background:white;border-radius:4px;padding:2px;" loading="lazy">
+                        <div class="small">IndiaMart Trusted</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="400"><a href="#home">Home</a> | <a href="#about">Our Profile</a> | <a href="#packages">Tour Package</a> | <a href="#car-rental">Car
+                Rental</a> | <a href="#hotel-booking">Hotel Booking</a> | <a href="#ticket-service">Ticketing</a> | <a href="#testimonials">News &amp; Events</a> | <a href="#destinations">Photo Gallery</a> | <a href="#testimonials">Videos</a> | <a href="#testimonials">Testimonials</a> | <a href="#destinations">Destinations</a> | <a href="#about">Site Map</a> | <a href="#contact">Contact
+                us</a> | <a href="#about">Career</a></div>
+        <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+            <p><strong>Popular Destinations</strong></p>
+            <div class="dest-list">
+                <span>Jaipur</span><span>Agra</span><span>Goa</span><span>Kerala</span><span>Varanasi</span><span>Mumbai</span><span>Delhi</span><span>Udaipur</span><span>Shimla</span><span>Rishikesh
+                    &amp;
+                    Haridwar</span><span>Amritsar</span><span>Kolkata</span><span>Jodhpur</span><span>Ooty</span><span>Leh-Ladakh</span><span>Mysore</span><span>Darjeeling</span><span>Rann
+                    of Kutch</span><span>Khajuraho</span><span>Puducherry</span>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+            <div>
+                <p>Travel Agency in Kolkata</p>
+                <p>Travel Agency in Howrah</p>
+                <p>Travel Agency in Liluah</p>
+                <p>Travel Agency in Balur</p>
+                <p>Travel Agency in Bally</p>
+                <p>Travel Agency in Barabazaar</p>
+                <p>Travel Agency in Tollygunge</p>
+            </div>
+            <div>
+                <p>Travel Agency in Sealdah</p>
+                <p>Travel Agency in New Alipore</p>
+                <p>Travel Agency in Dum Dum</p>
+                <p>Travel Agency in Shyam bazar</p>
+                <p>Travel Agency in Dunlop</p>
+                <p>Travel Agency in 24 South Pargana</p>
+                <p>Travel Agency in Khadagpur</p>
+            </div>
+            <div>
+                <p>Travel Agency in Shibpuir</p>
+                <p>Travel Agency in Hooghly</p>
+                <p>Travel Agency in Salt lake</p>
+                <p>Travel Agency in New Town</p>
+                <p>Travel Agency in Naihati</p>
+                <p>Travel Agency in Kalyani</p>
+            </div>
+            <div>
+                <p>Travel Agency in Konnagar</p>
+                <p>Travel Agency in Rishra</p>
+                <p>Travel Agency in Uttrapara</p>
+                <p>Travel Agency in Hindmotor</p>
+                <p>Travel Agency in Uluberia</p>
+            </div>
+        </div>
+        <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">All content and images on this website are
+            copyrighted by their respective owners. This website is intended to promote these works, and no endorsement
+            of the artist is implied. Unauthorized use is prohibited by law.</div>
+        <div class="divider"></div>
+        <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+            <p>© 2025 Seven Destination Tour &amp; Travel. All rights reserved. | Designed with <i class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    /* ===== PRODUCT DATA ===== */
+    /* ===== PRODUCT DATA ===== */
+    const PRODUCTS = [
+        // 1. Mountain & Trekking Essentials
+        { id: 'trek-01', title: 'Trekking Poles', price: 900, priceRange: '₹900 - ₹2,500', img: 'https://placehold.co/800x600/2c3e50/fff?text=Trekking+Poles', thumb: 'https://placehold.co/400x300/2c3e50/fff?text=Trekking+Poles', desc: 'Telescopic or foldable poles made of aluminum or carbon fiber. Selling Point: Reduces knee strain by 25% on descents.', badge: 'Essential', category: 'Mountain & Trekking Essentials', catDesc: 'Best for: Customers booking trips to Sikkim, Darjeeling, or the Himalayas.' },
+        { id: 'trek-02', title: 'Rain Ponchos', price: 500, priceRange: '₹500 - ₹1,200', img: 'https://placehold.co/800x600/3498db/fff?text=Rain+Ponchos', thumb: 'https://placehold.co/400x300/3498db/fff?text=Rain+Ponchos', desc: 'Lightweight, reusable waterproof ponchos that cover the backpack. Selling Point: Essential for unpredictable mountain weather.', badge: '', category: 'Mountain & Trekking Essentials', catDesc: '' },
+        { id: 'trek-03', title: 'Dry-Fit Tees', price: 500, priceRange: '₹500 - ₹900', img: 'https://placehold.co/800x600/95a5a6/fff?text=Dry-Fit+Tees', thumb: 'https://placehold.co/400x300/95a5a6/fff?text=Dry-Fit+Tees', desc: 'Polyester/Spandex blend t-shirts that wick sweat. Selling Point: Keeps trekkers warm and dry (unlike cotton).', badge: '', category: 'Mountain & Trekking Essentials', catDesc: '' },
+        { id: 'trek-04', title: 'Headlamps', price: 600, priceRange: '₹600 - ₹1,500', img: 'https://placehold.co/800x600/e67e22/fff?text=Headlamps', thumb: 'https://placehold.co/400x300/e67e22/fff?text=Headlamps', desc: 'LED headlamps with adjustable bands and red-light mode. Selling Point: Hands-free lighting for early morning treks.', badge: '', category: 'Mountain & Trekking Essentials', catDesc: '' },
+        { id: 'trek-05', title: 'Crampons / Microspikes', price: 1200, priceRange: '₹1,200 - ₹3,000', img: 'https://placehold.co/800x600/7f8c8d/fff?text=Crampons', thumb: 'https://placehold.co/400x300/7f8c8d/fff?text=Crampons', desc: 'Anti-slip shoe attachments for snow/ice. Selling Point: Critical safety gear for high-altitude winter treks.', badge: 'Safety', category: 'Mountain & Trekking Essentials', catDesc: '' },
+
+        // 2. Smart Travel Accessories
+        { id: 'smart-01', title: 'Universal Travel Adapters', price: 900, priceRange: '₹900 - ₹1,800', img: 'https://placehold.co/800x600/2980b9/fff?text=Travel+Adapter', thumb: 'https://placehold.co/400x300/2980b9/fff?text=Travel+Adapter', desc: 'All-in-one plugs with USB-C and USB-A ports. Selling Point: One device for any country; eliminates charging anxiety.', badge: 'Hot', category: 'Smart Travel Accessories', catDesc: 'Best for: All travelers, good for up-selling during package booking.' },
+        { id: 'smart-02', title: 'Packing Cubes (Set)', price: 800, priceRange: '₹800 - ₹1,500', img: 'https://placehold.co/800x600/8e44ad/fff?text=Packing+Cubes', thumb: 'https://placehold.co/400x300/8e44ad/fff?text=Packing+Cubes', desc: 'Zippered fabric containers to organize luggage. Selling Point: Saves space and separates clean clothes from dirty laundry.', badge: '', category: 'Smart Travel Accessories', catDesc: '' },
+        { id: 'smart-03', title: 'Digital Luggage Scales', price: 500, priceRange: '₹500 - ₹900', img: 'https://placehold.co/800x600/2c3e50/fff?text=Luggage+Scale', thumb: 'https://placehold.co/400x300/2c3e50/fff?text=Luggage+Scale', desc: 'Portable handheld scales. Selling Point: Pays for itself by preventing airline excess baggage fees.', badge: '', category: 'Smart Travel Accessories', catDesc: '' },
+        { id: 'smart-04', title: 'Waterproof Phone Pouches', price: 250, priceRange: '₹250 - ₹500', img: 'https://placehold.co/800x600/3498db/fff?text=Phone+Pouch', thumb: 'https://placehold.co/400x300/3498db/fff?text=Phone+Pouch', desc: 'Clear, touch-sensitive pouches with neck straps. Selling Point: Essential for beach trips to take underwater photos.', badge: '', category: 'Smart Travel Accessories', catDesc: '' },
+
+        // 3. Comfort & Long-Haul Gear
+        { id: 'comf-01', title: 'Memory Foam Neck Pillows', price: 800, priceRange: '₹800 - ₹1,800', img: 'https://placehold.co/800x600/9b59b6/fff?text=Neck+Pillow', thumb: 'https://placehold.co/400x300/9b59b6/fff?text=Neck+Pillow', desc: 'Ergonomic pillows that compress into a small bag. Selling Point: Ensures sleep on long flights/trains.', badge: '', category: 'Comfort & Long-Haul Gear', catDesc: 'Best for: Families and seniors traveling by train or flight.' },
+        { id: 'comf-02', title: 'Compression Socks', price: 500, priceRange: '₹500 - ₹999', img: 'https://placehold.co/800x600/34495e/fff?text=Compression+Socks', thumb: 'https://placehold.co/400x300/34495e/fff?text=Compression+Socks', desc: 'Tight-fitting socks that improve blood flow. Selling Point: Prevents swelling and DVT during long travel.', badge: '', category: 'Comfort & Long-Haul Gear', catDesc: '' },
+        { id: 'comf-03', title: 'Travel Toiletry Kits', price: 600, priceRange: '₹600 - ₹1,200', img: 'https://placehold.co/800x600/16a085/fff?text=Toiletry+Kit', thumb: 'https://placehold.co/400x300/16a085/fff?text=Toiletry+Kit', desc: 'Hanging organizer bags with leak-proof bottles. Selling Point: Keeps bathroom counters clean and liquids contained.', badge: '', category: 'Comfort & Long-Haul Gear', catDesc: '' },
+
+        // 4. Custom Branded Merchandise
+        { id: 'brand-01', title: 'Branded Sipper Bottle', price: 500, priceRange: '₹500+', img: 'https://placehold.co/800x600/e74c3c/fff?text=Sipper+Bottle', thumb: 'https://placehold.co/400x300/e74c3c/fff?text=Sipper+Bottle', desc: 'Aluminum bottles with Seven Destination logo. Selling Point: Durable and eco-friendly souvenir.', badge: 'Brand', category: 'Custom Branded Merchandise', catDesc: 'Best for: Building loyalty for Seven Destination Tour Travels.' },
+        { id: 'brand-02', title: 'Custom Luggage Tag', price: 150, priceRange: '₹150', img: 'https://placehold.co/800x600/f39c12/fff?text=Luggage+Tag', thumb: 'https://placehold.co/400x300/f39c12/fff?text=Luggage+Tag', desc: 'Durable tag with agency contact info. Selling Point: Helps recover lost luggage.', badge: '', category: 'Custom Branded Merchandise', catDesc: '' },
+        { id: 'brand-03', title: 'Squad T-Shirt', price: 500, priceRange: '₹500 - ₹800', img: 'https://placehold.co/800x600/2ecc71/fff?text=Squad+T-Shirt', thumb: 'https://placehold.co/400x300/2ecc71/fff?text=Squad+T-Shirt', desc: 'Group tour t-shirt (e.g., "Sikkim Explorer"). Selling Point: Great for group photos and team spirit.', badge: '', category: 'Custom Branded Merchandise', catDesc: '' },
+
+        // 5. On-The-Go Essentials (Pet)
+        { id: 'pet-01', title: 'Portable Water Bottle (Pet)', price: 500, priceRange: '₹500 - ₹999', img: 'https://placehold.co/800x600/3498db/fff?text=Pet+Bottle', thumb: 'https://placehold.co/400x300/3498db/fff?text=Pet+Bottle', desc: 'Bottle with attached trough/bowl. Selling Point: Lets pets drink one-handed without wasting water.', badge: 'Pet Essential', category: 'Pet Travel: On-The-Go', catDesc: 'Best for: All pet owners traveling by road or train.' },
+        { id: 'pet-02', title: 'Collapsible Silicone Bowl', price: 250, priceRange: '₹250 - ₹450', img: 'https://placehold.co/800x600/e67e22/fff?text=Silicone+Bowl', thumb: 'https://placehold.co/400x300/e67e22/fff?text=Silicone+Bowl', desc: 'Food/water bowl that folds flat. Selling Point: Clips onto backpacks; takes zero space.', badge: '', category: 'Pet Travel: On-The-Go', catDesc: '' },
+        { id: 'pet-03', title: 'Poop Bag Dispenser', price: 300, priceRange: '₹300 - ₹600', img: 'https://placehold.co/800x600/2c3e50/fff?text=Poop+Bags', thumb: 'https://placehold.co/400x300/2c3e50/fff?text=Poop+Bags', desc: 'Small capsule with biodegradable bags. Selling Point: Mandatory for responsible travel in cities.', badge: '', category: 'Pet Travel: On-The-Go', catDesc: '' },
+        { id: 'pet-04', title: 'Calming Spray/Chews', price: 600, priceRange: '₹600 - ₹1,200', img: 'https://placehold.co/800x600/9b59b6/fff?text=Calming+Spray', thumb: 'https://placehold.co/400x300/9b59b6/fff?text=Calming+Spray', desc: 'Natural anxiety relief (Lavender/Chamomile). Selling Point: Helps pets stay calm during travel.', badge: '', category: 'Pet Travel: On-The-Go', catDesc: '' },
+
+        // 6. Car & Safety Gear (Pet)
+        { id: 'pet-car-01', title: 'Car Seat Cover (Hammock)', price: 1800, priceRange: '₹1,800 - ₹3,500', img: 'https://placehold.co/800x600/34495e/fff?text=Seat+Cover', thumb: 'https://placehold.co/400x300/34495e/fff?text=Seat+Cover', desc: 'Waterproof, heavy-duty back seat cover. Selling Point: Protects car upholstery from fur and mud.', badge: 'Best Seller', category: 'Pet Travel: Car Safety', catDesc: 'Best for: Road trips to hill stations or weekend getaways.' },
+        { id: 'pet-car-02', title: 'Pet Seat Belt', price: 400, priceRange: '₹400 - ₹800', img: 'https://placehold.co/800x600/c0392b/fff?text=Seat+Belt', thumb: 'https://placehold.co/400x300/c0392b/fff?text=Seat+Belt', desc: 'Nylon strap that clicks into car buckle. Selling Point: Prevents jumping; critical for highway safety.', badge: 'Safety', category: 'Pet Travel: Car Safety', catDesc: '' },
+        { id: 'pet-car-03', title: 'Transparent Backpack (Pet)', price: 2500, priceRange: '₹2,500 - ₹4,500', img: 'https://placehold.co/800x600/f1c40f/fff?text=Pet+Backpack', thumb: 'https://placehold.co/400x300/f1c40f/fff?text=Pet+Backpack', desc: 'Astronaut style bubble backpack for cats/small dogs. Selling Point: Trendy, safe for crowds.', badge: 'Trending', category: 'Pet Travel: Car Safety', catDesc: '' },
+
+        // 7. Adventure & Trekking Gear (Pet)
+        { id: 'pet-adv-01', title: 'Reflective Harness', price: 1200, priceRange: '₹1,200 - ₹2,500', img: 'https://placehold.co/800x600/e74c3c/fff?text=Harness', thumb: 'https://placehold.co/400x300/e74c3c/fff?text=Harness', desc: 'Padded harness with handle & reflective strips. Selling Point: Handle allows lifting dogs over obstacles.', badge: '', category: 'Pet Travel: Adventure', catDesc: 'Best for: Taking dogs to Himalayas or camping.' },
+        { id: 'pet-adv-02', title: 'Dog Hiking Boots', price: 1500, priceRange: '₹1,500 - ₹2,800', img: 'https://placehold.co/800x600/7f8c8d/fff?text=Dog+Boots', thumb: 'https://placehold.co/400x300/7f8c8d/fff?text=Dog+Boots', desc: 'Rubber-soled shoes for paws. Selling Point: Protects from hot tarmac, sharp rocks, and snow.', badge: '', category: 'Pet Travel: Adventure', catDesc: '' },
+        { id: 'pet-adv-03', title: 'LED Collar Light', price: 250, priceRange: '₹250 - ₹500', img: 'https://placehold.co/800x600/2ecc71/fff?text=Collar+Light', thumb: 'https://placehold.co/400x300/2ecc71/fff?text=Collar+Light', desc: 'Clip-on light for collars. Selling Point: Keeps pets visible at night.', badge: '', category: 'Pet Travel: Adventure', catDesc: '' },
+        { id: 'pet-adv-04', title: 'Pet Sleeping Bag', price: 2500, priceRange: '₹2,500 - ₹4,000', img: 'https://placehold.co/800x600/8e44ad/fff?text=Pet+Sleeping+Bag', thumb: 'https://placehold.co/400x300/8e44ad/fff?text=Pet+Sleeping+Bag', desc: 'Miniature waterproof sleeping bag. Selling Point: Keeps pets warm in tents.', badge: '', category: 'Pet Travel: Adventure', catDesc: '' },
+
+        // 8. Custom/Branded (Pet)
+        { id: 'pet-brand-01', title: 'Custom Engraved ID Tag', price: 300, priceRange: '₹300 - ₹500', img: 'https://placehold.co/800x600/f39c12/fff?text=ID+Tag', thumb: 'https://placehold.co/400x300/f39c12/fff?text=ID+Tag', desc: 'Metal tag with Pet Name + Owner Phone. Selling Point: Essential if pet gets lost.', badge: '', category: 'Pet Travel: Essentials', catDesc: '' },
+
+        // 9. Infants & Toddlers
+        { id: 'kid-01', title: 'Inflatable Airplane Bed (Fly Tot)', price: 2500, priceRange: '₹2,500 - ₹4,000', img: 'https://placehold.co/800x600/3498db/fff?text=Fly+Tot', thumb: 'https://placehold.co/400x300/3498db/fff?text=Fly+Tot', desc: 'Cushion fills gap between seats creating a flat bed. Selling Point: Keeps child quiet/sleeping on flights.', badge: 'Top Seller', category: 'Family Travel: Infants & Toddlers', catDesc: 'Parents will pay a premium for peace of mind.' },
+        { id: 'kid-02', title: 'Busy Boards / Quiet Books', price: 800, priceRange: '₹800 - ₹1,500', img: 'https://placehold.co/800x600/e67e22/fff?text=Busy+Board', thumb: 'https://placehold.co/400x300/e67e22/fff?text=Busy+Board', desc: 'Felt books with zippers/buttons. Selling Point: Keeps toddlers engaged without screens.', badge: '', category: 'Family Travel: Infants & Toddlers', catDesc: '' },
+        { id: 'kid-03', title: 'Volume-Limited Headphones', price: 1200, priceRange: '₹1,200 - ₹2,000', img: 'https://placehold.co/800x600/9b59b6/fff?text=Kid+Headphones', thumb: 'https://placehold.co/400x300/9b59b6/fff?text=Kid+Headphones', desc: 'Headphones limited to 85dB. Selling Point: Protects ears from loud engines.', badge: '', category: 'Family Travel: Infants & Toddlers', catDesc: '' },
+        { id: 'kid-04', title: 'Disposable Changing Mats (Pack)', price: 300, priceRange: '₹300', img: 'https://placehold.co/800x600/95a5a6/fff?text=Changing+Mats', thumb: 'https://placehold.co/400x300/95a5a6/fff?text=Changing+Mats', desc: 'Waterproof throw-away mats. Selling Point: Hygienic diaper changes on flights.', badge: '', category: 'Family Travel: Infants & Toddlers', catDesc: '' },
+
+        // 10. Elderly
+        { id: 'elder-01', title: 'Compression Socks (Medical)', price: 600, priceRange: '₹600 - ₹1,200', img: 'https://placehold.co/800x600/2c3e50/fff?text=Med+Socks', thumb: 'https://placehold.co/400x300/2c3e50/fff?text=Med+Socks', desc: 'Medical-grade socks. Selling Point: Prevents DVT and leg swelling.', badge: 'Health', category: 'Family Travel: Elderly Care', catDesc: 'Focus on circulation and reducing physical strain.' },
+        { id: 'elder-02', title: 'Inflatable Seat Cushion', price: 700, priceRange: '₹700 - ₹1,200', img: 'https://placehold.co/800x600/34495e/fff?text=Seat+Cushion', thumb: 'https://placehold.co/400x300/34495e/fff?text=Seat+Cushion', desc: 'Ring or square cushion. Selling Point: Relieves tailbone pain during long sitting.', badge: '', category: 'Family Travel: Elderly Care', catDesc: '' },
+        { id: 'elder-03', title: 'Weekly Pill Organizer', price: 250, priceRange: '₹250 - ₹500', img: 'https://placehold.co/800x600/16a085/fff?text=Pill+Box', thumb: 'https://placehold.co/400x300/16a085/fff?text=Pill+Box', desc: 'Compact, moisture-proof box. Selling Point: Keeps meds sorted across time zones.', badge: '', category: 'Family Travel: Elderly Care', catDesc: '' },
+        { id: 'elder-04', title: 'Folding Walking Cane', price: 1000, priceRange: '₹1,000 - ₹1,800', img: 'https://placehold.co/800x600/2c3e50/fff?text=Walking+Cane', thumb: 'https://placehold.co/400x300/2c3e50/fff?text=Walking+Cane', desc: 'Snap-apart cane fits in carry-on. Selling Point: Mobility aid that doesn\'t need check-in.', badge: '', category: 'Family Travel: Elderly Care', catDesc: '' },
+
+        // 11. Couples
+        { id: 'cpl-01', title: 'Headphone Splitter', price: 250, priceRange: '₹250 - ₹500', img: 'https://placehold.co/800x600/e74c3c/fff?text=Splitter', thumb: 'https://placehold.co/400x300/e74c3c/fff?text=Splitter', desc: 'Small jack for two headphones. Selling Point: Watch a movie together on one screen.', badge: '', category: 'Couples Travel', catDesc: 'Items emphasizing togetherness.' },
+        { id: 'cpl-02', title: 'Passport Cover Set (Mr. & Mrs.)', price: 800, priceRange: '₹800 - ₹1,500', img: 'https://placehold.co/800x600/8e44ad/fff?text=Passport+Covers', thumb: 'https://placehold.co/400x300/8e44ad/fff?text=Passport+Covers', desc: 'Matching leather covers. Selling Point: Aesthetic appeal for honeymoon photos.', badge: 'Gift Idea', category: 'Couples Travel', catDesc: '' },
+        { id: 'cpl-03', title: 'Couples Luggage Tags', price: 400, priceRange: '₹400 - ₹800', img: 'https://placehold.co/800x600/f39c12/fff?text=Couple+Tags', thumb: 'https://placehold.co/400x300/f39c12/fff?text=Couple+Tags', desc: '"His" and "Hers" distinct tags. Selling Point: Quickly spot luggage on carousel.', badge: '', category: 'Couples Travel', catDesc: '' },
+
+        // 12. General/Biz
+        { id: 'gen-01', title: 'Tech Organizer Pouch', price: 500, priceRange: '₹500 - ₹1,200', img: 'https://placehold.co/800x600/2c3e50/fff?text=Tech+Pouch', thumb: 'https://placehold.co/400x300/2c3e50/fff?text=Tech+Pouch', desc: 'Bag with elastic loops for cables/chargers. Selling Point: No tangled wires.', badge: '', category: 'General Travel Gear', catDesc: 'Focus on gadgets, sleep, and hygiene.' },
+        { id: 'gen-02', title: '3D Contoured Eye Mask', price: 300, priceRange: '₹300 - ₹700', img: 'https://placehold.co/800x600/34495e/fff?text=Eye+Mask', thumb: 'https://placehold.co/400x300/34495e/fff?text=Eye+Mask', desc: 'Eye mask with cups that don\'t press against eyes. Selling Point: Allows REM sleep without smudging makeup.', badge: '', category: 'General Travel Gear', catDesc: '' },
+        { id: 'gen-03', title: 'Airplane Phone Mount', price: 400, priceRange: '₹400 - ₹900', img: 'https://placehold.co/800x600/95a5a6/fff?text=Phone+Mount', thumb: 'https://placehold.co/400x300/95a5a6/fff?text=Phone+Mount', desc: 'Clips phone to tray table latch. Selling Point: Hands-free movie watching at eye level.', badge: 'Trending', category: 'General Travel Gear', catDesc: '' },
+        { id: 'gen-04', title: 'Travel Perfume Atomizer', price: 250, priceRange: '₹250 - ₹500', img: 'https://placehold.co/800x600/e67e22/fff?text=Atomizer', thumb: 'https://placehold.co/400x300/e67e22/fff?text=Atomizer', desc: 'Tiny refillable spray bottle. Selling Point: Carry perfume in cabin without confiscation.', badge: '', category: 'General Travel Gear', catDesc: '' },
+
+        // 13. Pets (Cabin/Cargo)
+        { id: 'pet-air-01', title: 'Airline Approved Carrier', price: 2500, priceRange: '₹2,500 - ₹4,500', img: 'https://placehold.co/800x600/3498db/fff?text=Pet+Carrier', thumb: 'https://placehold.co/400x300/3498db/fff?text=Pet+Carrier', desc: 'Soft-sided carrier with mesh windows. Selling Point: Mandatory for in-cabin air travel.', badge: 'Airline Safe', category: 'Pet Travel: Airline Gear', catDesc: 'Functional items meeting airline regulations.' },
+        { id: 'pet-air-02', title: 'Collapsible Potty Tray', price: 1000, priceRange: '₹1,000 - ₹1,800', img: 'https://placehold.co/800x600/95a5a6/fff?text=Potty+Tray', thumb: 'https://placehold.co/400x300/95a5a6/fff?text=Potty+Tray', desc: 'Waterproof foldable tray. Selling Point: Essential for layovers in airport pet relief areas.', badge: '', category: 'Pet Travel: Airline Gear', catDesc: '' },
+        { id: 'pet-air-03', title: 'Calming Thundershirt', price: 1500, priceRange: '₹1,500 - ₹2,500', img: 'https://placehold.co/800x600/9b59b6/fff?text=Thundershirt', thumb: 'https://placehold.co/400x300/9b59b6/fff?text=Thundershirt', desc: 'Snug vest that applies gentle pressure. Selling Point: Reduces anxiety from engine noise naturally.', badge: '', category: 'Pet Travel: Airline Gear', catDesc: '' }
+    ];
+    const WA_NUMBER = '918585858400';
+
+    /* ===== FILTER & RENDER LOGIC ===== */
+    function populateCategories() {
+        const cats = [...new Set(PRODUCTS.map(p => p.category))];
+        const select = document.getElementById('categoryFilter');
+        cats.forEach(c => {
+            const opt = document.createElement('option');
+            opt.value = c;
+            opt.textContent = c;
+            select.appendChild(opt);
+        });
+    }
+
+    function renderProducts() {
+        const search = document.getElementById('searchInput').value.trim().toLowerCase();
+        const category = document.getElementById('categoryFilter').value;
+        const sort = document.getElementById('sortFilter').value;
+        const trending = document.getElementById('trendingToggle').checked;
+
+        // Check if Default (No sorting/filtering)
+        if (search === '' && category === 'all' && sort === 'default' && !trending) {
+            renderGroupedProducts();
+        } else {
+            renderFilteredProducts(search, category, sort, trending);
+        }
+    }
+
+    function renderGroupedProducts() {
+        const container = document.getElementById('productSections');
+        const categories = {};
+        PRODUCTS.forEach(p => {
+            if (!categories[p.category]) categories[p.category] = { desc: p.catDesc, items: [] };
+            categories[p.category].items.push(p);
+        });
+        let html = '', isAlt = false;
+        for (const cat in categories) {
+            const bgClass = isAlt ? ' bg-light' : '';
+            html += `<section class="content-section${bgClass}"><div class="container"><div class="text-center mb-5"><h2 class="section-title">${cat}</h2>${categories[cat].desc ? `<p class="text-muted">${categories[cat].desc}</p>` : ''}</div><div class="row g-4">`;
+            html += generateProductCards(categories[cat].items);
+            html += '</div></div></section>';
+            isAlt = !isAlt;
+        }
+        container.innerHTML = html;
+        observeCards();
+    }
+
+    function renderFilteredProducts(search, category, sort, trending) {
+        let items = PRODUCTS.filter(p => {
+            const matchesSearch = p.title.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search);
+            const matchesCategory = category === 'all' || p.category === category;
+            const matchesTrending = trending ? (p.badge !== '') : true;
+            return matchesSearch && matchesCategory && matchesTrending;
+        });
+
+        // Sorting
+        if (sort === 'price-asc') items.sort((a, b) => a.price - b.price);
+        else if (sort === 'price-desc') items.sort((a, b) => b.price - a.price);
+        else if (sort === 'name-asc') items.sort((a, b) => a.title.localeCompare(b.title));
+
+        const container = document.getElementById('productSections');
+        if (items.length === 0) {
+            container.innerHTML = `<div class="text-center py-5">
+                <i class="fas fa-search fa-3x text-muted mb-3" style="opacity:0.4"></i>
+                <h4 class="text-muted">No products found</h4>
+                <p class="text-secondary">Try adjusting your search or filters.</p>
+                <button class="btn-custom mt-2" onclick="clearFilters()"><i class="fas fa-undo me-2"></i>Clear All Filters</button>
+            </div>`;
+            return;
+        }
+
+        let html = `<section class="content-section"><div class="container">`;
+        html += `<div class="results-counter">Showing <strong>${items.length}</strong> of <strong>${PRODUCTS.length}</strong> products</div>`;
+        html += `<div class="row g-4">`;
+        html += generateProductCards(items);
+        html += '</div></div></section>';
+        container.innerHTML = html;
+        observeCards();
+    }
+
+    function clearFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('categoryFilter').value = 'all';
+        document.getElementById('sortFilter').value = 'default';
+        document.getElementById('trendingToggle').checked = false;
+        renderProducts();
+    }
+
+    function generateProductCards(items) {
+        return items.map(p => {
+            // Sale Price Logic (Mock: 20% off if badge is 'Sale' or 'Hot')
+            const isSale = ['Hot', 'Essential', 'Sale'].includes(p.badge);
+            const originalPrice = isSale ? Math.round(p.price * 1.2) : null;
+
+            return `
+        <div class="col-md-6 col-lg-3">
+            <div class="product-card" onclick="openModal('${p.id}')">
+                <div class="position-relative overflow-hidden">
+                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+                    <img src="${p.thumb}" class="card-img-top" alt="${p.title}">
+                    <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('${p.id}')" title="Quick Add">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="card-body p-4 text-center">
+                    <h5 class="product-title">${p.title}</h5>
+                    <div class="stars" title="4.5/5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="product-price">
+                        ${originalPrice ? `<span class="original-price">₹${originalPrice.toLocaleString('en-IN')}</span>` : ''}
+                        ${p.priceRange}
+                    </div>
+                    <button class="btn-custom w-100">View Details</button>
+                </div>
+            </div>
+        </div>`;
+        }).join('');
+    }
+
+    // Scroll Observer
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = 1; entry.target.style.transform = 'translateY(0)'; } });
+    });
+    function observeCards() {
+        setTimeout(() => {
+            document.querySelectorAll('.product-card').forEach(el => {
+                el.style.opacity = 0; el.style.transform = 'translateY(20px)'; el.style.transition = 'all 0.6s ease'; observer.observe(el);
+            });
+        }, 50);
+    }
+
+    /* ===== TOAST NOTIFICATION ===== */
+    function showToast(message) {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerHTML = `<i class="fas fa-check-circle text-success"></i> <span>${message}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.animation = 'fadeOut 0.3s forwards';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    /* ===== CART MANAGER (localStorage) ===== */
+    const CartManager = {
+        KEY: 'sd_shop_cart',
+        getItems() { try { return JSON.parse(localStorage.getItem(this.KEY)) || []; } catch (e) { return []; } },
+        save(items) { localStorage.setItem(this.KEY, JSON.stringify(items)); this.updateBadge(); },
+        addItem(productId, qty) {
+            const items = this.getItems();
+            const existing = items.find(i => i.id === productId);
+            if (existing) { existing.qty += qty; } else { items.push({ id: productId, qty: qty }); }
+            this.save(items);
+        },
+        removeItem(productId) {
+            const items = this.getItems().filter(i => i.id !== productId);
+            this.save(items);
+        },
+        updateItemQty(productId, change) {
+            const items = this.getItems();
+            const item = items.find(i => i.id === productId);
+            if (item) { item.qty = Math.max(1, item.qty + change); }
+            this.save(items);
+        },
+        getTotal() {
+            return this.getItems().reduce((sum, ci) => {
+                const p = PRODUCTS.find(pr => pr.id === ci.id);
+                return p ? sum + (p.price * ci.qty) : sum;
+            }, 0);
+        },
+        getTotalItems() { return this.getItems().reduce((s, i) => s + i.qty, 0); },
+        clear() { localStorage.removeItem(this.KEY); this.updateBadge(); },
+        updateBadge() {
+            const badge = document.getElementById('cartBadge');
+            const count = this.getTotalItems();
+            if (count > 0) { badge.textContent = count; badge.classList.remove('hidden'); }
+            else { badge.classList.add('hidden'); }
+        }
+    };
+
+    /* ===== HELPERS ===== */
+    function getDeliveryDate() {
+        const date = new Date();
+        date.setDate(date.getDate() + 5);
+        const options = { weekday: 'short', month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-IN', options);
+    }
+
+    function addToCart(productId) {
+        CartManager.addItem(productId, 1);
+        const p = PRODUCTS.find(pr => pr.id === productId);
+        showToast(`Added <b>${p ? p.title : 'Item'}</b> to cart`);
+    }
+
+    /* ===== MODAL ===== */
+    let currentProductId = null, currentPrice = 0, isModalOpen = false;
+    window.addEventListener('popstate', function () { if (isModalOpen) hideModalUI(); });
+
+    function openModal(productId) {
+        const p = PRODUCTS.find(pr => pr.id === productId);
+        if (!p) return;
+        currentProductId = productId;
+        currentPrice = p.price;
+        document.getElementById('modalTitle').innerText = p.title;
+        document.getElementById('modalPrice').innerText = '₹' + p.price;
+        document.getElementById('modalImage').style.backgroundImage = `url('${p.img}')`;
+        document.getElementById('modalDesc').innerText = p.desc;
+        document.getElementById('qtyInput').value = 1;
+        updateTotal();
+        history.pushState({ modal: true }, '');
+        isModalOpen = true;
+        document.getElementById('productModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() { if (isModalOpen) history.back(); }
+    function hideModalUI() { document.getElementById('productModal').classList.remove('active'); document.body.style.overflow = 'auto'; isModalOpen = false; }
+    function closeModalOutside(e) { if (e.target.id === 'productModal') closeModal(); }
+    function updateQty(c) { let inp = document.getElementById('qtyInput'), v = parseInt(inp.value) + c; if (v > 0) { inp.value = v; updateTotal(); } }
+    function updateTotal() { let q = parseInt(document.getElementById('qtyInput').value), t = currentPrice * q; document.getElementById('totalPrice').innerText = '₹' + t.toLocaleString('en-IN'); }
+
+    function addToCartFromModal() {
+        const qty = parseInt(document.getElementById('qtyInput').value);
+        CartManager.addItem(currentProductId, qty);
+        closeModal();
+        showToast('Item added to cart');
+    }
+
+    function buyNow() {
+        const qty = parseInt(document.getElementById('qtyInput').value);
+        CartManager.addItem(currentProductId, qty);
+        closeModal();
+        setTimeout(() => {
+            toggleCartDrawer();
+            showCheckoutForm();
+        }, 350);
+    }
+
+    /* ===== CART DRAWER ===== */
+    function toggleCartDrawer() {
+        const drawer = document.getElementById('cartDrawer');
+        const overlay = document.getElementById('cartOverlay');
+        const isOpen = drawer.classList.contains('active');
+        if (isOpen) { drawer.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = 'auto'; }
+        else { showCartItems(); drawer.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    }
+
+    function showCartItems() {
+        document.getElementById('cartBody').style.display = 'block';
+        document.getElementById('cartFooter').style.display = 'block';
+        document.getElementById('checkoutForm').style.display = 'none';
+        renderCartDrawer();
+    }
+
+    function showCheckoutForm() {
+        document.getElementById('cartBody').style.display = 'none';
+        document.getElementById('cartFooter').style.display = 'none';
+        document.getElementById('checkoutForm').style.display = 'block';
+    }
+
+    function renderCartDrawer() {
+        const body = document.getElementById('cartBody');
+        const footer = document.getElementById('cartFooter');
+        const items = CartManager.getItems();
+        if (items.length === 0) {
+            body.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p><p style="font-size:0.85rem">Browse our travel gear and add items!</p></div>';
+            footer.style.display = 'none';
+            return;
+        }
+        let html = '';
+        items.forEach(ci => {
+            const p = PRODUCTS.find(pr => pr.id === ci.id);
+            if (!p) return;
+            const lineTotal = p.price * ci.qty;
+            html += `<div class="cart-item">
+      <div class="cart-item-img" style="background-image:url('${p.thumb}')"></div>
+      <div class="cart-item-info"><div class="cart-item-name">${p.title}</div>
+        <div class="cart-item-price">₹${p.price.toLocaleString('en-IN')} each</div>
+        <div class="cart-item-qty"><button onclick="cartUpdateQty('${p.id}',-1)">−</button><span>${ci.qty}</span><button onclick="cartUpdateQty('${p.id}',1)">+</button>
+        <span style="margin-left:auto;font-weight:700;color:var(--primary-color)">₹${lineTotal.toLocaleString('en-IN')}</span></div>
+      </div>
+      <button class="cart-item-remove" onclick="cartRemove('${p.id}')" title="Remove"><i class="fas fa-trash-alt"></i></button>
+    </div>`;
+        });
+        body.innerHTML = html;
+        footer.style.display = 'block';
+        document.getElementById('cartGrandTotal').textContent = '₹' + CartManager.getTotal().toLocaleString('en-IN');
+        document.getElementById('deliveryDate').textContent = getDeliveryDate();
+    }
+
+    function cartUpdateQty(id, c) { CartManager.updateItemQty(id, c); renderCartDrawer(); }
+    function cartRemove(id) { CartManager.removeItem(id); renderCartDrawer(); }
+    function clearCart() { CartManager.clear(); renderCartDrawer(); }
+
+    function submitCheckout() {
+        const name = document.getElementById('custName').value.trim();
+        const phone = document.getElementById('custPhone').value.trim();
+        const address = document.getElementById('custAddress').value.trim();
+
+        if (!name || !phone || !address) {
+            alert("Please fill in all details (Name, Phone, Address).");
+            return;
+        }
+        if (!/^\d{10}$/.test(phone)) {
+            alert("Please enter a valid 10-digit phone number.");
+            return;
+        }
+
+        const items = CartManager.getItems();
+        if (items.length === 0) return;
+
+        let lines = [], totalItems = 0, grandTotal = 0;
+        items.forEach((ci, i) => {
+            const p = PRODUCTS.find(pr => pr.id === ci.id);
+            if (!p) return;
+            const lt = p.price * ci.qty;
+            totalItems += ci.qty;
+            grandTotal += lt;
+            lines.push(`${i + 1}. ${p.title} × ${ci.qty} — ₹${lt.toLocaleString('en-IN')}`);
+        });
+
+        const deliveryDate = getDeliveryDate();
+        const msg = 
+ew Order from *${name}*\n📞 ${phone}\n📍 ${address}\n\nOrder Details:\n${lines.join('\n')}\n\n📦 Total Items: ${totalItems}\n🚚 Delivery: FREE (Est. ${deliveryDate})\n💰 Grand Total: ₹${grandTotal.toLocaleString('en-IN')}\n\nPlease confirm order.`;
+
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    /* ===== SCHEMA GENERATION ===== */
+    function generateSchema() {
+        const schema = PRODUCTS.map(p => ({
+            "@context": "https://schema.org", "@type": "Product",
+            "name": p.title, "description": p.desc, "image": p.img, "sku": `SD-${p.id.toUpperCase()}`,
+            "brand": { "@type": "Brand", "name": "Seven Destination" },
+            "offers": { "@type": "Offer", "url": "https://www.sevendestination.com/shop/", "priceCurrency": "INR", "price": p.price, "availability": "https://schema.org/InStock" }
+        }));
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(schema);
+        document.head.appendChild(script);
+    }
+
+    /* ===== INIT ===== */
+    populateCategories();
+    // Toolbar Events
+    ['searchInput', 'categoryFilter', 'sortFilter', 'trendingToggle'].forEach(id => {
+        document.getElementById(id).addEventListener('input', renderProducts);
+    });
+    // Scroll To Top
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('scrollTopBtn');
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+    // Initial Render
+    renderProducts();
+    CartManager.updateBadge();
+    generateSchema();
+</script>
+
+
+
+
+
+
+
+
+

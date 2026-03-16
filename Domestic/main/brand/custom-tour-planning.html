@@ -1,0 +1,739 @@
+﻿<!-- Elementor HTML Widget Content: Custom Tour Planning -->
+<link rel="stylesheet" href="elementor_styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<style>
+    /* Elementor compatibility */
+    .elementor-widget-container {
+        font-family: 'Poppins', sans-serif;
+        color: #444;
+        overflow-x: hidden;
+    }
+
+    :root {
+        --primary-color: #f58220;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        color: #444;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+    }
+
+    .page-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.sevendestination.com/wp-content/uploads/2026/03/Custom-Tour-Planner.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 120px 0 80px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: white !important;
+    }
+
+    .inquiry-form-container {
+        background: #fff;
+        border-radius: 30px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin-top: -50px;
+        z-index: 10;
+        position: relative;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+    }
+
+    .btn-submit {
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        width: 100%;
+        transition: all 0.3s;
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        color: white;
+    }
+
+    .feature-box {
+        text-align: center;
+        padding: 30px;
+        transition: transform 0.3s;
+    }
+
+    .feature-box:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+    }
+
+    .travel-style-card {
+        height: 350px;
+    }
+
+    /* Animations */
+    [data-aos] {
+        transition-duration: 1000ms !important;
+    }
+
+    /* Standard Styles from contact.html */
+    .hand-drawn-highlight {
+        position: relative;
+        display: inline-block;
+        padding: 6px 16px;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% + 24px);
+        height: calc(100% + 20px);
+        transform: translate(-50%, -50%) rotate(-5deg);
+        pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+        fill: none;
+        stroke: #e74c3c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+        stroke: rgba(231, 76, 60, 0.4);
+        stroke-width: 2;
+        stroke-dasharray: 320;
+        stroke-dashoffset: 320;
+        animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+        0% {
+            stroke-dashoffset: 300;
+        }
+
+        40% {
+            stroke-dashoffset: 0;
+        }
+
+        60% {
+            stroke-dashoffset: 0;
+        }
+
+        100% {
+            stroke-dashoffset: -300;
+        }
+    }
+
+    .trust-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 15px 0;
+        align-items: center;
+    }
+
+    .trust-badges img {
+        height: auto;
+        max-width: 120px;
+        max-height: 70px;
+        object-fit: contain;
+        filter: grayscale(1);
+        transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .popular-destinations {
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .popular-destinations p {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .popular-destinations span {
+        color: #adb5bd;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .travel-agencies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 15px 0;
+    }
+
+    .travel-agencies div {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .travel-agencies p {
+        color: #808080;
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+        color: var(--accent-color);
+    }
+
+    .copyright-text {
+        color: #ffcccc;
+        font-size: 0.7rem;
+        text-align: center;
+        margin: 10px 0;
+        line-height: 1.4;
+        background: rgba(255, 0, 0, 0.1);
+        padding: 8px;
+        border-radius: 8px;
+        border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        margin: 10px 0;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #adb5bd;
+        font-size: 0.8rem;
+    }
+
+    .travel-style-card {
+        height: 250px;
+    }
+</style>
+
+<div class="custom-tour-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+                <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png" alt="Seven Destination">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="page-header" data-aos="fade-down">
+        <div class="container">
+            <h1 class="section-title">Design Your Dream Trip</h1>
+            <p class="lead">Tell us your preferences, and let our experts craft the perfect itinerary just for you.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="inquiry-form-container" data-aos="fade-up">
+                    <h3 class="fw-bold mb-4 text-center">Custom Tour Planner</h3>
+                    <form id="customTourForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Full Name</label>
+                                <input type="text" id="name" class="form-control" required="" placeholder="Enter your name">
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Destination(s)</label>
+                                <input type="text" id="destination" class="form-control" required="" placeholder="Where do you want to go?">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-muted small">Travel Date</label>
+                                <input type="date" id="date" class="form-control" required="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-muted small">Duration (Days)</label>
+                                <input type="number" id="duration" class="form-control" required="" min="1" placeholder="e.g. 5">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">No. of Travelers</label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="number" id="adults" class="form-control" placeholder="Adults" min="1" required="">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="number" id="children" class="form-control" placeholder="Children" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Approx. Budget (per person)</label>
+                                <select id="budget" class="form-control">
+                                    <option value="Economy">Economy</option>
+                                    <option value="Standard">Standard</option>
+                                    <option value="Luxury">Luxury</option>
+                                    <option value="Premium">Premium</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label text-muted small">Specific Interests / Preferences</label>
+                                <textarea id="message" class="form-control" rows="3" placeholder="e.g. History, Nature, Adventure, Veg Food only, etc."></textarea>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-submit">
+                                    <i class="fab fa-whatsapp me-2"></i> Plan My Trip via WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trip Inspiration -->
+        <section class="mt-5 mb-5" data-aos="fade-up">
+            <h2 class="fw-bold text-center mb-4">Find Your Travel Style</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="position-relative overflow-hidden rounded-4 shadow-sm travel-style-card">
+                        <img src="https://images.unsplash.com/photo-1510097476688-62283f2301db?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-100 h-100 object-fit-cover" alt="Honeymoon">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-gradient-dark text-white">
+                            <h4 class="fw-bold mb-0">Romantic Escapes</h4>
+                            <p class="small mb-0">Honeymoons &amp; Anniversaries</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="position-relative overflow-hidden rounded-4 shadow-sm travel-style-card">
+                        <img src="https://images.unsplash.com/photo-1533692328991-08159ff19fca?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-100 h-100 object-fit-cover" alt="Adventure">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-gradient-dark text-white">
+                            <h4 class="fw-bold mb-0">Adventure &amp; Thrill</h4>
+                            <p class="small mb-0">Trekking, Rafting &amp; Camping</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="position-relative overflow-hidden rounded-4 shadow-sm travel-style-card">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-100 h-100 object-fit-cover" alt="Luxury">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-gradient-dark text-white">
+                            <h4 class="fw-bold mb-0">Luxury Retreats</h4>
+                            <p class="small mb-0">5-Star Stays &amp; Private Transfers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Itineraries -->
+        <section class="mt-5 py-5 bg-light rounded-5" data-aos="fade-up">
+            <div class="container px-4">
+                <h2 class="fw-bold text-center mb-5">Curated Experiences</h2>
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <img src="https://images.unsplash.com/photo-1598324789736-4861f89564a0?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="img-fluid rounded-4 shadow" alt="Rajasthan">
+                    </div>
+                    <div class="col-lg-6 ps-lg-5">
+                        <span class="badge bg-warning text-dark mb-2">Bestseller</span>
+                        <h3 class="fw-bold">Royal Rajasthan: Forts &amp; Palaces</h3>
+                        <p class="text-muted">7 Days | Jaipur - Jodhpur - Udaipur</p>
+                        <p class="text-muted small mb-4">Experience the grandeur of India's desert state. Stay in
+                            heritage havelis, enjoy private sunset camel satarifs, and dine under the stars.</p>
+                        <div class="d-flex gap-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-bed text-primary me-2"></i> <span>Luxury Stays</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-car text-primary me-2"></i> <span>Private Car</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark mt-4" onclick="window.open('https://wa.me/918585858400?text=I%20am%20interested%20in%20Rajasthan%20Plan', '_blank')">Customize
+                            This Plan</button>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="img-fluid rounded-4 shadow" alt="Kerala">
+                    </div>
+                    <div class="col-lg-6 order-lg-1 pe-lg-5">
+                        <span class="badge bg-success mb-2">Nature Landscape</span>
+                        <h3 class="fw-bold">Kerala: God's Own Country</h3>
+                        <p class="text-muted">5 Days | Munnar - Thekkady - Alleppey</p>
+                        <p class="text-muted small mb-4">A perfect blend of tea gardens, wildlife sanctuaries, and a
+                            relaxing night on a traditional houseboat in the backwaters.</p>
+                        <div class="d-flex gap-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-leaf text-success me-2"></i> <span>Eco-Friendly</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-ship text-success me-2"></i> <span>Houseboat</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark mt-4" onclick="window.open('https://wa.me/918585858400?text=I%20am%20interested%20in%20Kerala%20Plan', '_blank')">Customize
+                            This Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="row mt-5 pt-5">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-route"></i></div>
+                    <h5>Tailored Itineraries</h5>
+                    <p class="text-muted small">Every day planned according to your pace and interests.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-hotel"></i></div>
+                    <h5>Handpicked Stays</h5>
+                    <p class="text-muted small">From boutique hotels to luxury resorts, we match your style.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h5>24/7 On-Trip Support</h5>
+                    <p class="text-muted small">Travel worry-free knowing we're just a call away.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <!-- Footer Heading -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="footer-heading">Seven Destination: Premier Tour &amp; Travel in Kolkata, West Bengal</h2>
+                </div>
+            </div>
+
+            <!-- Footer Sections -->
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="footer-section">
+                        <h5>Get In Touch</h5>
+                        <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                                        <ellipse cx="50" cy="20" rx="48" ry="18"></ellipse>
+                                        <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16"></ellipse>
+                                    </svg></span></a></p>
+                        <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2" aria-hidden="true"></i> email@sevendestination.com</a></p>
+                        <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala
+                                Road, Bally, Howrah 711201</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-section">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#packages">Packages</a></li>
+                            <li><a href="#car-rental">Car Rental</a></li>
+                            <li><a href="#hotel-booking">Hotel Booking</a></li>
+                            <li><a href="#ticket-service">Ticket Service</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#destinations">Destinations</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-section">
+                        <h5>Follow Us</h5>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest" aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trusted By Badges -->
+            <div class="row mt-5 text-center">
+                <div class="col-12">
+                    <h5 class="mb-4 text-white-50">Trusted By</h5>
+                    <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+                        <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Reviews" class="mb-2" style="height: 30px;" loading="lazy">
+                            <div class="small">Google Reviews</div>
+                        </a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor" class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+                            <div class="small">TripAdvisor</div>
+                        </a>
+                        <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                            <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial" class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+                            <div class="small">JustDial Verified</div>
+                        </a>
+                        <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                            <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart" class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+                            <div class="small">IndiaMart Trusted</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-links" data-aos="fade-up" data-aos-delay="400">
+                <a href="#home">Home</a> |
+                <a href="#about">Our Profile</a> |
+                <a href="#packages">Tour Package</a> |
+                <a href="#car-rental">Car Rental</a> |
+                <a href="#hotel-booking">Hotel Booking</a> |
+                <a href="#ticket-service">Ticketing</a> |
+                <a href="#testimonials">News &amp; Events</a> |
+                <a href="#destinations">Photo Gallery</a> |
+                <a href="#testimonials">Videos</a> |
+                <a href="#testimonials">Testimonials</a> |
+                <a href="#destinations">Destinations</a> |
+                <a href="#about">Site Map</a> |
+                <a href="#contact">Contact us</a> |
+                <a href="#about">Career</a>
+            </div>
+
+            <!-- Popular Destinations -->
+            <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+                <p><strong>Popular Destinations</strong></p>
+                <div class="dest-list">
+                    <span>Jaipur</span>
+                    <span>Agra</span>
+                    <span>Goa</span>
+                    <span>Kerala</span>
+                    <span>Varanasi</span>
+                    <span>Mumbai</span>
+                    <span>Delhi</span>
+                    <span>Udaipur</span>
+                    <span>Shimla</span>
+                    <span>Rishikesh &amp; Haridwar</span>
+                    <span>Amritsar</span>
+                    <span>Kolkata</span>
+                    <span>Jodhpur</span>
+                    <span>Ooty</span>
+                    <span>Leh-Ladakh</span>
+                    <span>Mysore</span>
+                    <span>Darjeeling</span>
+                    <span>Rann of Kutch</span>
+                    <span>Khajuraho</span>
+                    <span>Puducherry</span>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Travel Agencies -->
+            <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+                <div>
+                    <p>Travel Agency in Kolkata</p>
+                    <p>Travel Agency in Howrah</p>
+                    <p>Travel Agency in Liluah</p>
+                    <p>Travel Agency in Balur</p>
+                    <p>Travel Agency in Bally</p>
+                    <p>Travel Agency in Barabazaar</p>
+                    <p>Travel Agency in Tollygunge</p>
+                </div>
+                <div>
+                    <p>Travel Agency in Sealdah</p>
+                    <p>Travel Agency in New Alipore</p>
+                    <p>Travel Agency in Dum Dum</p>
+                    <p>Travel Agency in Shyam bazar</p>
+                    <p>Travel Agency in Dunlop</p>
+                    <p>Travel Agency in 24 South Pargana</p>
+                    <p>Travel Agency in Khadagpur</p>
+                </div>
+                <div>
+                    <p>Travel Agency in Shibpuir</p>
+                    <p>Travel Agency in Hooghly</p>
+                    <p>Travel Agency in Salt lake</p>
+                    <p>Travel Agency in New Town</p>
+                    <p>Travel Agency in Naihati</p>
+                    <p>Travel Agency in Kalyani</p>
+                </div>
+                <div>
+                    <p>Travel Agency in Konnagar</p>
+                    <p>Travel Agency in Rishra</p>
+                    <p>Travel Agency in Uttrapara</p>
+                    <p>Travel Agency in Hindmotor</p>
+                    <p>Travel Agency in Uluberia</p>
+                </div>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">
+                All content and images on this website are copyrighted by their respective owners. This website is
+                intended to promote these works, and no endorsement of the artist is implied. Unauthorized use is
+                prohibited by law.
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Copyright -->
+            <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+                <p>© 2025 Seven Destination Tour &amp; Travel. All rights reserved. | Designed with <i class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        document.getElementById('customTourForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const dest = document.getElementById('destination').value;
+            const date = document.getElementById('date').value;
+            const dur = document.getElementById('duration').value;
+            const adults = document.getElementById('adults').value;
+            const children = document.getElementById('children').value || 0;
+            const budget = document.getElementById('budget').value;
+            const msg = document.getElementById('message').value;
+
+            // Format WhatsApp Message
+            const whatsappMessage =
+                `*Custom Tour Planning Request*
+------------------------------
+*Name:* ${name}
+*Destination:* ${dest}
+*Travel Date:* ${date}
+*Duration:* ${dur} Days
+*Travelers:* ${adults} Adults, ${children} Kids
+*Budget Style:* ${budget}
+*Preferences:* ${msg}`;
+
+            const phoneNumber = "918585858400";
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+        });
+    </script>
+</div>
+
+
+
+
+
+
+
+
+

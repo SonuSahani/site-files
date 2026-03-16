@@ -1,0 +1,1006 @@
+<!-- Required CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<link rel="stylesheet" href="../shared_tour.css">
+
+<style>
+:root { --primary-color: #f58220; --accent-color: #fff; }
+body { font-family: 'Poppins', sans-serif; }
+
+/* Hero */
+.carousel-content h1 { color:#fff !important; text-shadow:2px 2px 8px rgba(0,0,0,0.8); }
+.carousel-content p  { color:#fff !important; text-shadow:1px 1px 4px rgba(0,0,0,0.8); }
+.carousel-overlay    { background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)) !important; }
+
+/* Page header */
+.page-header { background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); padding:80px 0 40px; color:#fff; }
+.page-header .section-title { font-family:'Playfair Display',serif; font-size:2.5rem; font-weight:700; }
+.page-header .section-subtitle { opacity:.8; font-size:1.1rem; }
+
+/* Breadcrumb */
+.breadcrumb-item a { color:rgba(255,255,255,0.7); text-decoration:none; }
+.breadcrumb-item.active { color:#fff; }
+.breadcrumb-item+.breadcrumb-item::before { color:rgba(255,255,255,0.5); }
+
+/* Search */
+.dest-search-bar { background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); }
+.dest-search-bar .form-control { border-radius:8px 0 0 8px !important; border-right:none !important; height:54px; }
+.btn-custom { background:linear-gradient(135deg,var(--primary-color),#e67516); color:#fff; border:none; border-radius:0 8px 8px 0 !important; height:54px; padding:0 20px; font-weight:600; transition:all .3s; }
+.btn-custom:hover { background:linear-gradient(135deg,#e67516,var(--primary-color)); transform:translateY(-2px); color:#fff; }
+.trending-tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:15px; }
+.trending-tag  { background:rgba(245,130,32,0.1); border:1px solid rgba(245,130,32,0.3); color:#f58220; padding:6px 16px; border-radius:20px; font-size:.85rem; cursor:pointer; transition:all .3s; }
+.trending-tag:hover, .trending-tag.active { background:var(--primary-color); border-color:var(--primary-color); color:#fff; }
+
+/* Cards */
+.dest-card { border:none; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.07); transition:all .3s; height:100%; background:#fff; }
+.dest-card:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(0,0,0,0.12); }
+.dest-card img { height:200px; object-fit:cover; width:100%; }
+.dest-card .card-body { padding:20px; }
+.dest-card .card-title { font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; }
+.dest-card .badge-tag { position:absolute; top:12px; left:12px; background:var(--primary-color); color:#fff; padding:4px 12px; border-radius:20px; font-size:.75rem; font-weight:600; }
+.dest-card .price-tag { font-size:1.2rem; font-weight:700; color:var(--primary-color); }
+.dest-card .price-tag span { font-size:.75rem; font-weight:400; color:#999; }
+.dest-card .detail-row { display:flex; gap:15px; margin:8px 0; font-size:.85rem; color:#777; }
+.dest-card .btn-book { background:linear-gradient(135deg,#25D366,#128C7E); color:#fff; border:none; border-radius:8px; padding:10px 20px; font-weight:600; width:100%; transition:all .3s; cursor:pointer; }
+.dest-card .btn-book:hover { transform:translateY(-2px); box-shadow:0 4px 15px rgba(37,211,102,0.4); }
+.dest-card .features { display:flex; flex-wrap:wrap; gap:5px; margin:8px 0; }
+.dest-card .features span { background:#f0f4ff; padding:3px 10px; border-radius:15px; font-size:.75rem; color:#555; }
+.hover-lift { transition:transform .3s; }
+.hover-lift:hover { transform:translateY(-5px); }
+
+/* Activity cards */
+.activity-card { text-align:center; padding:30px 20px; background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.06); transition:all .3s; height:100%; }
+.activity-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+.activity-card i { font-size:2.5rem; color:var(--primary-color); margin-bottom:15px; }
+.activity-card h4 { font-weight:700; font-size:1rem; }
+.activity-card .activity-count { font-size:1.8rem; font-weight:800; color:var(--primary-color); }
+
+/* Section header */
+.section-header { text-align:center; padding:60px 0 30px; }
+.section-header h2 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; }
+.section-header p { color:#6c757d; }
+.section-divider { width:60px; height:3px; background:var(--primary-color); margin:10px auto; border-radius:2px; }
+
+/* Related tours */
+.related-tours-section { padding:60px 0; background:#f8f9fa; border-top:1px solid #eaeaea; }
+.related-card { border-radius:12px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.08); transition:transform .3s,box-shadow .3s; background:#fff; height:100%; display:flex; flex-direction:column; }
+.related-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+.related-card-img { height:180px; overflow:hidden; }
+.related-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+.related-card:hover .related-card-img img { transform:scale(1.1); }
+.related-card-body { padding:18px; flex-grow:1; display:flex; flex-direction:column; justify-content:space-between; }
+.related-card-title { font-size:1rem; font-weight:600; color:#2c3e50; margin-bottom:12px; }
+.btn-related { background:#fff; color:var(--primary-color); border:2px solid var(--primary-color); border-radius:6px; padding:7px 15px; font-weight:600; font-size:.85rem; transition:all .3s; text-align:center; width:100%; display:inline-block; text-decoration:none; }
+.btn-related:hover { background:var(--primary-color); color:#fff; }
+
+/* FAQ */
+.accordion-button:not(.collapsed) { color:var(--primary-color); background:rgba(245,130,32,0.05); box-shadow:none; }
+.accordion-button:focus { box-shadow:none; }
+
+/* Success alert */
+.success-alert { display:none; position:fixed; bottom:25px; right:25px; z-index:9999; background:#25D366; color:#fff; padding:15px 25px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
+
+@media(max-width:768px) {
+  .page-header .section-title { font-size:1.8rem; }
+}
+/* Hero Area Overlays */
+.hero-section {
+    position: relative; /* This makes absolute children anchor here */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.hero-bottom-overlay {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    z-index: 25;
+}
+
+/* Custom Search Section Fixes - Overlay Edition */
+.search-section {
+    position: absolute; /* Float completely over the hero */
+    background: transparent !important;
+}
+
+/* Hide the large title since it is now an overlay */
+.search-title {
+    display: none;
+}
+
+.search-container {
+    background: rgba(255, 255, 255, 0.85); /* Light glassmorphism, no blue/black */
+    padding: 6px; 
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    max-width: 600px; /* Ultra compact width */
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.jetpack-search-form {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none; /* Remove thick border */
+    background: transparent;
+    padding: 6px 15px; /* THIN padding relative to font size */
+    font-size: 14px;
+    outline: none !important;
+    box-shadow: none !important;
+    height: 38px;
+}
+
+.search-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.search-btn {
+    background: var(--primary-color, #f58220);
+    color: white;
+    border: none;
+    border-radius: 50px; /* Round button */
+    padding: 0 20px;
+    font-size: 14px;
+    height: 38px; /* THIN button height to match input */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.search-btn:hover {
+    background: #e67512;
+    transform: translateY(-1px);
+}
+
+/* FIX OVERLAP: Ensure the section following the search area has enough top padding to clear the 0-height search box */
+.overview-section, .search-section + section {
+    padding-top: 50px !important;
+}
+
+@media (max-width: 768px) {
+    .search-section {
+        margin-top: -20px;
+    }
+    .search-container {
+        padding: 4px 5px;
+        margin: 0 15px;
+        top: -20px;
+    }
+    .search-input {
+        padding: 6px 10px;
+        font-size: 13px;
+        height: 34px;
+    }
+    .search-btn {
+        height: 34px;
+        padding: 0 15px;
+    }
+    .overview-section, .search-section + section {
+        padding-top: 40px !important;
+    }
+}
+
+/* Custom Hero & Activities Fixes */
+.carousel-item {
+    height: 70vh; /* Taller hero to accommodate overlays */
+    min-height: 500px;
+    background: #000;
+}
+
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.carousel-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-family: 'Playfair Display', serif;
+}
+
+.carousel-content p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.adventure-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.activity-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    border-bottom: 4px solid transparent;
+}
+
+.activity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-bottom-color: var(--primary-color, #f58220);
+}
+
+.activity-card i {
+    font-size: 3rem;
+    color: var(--primary-color, #f58220);
+    margin-bottom: 20px;
+}
+
+.activity-card h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.activity-card .activity-count {
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(245, 130, 32, 0.1);
+    color: var(--primary-color, #f58220);
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.activity-card p {
+    color: #666;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 50vh;
+    }
+    .carousel-content h1 {
+        font-size: 2rem;
+    }
+    .carousel-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Enhanced Hero Visibility Fix */
+.carousel-content h1 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.4) !important;
+}
+.carousel-content p {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8) !important;
+}
+.carousel-overlay {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)) !important;
+}
+</style>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top bg-white navbar-light" data-bs-theme="light" style="background-color: #ffffff !important;">
+    <div class="container">
+        <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+            <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png" alt="Seven Destination">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/destinations/">Destinations</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel
+                        Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Carousel -->
+<section class="hero-section">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1564474583504-6e2e7f1e1d9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="Nagaland Toy Train">
+                <div class="carousel-overlay"><div class="carousel-content">
+                    <h1>NAGALAND TOUR PACKAGES</h1>
+                    <p>Discover the land of festivals. From the vibrant Hornbill Festival in Kohima to the ancient tribal villages and stunning Dzukou Valley, experience Nagaland's rich cultural heritage and rugged natural beauty.</p>
+                </div></div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="Nagaland Tea Gardens">
+                <div class="carousel-overlay"><div class="carousel-content">
+                    <h1>EXPLORE NAGALAND</h1>
+                    <p>From Nagaland to Gangtok and Kalimpong — discover Nagaland's gems with comfortable stays, guided tours, and authentic experiences.</p>
+                </div></div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="Nagaland Sunrise">
+                <div class="carousel-overlay"><div class="carousel-content">
+                    <h1>MAGICAL NAGALAND ESCAPES</h1>
+                    <p>Book now for unforgettable sunrises at Tiger Hill, monastery visits, and tea plantation adventures in the Eastern Himalayas!</p>
+                </div></div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+
+        <!-- Combined Bottom Overlay (Breadcrumbs & Search) -->
+        <div class="hero-bottom-overlay pointer-event-none">
+            <div class="container position-relative" style="pointer-events: auto;">
+                
+                <!-- Breadcrumbs Desktop (Lower Corner) -->
+                <nav aria-label="breadcrumb" class="d-none d-md-block position-absolute" style="bottom: 8px; left: 15px; z-index: 10;">
+                    <ol class="breadcrumb" style="background:transparent;padding:0;margin:0;">
+                        <li class="breadcrumb-item"><a href="https://www.sevendestination.com/" style="color: rgba(255,255,255,0.8); text-decoration: none; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Home</a></li>
+                        <li class="breadcrumb-item"><a href="https://www.sevendestination.com/destinations/" style="color: rgba(255,255,255,0.8); text-decoration: none; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Destinations</a></li>
+                        <li class="breadcrumb-item active" style="color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);" aria-current="page">NAGALAND</li>
+                    </ol>
+                </nav>
+
+                <!-- Breadcrumbs Mobile (Stacked Left) -->
+                <nav aria-label="breadcrumb" class="d-md-none mb-2 d-flex justify-content-start">
+                    <ol class="breadcrumb" style="background:transparent;padding:0;margin:0;">
+                        <li class="breadcrumb-item"><a href="https://www.sevendestination.com/" style="color: rgba(255,255,255,0.8); text-decoration: none; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Home</a></li>
+                        <li class="breadcrumb-item"><a href="https://www.sevendestination.com/destinations/" style="color: rgba(255,255,255,0.8); text-decoration: none; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Destinations</a></li>
+                        <li class="breadcrumb-item active" style="color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);" aria-current="page">NAGALAND</li>
+                    </ol>
+                </nav>
+
+                <!-- Search -->
+                <div class="search-section position-relative" style="bottom: auto;">
+                    <div class="search-title">
+                        <h3>Find Your Perfect Tour</h3>
+                        <p>Search from our wide range of NAGALAND packages</p>
+                    </div>
+                    <div class="search-container">
+                        <form role="search" method="get" class="jetpack-search-form" action="https://www.sevendestination.com/">
+                            <input type="search" class="search-input" placeholder="Search NAGALAND..." name="s" id="searchDest" onkeyup="filterCards(this.value.toLowerCase())">
+                            <button type="submit" class="search-btn" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trending Tags Section -->
+<section class="bg-white py-3 border-bottom shadow-sm placeholder-glow">
+    <div class="container text-center">
+        <span class="text-muted small me-3 fw-bold text-uppercase">Trending Routes:</span>
+        <div class="trending-tags d-inline-block m-0">
+            <span class="trending-tag" onclick="filterTag('NAGALAND')">+ All NAGALAND</span>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-5" style="background:#f8f9fa;">
+    <div class="container">
+
+        <!-- Package Search Results -->
+        <div class="mb-4">
+            <p class="text-muted mb-0"><span id="resultCount">6</span> packages found</p>
+        </div>
+        <div class="row" id="packagesContainer">
+
+            <!-- Card 1 -->
+            <div class="col-lg-4 col-md-6 mb-4 pkg-card" id="pkg-1" data-price="14999" data-days="5" data-title="Kohima &amp; Hornbill Festival">
+                <div class="card dest-card position-relative">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg" alt="Kohima &amp; Hornbill Festival">
+                    <span class="badge-tag">Best Seller</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Kohima &amp; Hornbill Festival</h5>
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar-alt"></i> 5 Days / 4 Nights</span>
+                            <span><i class="fas fa-users"></i> 2-5 People</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                            <div class="price-tag">&#8377;14,999 <span>/person</span></div>
+                            <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                            data-title="Kohima &amp; Hornbill Festival"
+                            data-image="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg"
+                            data-duration="5 Days / 4 Nights" data-location="NAGALAND"
+                            data-price="14,999"
+                            data-description="Experience the world's biggest Naga cultural extravaganza at Hornbill Festival, visit Kohima War Cemetery, and explore local markets and museums."
+                            data-inclusions="Transport from Dimapur, hotel stays, meals, festival access &amp; cultural shows">
+                            <i class="fab fa-whatsapp me-2"></i>Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-lg-4 col-md-6 mb-4 pkg-card" id="pkg-2" data-price="12499" data-days="4" data-title="Tribal Villages Experience">
+                <div class="card dest-card position-relative">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg" alt="Tribal Villages Experience">
+                    <span class="badge-tag">Popular</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Tribal Villages Experience</h5>
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar-alt"></i> 4 Days / 3 Nights</span>
+                            <span><i class="fas fa-users"></i> 2-8 People</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                            <div class="price-tag">&#8377;12,499 <span>/person</span></div>
+                            <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.8</div>
+                        </div>
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                            data-title="Tribal Villages Experience"
+                            data-image="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg"
+                            data-duration="4 Days / 3 Nights" data-location="NAGALAND"
+                            data-price="12,499"
+                            data-description="Visit authentic Naga villages, interact with tribes, learn about traditional weaving, and witness morung architecture and rituals."
+                            data-inclusions="Transport, homestays, meals, village tours, local guides">
+                            <i class="fab fa-whatsapp me-2"></i>Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-lg-4 col-md-6 mb-4 pkg-card" id="pkg-3" data-price="16999" data-days="6" data-title="Dzukou Valley Trek">
+                <div class="card dest-card position-relative">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg" alt="Dzukou Valley Trek">
+                    <span class="badge-tag">Trending</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Dzukou Valley Trek</h5>
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar-alt"></i> 6 Days / 5 Nights</span>
+                            <span><i class="fas fa-users"></i> 2-6 People</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                            <div class="price-tag">&#8377;16,999 <span>/person</span></div>
+                            <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                            data-title="Dzukou Valley Trek"
+                            data-image="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg"
+                            data-duration="6 Days / 5 Nights" data-location="NAGALAND"
+                            data-price="16,999"
+                            data-description="Trek to the stunning Dzukou Valley with its seasonal flowers, rolling hills, and cross-border views into Manipur."
+                            data-inclusions="Transport, camps, meals, trekking guide, permits">
+                            <i class="fab fa-whatsapp me-2"></i>Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-lg-4 col-md-6 mb-4 pkg-card" id="pkg-4" data-price="15499" data-days="5" data-title="Longleng &amp; Konyak Naga">
+                <div class="card dest-card position-relative">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg" alt="Longleng &amp; Konyak Naga">
+                    <span class="badge-tag">Value Pack</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Longleng &amp; Konyak Naga</h5>
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar-alt"></i> 5 Days / 4 Nights</span>
+                            <span><i class="fas fa-users"></i> 2-7 People</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                            <div class="price-tag">&#8377;15,499 <span>/person</span></div>
+                            <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.7</div>
+                        </div>
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                            data-title="Longleng &amp; Konyak Naga"
+                            data-image="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg"
+                            data-duration="5 Days / 4 Nights" data-location="NAGALAND"
+                            data-price="15,499"
+                            data-description="Explore the remote Longleng district and Konyak Naga villages known for their headhunting history, tattoos, and warrior culture."
+                            data-inclusions="Transport, homestays, meals, cultural interactions, off-road permits">
+                            <i class="fab fa-whatsapp me-2"></i>Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-lg-4 col-md-6 mb-4 pkg-card" id="pkg-5" data-price="13299" data-days="4" data-title="Khonoma Green Village">
+                <div class="card dest-card position-relative">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg" alt="Khonoma Green Village">
+                    <span class="badge-tag">Adventure</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Khonoma Green Village</h5>
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar-alt"></i> 4 Days / 3 Nights</span>
+                            <span><i class="fas fa-users"></i> 2-5 People</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                            <div class="price-tag">&#8377;13,299 <span>/person</span></div>
+                            <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> 4.2</div>
+                        </div>
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                            data-title="Khonoma Green Village"
+                            data-image="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg"
+                            data-duration="4 Days / 3 Nights" data-location="NAGALAND"
+                            data-price="13,299"
+                            data-description="Visit Asia's first green village Khonoma, trek through community forests, and learn about sustainable living and biodiversity conservation."
+                            data-inclusions="Transport, eco-lodges, meals, nature walks, conservation talks">
+                            <i class="fab fa-whatsapp me-2"></i>Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-lg-4 col-md-6 mb-4 pkg-card" id="pkg-6" data-price="24999" data-days="8" data-title="Nagaland Complete Experience">
+                <div class="card dest-card position-relative">
+                    <img src="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg" alt="Nagaland Complete Experience">
+                    <span class="badge-tag">Premium</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Nagaland Complete Experience</h5>
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar-alt"></i> 8 Days / 7 Nights</span>
+                            <span><i class="fas fa-users"></i> 2-5 People</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                            <div class="price-tag">&#8377;24,999 <span>/person</span></div>
+                            <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                        <button class="btn btn-book" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                            data-title="Nagaland Complete Experience"
+                            data-image="https://www.sevendestination.com/wp-content/uploads/2026/03/nagaland.jpg"
+                            data-duration="8 Days / 7 Nights" data-location="NAGALAND"
+                            data-price="24,999"
+                            data-description="Ultimate Nagaland: Hornbill Festival, tribal villages, Dzukou Valley, Khonoma, Longleng, and cultural immersions with Naga cuisine."
+                            data-inclusions="Flights, all permits, luxury transport &amp; stays, comprehensive meals &amp; activities">
+                            <i class="fab fa-whatsapp me-2"></i>Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /#packagesContainer -->
+
+        <!-- Experiences -->
+        <div class="section-header mt-4">
+            <h2>NAGALAND Experiences</h2>
+            <div class="section-divider"></div>
+            <p>Iconic activities that make every NAGALAND trip unforgettable</p>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-3 col-md-6 mb-4"><div class="activity-card hover-lift"><i class="fas fa-futbol"></i><h4>Hornbill Festival</h4><div class="activity-count">1+</div><p>Annual Spectacle</p></div></div>
+            <div class="col-lg-3 col-md-6 mb-4"><div class="activity-card hover-lift"><i class="fas fa-users"></i><h4>Tribal Villages</h4><div class="activity-count">16+</div><p>Naga Tribes</p></div></div>
+            <div class="col-lg-3 col-md-6 mb-4"><div class="activity-card hover-lift"><i class="fas fa-mountain"></i><h4>Dzukou Valley</h4><div class="activity-count">1+</div><p>Blooming Paradise</p></div></div>
+            <div class="col-lg-3 col-md-6 mb-4"><div class="activity-card hover-lift"><i class="fas fa-hiking"></i><h4>Trekking Trails</h4><div class="activity-count">20+</div><p>Adventure Routes</p></div></div>
+        </div>
+
+        <!-- Explore by Category -->
+        <div class="section-header">
+            <h2>Explore by Travel Style</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col"><div class="card h-100 border-0 shadow-sm text-center p-4 hover-lift"><div class="mb-3"><i class="fas fa-mountain fa-2x" style="color:#f58220;"></i></div><h5 class="fw-bold">Hill Stations</h5><p class="text-muted small mb-3">Cool retreats and stunning Himalayan vistas.</p><ul class="list-unstyled text-start small mx-auto" style="max-width:200px;"><li class="mb-2"><i class="fas fa-check me-2" style="color:#f58220;"></i>Local Sightseeing</li><li class="mb-2"><i class="fas fa-check me-2" style="color:#f58220;"></i>Cultural Tours</li><li><i class="fas fa-check me-2" style="color:#f58220;"></i>Nature Walks</li></ul></div></div>
+            <div class="col"><div class="card h-100 border-0 shadow-sm text-center p-4 hover-lift"><div class="mb-3"><i class="fas fa-leaf fa-2x" style="color:#f58220;"></i></div><h5 class="fw-bold">Nature &amp; Tea</h5><p class="text-muted small mb-3">Breathe in the fresh mountain air and tea aroma.</p><ul class="list-unstyled text-start small mx-auto" style="max-width:200px;"><li class="mb-2"><i class="fas fa-check me-2" style="color:#f58220;"></i>Scenic Views</li><li class="mb-2"><i class="fas fa-check me-2" style="color:#f58220;"></i>Local Markets</li><li><i class="fas fa-check me-2" style="color:#f58220;"></i>Evening Leisure</li></ul></div></div>
+            <div class="col"><div class="card h-100 border-0 shadow-sm text-center p-4 hover-lift"><div class="mb-3"><i class="fas fa-hiking fa-2x" style="color:#f58220;"></i></div><h5 class="fw-bold">Adventure</h5><p class="text-muted small mb-3">Thrilling treks and high-altitude passes.</p><ul class="list-unstyled text-start small mx-auto" style="max-width:200px;"><li class="mb-2"><i class="fas fa-check me-2" style="color:#f58220;"></i>Adventure Activities</li><li class="mb-2"><i class="fas fa-check me-2" style="color:#f58220;"></i>Excursions</li><li><i class="fas fa-check me-2" style="color:#f58220;"></i>Paragliding</li></ul></div></div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="mb-5">
+            <h3 class="fw-bold mb-4" style="font-family:'Playfair Display',serif;">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">What is the best time to visit Nagaland?</button></h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">October to December and March to May are ideal for clear Kanchenjunga views and pleasant weather. Monsoon (June–September) brings lush landscapes but some road closures.</div></div>
+                </div>
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Is the Toy Train ride included in the package?</button></h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Yes! Our "Nagaland Delight" and most hill packages include a UNESCO World Heritage Toy Train ride. Please check individual package inclusions for details.</div></div>
+                </div>
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Can I customize the Nagaland itinerary?</button></h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Absolutely! All our packages are fully customizable. Contact us on WhatsApp at +91 8585858400 with your travel dates and group size and we will create a tailored plan.</div></div>
+                </div>
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Do I need a permit for Nathula Pass?</button></h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Yes, Nathula Pass requires a restricted area permit for Indian nationals (foreigners are not permitted). We arrange all permits included in the package price — no extra hassle.</div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Related Tours Section -->
+<section class="related-tours-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 style="font-family:'Playfair Display',serif; font-weight:700;">Similar North-East Tours & Packages</h2>
+            <div class="section-divider"></div>
+            <p class="text-muted">Explore more stunning hill stations and cultural wonders of the North East</p>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <a href="sikkim-tour-package.html" class="text-decoration-none">
+                    <div class="related-card">
+                        <div class="related-card-img">
+                            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80" alt="SIKKIM TOUR PACKAGES" loading="lazy">
+                        </div>
+                        <div class="related-card-body">
+                            <h4 class="related-card-title">SIKKIM TOUR PACKAGES</h4>
+                            <div class="mt-auto"><span class="btn-related">Explore Tour</span></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <a href="kalimpong-tour-package.html" class="text-decoration-none">
+                    <div class="related-card">
+                        <div class="related-card-img">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="KALIMPONG TOUR PACKAGES" loading="lazy">
+                        </div>
+                        <div class="related-card-body">
+                            <h4 class="related-card-title">KALIMPONG TOUR PACKAGES</h4>
+                            <div class="mt-auto"><span class="btn-related">Explore Tour</span></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <a href="darjeeling-tour-package.html" class="text-decoration-none">
+                    <div class="related-card">
+                        <div class="related-card-img">
+                            <img src="https://images.unsplash.com/photo-1541544185854-be6b3844f210?auto=format&fit=crop&w=600&q=80" alt="DARJEELING TOUR PACKAGES" loading="lazy">
+                        </div>
+                        <div class="related-card-body">
+                            <h4 class="related-card-title">DARJEELING TOUR PACKAGES</h4>
+                            <div class="mt-auto"><span class="btn-related">Explore Tour</span></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <a href="shillong-tour-package.html" class="text-decoration-none">
+                    <div class="related-card">
+                        <div class="related-card-img">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80" alt="SHILLONG TOUR PACKAGES" loading="lazy">
+                        </div>
+                        <div class="related-card-body">
+                            <h4 class="related-card-title">SHILLONG TOUR PACKAGES</h4>
+                            <div class="mt-auto"><span class="btn-related">Explore Tour</span></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-section">
+                    <h5>Seven Destination</h5>
+                    <p class="footer-description">Your trusted travel partner since 2018. We specialize in car rentals,
+                        hotel bookings, and customized tour packages across West Bengal and India.</p>
+                    <p><a href="tel:+918585858400"><i class="fas fa-phone me-2"></i><span class="hand-drawn-highlight">+91 85858 58400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                                    <ellipse cx="50" cy="20" rx="48" ry="18"></ellipse>
+                                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16"></ellipse>
+                                </svg></span></a></p>
+                    <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2"></i>
+                            email@sevendestination.com</a></p>
+                    <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt me-2"></i> 13/29A Mohanlal Bahalwala Road, Bally, Howrah
+                            711201</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#car-rental">Car Rental</a></li>
+                        <li><a href="#hotel-booking">Hotel Booking</a></li>
+                        <li><a href="#ticket-service">Ticket Service</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trusted By -->
+        <div class="row mt-5 text-center">
+            <div class="col-12">
+                <h5 class="mb-4 text-white-50">Trusted By</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+                    <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="mb-2" style="height:30px;" loading="lazy">
+                        <div class="small">Google Reviews</div>
+                    </a>
+                    <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor" class="mb-2" style="height:30px;background:white;border-radius:4px;padding:2px;" loading="lazy">
+                        <div class="small">TripAdvisor</div>
+                    </a>
+                    <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial" class="mb-2" style="height:30px;background:white;border-radius:4px;padding:2px;" loading="lazy">
+                        <div class="small">JustDial Verified</div>
+                    </a>
+                    <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none"><img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart" class="mb-2" style="height:30px;background:white;border-radius:4px;padding:2px;" loading="lazy">
+                        <div class="small">IndiaMart Trusted</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="#home">Home</a> | <a href="#about">Our Profile</a> | <a href="#packages">Tour Package</a> | <a href="#car-rental">Car Rental</a> | <a href="#hotel-booking">Hotel Booking</a> | <a href="#ticket-service">Ticketing</a> | <a href="#testimonials">News &amp; Events</a> | <a href="#destinations">Photo Gallery</a> | <a href="#testimonials">Videos</a> | <a href="#testimonials">Testimonials</a> | <a href="#destinations">Destinations</a> | <a href="#about">Site
+                Map</a> | <a href="#contact">Contact us</a> | <a href="#about">Career</a>
+        </div>
+
+        <div class="popular-destinations">
+            <p><strong>Popular Circuit Destinations</strong></p>
+            <div class="dest-list"><a href="https://www.sevendestination.com/andaman-tour-package/" class="text-white-50 text-decoration-none me-3">ANDAMAN TOUR PACKAGES</a><a href="https://www.sevendestination.com/darjeeling-tour-package/" class="text-white-50 text-decoration-none me-3">DARJEELING TOUR PACKAGES</a><a href="https://www.sevendestination.com/goa-tour-package/" class="text-white-50 text-decoration-none me-3">GOA TOUR PACKAGES</a><a href="https://www.sevendestination.com/golden-triangle-india/" class="text-white-50 text-decoration-none me-3">GOLDEN TRIANGLE PACKAGES</a><a href="https://www.sevendestination.com/hamachal-pradesh-tour-package/" class="text-white-50 text-decoration-none me-3">HIMACHAL PRADESH TOUR PACKAGES</a><a href="https://www.sevendestination.com/kashmir-tour/" class="text-white-50 text-decoration-none me-3">KASHMIR TOUR PACKAGES</a><a href="https://www.sevendestination.com/kerala-tour-package/" class="text-white-50 text-decoration-none me-3">KERALA TOUR PACKAGES</a><a href="https://www.sevendestination.com/ladhak-tour-package/" class="text-white-50 text-decoration-none me-3">LADAKH TOUR PACKAGES</a><a href="https://www.sevendestination.com/rajasthan-tour-package/" class="text-white-50 text-decoration-none me-3">RAJASTHAN TOUR PACKAGES</a><a href="https://www.sevendestination.com/sikkim-tour-package/" class="text-white-50 text-decoration-none me-3">SIKKIM TOUR PACKAGES</a><a href="https://www.sevendestination.com/north-east-tour-packages/" class="text-white-50 text-decoration-none me-3">THE GRAND NORTH EAST EXPEDI...</a></div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="travel-agencies"><div><p><a href="https://www.sevendestination.com/adventure-tours-in-india/" class="text-white-50 text-decoration-none">ADVENTURE TOURS IN INDIA</a></p><p><a href="https://www.sevendestination.com/central-india-tours/" class="text-white-50 text-decoration-none">CENTRAL INDIA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/north-east-india/" class="text-white-50 text-decoration-none">DISCOVER NORTH EAST INDIA'S...</a></p><p><a href="https://www.sevendestination.com/jammu-and-kashmir-tour-packages/" class="text-white-50 text-decoration-none">EXCLUSIVE JAMMU &amp; KASHMIR T...</a></p><p><a href="https://www.sevendestination.com/haryana-tours/" class="text-white-50 text-decoration-none">HARYANA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/indian-hill-station-tour-packages/" class="text-white-50 text-decoration-none">INDIAN HILL STATIONS TOUR P...</a></p><p><a href="https://www.sevendestination.com/kalimpong-tour-package/" class="text-white-50 text-decoration-none">KALIMPONG TOUR PACKAGES FRO...</a></p><p><a href="https://www.sevendestination.com/madhya-pradesh-tours/" class="text-white-50 text-decoration-none">MADHYA PRADESH TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/meghalaya-tour-packages/" class="text-white-50 text-decoration-none">MEGHALAYA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/new-year-tour-packages/" class="text-white-50 text-decoration-none">NEW YEAR TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/weekend-packages/" class="text-white-50 text-decoration-none">POPULAR WEEKEND PACKAGES</a></p><p><a href="https://www.sevendestination.com/romantic-honeymoon-destinations-in-india/" class="text-white-50 text-decoration-none">ROMANTIC HONEYMOON PACKAGES</a></p><p><a href="https://www.sevendestination.com/tamil-nadu-tour-packages/" class="text-white-50 text-decoration-none">TAMIL NADU TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/tripura-tour-packages/" class="text-white-50 text-decoration-none">TRIPURA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/ayurveda-yoga-meditation-tour/" class="text-white-50 text-decoration-none">WELLNESS TOUR PACKAGES</a></p></div><div><p><a href="https://www.sevendestination.com/andhra-pradesh/" class="text-white-50 text-decoration-none">ANDHRA PRADESH TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/chennai-tour-package/" class="text-white-50 text-decoration-none">CHENNAI TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/east-india/" class="text-white-50 text-decoration-none">EAST INDIA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/north-india/" class="text-white-50 text-decoration-none">EXPLORE NORTH INDIA'S MAJES...</a></p><p><a href="../heritage-temple-tour.html" class="text-white-50 text-decoration-none">HERITAGE &amp; TEMPLE TOURS</a></p><p><a href="https://www.sevendestination.com/indian-wildlife-tour-package/" class="text-white-50 text-decoration-none">INDIAN WILDLIFE TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/karnataka-tour-package/" class="text-white-50 text-decoration-none">KARNATAKA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/maharashtra-tours/" class="text-white-50 text-decoration-none">MAHARASHTRA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/mizoram-tour-packages/" class="text-white-50 text-decoration-none">MIZORAM TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/odisha-tour-packages/" class="text-white-50 text-decoration-none">ODISHA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/vacation-packages/" class="text-white-50 text-decoration-none">PREMIUM VACATION PACKAGES</a></p><p><a href="https://www.sevendestination.com/shillong-tour-package/" class="text-white-50 text-decoration-none">SHILLONG TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/telangana-tour-packages/" class="text-white-50 text-decoration-none">TELANGANA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/uttar-pradesh-tour/" class="text-white-50 text-decoration-none">UTTAR PRADESH TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/west-bengal-tour/" class="text-white-50 text-decoration-none">WEST BENGAL TOUR PACKAGES</a></p></div><div><p><a href="../arunachal-tour-package.html" class="text-white-50 text-decoration-none">ARUNACHAL PRADESH TOURS</a></p><p><a href="https://www.sevendestination.com/chhattisgarh-tours/" class="text-white-50 text-decoration-none">CHHATTISGARH TOUR PACKAGES</a></p><p><a href="../educational-tour-packages.html" class="text-white-50 text-decoration-none">EDUCATIONAL TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/gangasagar-yatra/" class="text-white-50 text-decoration-none">GANGASAGAR PACKAGES</a></p><p><a href="../top-beach-destinations.html" class="text-white-50 text-decoration-none">INDIA'S TOP BEACH DESTINATIONS</a></p><p><a href="../international-honeymoon-packages.html" class="text-white-50 text-decoration-none">INTERNATIONAL HONEYMOON MAGIC</a></p><p><a href="https://www.sevendestination.com/lakshadweep-tours/" class="text-white-50 text-decoration-none">LAKSHADWEEP PACKAGES</a></p><p><a href="https://www.sevendestination.com/manali-tour-package-from-kolkata/" class="text-white-50 text-decoration-none">MANALI CALLING FROM KOLKATA</a></p><p><a href="https://www.sevendestination.com/mumbai-tour-package/" class="text-white-50 text-decoration-none">MUMBAI TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/paragliding-tour-packages/" class="text-white-50 text-decoration-none">PARAGLDING TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/punjab-tour-package/" class="text-white-50 text-decoration-none">PUNJAB TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/south-india/" class="text-white-50 text-decoration-none">SOUTH INDIA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/tiger-safari-tours-in-india/" class="text-white-50 text-decoration-none">TIGER SAFARI TOURS IN INDIA</a></p><p><a href="https://www.sevendestination.com/uttarakhand-tour-package/" class="text-white-50 text-decoration-none">UTTARAKHAND TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/west-india/" class="text-white-50 text-decoration-none">WEST INDIA TOUR PACKAGES</a></p></div><div><p><a href="../assam-tour-package.html" class="text-white-50 text-decoration-none">ASSAM TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/delhi-tour-package/" class="text-white-50 text-decoration-none">DELHI TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/camping-tour-packages/" class="text-white-50 text-decoration-none">EMBARK ON THRILLING CAMPING...</a></p><p><a href="https://www.sevendestination.com/gujarat-tour-package/" class="text-white-50 text-decoration-none">GUJARAT TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/indian-beach-destination/" class="text-white-50 text-decoration-none">INDIAN BEACH TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/jharkhand-tour-packages/" class="text-white-50 text-decoration-none">JHARKHAND TOUR PACKAGES</a></p><p><a href="../luxury-wedding-car-rental.html" class="text-white-50 text-decoration-none">Luxury Wedding Car Rental</a></p><p><a href="https://www.sevendestination.com/manipur-tour-package/" class="text-white-50 text-decoration-none">MANIPUR TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/nagaland-tour-package/" class="text-white-50 text-decoration-none">NAGALAND TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/patna-tour-package/" class="text-white-50 text-decoration-none">PATNA TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/honeymoon-packages/" class="text-white-50 text-decoration-none">ROMANTIC HONEYMOON PACKAGES</a></p><p><a href="https://www.sevendestination.com/srinagar-tour-package/" class="text-white-50 text-decoration-none">SRINAGAR TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/trekking-tour/" class="text-white-50 text-decoration-none">TREKKING TOUR PACKAGES</a></p><p><a href="https://www.sevendestination.com/weekend-packages/" class="text-white-50 text-decoration-none">WEEKEND GETAWAYS</a></p></div></div>
+        <div class="copyright-text">All content and images on this website are copyrighted by their respective owners.
+            This website is intended to promote these works, and no endorsement of the artist is implied. Unauthorized
+            use is prohibited by law.</div>
+        <div class="divider"></div>
+        <div class="copyright">
+            <p>© 2025 Seven Destination. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Booking Modal (destinations.html style) -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 pt-2">
+                <div class="text-center mb-4">
+                    <img src="" id="modalPkgImage" class="img-fluid rounded mb-3" style="max-height:150px;object-fit:cover;width:100%;">
+                    <h4 class="mb-1" style="font-family:'Playfair Display',serif;" id="modalPkgName">Package Name</h4>
+                    <span class="badge bg-light text-dark border" id="modalPkgBadge">Nagaland</span>
+                </div>
+                <div class="row g-2 mb-4 text-center">
+                    <div class="col-6"><div class="p-2 border rounded bg-light"><small class="d-block text-muted">Duration</small><span class="fw-bold" id="modalPkgDays">—</span></div></div>
+                    <div class="col-6"><div class="p-2 border rounded bg-light"><small class="d-block text-muted">Starting From</small><span class="fw-bold" style="color:var(--primary-color);" id="modalPkgPrice">—</span></div></div>
+                    <div class="col-12"><div class="p-2 border rounded bg-light"><i class="fas fa-map-marker-alt text-muted me-1"></i><span id="modalPkgLocation">—</span></div></div>
+                </div>
+                <p class="text-muted small mb-3" id="modalPkgDesc"></p>
+                <div class="alert alert-info py-2 small mb-3" id="modalPkgInc"></div>
+                <form onsubmit="event.preventDefault();return false;">
+                    <div class="mb-3"><label class="form-label small fw-bold">Travel Date</label><input type="date" id="modalTravelDate" class="form-control shadow-sm"></div>
+                    <div class="mb-3"><label class="form-label small fw-bold">Number of Travelers</label>
+                        <select id="modalTravelers" class="form-select shadow-sm">
+                            <option value="1">1 Person</option><option value="2" selected>2 Persons</option>
+                            <option value="3">3 Persons</option><option value="4">4 Persons</option>
+                            <option value="5">5 Persons</option><option value="6+">6+ Persons (Group)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3"><label class="form-label small fw-bold">Special Requirements</label><textarea id="modalRequirements" class="form-control shadow-sm" rows="2" placeholder="e.g. Vegetarian meals, extra bed, Toy Train preference..."></textarea></div>
+                    <button type="button" id="modalWhatsAppBtn" class="btn w-100 py-3 rounded-pill fw-bold" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;">
+                        <i class="fab fa-whatsapp me-2"></i>Book via WhatsApp
+                    </button>
+                    <p class="text-center text-muted small mt-3 mb-0">No payment required now. Confirm availability on chat.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Alert -->
+<div class="success-alert" id="successAlert"><i class="fas fa-check-circle me-2"></i>Request sent! We'll contact you within 24 hours.</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ── Booking Modal ──────────────────────────────────────────────────────────
+const bookingModal = document.getElementById('bookingModal');
+bookingModal.addEventListener('show.bs.modal', function(e) {
+    const btn = e.relatedTarget;
+    document.getElementById('modalPkgImage').src       = btn.dataset.image || '';
+    document.getElementById('modalPkgImage').alt       = btn.dataset.title || '';
+    document.getElementById('modalPkgName').textContent  = btn.dataset.title || '';
+    document.getElementById('modalPkgBadge').textContent = btn.dataset.location || 'Nagaland';
+    document.getElementById('modalPkgDays').textContent  = btn.dataset.duration || '';
+    document.getElementById('modalPkgPrice').textContent = '₹' + (btn.dataset.price || '');
+    document.getElementById('modalPkgLocation').textContent = btn.dataset.location || '';
+    document.getElementById('modalPkgDesc').textContent  = btn.dataset.description || '';
+    const inc = btn.dataset.inclusions;
+    const incEl = document.getElementById('modalPkgInc');
+    incEl.innerHTML = inc ? '<strong>Inclusions:</strong> ' + inc : '';
+    incEl.style.display = inc ? '' : 'none';
+});
+
+document.getElementById('modalWhatsAppBtn').addEventListener('click', function() {
+    const name    = document.getElementById('modalPkgName').textContent;
+    const date    = document.getElementById('modalTravelDate').value || 'flexible';
+    const pax     = document.getElementById('modalTravelers').value;
+    const req     = document.getElementById('modalRequirements').value;
+    const msg     = encodeURIComponent(
+        'Hello Seven Destination! I am interested in:\n' +
+        '📦 Package: ' + name + '\n' +
+        '📅 Travel Date: ' + date + '\n' +
+        '👥 Travellers: ' + pax + '\n' +
+        (req ? '📝 Special: ' + req : '')
+    );
+    window.open('https://wa.me/918585858400?text=' + msg, '_blank');
+    bootstrap.Modal.getInstance(bookingModal).hide();
+    const alert = document.getElementById('successAlert');
+    alert.style.display = 'block';
+    setTimeout(() => alert.style.display = 'none', 5000);
+});
+
+// ── Search & Sort ──────────────────────────────────────────────────────────
+function filterTag(term) {
+    document.getElementById('searchDest').value = term;
+    filterCards(term.toLowerCase());
+}
+function filterCards(q) {
+    let count = 0;
+    const container = document.getElementById('packagesContainer');
+    const cards = Array.from(container.querySelectorAll('.pkg-card'));
+    
+    // Evaluate matches and set visual state
+    cards.forEach(c => {
+        const title = c.dataset.title.toLowerCase();
+        const show  = !q || title.includes(q);
+        
+        c.style.display = ''; // Never hide the card completely
+        if (show) {
+            c.style.opacity = '1';
+            count++;
+        } else {
+            c.style.opacity = '0.35'; // Dim the non-matching cards
+        }
+    });
+
+    // Reorder DOM nodes: Matches bubble to the top
+    cards.sort((a, b) => {
+        const aMatch = !q || a.dataset.title.toLowerCase().includes(q);
+        const bMatch = !q || b.dataset.title.toLowerCase().includes(q);
+        if (aMatch && !bMatch) return -1;
+        if (!aMatch && bMatch) return 1;
+        return 0; // Maintain original relative order
+    });
+
+    // Re-append according to sorted array
+    cards.forEach(c => container.appendChild(c));
+
+    document.getElementById('resultCount').textContent = count;
+}
+
+// ── Card animations ────────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.dest-card, .activity-card, .related-card').forEach(c => {
+    c.style.opacity = 0;
+    c.style.transform = 'translateY(20px)';
+    c.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(c);
+});
+
+// ── Smart Deep Linking (from add_deep_linking.js) ─────────────────────────
+(function() {
+    const MODAL_IDS = ['bookingModal'];
+    function handleHash() {
+        const hash = window.location.hash;
+        if (!hash || hash === '#') return;
+        if (hash === '#book') {
+            const firstBtn = document.querySelector('.btn-book, [data-bs-target*="Modal"]');
+            if (firstBtn) firstBtn.click();
+            return;
+        }
+        const targetEl = document.querySelector(hash);
+        if (targetEl) {
+            const btn = targetEl.querySelector('.btn-book, [data-bs-target*="Modal"]');
+            if (btn) { btn.click(); return; }
+        }
+    }
+    window.addEventListener('load', () => setTimeout(handleHash, 600));
+    window.addEventListener('hashchange', handleHash);
+
+    document.addEventListener('click', e => {
+        const btn = e.target.closest('.btn-book, [data-bs-target*="Modal"]');
+        if (btn) {
+            const parentWithId = btn.closest('[id]');
+            if (parentWithId && !MODAL_IDS.includes(parentWithId.id))
+                history.replaceState(null, null, '#' + parentWithId.id);
+            else
+                history.replaceState(null, null, '#book');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        MODAL_IDS.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('hidden.bs.modal', () => {
+                if (window.location.hash !== '') history.replaceState(null, null, ' ');
+            });
+        });
+    });
+})();
+</script>

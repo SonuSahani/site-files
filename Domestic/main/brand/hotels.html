@@ -1,0 +1,1346 @@
+﻿<!-- West Bengal Hotels HTML starts here -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Hotel Booking Snippet -->
+<link rel="stylesheet" href="elementor_styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<style>
+    /* Footer & Header Styles specific to this snippet */
+    .hand-drawn-highlight {
+        position: relative;
+        display: inline-block;
+        padding: 6px 16px;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% + 24px);
+        height: calc(100% + 20px);
+        transform: translate(-50%, -50%) rotate(-5deg);
+        pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+        fill: none;
+        stroke: #e74c3c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+        stroke: rgba(231, 76, 60, 0.4);
+        stroke-width: 2;
+        stroke-dasharray: 320;
+        stroke-dashoffset: 320;
+        animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+        0% {
+            stroke-dashoffset: 300;
+        }
+
+        40% {
+            stroke-dashoffset: 0;
+        }
+
+        60% {
+            stroke-dashoffset: 0;
+        }
+
+        100% {
+            stroke-dashoffset: -300;
+        }
+    }
+
+    .trust-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 15px 0;
+        align-items: center;
+    }
+
+    .trust-badges img {
+        height: auto;
+        max-width: 120px;
+        max-height: 70px;
+        object-fit: contain;
+        filter: grayscale(1);
+        transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .popular-destinations {
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .popular-destinations p {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .popular-destinations span {
+        color: #adb5bd;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .travel-agencies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 15px 0;
+    }
+
+    .travel-agencies div {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .travel-agencies p {
+        color: #808080;
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+        color: var(--accent-color);
+    }
+
+    .copyright-text {
+        color: #ffcccc;
+        font-size: 0.7rem;
+        text-align: center;
+        margin: 10px 0;
+        line-height: 1.4;
+        background: rgba(255, 0, 0, 0.1);
+        padding: 8px;
+        border-radius: 8px;
+        border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        margin: 10px 0;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #adb5bd;
+        font-size: 0.8rem;
+    }
+
+    /* Hotel Listing Specific Styles */
+    .hotel-search-bar {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        margin-top: -50px;
+        position: relative;
+        z-index: 10;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .hotel-filter-sidebar {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid #eee;
+        height: fit-content;
+        position: sticky;
+        top: 100px;
+    }
+
+    .filter-group {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .filter-group:last-child {
+        border-bottom: none;
+    }
+
+    .filter-title {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .form-check-label {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .hotel-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .hotel-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .hotel-img-wrapper {
+        width: 35%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hotel-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .hotel-card:hover .hotel-img-wrapper img {
+        transform: scale(1.1);
+    }
+
+    .hotel-content {
+        width: 65%;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hotel-content h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #333;
+        letter-spacing: 0.5px;
+    }
+
+    #modalHotelName {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .hotel-location {
+        color: #777;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .hotel-amenities {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .amenity-item {
+        color: #666;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .amenity-item i {
+        color: var(--primary-color);
+    }
+
+    .hotel-price-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .price-tag {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    .price-tag span {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #777;
+    }
+
+    .rating-badge {
+        background: #00aa6c;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 991px) {
+        .hotel-card {
+            flex-direction: column;
+        }
+
+        .hotel-img-wrapper {
+            width: 100%;
+            height: 200px;
+        }
+
+        .hotel-content {
+            width: 100%;
+        }
+
+        .hotel-search-bar {
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        /* Off-Canvas Filter Sidebar (Mobile) */
+        .hotel-filter-sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 1080;
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease-in-out;
+        }
+
+        .hotel-filter-sidebar.active {
+            left: 0;
+        }
+
+        .filter-close-btn {
+            display: block;
+            text-align: right;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        /* Overlay */
+        .filter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1075;
+            display: none;
+        }
+
+        .filter-overlay.active {
+            display: block;
+        }
+    }
+
+    /* Custom Page Header Padding */
+    .class-page-header-custom {
+        padding-bottom: 80px;
+    }
+
+    /* Mobile Floating Action Bar */
+    .mobile-bottom-actions {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1060;
+        background: #fff;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        display: flex;
+        overflow: hidden;
+        width: 250px;
+    }
+
+    .action-btn {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        position: relative;
+    }
+
+    .action-btn:first-child::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background: #e0e0e0;
+    }
+
+    /* Sort Modal (Bottom Sheet) */
+    .sort-modal {
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 1090;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
+        transition: bottom 0.3s ease-in-out;
+        padding: 20px 20px 40px;
+    }
+
+    .sort-modal.active {
+        bottom: 0;
+    }
+
+    .sort-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+
+    .sort-header h5 {
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .sort-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #f5f5f5;
+        cursor: pointer;
+    }
+
+    .sort-option:last-child {
+        border-bottom: none;
+    }
+
+    .sort-circle {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .sort-option.selected .sort-circle {
+        border-color: #ff6600;
+    }
+
+    .sort-option.selected .sort-circle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background: #ff6600;
+        border-radius: 50%;
+    }
+
+    @media (min-width: 992px) {
+
+        .mobile-bottom-actions,
+        .sort-modal {
+            display: none !important;
+        }
+    }
+</style>
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Seven Destination",
+      "image": "http://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png",
+      "description": "Book the best hotels in Digha, Darjeeling, Sundarbans, and Kolkata with Seven Destination. We offer luxury resorts, budget homestays, and premium hotels at unbeatable prices.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "13/29A Mohanlal Bahalwala Road, Bally",
+        "addressLocality": "Howrah",
+        "addressRegion": "West Bengal",
+        "postalCode": "711201",
+        "addressCountry": "IN"
+      },
+      "telephone": "+918585858400",
+      "url": "https://sevendestination.com/hotel-booking",
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/sevendestination.in",
+        "https://www.instagram.com/7destinationofficial",
+        "https://www.youtube.com/@Traveller_Sharma"
+      ]
+    }
+    </script>
+
+
+<!-- Navbar -->
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+            <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+                alt="Seven Destination">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/destinations/">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/group-tours/">Group Tours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header" style="padding-bottom: 80px;">
+    <div class="container">
+        <h1 class="section-title">West Bengal Hotel Booking</h1>
+        <p class="section-subtitle">Find the best deals on premium hotels in Kolkata, Darjeeling, Digha & more</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="content-section pt-0">
+    <div class="container">
+        <!-- Search Bar -->
+        <div class="hotel-search-bar mb-5">
+            <form action="#" class="row g-3 align-items-end" onsubmit="event.preventDefault(); return false;">
+                <div class="col-md-9">
+                    <label class="form-label text-muted small fw-bold">DESTINATION</label>
+                    <div class="input-group">
+
+                        <input type="text" class="form-control py-3 ps-3 shadow-sm" id="searchDestination"
+                            placeholder="Where are you going? (e.g. Digha, Darjeeling)" list="destinationOptions"
+                            style="border: 1px solid #ced4da; border-radius: 0.5rem;">
+                        <datalist id="destinationOptions">
+                            <option value="Kolkata">
+                            <option value="Digha">
+                            <option value="Darjeeling">
+                            <option value="Sundarban">
+                            <option value="Mandarmani">
+                            <option value="Mayapur">
+                            <option value="Tarapith">
+                            <option value="Howrah">
+                            <option value="Salt Lake">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn-custom w-100 py-3 fs-6" id="searchBtn">Search
+                        Hotels</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <!-- Mobile Floating Actions (Injected via JS/Fixed Bottom) -->
+            <!-- Removed Old Toggle -->
+
+            <!-- Mobile Filter Overlay -->
+            <div class="filter-overlay" id="filterOverlay"></div>
+
+            <!-- Floating Bottom Actions -->
+            <div class="mobile-bottom-actions">
+                <button class="action-btn" id="floatSortBtn">
+                    <i class="fas fa-sort-amount-down"></i> Sort
+                </button>
+                <button class="action-btn" id="floatFilterBtn">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+
+            <!-- Hotel Details Modal -->
+            <div class="modal fade" id="hotelDetailsModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 rounded-4 overflow-hidden shadow-lg">
+                        <div class="modal-body p-0">
+                            <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3 bg-white p-2"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+
+                            <!-- Image Carousel -->
+                            <div id="hotelImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner" id="modalCarouselInner">
+                                    <!-- Images injected via JS -->
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#hotelImageCarousel"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"
+                                        aria-hidden="true"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#hotelImageCarousel"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3"
+                                        aria-hidden="true"></span>
+                                </button>
+                            </div>
+
+                            <div class="p-4 p-md-5">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h3 class="fw-bold mb-0 display-6" id="modalHotelName" style="font-size: 1.75rem;">
+                                        Hotel Name</h3>
+                                    <div class="badge bg-success rounded-pill px-3 py-2" id="modalRating">4.5 <i
+                                            class="fas fa-star small"></i></div>
+                                </div>
+                                <p class="text-muted small mb-4"><i class="fas fa-map-marker-alt text-danger me-1"></i>
+                                    <span id="modalLocation">Location</span>
+                                </p>
+
+                                <p class="text-secondary" id="modalDescription" style="line-height: 1.6;">
+                                    Description here...</p>
+
+                                <!-- Amenities -->
+                                <div class="mb-5 mt-4">
+                                    <h6 class="fw-bold text-uppercase small text-secondary letter-spacing-1 mb-3">
+                                        Amenities</h6>
+                                    <div class="d-flex flex-wrap gap-2" id="modalAmenities">
+                                        <!-- Injected -->
+                                    </div>
+                                </div>
+
+                                <hr class="border-secondary opacity-10 my-4">
+
+                                <!-- Stay Details (Dates & Guests) -->
+                                <div class="row g-4 mb-4">
+                                    <div class="col-12">
+                                        <h6 class="fw-bold text-uppercase small text-secondary letter-spacing-1 mb-3">
+                                            Your Stay</h6>
+                                        <div class="card bg-light border-0 p-3">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label small text-muted fw-bold">Check-In —
+                                                        Check-Out</label>
+                                                    <div class="input-group">
+
+                                                        <input type="date" class="form-control py-2 ps-3"
+                                                            id="modalCheckIn" aria-label="Check-In">
+                                                        <input type="date" class="form-control border-start-0 py-2"
+                                                            id="modalCheckOut" aria-label="Check-Out">
+                                                    </div>
+                                                    <small class="text-muted" style="font-size: 0.75rem;">*Minimum 1
+                                                        Night</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label small text-muted fw-bold">Guests</label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control py-2 ps-3"
+                                                            id="modalAdults" placeholder="Adults" min="1" value="2">
+                                                        <span
+                                                            class="input-group-text bg-white border-start-0 border-end-0 text-muted">|</span>
+                                                        <input type="number" class="form-control border-start-0 py-2"
+                                                            id="modalChildren" placeholder="Kids" min="0" value="0">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Booking Options -->
+                                <div class="row g-5">
+                                    <!-- Room Types -->
+                                    <div class="col-md-6">
+                                        <h6 class="fw-bold text-uppercase small text-secondary letter-spacing-1 mb-3">
+                                            Select Room</h6>
+                                        <div class="d-grid gap-3" id="modalRoomTypes">
+                                            <!-- Radios Injected -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Meal Plans & Addons -->
+                                    <div class="col-md-6">
+                                        <h6 class="fw-bold text-uppercase small text-secondary letter-spacing-1 mb-3">
+                                            Meal Plan</h6>
+                                        <select class="form-select mb-4" id="modalMealPlan" style="cursor: pointer;">
+                                            <option value="ep" data-cost="0">EP (Room Only)</option>
+                                            <option value="cp" data-cost="500">CP (Breakfast Included)</option>
+                                            <option value="map" data-cost="1200">MAP (Breakfast + Dinner)</option>
+                                            <option value="ap" data-cost="2000">AP (All Meals)</option>
+                                        </select>
+
+                                        <h6 class="fw-bold text-uppercase small text-secondary letter-spacing-1 mb-3">
+                                            Add-Ons</h6>
+                                        <div class="d-flex flex-column gap-2">
+                                            <div class="form-check custom-checkbox">
+                                                <input class="form-check-input addon-check" type="checkbox"
+                                                    value="pickup" id="addonPickup" data-cost="1500"
+                                                    style="cursor: pointer;">
+                                                <label class="form-check-label small" for="addonPickup"
+                                                    style="cursor: pointer;">Airport Pickup (+₹1,500)</label>
+                                            </div>
+                                            <div class="form-check custom-checkbox">
+                                                <input class="form-check-input addon-check" type="checkbox"
+                                                    value="sightseeing" id="addonSightseeing" data-cost="3000"
+                                                    style="cursor: pointer;">
+                                                <label class="form-check-label small" for="addonSightseeing"
+                                                    style="cursor: pointer;">1 Day Sightseeing (+₹3,000)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Footer -->
+                        <div class="modal-footer flex-column bg-white border-top p-4">
+                            <div class="w-100 mb-3 pb-3 border-bottom border-light">
+                                <div class="input-group">
+                                    <input type="text" class="form-control py-2" id="modalDiscountCode"
+                                        placeholder="Discount Code" aria-label="Discount Code"
+                                        style="text-transform: uppercase;">
+                                    <button class="btn btn-dark px-4 py-2" type="button" id="applyDiscountBtn"
+                                        style="height: 100%;">Apply</button>
+                                </div>
+                                <small class="text-success fw-bold d-none mt-1 d-block" id="discountMessage">Discount
+                                    Applied!</small>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center w-100 flex-wrap gap-3">
+                                <div>
+                                    <small class="text-muted text-uppercase letter-spacing-1"
+                                        style="font-size: 0.7rem;">Grand Total</small>
+                                    <div class="d-flex align-items-baseline">
+                                        <h3 class="fw-bold text-dark mb-0 me-2" id="modalTotalCost">₹0</h3>
+                                    </div>
+                                    <small class="text-muted" id="modalTotalDetail" style="font-size: 0.8rem;">*1
+                                        Night, 2 Guests</small>
+                                </div>
+                                <a href="#" target="_blank" id="modalWhatsAppBtn"
+                                    class="btn btn-success btn-lg rounded-pill px-5 shadow-sm d-flex align-items-center">
+                                    <i class="fab fa-whatsapp fa-lg me-2"></i>
+                                    <span>Book Now</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sort Modal Bottom Sheet -->
+            <div class="sort-modal" id="sortModal">
+                <div class="sort-header">
+                    <h5>Sort By</h5>
+                    <span class="text-muted" style="cursor:pointer" id="closeSortModal">&times;</span>
+                </div>
+                <div class="sort-options-list">
+                    <div class="sort-option selected" data-value="recommended">
+                        <span>Recommended</span>
+                        <div class="sort-circle"></div>
+                    </div>
+                    <div class="sort-option" data-value="price_asc">
+                        <span>Price: Low to High</span>
+                        <div class="sort-circle"></div>
+                    </div>
+                    <div class="sort-option" data-value="price_desc">
+                        <span>Price: High to Low</span>
+                        <div class="sort-circle"></div>
+                    </div>
+                    <div class="sort-option" data-value="rating">
+                        <span>Star Rating</span>
+                        <div class="sort-circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="hotel-filter-sidebar" id="filterSidebar">
+                    <div class="filter-close-btn" id="filterCloseBtn">&times;</div>
+                    <div class="filter-group">
+                        <div class="filter-title">Price Range <i class="fas fa-chevron-down small"></i></div>
+                        <input type="range" class="form-range" min="1000" max="50000" id="priceRange" value="50000"
+                            aria-label="Maximum Price">
+                        <div class="d-flex justify-content-between small text-muted">
+                            <span>₹1k</span>
+                            <span>₹50k+</span>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-title">Star Rating</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="star5" name="rating" value="5">
+                            <label class="form-check-label" for="star5">
+                                <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+                                    class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+                                    class="fas fa-star text-warning"></i> 5 Star
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="star4" name="rating" value="4">
+                            <label class="form-check-label" for="star4">
+                                <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+                                    class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i> 4
+                                Star
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="star3" name="rating" value="3">
+                            <label class="form-check-label" for="star3">
+                                <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+                                    class="fas fa-star text-warning"></i> 3 Star
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="star2" name="rating" value="2">
+                            <label class="form-check-label" for="star2">
+                                <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i> 2
+                                Star
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-title">Amenities</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="wifi" name="amenities" value="Wifi">
+                            <label class="form-check-label" for="wifi">Free Wifi</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pool" name="amenities" value="Pool">
+                            <label class="form-check-label" for="pool">Swimming Pool</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="breakfast" name="amenities"
+                                value="Breakfast">
+                            <label class="form-check-label" for="breakfast">Breakfast Included</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="parking" name="amenities"
+                                value="Parking">
+                            <label class="form-check-label" for="parking">Free Parking</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-title">Property Type</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hotel" name="propertyType"
+                                value="Hotel">
+                            <label class="form-check-label" for="hotel">Hotel</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="resort" name="propertyType"
+                                value="Resort">
+                            <label class="form-check-label" for="resort">Resort</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="homestay" name="propertyType"
+                                value="Homestay">
+                            <label class="form-check-label" for="homestay">Homestay</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel List -->
+            <div class="col-lg-9">
+                <!-- Sort Bar -->
+                <div class="d-none d-lg-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <h5 class="mb-0" id="property-count">Showing properties...</h5>
+                    <div class="d-flex align-items-center">
+                        <span class="me-2 text-muted small">Sort by:</span>
+                        <select class="form-select form-select-sm" style="width: auto;" id="sortSelect"
+                            aria-label="Sort Hotels By">
+                            <option value="recommended">Recommended</option>
+                            <option value="price_asc">Price: Low to High</option>
+                            <option value="price_desc">Price: High to Low</option>
+                            <option value="rating">Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hotel Container -->
+                <div id="hotel-container">
+                    <!-- Cards will be injected here by JS -->
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination (Optional - hidden for now as we show all) -->
+                <!-- <nav aria-label="Page navigation" class="mt-5"> ... </nav> -->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Content Section -->
+<section class="seo-content py-5 bg-light border-top">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-4 text-primary">Why Book West Bengal Hotels with Seven Destination?</h2>
+                    <p>At <strong>Seven Destination</strong>, we redefine your travel experience by offering a
+                        curated selection of existing properties across <strong>West Bengal</strong>. Whether you are
+                        looking for a <em>luxury resort in Darjeeling</em>, a <em>budget-friendly homestay in
+                            Digha</em>, a wild adventure in the <em>Sundarbans</em>, or a city stay in <em>Kolkata</em>,
+                        we have the perfect stay for
+                        you.</p>
+                    <p>Our hotel booking service is designed to provide seamless reservations, transparent pricing,
+                        and 24/7 support. We partner with top-rated hotels to ensure cleanliness, safety, and
+                        superior hospitality for families, couples, and solo travelers.</p>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <h3 class="h5 fw-bold"><i class="fas fa-check-circle text-success me-2"></i> Best Price
+                            Guarantee</h3>
+                        <p class="text-muted small">We negotiate directly with hotel properties to bring you
+                            exclusive deals and discounts that you won't find anywhere else.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="h5 fw-bold"><i class="fas fa-star text-warning me-2"></i> Verified Properties
+                        </h3>
+                        <p class="text-muted small">Every hotel, resort, and homestay listed on our platform is
+                            personally verified by our travel experts for quality and comfort.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="h5 fw-bold"><i class="fas fa-headset text-info me-2"></i> 24/7 Travel Support
+                        </h3>
+                        <p class="text-muted small">Our dedicated team is available round-the-clock to assist you
+                            with check-ins, special requests, and itinerary planning.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="h5 fw-bold"><i class="fas fa-map-marked-alt text-danger me-2"></i> Local
+                            Expertise</h3>
+                        <p class="text-muted small">Based in Kolkata, we have deep local knowledge of destinations
+                            like Mandarmani, Purulia, Shantiniketan, and North Bengal.</p>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-3">Popular Hotel Destinations</h3>
+                    <div class="accordion" id="destAccordion">
+                        <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Hotels in Darjeeling & North Bengal
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#destAccordion">
+                                <div class="accordion-body text-muted">
+                                    Experience the Queen of Hills with our premium selection of hotels in
+                                    Darjeeling. From colonial heritage bungalows to modern hotels with Kanchenjunga
+                                    views, we offer stays near Mall Road, Batasia Loop, and Tiger Hill. We also
+                                    cover Kalimpong, Kurseong, and Gangtok.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Resorts in Digha & Mandarmani
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#destAccordion">
+                                <div class="accordion-body text-muted">
+                                    Plan your perfect beach getaway with our beach-side resorts in Digha and
+                                    Mandarmani. Enjoy private beach access, swimming pools, and fresh seafood. We
+                                    offer budget hotels in Old Digha and luxury resorts in New Digha and Tajpur.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Sundarban Eco Resorts
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#destAccordion">
+                                <div class="accordion-body text-muted">
+                                    Stay close to nature in the heart of the mangrove forests. Our eco-friendly
+                                    resorts in Sundarban offer jungle safaris, boat rides, and comfortable mud
+                                    cottages with modern amenities, ensuring a safe and thrilling wildlife
+                                    experience.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="fw-bold mb-3">Frequently Asked Questions</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6 class="fw-bold">How do I book a hotel?</h6>
+                            <p class="small text-muted">Simply search for your destination, choose your dates, and
+                                select a hotel. Click "View Details" to contact us directly or book via our express
+                                form.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="fw-bold">Is cancellation free?</h6>
+                            <p class="small text-muted">Most of our partner hotels offer free cancellation up to 48
+                                hours before check-in. Look for the "Free Cancellation" tag on the hotel card.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="fw-bold">Do you offer group booking discounts?</h6>
+                            <p class="small text-muted">Yes! For bookings of more than 5 rooms or large tour groups,
+                                please contact our support team for special bulk rates.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="fw-bold">Are unmatched couples allowed?</h6>
+                            <p class="small text-muted">Policies vary by property. Please check the specific hotel's
+                                policy section or ask our support agent before booking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <!-- Footer Heading -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="footer-heading">Seven Destination: Premier Tour & Travel in Kolkata, West Bengal</h2>
+            </div>
+        </div>
+
+        <!-- Footer Sections -->
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="footer-section">
+                    <h5>Get In Touch</h5>
+                    <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                                class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40"
+                                    preserveAspectRatio="none">
+                                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                                </svg></span></a></p>
+                    <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2"
+                                aria-hidden="true"></i> email@sevendestination.com</a></p>
+                    <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                                class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala
+                            Road, Bally, Howrah 711201</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#car-rental">Car Rental</a></li>
+                        <li><a href="#hotel-booking">Hotel Booking</a></li>
+                        <li><a href="#ticket-service">Ticket Service</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener"
+                            title="Facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                            aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener"
+                            title="YouTube" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                            aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener"
+                            title="Instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener"
+                            title="LinkedIn" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener"
+                            title="Pinterest" aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trusted By Badges -->
+        <div class="row mt-5 text-center">
+            <div class="col-12">
+                <h5 class="mb-4 text-white-50">Trusted By</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+                    <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+                        class="trust-badge text-white text-decoration-none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                            alt="Google Reviews" class="mb-2" style="height: 30px;" loading="lazy">
+                        <div class="small">Google Reviews</div>
+                    </a>
+                    <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+                        target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg"
+                            alt="TripAdvisor" class="mb-2"
+                            style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+                        <div class="small">TripAdvisor</div>
+                    </a>
+                    <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+                        target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+                        <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial"
+                            class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;"
+                            loading="lazy">
+                        <div class="small">JustDial Verified</div>
+                    </a>
+                    <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+                        class="trust-badge text-white text-decoration-none">
+                        <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart"
+                            class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;"
+                            loading="lazy">
+                        <div class="small">IndiaMart Trusted</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="400">
+            <a href="#home">Home</a> |
+            <a href="#about">Our Profile</a> |
+            <a href="#packages">Tour Package</a> |
+            <a href="#car-rental">Car Rental</a> |
+            <a href="#hotel-booking">Hotel Booking</a> |
+            <a href="#ticket-service">Ticketing</a> |
+            <a href="#testimonials">News & Events</a> |
+            <a href="#destinations">Photo Gallery</a> |
+            <a href="#testimonials">Videos</a> |
+            <a href="#testimonials">Testimonials</a> |
+            <a href="#destinations">Destinations</a> |
+            <a href="#about">Site Map</a> |
+            <a href="#contact">Contact us</a> |
+            <a href="#about">Career</a>
+        </div>
+
+        <!-- Popular Destinations -->
+        <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+            <p><strong>Popular Destinations</strong></p>
+            <div class="dest-list">
+                <span>Jaipur</span>
+                <span>Agra</span>
+                <span>Goa</span>
+                <span>Kerala</span>
+                <span>Varanasi</span>
+                <span>Mumbai</span>
+                <span>Delhi</span>
+                <span>Udaipur</span>
+                <span>Shimla</span>
+                <span>Rishikesh & Haridwar</span>
+                <span>Amritsar</span>
+                <span>Kolkata</span>
+                <span>Jodhpur</span>
+                <span>Ooty</span>
+                <span>Leh-Ladakh</span>
+                <span>Mysore</span>
+                <span>Darjeeling</span>
+                <span>Rann of Kutch</span>
+                <span>Khajuraho</span>
+                <span>Puducherry</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Travel Agencies -->
+        <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+            <div>
+                <p>Travel Agency in Kolkata</p>
+                <p>Travel Agency in Howrah</p>
+                <p>Travel Agency in Liluah</p>
+                <p>Travel Agency in Balur</p>
+                <p>Travel Agency in Bally</p>
+                <p>Travel Agency in Barabazaar</p>
+                <p>Travel Agency in Tollygunge</p>
+            </div>
+            <div>
+                <p>Travel Agency in Sealdah</p>
+                <p>Travel Agency in New Alipore</p>
+                <p>Travel Agency in Dum Dum</p>
+                <p>Travel Agency in Shyam bazar</p>
+                <p>Travel Agency in Dunlop</p>
+                <p>Travel Agency in 24 South Pargana</p>
+                <p>Travel Agency in Khadagpur</p>
+            </div>
+            <div>
+                <p>Travel Agency in Shibpuir</p>
+                <p>Travel Agency in Hooghly</p>
+                <p>Travel Agency in Salt lake</p>
+                <p>Travel Agency in New Town</p>
+                <p>Travel Agency in Naihati</p>
+                <p>Travel Agency in Kalyani</p>
+            </div>
+            <div>
+                <p>Travel Agency in Konnagar</p>
+                <p>Travel Agency in Rishra</p>
+                <p>Travel Agency in Uttrapara</p>
+                <p>Travel Agency in Hindmotor</p>
+                <p>Travel Agency in Uluberia</p>
+            </div>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">
+            All content and images on this website are copyrighted by their respective owners. This website is
+            intended to promote these works, and no endorsement of the artist is implied. Unauthorized use is
+            prohibited by law.
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Copyright -->
+        <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+            <p>&copy; 2025 Seven Destination Tour & Travel. All rights reserved. | Designed with <i
+                    class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/hotels_data.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/hotels_logic.js"></script>
+<script>
+    // Simple form scripts
+    document.getElementById('bookingForm')?.addEventListener('submit', function (e) {
+        // e.preventDefault(); // Uncomment if you want to handle via JS instead of formspree
+    });
+</script>
+<!-- End of Snippet -->

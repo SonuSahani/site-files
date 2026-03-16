@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="elementor_styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+<style>
+    /* Shared site styles copied from About snippet (colors, footer/header tweaks) */
+    :root{
+        --primary-color:#e74c3c;
+        --accent-color:#ff9f9f;
+        --light-color:#f8f9fa;
+        --card-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    .navbar{background:transparent; padding:12px 0}
+    .navbar-brand img{height:40px}
+    .page-header{background:linear-gradient(135deg,var(--light-color),white)}
+    .hand-drawn-highlight{position:relative;display:inline-block;padding:6px 16px;color:#ffffff;font-weight:600}
+    .hand-drawn-highlight svg{position:absolute;top:50%;left:50%;width:calc(100% + 24px);height:calc(100% + 20px);transform:translate(-50%,-50%) rotate(-5deg);pointer-events:none}
+    .hand-drawn-highlight svg ellipse{fill:none;stroke:#e74c3c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:300;stroke-dashoffset:300;animation:drawOval 2s ease-in-out infinite}
+    .hand-drawn-highlight svg ellipse.second-stroke{stroke:rgba(231,76,60,0.4);stroke-width:2;stroke-dasharray:320;stroke-dashoffset:320;animation:drawOval 2s ease-in-out infinite .3s}
+    @keyframes drawOval{0%{stroke-dashoffset:300}40%{stroke-dashoffset:0}60%{stroke-dashoffset:0}100%{stroke-dashoffset:-300}}
+    .trust-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:15px 0;align-items:center}
+    .trust-badges img{height:auto;max-width:120px;max-height:70px;object-fit:contain;filter:grayscale(1);transition:all .3s}
+    .trust-badges img:hover{filter:grayscale(0);transform:scale(1.1)}
+    .footer-links{text-align:center;margin:15px 0;padding:10px 0;border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1)}
+    .footer-links a{color:var(--accent-color);text-decoration:none;margin:0 10px;font-size:.95rem;transition:color .3s}
+    .footer-links a:hover{color:var(--primary-color);text-decoration:underline}
+    .popular-destinations{text-align:center;margin:15px 0}
+    .popular-destinations p{color:white;font-weight:600;margin-bottom:8px;font-size:1rem}
+    .popular-destinations .dest-list{display:flex;flex-wrap:wrap;justify-content:center;gap:5px}
+    .popular-destinations span{color:#adb5bd;font-size:.8rem;padding:3px 8px;background:rgba(255,255,255,0.05);border-radius:10px;transition:all .3s}
+    .popular-destinations span:hover{background:var(--primary-color);color:white}
+    .travel-agencies{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:15px 0}
+    .travel-agencies div{background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:8px;text-align:center}
+    .travel-agencies p{color:#808080;font-size:.75rem;margin-bottom:0;transition:color .3s}
+    .travel-agencies div:hover p{color:var(--accent-color)}
+    .copyright-text{color:#ffcccc;font-size:.7rem;text-align:center;margin:10px 0;line-height:1.4;background:rgba(255,0,0,0.1);padding:8px;border-radius:8px;border-left:3px solid #ff0000}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);margin:10px 0}
+    .copyright{text-align:center;padding-top:10px;margin-top:10px;border-top:1px solid rgba(255,255,255,0.1);color:#adb5bd;font-size:.8rem}
+</style>

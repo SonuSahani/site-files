@@ -1,0 +1,2044 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE-HEAD-INJECTED -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="elementor_styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+
+  <title>Compare Adventures — ThrillTrails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06090f;
+      --surface: #0c1220;
+      --surface2: #111827;
+      --border: #1a2540;
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.1);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.1);
+      --violet: #8b5cf6;
+      --violet-dim: rgba(139, 92, 246, 0.1);
+      --rose: #f39c12;
+      --sky: #38bdf8;
+      --text: #eef2ff;
+      --muted: #64748b;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    .hero {
+      padding: 56px 40px 48px;
+      background: linear-gradient(135deg, #07101f, #050d0a);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 100% at 90% 50%, rgba(139, 92, 246, 0.08), transparent 60%), radial-gradient(ellipse 30% 80% at 10% 50%, rgba(245, 158, 11, 0.06), transparent 60%)
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative
+    }
+
+    .step-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: all .2s
+    }
+
+    .step-badge.active {
+      background: var(--amber-dim);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--amber)
+    }
+
+    .step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .hero-title {
+      --muted: #6c757d;
+    }
+
+    /* Footer & Header Styles from Contact page */
+    .hand-drawn-highlight {
+      position: relative;
+      display: inline-block;
+      padding: 6px 16px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 24px);
+      height: calc(100% + 20px);
+      transform: translate(-50%, -50%) rotate(-5deg);
+      pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+      fill: none;
+      stroke: #e74c3c;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+      stroke: rgba(231, 76, 60, 0.4);
+      stroke-width: 2;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+      0% {
+        stroke-dashoffset: 300;
+      }
+
+      40% {
+        stroke-dashoffset: 0;
+      }
+
+      60% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+      align-items: center;
+    }
+
+    .trust-badges img {
+      height: auto;
+      max-width: 120px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: grayscale(1);
+      transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    .footer-links {
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .popular-destinations {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .popular-destinations p {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .popular-destinations span {
+      color: #adb5bd;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .travel-agencies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .travel-agencies div {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .travel-agencies p {
+      color: #808080;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+      color: var(--accent-color);
+    }
+
+    .copyright-text {
+      color: #ffcccc;
+      font-size: 0.7rem;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.4;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 10px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    /* BRAND-THEME-OVERRIDE */
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 5vw, 50px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 10px
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--violet)
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 480px
+    }
+
+    .data-status {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .data-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted)
+    }
+
+    .data-dot.ok {
+      background: var(--emerald)
+    }
+
+    .data-dot.err {
+      background: var(--rose)
+    }
+
+    .data-dot.loading {
+      background: var(--amber);
+      animation: blink 1s infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px 80px
+    }
+
+    .wizard-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .wizard-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--violet), var(--amber))
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border)
+    }
+
+    .cat-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 26px
+    }
+
+    .cat-pill {
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .cat-pill:hover {
+      border-color: var(--violet);
+      color: var(--text)
+    }
+
+    .cat-pill.active {
+      background: var(--violet-dim);
+      border-color: var(--violet);
+      color: var(--text)
+    }
+
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 22px
+    }
+
+    .item-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      cursor: pointer;
+      transition: all .2s;
+      -webkit-user-select: none;
+      user-select: none
+    }
+
+    .item-check:hover {
+      border-color: var(--violet)
+    }
+
+    .item-check.selected {
+      border-color: var(--amber);
+      background: var(--amber-dim)
+    }
+
+    .chk-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      transition: all .15s
+    }
+
+    .item-check.selected .chk-box {
+      border-color: var(--amber);
+      background: var(--amber);
+      color: #000
+    }
+
+    .item-thumb {
+      font-size: 20px;
+      flex-shrink: 0
+    }
+
+    .item-nm {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .item-sb {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .item-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: var(--amber-dim);
+      color: var(--amber);
+      margin-top: 2px;
+      display: inline-block;
+      font-weight: 600
+    }
+
+    .filters-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: flex-end
+    }
+
+    .fgroup label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px
+    }
+
+    .fgroup select {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .fgroup select:focus {
+      border-color: var(--violet)
+    }
+
+    .fgroup select option {
+      background: #111827
+    }
+
+    .compare-btn {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--violet), #6d28d9);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .04em;
+      align-self: flex-end
+    }
+
+    .compare-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4)
+    }
+
+    .result-wrap {
+      display: none;
+      animation: fadeUp .35s ease
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .cmp-table-outer {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border)
+    }
+
+    .cmp-header-row,
+    .cmp-data-row,
+    .cmp-action-row {
+      display: grid
+    }
+
+    .cmp-header-cell {
+      background: var(--surface2);
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+      border-right: 1px solid var(--border)
+    }
+
+    .cmp-header-cell:last-child {
+      border-right: none
+    }
+
+    .cmp-header-cell.best {
+      background: rgba(245, 158, 11, 0.07)
+    }
+
+    .best-crown {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--amber);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 0 0 8px 8px
+    }
+
+    .col-thumb {
+      font-size: 26px;
+      margin-bottom: 6px
+    }
+
+    .col-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1.2
+    }
+
+    .col-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px
+    }
+
+    .cmp-data-row {
+      border-top: 1px solid var(--border)
+    }
+
+    .attr-cell {
+      background: var(--surface2);
+      padding: 14px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-right: 1px solid var(--border)
+    }
+
+    .val-cell {
+      background: var(--surface);
+      padding: 14px 16px;
+      text-align: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      border-right: 1px solid var(--border)
+    }
+
+    .val-cell:last-child {
+      border-right: none
+    }
+
+    .val-cell.best {
+      background: rgba(245, 158, 11, 0.04)
+    }
+
+    .stars {
+      color: var(--amber)
+    }
+
+    .check-y {
+      color: var(--emerald)
+    }
+
+    .check-n {
+      color: var(--rose)
+    }
+
+    .thrill-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 5px auto;
+      width: 75%
+    }
+
+    .thrill-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--emerald), var(--amber))
+    }
+
+    .type-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: var(--violet-dim);
+      color: var(--violet)
+    }
+
+    .bool-val {
+      font-size: 16px
+    }
+
+    .cmp-action-row {
+      border-top: 1px solid var(--border)
+    }
+
+    .action-lbl {
+      background: var(--surface2);
+      padding: 14px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      border-right: 1px solid var(--border)
+    }
+
+    .action-cell {
+      background: var(--surface);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-right: 1px solid var(--border)
+    }
+
+    .action-cell:last-child {
+      border-right: none
+    }
+
+    .action-cell.best {
+      background: rgba(245, 158, 11, 0.04)
+    }
+
+    .book-btn {
+      padding: 9px 20px;
+      background: var(--amber);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap
+    }
+
+    .book-btn:hover {
+      transform: scale(1.04)
+    }
+
+    .share-btn {
+      padding: 8px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .share-btn:hover {
+      border-color: var(--muted);
+      color: var(--text)
+    }
+
+    .rec-card {
+      margin-top: 18px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, .08), rgba(245, 158, 11, .04));
+      border: 1px solid rgba(245, 158, 11, .25);
+      border-radius: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px
+    }
+
+    .rec-icon {
+      font-size: 28px;
+      flex-shrink: 0
+    }
+
+    .rec-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 3px
+    }
+
+    .rec-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 3px
+    }
+
+    .rec-desc {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .empty-msg {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      display: none
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface2) 25%, rgba(255, 255, 255, .04) 50%, var(--surface2) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+      height: 16px;
+      margin: 6px 0
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0
+      }
+
+      100% {
+        background-position: -200% 0
+      }
+    }
+
+    /* BRAND-THEME-OVERRIDE */
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface2: #fffaf3;
+      --border: #f2dfc1;
+      --amber: #f39c12;
+      --amber-dim: rgba(243, 156, 18, 0.12);
+      --emerald: #f39c12;
+      --emerald-dim: rgba(243, 156, 18, 0.12);
+      --sky: #f39c12;
+      --sky-dim: rgba(243, 156, 18, 0.12);
+      --violet: #f39c12;
+      --violet-dim: rgba(243, 156, 18, 0.12);
+      --rose: #d68910;
+      --text: #212529;
+      --muted: #6c757d;
+    }
+
+    /* Footer & Header Styles from Contact page */
+    .hand-drawn-highlight {
+      position: relative;
+      display: inline-block;
+      padding: 6px 16px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .hand-drawn-highlight svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 24px);
+      height: calc(100% + 20px);
+      transform: translate(-50%, -50%) rotate(-5deg);
+      pointer-events: none;
+    }
+
+    .hand-drawn-highlight svg ellipse {
+      fill: none;
+      stroke: #e74c3c;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: drawOval 2s ease-in-out infinite;
+    }
+
+    .hand-drawn-highlight svg ellipse.second-stroke {
+      stroke: rgba(231, 76, 60, 0.4);
+      stroke-width: 2;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      animation: drawOval 2s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes drawOval {
+      0% {
+        stroke-dashoffset: 300;
+      }
+
+      40% {
+        stroke-dashoffset: 0;
+      }
+
+      60% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+      align-items: center;
+    }
+
+    .trust-badges img {
+      height: auto;
+      max-width: 120px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: grayscale(1);
+      transition: all 0.3s ease;
+    }
+
+    .trust-badges img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    .footer-links {
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .popular-destinations {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .popular-destinations p {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .popular-destinations .dest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .popular-destinations span {
+      color: #adb5bd;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .popular-destinations span:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .travel-agencies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .travel-agencies div {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .travel-agencies p {
+      color: #808080;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    .travel-agencies div:hover p {
+      color: var(--accent-color);
+    }
+
+    .copyright-text {
+      color: #ffcccc;
+      font-size: 0.7rem;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.4;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border-left: 3px solid #ff0000;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 10px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    body {
+      padding-top: 86px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif !important;
+      background: linear-gradient(180deg, rgba(243, 156, 18, 0.10) 0%, rgba(243, 156, 18, 0.06) 220px, #f8f9fa 520px);
+    }
+
+    @media (max-width:991.98px) {
+      body {
+        padding-top: 78px;
+      }
+    }
+
+    p,
+    span,
+    li,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    small,
+    td,
+    th {
+      font-family: 'Poppins', sans-serif !important;
+      color: var(--text);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .section-title,
+    .hero-title,
+    .trip-title,
+    .poll-q,
+    .chart-title,
+    .rec-title,
+    .col-name,
+    .result-amount {
+      font-family: 'Playfair Display', serif !important;
+      color: var(--text);
+      letter-spacing: normal;
+    }
+
+    .hero-title em,
+    .section-label,
+    .trip-tag,
+    .hero-tag,
+    .poll-type,
+    .type-tag,
+    .rec-label,
+    .stat-val,
+    .result-amount,
+    .badge-best,
+    .vote-count,
+    .progress-pct,
+    .next-label,
+    .weather-temp,
+    .chart-tab.active {
+      color: var(--amber) !important;
+    }
+
+    .text-muted,
+    .hero-sub,
+    .result-meta,
+    .act-meta,
+    .weather-desc,
+    .guide-desc,
+    .item-sb,
+    .stat-lbl,
+    .data-status,
+    .api-bar,
+    .data-bar,
+    .table-footer,
+    .tip-cell,
+    .result-tip {
+      color: var(--muted) !important;
+    }
+
+    .hero,
+    .dash-hero,
+    #lockScreen {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.10), rgba(243, 156, 18, 0.06), rgba(255, 255, 255, 0.92)) !important;
+    }
+
+    .page,
+    .api-bar,
+    .data-bar,
+    .data-status {
+      background: rgba(243, 156, 18, 0.10) !important;
+    }
+
+    .wizard-card,
+    .card,
+    .poll-card,
+    .suggest-card,
+    .lock-card,
+    .progress-band,
+    .next-stop-banner,
+    .tabs-bar,
+    .activity-card,
+    .weather-card,
+    .check-item,
+    .sos-card,
+    .quote-item,
+    .guide-card,
+    .archive-item,
+    .stat-b,
+    .result-box,
+    .cmp-header-cell,
+    .cmp-data-row .val-cell,
+    .cmp-data-row .attr-cell,
+    .action-cell,
+    .action-lbl {
+      background-color: rgba(243, 156, 18, 0.10) !important;
+      border-color: rgba(243, 156, 18, 0.24) !important;
+      box-shadow: 0 10px 24px rgba(243, 156, 18, 0.08);
+    }
+
+    .alerts-card,
+    .rec-card {
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.12), rgba(243, 156, 18, 0.08)) !important;
+      border-color: rgba(243, 156, 18, 0.30) !important;
+    }
+
+    .chart-overlay {
+      background: rgba(248, 249, 250, 0.9)
+    }
+
+    .compare-btn,
+    .vote-btn,
+    .submit-btn,
+    .unlock-btn,
+    .convert-btn,
+    .alert-btn,
+    .book-btn,
+    .quote-book {
+      color: #fff !important;
+      background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+      border-color: #e67e22 !important;
+    }
+
+    .step-num,
+    .item-check.selected .chk-box,
+    .poll-opt.winner-opt .opt-radio,
+    .check-item.checked .check-box,
+    .activity-card.done .act-check {
+      color: #fff;
+      background: var(--amber);
+    }
+
+    .fgroup select option,
+    .input-wrap select option,
+    .form-field select option {
+      background: #fff;
+      color: #212529
+    }
+
+    .thrill-bar {
+      background: #e5e7eb
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f5efe5 25%, #fffaf3 50%, #f5efe5 75%)
+    }
+
+    .disclaimer strong {
+      color: #f39c12
+    }
+
+    /* MOBILE-FRIENDLY-PATCH */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    video,
+    canvas,
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 767.98px) {
+      body {
+        padding-top: 76px !important;
+      }
+
+      .container,
+      .container-lg,
+      .page {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .hero,
+      .dash-hero,
+      .page-header {
+        padding: 88px 0 28px !important;
+      }
+
+      .hero h1,
+      .hero-title,
+      .trip-title,
+      .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.1rem) !important;
+        line-height: 1.2 !important;
+      }
+
+      .hero p,
+      .hero-sub,
+      .lead {
+        font-size: 0.95rem !important;
+      }
+
+      .search-section,
+      .card,
+      .wizard-card,
+      .poll-card,
+      .suggest-card,
+      .lock-card,
+      .progress-band,
+      .next-stop-banner {
+        padding: 16px !important;
+        border-radius: 14px !important;
+      }
+
+      .search-row,
+      .search-row.oneway,
+      .search-row.roundtrip,
+      .converter-grid,
+      .filters-row,
+      .form-grid,
+      .quotes-grid,
+      .guides-grid,
+      .polls-grid,
+      .item-grid,
+      .weather-cards,
+      .checklist-items,
+      .emergency-cards {
+        grid-template-columns: 1fr !important;
+      }
+
+      .airports-wrap {
+        flex-direction: column !important;
+      }
+
+      .swap-btn {
+        right: 12px !important;
+        top: auto !important;
+        bottom: -14px !important;
+        transform: none !important;
+      }
+
+      .trip-tabs {
+        flex-wrap: wrap;
+      }
+
+      .tabs-bar {
+        padding: 4px !important;
+        gap: 4px !important;
+      }
+
+      .tab-btn {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+      }
+
+      .trip-meta {
+        gap: 10px !important;
+        font-size: 12px !important;
+      }
+
+      .stats-cluster {
+        align-items: flex-start !important;
+      }
+
+      .flight-card {
+        grid-template-columns: 1fr !important;
+      }
+
+      .flight-route,
+      .flight-price-col {
+        width: 100%;
+      }
+
+      .cmp-table-outer,
+      .rate-table-wrap {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .cmp-header-row,
+      .cmp-data-row,
+      .cmp-action-row {
+        width: max-content;
+        min-width: 640px;
+      }
+
+      .rate-table {
+        min-width: 620px !important;
+      }
+
+      .modal-dialog {
+        margin: 0.5rem !important;
+      }
+
+      .modal-body {
+        padding: 1rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SITE-HEADER-INJECT -->
+  <!-- Navbar copied from About snippet -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="https://www.sevendestination.com/" aria-label="Seven Destination Home">
+        <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+          alt="Seven Destination">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/car-rental/">Car Rental</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel Booking</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/ticket-service/">Ticket
+              Service</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="step-badges">
+        <div class="step-badge active" id="step1"><span class="step-num">1</span> Pick Category</div>
+        <div class="step-badge" id="step2"><span class="step-num">2</span> Select Items</div>
+        <div class="step-badge" id="step3"><span class="step-num">3</span> Compare</div>
+      </div>
+      <h1 class="hero-title">Compare <em>Adventures</em><br>Side by Side</h1>
+      <p class="hero-sub">Packages, hotels, rentals or destinations — pick up to 4 and compare every detail. Data loads
+        from <code class="code-amber">data.json</code>.</p>
+    </div>
+  </div>
+
+  <div class="data-status">
+    <div class="data-dot loading" id="dataDot"></div>
+    <span id="dataStatusText">Loading data.json…</span>
+  </div>
+
+  <!-- AD SLOT 1: Universal Ad Container (Top Banner) -->
+  <div class="text-center" style="max-width:1100px;margin:16px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 1 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <div class="page">
+    <div class="wizard-card">
+      <div class="section-label">Step 1 — Category</div>
+      <div class="cat-pills" id="catPills">
+        <div class="cat-pill active" data-cat="packages">🏕️ Tour Packages</div>
+        <div class="cat-pill" data-cat="destinations">🗺️ Destinations</div>
+        <div class="cat-pill" data-cat="rentals">🚗 Car Rentals</div>
+        <div class="cat-pill" data-cat="hotels">🏨 Hotels</div>
+      </div>
+      <div class="section-label">Step 2 — Select Items (max 4)</div>
+      <div class="item-grid" id="itemGrid">
+        <div class="skeleton-full">
+          <div class="skeleton"></div>
+          <div class="skeleton skeleton-inner"></div>
+        </div>
+      </div>
+      <div class="section-label">Step 3 — Filters &amp; Compare</div>
+      <div class="filters-row">
+        <div class="fgroup">
+          <label for="fBudget">Budget</label>
+          <select id="fBudget" title="Filter by Budget">
+            <option value="">Any Budget</option>
+            <option value="budget">Under ₹5,000</option>
+            <option value="mid">₹5k–₹15k</option>
+            <option value="premium">₹15k+</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label for="fType">Thrill Type</label>
+          <select id="fType" title="Filter by Thrill Type">
+            <option value="">All Types</option>
+            <option value="trekking">Trekking</option>
+            <option value="water">Water Sports</option>
+            <option value="wildlife">Wildlife</option>
+            <option value="cultural">Cultural</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label for="fRating">Rating</label>
+          <select id="fRating" title="Filter by Rating">
+            <option value="">Any Rating</option>
+            <option value="4">4★ &amp; above</option>
+            <option value="4.5">4.5★ &amp; above</option>
+          </select>
+        </div>
+        <button class="compare-btn" id="compareBtn">Compare →</button>
+      </div>
+    </div>
+
+    <div class="result-wrap" id="resultWrap"></div>
+
+    <!-- AD SLOT 2: Universal Ad Container (Mid-Content) -->
+    <div
+      style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;margin:20px 0;text-align:center">
+      <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+      <!-- OPTION A: Google AdSense -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- OPTION B: Monetag -->
+      <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+      <!-- OPTION C: Adstera (Adsterra) -->
+      <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+      <!-- OPTION D: AdMob (Web) -->
+      <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+      <!-- Placeholder (remove when activating an ad network above) -->
+      <div style="color:var(--muted);font-size:13px">📢 Ad Slot 2 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+    </div>
+    <div class="empty-msg" id="emptyMsg">🔍 No results match your filters — try broadening your search.</div>
+  </div>
+
+  <script>
+    // ─── CONFIG ───────────────────────────────────
+    // Path candidates for JSON (supports different folder launch points)
+    const DATA_URL_CANDIDATES = [
+      'data.json',
+      './data.json',
+      'files (1)/data.json',
+      './files (1)/data.json',
+      '../files (1)/data.json',
+      'files%20(1)/data.json',
+      './files%20(1)/data.json'
+    ];
+
+    async function fetchJsonWithFallback(candidates) {
+      let lastError = null;
+      for (const url of candidates) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.json();
+        } catch (err) {
+          lastError = err;
+        }
+      }
+      if (window.location.protocol === 'file:') {
+        throw new Error('Browser blocked local JSON on file://. Run this page through a local server.');
+      }
+      throw lastError || new Error('Failed to load JSON');
+    }
+
+    // ── COLUMN DEFINITIONS per category ──
+    // [displayLabel, dataKey, formatType]
+    const ATTRS = {
+      packages: [
+        ['Cost/Person', 'cost', 'inr'], ['Rating', 'rating', 'star'], ['Duration', 'duration', 'text'],
+        ['Thrill Level', 'thrill', 'bar'], ['Type', 'type', 'tag'], ['Meals', 'meals', 'bool'],
+        ['Guide', 'guide', 'bool'], ['Transport', 'transport', 'bool'], ['Insurance', 'insurance', 'bool'],
+        ['Group Size', 'group', 'text'], ['Difficulty', 'difficulty', 'text'], ['Best Month', 'bestMonth', 'text'],
+      ],
+      destinations: [
+        ['Best Season', 'season', 'text'], ['Distance', 'distanceKm', 'km'], ['Rating', 'rating', 'star'],
+        ['Thrill Level', 'thrill', 'bar'], ['Avg Budget', 'cost', 'inr'], ['Visa', 'visa', 'text'],
+        ['Stays Available', 'stays', 'text'], ['Avg Temp', 'avgTempC', 'temp'],
+        ['Type', 'type', 'tag'], ['Best For', 'bestFor', 'text'],
+      ],
+      rentals: [
+        ['Daily Rate', 'cost', 'inr'], ['Rating', 'rating', 'star'], ['Mileage', 'mileage', 'text'],
+        ['Fuel', 'fuel', 'text'], ['Seats', 'seats', 'text'], ['Transmission', 'transmission', 'text'],
+        ['Security Deposit', 'deposit', 'text'], ['Driver', 'driver', 'text'],
+        ['Insurance', 'insurance', 'bool'], ['GPS', 'gps', 'bool'], ['Off-Road', 'offRoad', 'bool'],
+        ['Luggage Space', 'luggageSpace', 'text'],
+      ],
+      hotels: [
+        ['Per Night', 'cost', 'inr'], ['Rating', 'rating', 'star'], ['Stars', 'stars', 'text'],
+        ['Thrill Level', 'thrill', 'bar'], ['View', 'view', 'text'],
+        ['Pool', 'pool', 'bool'], ['Gym', 'gym', 'bool'], ['WiFi', 'wifi', 'bool'],
+        ['Breakfast', 'breakfast', 'bool'], ['Parking', 'parking', 'bool'],
+        ['Pet Friendly', 'petFriendly', 'bool'], ['Adventure Nearby', 'adventureNearby', 'text'],
+      ],
+    };
+
+    let siteData = null;
+    let selected = new Set();
+    let currentCat = 'packages';
+
+    // ─── LOAD DATA.JSON ─────────────────────────────
+    async function loadData() {
+      try {
+        siteData = await fetchJsonWithFallback(DATA_URL_CANDIDATES);
+        setDataStatus('ok', `✓ data.json loaded · ${countItems()} items · Last updated: ${siteData._meta?.lastUpdated || '—'}`);
+        renderItems();
+      } catch (err) {
+        setDataStatus('err', `✗ Could not load data.json (${err.message})`);
+        document.getElementById('itemGrid').innerHTML = `<div style="color:#f39c12;font-size:13px;grid-column:1/-1">⚠️ ${err.message}</div>`;
+      }
+    }
+    function countItems() { if (!siteData) return 0; return ['packages', 'destinations', 'rentals', 'hotels'].reduce((a, k) => a + (siteData[k]?.length || 0), 0); }
+    function setDataStatus(state, msg) { document.getElementById('dataDot').className = 'data-dot ' + state; document.getElementById('dataStatusText').textContent = msg; }
+
+    // ─── CATEGORY PILLS ───────────────────────────
+    document.querySelectorAll('.cat-pill').forEach(p => p.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      currentCat = p.dataset.cat;
+      selected.clear();
+      document.getElementById('resultWrap').style.display = 'none';
+      document.getElementById('resultWrap').innerHTML = '';
+      updateSteps();
+      renderItems();
+    }));
+
+    function updateSteps() {
+      document.getElementById('step2').className = 'step-badge' + (selected.size > 0 ? ' active' : '');
+      document.getElementById('step3').className = 'step-badge' + (selected.size >= 2 ? ' active' : '');
+    }
+
+    // ─── RENDER ITEM SELECTOR ─────────────────────
+    function renderItems() {
+      if (!siteData) return;
+      const grid = document.getElementById('itemGrid');
+      grid.innerHTML = '';
+      const items = getFilteredItems();
+      if (!items.length) { grid.innerHTML = '<div style="color:var(--muted);font-size:13px;grid-column:1/-1">No items match current filters.</div>'; return; }
+      items.forEach(item => {
+        const isSel = selected.has(item.id);
+        const div = document.createElement('div');
+        div.className = 'item-check' + (isSel ? ' selected' : '');
+        div.innerHTML = `
+      <div class="chk-box">${isSel ? '✓' : ''}</div>
+      <div class="item-thumb">${item.thumb}</div>
+      <div>
+        <div class="item-nm">${item.name}</div>
+        <div class="item-sb">${item.sub}</div>
+        ${item.badge ? `<span class="item-badge">${item.badge}</span>` : ''}
+      </div>
+    `;
+        div.addEventListener('click', () => {
+          if (selected.has(item.id)) { selected.delete(item.id); }
+          else {
+            if (selected.size >= 4) { alert('Maximum 4 items can be compared at once.'); return; }
+            selected.add(item.id);
+          }
+          renderItems(); updateSteps();
+        });
+        grid.appendChild(div);
+      });
+    }
+
+    function getFilteredItems() {
+      const items = (siteData[currentCat] || []).slice();
+      const budget = document.getElementById('fBudget').value;
+      const type = document.getElementById('fType').value;
+      const rating = document.getElementById('fRating').value;
+      return items.filter(item => {
+        if (budget === 'budget' && item.cost >= 5000) return false;
+        if (budget === 'mid' && (item.cost < 5000 || item.cost >= 15000)) return false;
+        if (budget === 'premium' && item.cost < 15000) return false;
+        if (type && item.type !== type) return false;
+        if (rating && item.rating < parseFloat(rating)) return false;
+        return true;
+      });
+    }
+
+    ['fBudget', 'fType', 'fRating'].forEach(id => document.getElementById(id).addEventListener('change', () => renderItems()));
+
+    // ─── COMPARE ──────────────────────────────────
+    document.getElementById('compareBtn').addEventListener('click', () => {
+      if (selected.size < 2) { alert('Select at least 2 items to compare.'); return; }
+      const items = (siteData[currentCat] || []).filter(i => selected.has(i.id));
+      buildCompareTable(items);
+    });
+
+    function buildCompareTable(items) {
+      const attrs = ATTRS[currentCat] || [];
+      const cols = items.length;
+
+      // Score for best value
+      const scores = items.map(item => {
+        let s = (item.rating || 0) * 10;
+        if (item.cost) s += (1 / item.cost) * 100000;
+        if (item.thrill) s += item.thrill;
+        return s;
+      });
+      const bestIdx = scores.indexOf(Math.max(...scores));
+
+      const gridStyle = `grid-template-columns: 180px repeat(${cols},1fr)`;
+
+      // ── HEADER ──
+      let html = `<div class="cmp-table-outer">
+    <div class="cmp-header-row" style="${gridStyle}">
+      <div class="cmp-header-cell" style="background:var(--surface2)"></div>`;
+      items.forEach((item, i) => {
+        html += `<div class="cmp-header-cell ${i === bestIdx ? 'best' : ''}">
+      ${i === bestIdx ? '<div class="best-crown">⭐ Best Value</div>' : ''}
+      <div class="col-thumb">${item.thumb}</div>
+      <div class="col-name">${item.name}</div>
+      <div class="col-sub">${item.sub}</div>
+    </div>`;
+      });
+      html += '</div>';
+
+      // ── DATA ROWS ──
+      attrs.forEach(([label, key, fmt]) => {
+        html += `<div class="cmp-data-row" style="${gridStyle}">
+      <div class="attr-cell">${label}</div>`;
+        items.forEach((item, i) => {
+          const val = item[key];
+          let display = formatVal(val, fmt);
+          html += `<div class="val-cell ${i === bestIdx ? 'best' : ''}">${display}</div>`;
+        });
+        html += '</div>';
+      });
+
+      // ── ACTIONS ──
+      html += `<div class="cmp-action-row" style="${gridStyle}">
+    <div class="action-lbl">Actions</div>`;
+      items.forEach((item, i) => {
+        html += `<div class="action-cell ${i === bestIdx ? 'best' : ''}">
+      <button class="book-btn">Book Now</button>
+      <button class="share-btn" onclick="shareCompare('${item.name}')">Share</button>
+    </div>`;
+      });
+      html += '</div></div>';
+
+      // ── RECOMMENDATION ──
+      const best = items[bestIdx];
+      html += `<div class="rec-card">
+    <div class="rec-icon">${best.thumb}</div>
+    <div>
+      <div class="rec-label">💡 Best Value Pick</div>
+      <div class="rec-title">${best.name} wins on value</div>
+      <div class="rec-desc">Scored highest on cost-to-quality ratio, thrill level, and ratings among compared options. ₹${best.cost?.toLocaleString('en-IN')} · ★${best.rating}</div>
+    </div>
+  </div>`;
+
+      const wrap = document.getElementById('resultWrap');
+      wrap.innerHTML = html;
+      wrap.style.display = 'block';
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function formatVal(val, fmt) {
+      if (val === undefined || val === null) return '<span style="color:var(--muted)">—</span>';
+      switch (fmt) {
+        case 'inr': return `₹${Number(val).toLocaleString('en-IN')}`;
+        case 'star': return `<span class="stars">★</span> ${val}`;
+        case 'bar': return `${val}/5<div class="thrill-bar"><div class="thrill-fill" style="width:${val * 20}%"></div></div>`;
+        case 'bool':
+          if (val === true || val === 'true' || val === '✓') return '<span class="bool-val check-y">✓</span>';
+          if (val === false || val === 'false' || val === '✗') return '<span class="bool-val check-n">✗</span>';
+          return `<span style="font-size:12px">${val}</span>`;
+        case 'tag': return `<span class="type-tag">${val}</span>`;
+        case 'km': return `${val} km`;
+        case 'temp': return `${val}°C`;
+        default: return String(val);
+      }
+    }
+
+    function shareCompare(name) {
+      const url = window.location.href;
+      if (navigator.share) { navigator.share({ title: `Compare: ${name} — ThrillTrails`, url }); }
+      else { navigator.clipboard.writeText(url).then(() => alert('Link copied!')); }
+    }
+
+    // ── INIT ──
+    loadData();
+  </script>
+
+
+
+  <!-- AD SLOT 3: Universal Ad Container (Pre-Footer) -->
+  <div class="text-center" style="max-width:1100px;margin:20px auto;padding:10px 24px">
+    <!-- ✅ UNCOMMENT ONE ad network below. Comment out the others. -->
+
+    <!-- OPTION A: Google AdSense -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- OPTION B: Monetag -->
+    <!-- <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('YOUR-DOMAIN.com','YOUR-ZONE-ID',document.createElement('script'));</script> -->
+
+    <!-- OPTION C: Adstera (Adsterra) -->
+    <!-- <script async="async" data-cfasync="false" src="//YOUR-DOMAIN.com/YOUR-AD-CODE"></script> -->
+
+    <!-- OPTION D: AdMob (Web) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+
+    <!-- Placeholder (remove when activating an ad network above) -->
+    <div
+      style="background:var(--surface2);border:1px dashed var(--border);border-radius:12px;padding:20px;color:var(--muted);font-size:13px">
+      📢 Ad Slot 3 — Supports: AdSense · Monetag · Adstera · AdMob</div>
+  </div>
+
+  <!-- SITE-FOOTER-INJECT -->
+  <footer id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="footer-heading">Seven Destination: Premier Tour & Travel in Kolkata, West Bengal</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="footer-section">
+            <h5>Get In Touch</h5>
+            <p><a href="tel:+918585858400"><i class="fas fa-phone me-2" aria-hidden="true"></i> <span
+                  class="hand-drawn-highlight">+91 8585858400<svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <ellipse cx="50" cy="20" rx="48" ry="18" />
+                    <ellipse class="second-stroke" cx="50" cy="20" rx="46" ry="16" />
+                  </svg></span></a></p>
+            <p><a href="mailto:email@sevendestination.com"><i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                email@sevendestination.com</a></p>
+            <p><a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"><i
+                  class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> 13/29A Mohanlal Bahalwala Road, Bally,
+                Howrah 711201</a></p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-section">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#packages">Packages</a></li>
+              <li><a href="#car-rental">Car Rental</a></li>
+              <li><a href="#hotel-booking">Hotel Booking</a></li>
+              <li><a href="#ticket-service">Ticket Service</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+          <div class="footer-section">
+            <h5>Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/sevendestination.in" target="_blank" rel="noopener" title="Facebook"
+                aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/+918585858400" target="_blank" rel="noopener" title="WhatsApp"
+                aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.youtube.com/@Traveller_Sharma" target="_blank" rel="noopener" title="YouTube"
+                aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="https://x.com/7destinationoff" target="_blank" rel="noopener" title="Twitter"
+                aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/7destinationofficial" target="_blank" rel="noopener" title="Instagram"
+                aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/7-destination/" target="_blank" rel="noopener" title="LinkedIn"
+                aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://in.pinterest.com/sevendestination/" target="_blank" rel="noopener" title="Pinterest"
+                aria-label="Pin with us on Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 text-center">
+        <div class="col-12">
+          <h5 class="mb-4 text-white-50">Trusted By</h5>
+          <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+            <a href="https://maps.app.goo.gl/n96UE7ivF3SU8qQL6" target="_blank" rel="noopener"
+              class="trust-badge text-white text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Reviews"
+                class="mb-2" style="height: 30px;" loading="lazy">
+              <div class="small">Google Reviews</div>
+            </a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g304558-d27124346-Reviews-Seven_Destination_Tour_Travels-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+              target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/TripAdvisor_Logo.svg" alt="TripAdvisor"
+                class="mb-2" style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+              <div class="small">TripAdvisor</div>
+            </a>
+            <a href="https://www.justdial.com/Howrah/Seven-Destination-Near-By-Bally-Post-Office-Bally/9999PXX33-XX33-230113110752-C8A2_BZDET"
+              target="_blank" rel="noopener" class="trust-badge text-white text-decoration-none">
+              <img src="https://akam.cdn.jdmagicbox.com/images/icontent/jdrwd/jdlogosvg.svg" alt="JustDial" class="mb-2"
+                style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+              <div class="small">JustDial Verified</div>
+            </a>
+            <a href="https://www.indiamart.com/seven-destination/" target="_blank" rel="noopener"
+              class="trust-badge text-white text-decoration-none">
+              <img src="https://companieslogo.com/img/orig/INDIAMART.NS-ecf147e0.png" alt="IndiaMart" class="mb-2"
+                style="height: 30px; background: white; border-radius: 4px; padding: 2px;" loading="lazy">
+              <div class="small">IndiaMart Trusted</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-links" data-aos="fade-up" data-aos-delay="400">
+        <a href="#home">Home</a> |
+        <a href="#about">Our Profile</a> |
+        <a href="#packages">Tour Package</a> |
+        <a href="#car-rental">Car Rental</a> |
+        <a href="#hotel-booking">Hotel Booking</a> |
+        <a href="#ticket-service">Ticketing</a> |
+        <a href="#testimonials">News & Events</a> |
+        <a href="#destinations">Photo Gallery</a> |
+        <a href="#testimonials">Videos</a> |
+        <a href="#testimonials">Testimonials</a> |
+        <a href="#destinations">Destinations</a> |
+        <a href="#about">Site Map</a> |
+        <a href="#contact">Contact us</a> |
+        <a href="#about">Career</a>
+      </div>
+      <div class="popular-destinations" data-aos="fade-up" data-aos-delay="500">
+        <p><strong>Popular Destinations</strong></p>
+        <div class="dest-list">
+          <span>Jaipur</span>
+          <span>Agra</span>
+          <span>Goa</span>
+          <span>Kerala</span>
+          <span>Varanasi</span>
+          <span>Mumbai</span>
+          <span>Delhi</span>
+          <span>Udaipur</span>
+          <span>Shimla</span>
+          <span>Rishikesh & Haridwar</span>
+          <span>Amritsar</span>
+          <span>Kolkata</span>
+          <span>Jodhpur</span>
+          <span>Ooty</span>
+          <span>Leh-Ladakh</span>
+          <span>Mysore</span>
+          <span>Darjeeling</span>
+          <span>Rann of Kutch</span>
+          <span>Khajuraho</span>
+          <span>Puducherry</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="travel-agencies" data-aos="fade-up" data-aos-delay="600">
+        <div>
+          <p>Travel Agency in Kolkata</p>
+          <p>Travel Agency in Howrah</p>
+          <p>Travel Agency in Liluah</p>
+          <p>Travel Agency in Balur</p>
+          <p>Travel Agency in Bally</p>
+          <p>Travel Agency in Barabazaar</p>
+          <p>Travel Agency in Tollygunge</p>
+        </div>
+        <div>
+          <p>Travel Agency in Sealdah</p>
+          <p>Travel Agency in New Alipore</p>
+          <p>Travel Agency in Dum Dum</p>
+          <p>Travel Agency in Shyam bazar</p>
+          <p>Travel Agency in Dunlop</p>
+          <p>Travel Agency in 24 South Pargana</p>
+          <p>Travel Agency in Khadagpur</p>
+        </div>
+        <div>
+          <p>Travel Agency in Shibpuir</p>
+          <p>Travel Agency in Hooghly</p>
+          <p>Travel Agency in Salt lake</p>
+          <p>Travel Agency in New Town</p>
+          <p>Travel Agency in Naihati</p>
+          <p>Travel Agency in Kalyani</p>
+        </div>
+        <div>
+          <p>Travel Agency in Konnagar</p>
+          <p>Travel Agency in Rishra</p>
+          <p>Travel Agency in Uttrapara</p>
+          <p>Travel Agency in Hindmotor</p>
+          <p>Travel Agency in Uluberia</p>
+        </div>
+      </div>
+      <div class="copyright-text" data-aos="fade-up" data-aos-delay="700">
+        All content and images on this website are copyrighted by their respective owners. This website is intended to
+        promote these works, and no endorsement of the artist is implied. Unauthorized use is prohibited by law.
+      </div>
+      <div class="divider"></div>
+      <div class="copyright" data-aos="fade-up" data-aos-delay="800">
+        <p>&copy; 2025 Seven Destination Tour & Travel. All rights reserved. | Designed with <i
+            class="fas fa-heart text-danger" aria-hidden="true"></i> in India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal (kept for video use on pages) -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background: transparent; border: none;">
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/OR0TQxVKRzc" title="Seven Destination Video" allowfullscreen
+              style="border-radius: 15px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    });
+
+    document.querySelectorAll('.timeline-item, .value-card, .founder-card').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "all 0.6s ease";
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>

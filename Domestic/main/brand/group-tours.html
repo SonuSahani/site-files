@@ -1,0 +1,1165 @@
+<!-- Group Tours & MICE | Seven Destination -->
+
+<!-- CSS Links -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/mainpage_styles.css">
+
+<style>
+    :root {
+        --primary-color: #f58220;
+        --secondary-color: #2c3e50;
+        --accent-color: #16a085;
+    }
+
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        color: #444;
+        overflow-x: hidden;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+    }
+
+    .mosaic-hero-container {
+        position: relative;
+        height: 600px;
+        width: 100%;
+        overflow: hidden;
+        background: #111;
+    }
+
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        width: 100%;
+        height: 100%;
+        gap: 2px;
+    }
+
+    .mosaic-tile {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        animation: fadeInTile 1.5s forwards;
+    }
+
+    .mosaic-tile.loaded {
+        opacity: 1;
+    }
+
+    /* Create varying tile sizes for visual interest */
+    .mosaic-tile:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .mosaic-tile:nth-child(5) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .mosaic-tile:nth-child(8) {
+        grid-column: span 2;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+    }
+
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes fadeInTile {
+        from {
+            opacity: 0;
+            transform: scale(1.05);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .mosaic-hero-container {
+            height: 450px;
+        }
+
+        .mosaic-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+        }
+
+        .mosaic-tile:nth-child(1),
+        .mosaic-tile:nth-child(5) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .category-card {
+        border: none;
+        border-radius: 25px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        background: white;
+        height: 100%;
+    }
+
+    .category-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-img {
+        height: 160px;
+        object-fit: cover;
+    }
+
+    .inquiry-form-container {
+        background: #fff;
+        border-radius: 30px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin-top: -50px;
+        z-index: 10;
+        position: relative;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+    }
+
+    .btn-submit {
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        width: 100%;
+        transition: all 0.3s;
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        color: white;
+    }
+
+    /* Override Bootstrap Primary Button to Brand Color */
+    .btn-primary {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+
+    .btn-primary:hover {
+        background-color: #d8690a !important;
+        /* Darker shade of brand color */
+        border-color: #d8690a !important;
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    /* Specialized Perks */
+    .perk-card {
+        border: none;
+        border-radius: 20px;
+        background: white;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+        height: 100%;
+    }
+
+    .perk-card:hover {
+        transform: translateY(-10px);
+        background: var(--secondary-color);
+        color: white;
+    }
+
+    .perk-card:hover .text-muted {
+        color: #ccc !important;
+    }
+
+    .perk-card:hover .feature-icon {
+        color: white;
+    }
+
+    /* Process Steps */
+    .process-container {
+        position: relative;
+        padding: 40px 0;
+    }
+
+    .process-row::before {
+        content: '';
+        position: absolute;
+        top: 80px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background: #eee;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .process-row::before {
+            display: none;
+        }
+    }
+
+    .process-step {
+        position: relative;
+        z-index: 2;
+        background: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        border: 2px solid var(--primary-color);
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    /* FAQ */
+    .accordion-item {
+        border: none;
+        margin-bottom: 15px;
+        border-radius: 12px !important;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .accordion-button {
+        font-weight: 600;
+        padding: 20px;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background: rgba(245, 130, 32, 0.05);
+        color: var(--primary-color);
+    }
+
+    /* Discovery Section */
+    .discovery-header {
+        background: #f8f9fa;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 40px;
+    }
+
+    /* Desktop Sidebar Filter Panel */
+    .filter-sidebar {
+        position: sticky;
+        top: 100px;
+        background: #fff;
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+    }
+
+    .filter-sidebar h5 {
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .filter-sidebar .form-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #444;
+        margin-bottom: 8px;
+    }
+
+    .filter-sidebar .form-control,
+    .filter-sidebar .form-select {
+        border-radius: 10px;
+        padding: 10px 15px;
+        border: 1px solid #e8e8e8;
+        margin-bottom: 20px;
+    }
+
+    .sidebar-filter-tag {
+        display: inline-block;
+        cursor: pointer;
+        padding: 6px 14px;
+        border-radius: 50px;
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        transition: all 0.3s;
+        font-size: 0.8rem;
+        margin: 3px;
+    }
+
+    .sidebar-filter-tag:hover,
+    .sidebar-filter-tag.active {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    /* Hide on-page inquiry form (using modal now) */
+    .inquiry-form-container {
+        display: none !important;
+    }
+
+    /* Adjust discovery section layout */
+    @media (min-width: 992px) {
+        .discovery-header {
+            display: none;
+            /* Hide top bar on desktop, using sidebar */
+        }
+    }
+
+    .filter-tag {
+        cursor: pointer;
+        padding: 8px 18px;
+        border-radius: 50px;
+        background: white;
+        border: 1px solid #ddd;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .filter-tag:hover,
+    .filter-tag.active {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    .tour-type-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: var(--primary-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .search-container {
+        position: relative;
+    }
+
+    .search-container i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+    }
+
+    .search-container .form-control {
+        padding-left: 45px;
+        border-radius: 50px;
+        border: 1px solid #eee;
+    }
+
+    .month-select,
+    .sort-select {
+        width: auto;
+        border: 1px solid #eee;
+    }
+
+    /* Mobile Bottom Bar - Pill Style (Matching Car Rental) */
+    .mobile-bottom-bar {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        background: var(--primary-color);
+        border-radius: 50px;
+        padding: 12px 30px;
+        box-shadow: 0 4px 20px rgba(245, 130, 32, 0.4);
+    }
+
+    .mobile-bottom-bar button {
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 0 15px;
+        font-size: 0.95rem;
+    }
+
+    .mobile-bottom-bar button i {
+        margin-right: 6px;
+    }
+
+    /* Filter Overlay */
+    .filter-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1050;
+    }
+
+    /* Filter Drawer - Scrollable with brand colors */
+    .filter-drawer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 24px 24px 0 0;
+        padding: 24px;
+        z-index: 1060;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        max-height: 60vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-drawer.open {
+        transform: translateY(0);
+    }
+
+    .filter-drawer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #eee;
+        flex-shrink: 0;
+    }
+
+    .filter-drawer-header h5 {
+        color: var(--primary-color);
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    #drawerContent {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px 0;
+    }
+
+    #applyMobileFilters {
+        background: var(--primary-color) !important;
+        border: none !important;
+        color: white !important;
+        font-weight: 600;
+        border-radius: 8px;
+        flex-shrink: 0;
+        margin-top: 10px;
+        padding: 12px;
+    }
+
+    #applyMobileFilters:hover {
+        background: #e67516 !important;
+    }
+
+    @media (max-width: 991px) {
+        .mobile-bottom-bar {
+            display: flex;
+        }
+
+        .discovery-header {
+            display: none;
+        }
+
+        /* Show mobile search bar */
+        .mobile-search-bar {
+            display: block !important;
+        }
+    }
+
+    /* Floating Inquiry Button - Always visible */
+    .floating-inquiry-btn {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 15px 25px;
+        font-weight: 600;
+        box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+        z-index: 999;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+    }
+
+    .floating-inquiry-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .floating-inquiry-btn {
+            bottom: 80px;
+            right: 15px;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2.2rem;
+        }
+
+        .inquiry-form-container {
+            padding: 25px;
+        }
+
+        .page-header {
+            padding: 100px 0 60px;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .nav-link {
+            padding: 10px 15px !important;
+        }
+    }
+
+    footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 80px 0 30px;
+    }
+</style>
+<!-- Add AOS for scroll animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="https://www.sevendestination.com/">
+            <img src="https://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png"
+                alt="Seven Destination" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/package/">Packages</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://www.sevendestination.com/destinations/">Destinations</a></li>
+                <li class="nav-item"><a class="nav-link" href="car-rental.html">Car Rental</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/hotels/">Hotel
+                        Booking</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="ticket-service.html">Ticket Service</a></li>
+                <li class="nav-item"><a class="nav-link active" href="group-tours.html">Group Tours</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.sevendestination.com/query/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Dynamic Mosaic Hero Section -->
+<section class="mosaic-hero-container">
+    <div class="mosaic-grid" id="mosaicGrid">
+        <!-- Tiles will be injected via JS, but adding placeholders for structure -->
+    </div>
+    <div class="hero-overlay">
+        <div class="container text-center">
+            <h1 class="hero-title" data-aos="fade-up">Better Together - Group Tours</h1>
+            <p class="hero-subtitle mb-4 text-white-50" data-aos="fade-up" data-aos-delay="200">Crafting shared
+                memories for Corporate, Family, and Educational groups.</p>
+            <button class="btn btn-primary rounded-pill px-5 py-3 fw-bold"
+                onclick="document.getElementById('explore-tours').scrollIntoView({behavior: 'smooth'})"
+                data-aos="fade-up" data-aos-delay="400">
+                Explore Packages
+            </button>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+    <!-- Discovery Section: 100+ Tours -->
+    <section id="explore-tours">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Explore Famous Group Tours</h2>
+            <div class="mx-auto bg-primary rounded mb-3" style="width: 50px; height: 3px;"></div>
+            <p class="text-muted">Discover our handpicked selection of 100+ trending group packages.</p>
+        </div>
+
+        <!-- Mobile Search Bar (Visible on Mobile) -->
+        <div class="mobile-search-bar d-none mb-4">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="mobileSearchTour" class="form-control"
+                    placeholder="Search destination or tour name...">
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Desktop Sidebar Filter Panel -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="filter-sidebar">
+                    <h5><i class="fas fa-sliders-h me-2"></i>Filters & Sort</h5>
+
+                    <label class="form-label">Search Tours</label>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchTour" class="form-control" placeholder="Search...">
+                    </div>
+
+                    <label class="form-label">Category</label>
+                    <div class="mb-3" id="sidebarTagFilters">
+                        <span class="sidebar-filter-tag active" data-tag="All">All</span>
+                        <span class="sidebar-filter-tag" data-tag="Trending"><i
+                                class="fas fa-fire me-1"></i>Trending</span>
+                        <span class="sidebar-filter-tag" data-tag="Corporate">Corporate</span>
+                        <span class="sidebar-filter-tag" data-tag="Educational">Educational</span>
+                        <span class="sidebar-filter-tag" data-tag="Family">Family</span>
+                        <span class="sidebar-filter-tag" data-tag="International">International</span>
+                    </div>
+
+                    <label class="form-label">Best Month</label>
+                    <select id="monthFilter" class="form-select" title="Filter by Month">
+                        <option value="All">All Months</option>
+                        <option value="Jan">January</option>
+                        <option value="Feb">February</option>
+                        <option value="Mar">March</option>
+                        <option value="Apr">April</option>
+                        <option value="May">May</option>
+                        <option value="Jun">June</option>
+                        <option value="Jul">July</option>
+                        <option value="Aug">August</option>
+                        <option value="Sep">September</option>
+                        <option value="Oct">October</option>
+                        <option value="Nov">November</option>
+                        <option value="Dec">December</option>
+                    </select>
+
+                    <label class="form-label">Sort By</label>
+                    <select id="sortTours" class="form-select" title="Sort Tours">
+                        <option value="trending">Trending</option>
+                        <option value="priceLow">Price: Low to High</option>
+                        <option value="priceHigh">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+
+                    <button class="btn btn-primary w-100 mt-3" onclick="openGeneralInquiryModal()">
+                        <i class="fab fa-whatsapp me-2"></i>Get Custom Quote
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tours Grid -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0" id="tourCount">Showing all tours</h5>
+                    <div class="text-primary small fw-semibold">Updated Today <i class="fas fa-sync-alt ms-1"></i>
+                    </div>
+                </div>
+
+                <div class="row" id="tour-grid">
+                    <!-- Tours will be injected here -->
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="row mt-5 pt-5">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop"
+                    class="category-img w-100" alt="Family">
+                <div class="card-body p-4 text-center">
+                    <h5 class="fw-bold">Family & Friends</h5>
+                    <p class="text-muted small">Bond with your loved ones while we handle the logistics of your
+                        large family trip.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+                    class="category-img w-100" alt="Corporate">
+                <div class="card-body p-4 text-center">
+                    <h5 class="fw-bold">Corporate MICE</h5>
+                    <p class="text-muted small">Professional planning for team buildings, conferences, and incentive
+                        travel.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop"
+                    class="category-img w-100" alt="Educational">
+                <div class="card-body p-4 text-center">
+                    <h5 class="fw-bold">Educational Trips</h5>
+                    <p class="text-muted small">Safe and learning-focused journeys for schools, colleges, and
+                        institutes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=800&auto=format&fit=crop"
+                    class="category-img w-100" alt="Senior">
+                <div class="card-body p-4 text-center">
+                    <h5 class="fw-bold">Senior Citizens</h5>
+                    <p class="text-muted small">Slow-paced, comfortable, and well-assisted tours for our elders.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light rounded-4 p-5 mt-5 text-center">
+        <h2 class="fw-bold mb-5">Why Plan with Us?</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                <h5>Group Discounts</h5>
+                <p class="text-muted small">Unlock significant savings with our special group rates for 15+ members.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                <h5>Dedicated Manager</h5>
+                <p class="text-muted small">A dedicated tour manager manages everything from start to finish.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                <h5>Customized Meals</h5>
+                <p class="text-muted small">Whether it's Veg, Jain, or specific cuisines, we cater to your group's
+                    taste.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specialized Value Proposition -->
+    <div class="row mt-5 pt-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="fw-bold">Tailored for Your Group</h2>
+            <div class="mx-auto bg-primary rounded" style="width: 50px; height: 3px;"></div>
+        </div>
+        <div class="col-md-6 mb-4" data-aos="fade-right">
+            <div class="perk-card">
+                <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                <h4>Corporate MICE & Retreats</h4>
+                <p class="text-muted small">We specialize in hassle-free corporate travel including GST invoicing,
+                    large group flight blocks, and end-to-end conference management at premium resorts.</p>
+                <ul class="list-unstyled small mt-3">
+                    <li><i class="fas fa-check text-success me-2"></i> Team Building Activities</li>
+                    <li><i class="fas fa-check text-success me-2"></i> Conference Room Setups</li>
+                    <li><i class="fas fa-check text-success me-2"></i> Priority Check-ins</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4" data-aos="fade-left">
+            <div class="perk-card">
+                <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h4>Educational & Student Tours</h4>
+                <p class="text-muted small">Safety is our priority. We provide vetted accommodation, licensed
+                    guides, and learning modules tailored to the curriculum for schools and colleges.</p>
+                <ul class="list-unstyled small mt-3">
+                    <li><i class="fas fa-check text-success me-2"></i> 24/7 Group Assistance</li>
+                    <li><i class="fas fa-check text-success me-2"></i> Industrial Visit Coordination</li>
+                    <li><i class="fas fa-check text-success me-2"></i> Comprehensive Travel Insurance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Planning Process -->
+    <section class="mt-5 pt-5 process-container" data-aos="fade-up">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">How We Plan Your Group Trip</h2>
+            <p class="text-muted">A structured approach to an unforgettable experience.</p>
+        </div>
+        <div class="row process-row">
+            <div class="col-md-3 text-center mb-4">
+                <div class="process-step">1</div>
+                <h6 class="fw-bold">Consultation</h6>
+                <p class="small text-muted">We understand your group size, budget, and travel interests.</p>
+            </div>
+            <div class="col-md-3 text-center mb-4">
+                <div class="process-step">2</div>
+                <h6 class="fw-bold">Draft Itinerary</h6>
+                <p class="small text-muted">Get a customized day-wise plan with meal and stay options.</p>
+            </div>
+            <div class="col-md-3 text-center mb-4">
+                <div class="process-step">3</div>
+                <h6 class="fw-bold">Group Booking</h6>
+                <p class="small text-muted">Secure flights and hotels at exclusive bulk discounts.</p>
+            </div>
+            <div class="col-md-3 text-center mb-4">
+                <div class="process-step">4</div>
+                <h6 class="fw-bold">Execution</h6>
+                <p class="small text-muted">Sit back as our tour manager handles the on-ground logistics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group FAQ Section -->
+    <section class="mt-5 pt-5" data-aos="fade-up">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Frequently Asked Questions</h2>
+            <div class="mx-auto bg-primary rounded" style="width: 50px; height: 3px;"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="groupFaq">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#gfaq1">
+                                What is the minimum size for a group booking?
+                            </button>
+                        </h2>
+                        <div id="gfaq1" class="accordion-collapse collapse" data-bs-parent="#groupFaq">
+                            <div class="accordion-body text-muted">
+                                A group is typically considered 10 or more adults. However, we can also customize
+                                plans for smaller boutique groups or larger corporate events of 100+ members.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#gfaq2">
+                                Can we request specific meal preferences (e.g. Jain, Veg)?
+                            </button>
+                        </h2>
+                        <div id="gfaq2" class="accordion-collapse collapse" data-bs-parent="#groupFaq">
+                            <div class="accordion-body text-muted">
+                                Absolutely! We specialize in catering to diverse dietary needs. We coordinate with
+                                hotels and restaurants in advance to ensure your group gets the meals they prefer.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <p class="mb-0 small text-muted">&copy; 2025 Seven Destination Tour & Travel. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Mobile Floating Action Bar (Pill Style) -->
+<div class="mobile-bottom-bar">
+    <button id="mobileFilterBtn"><i class="fas fa-filter"></i> Filter</button>
+    <button id="mobileSortBtn"><i class="fas fa-sort"></i> Sort</button>
+</div>
+
+<!-- Floating Group Tour Inquiry Button (Desktop & Mobile) -->
+<button class="floating-inquiry-btn" onclick="openGeneralInquiryModal()" title="Group Tour Inquiry">
+    <i class="fab fa-whatsapp"></i> Get Quote
+</button>
+<!-- Mobile Filter Drawer -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="filter-drawer" id="mobileFilterDrawer">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="fw-bold mb-0">Tour Filters</h5>
+        <button type="button" class="btn-close" id="closeDrawer" title="Close Filters"></button>
+    </div>
+
+    <div id="drawerContent">
+        <!-- Content will be swapped based on Filter or Sort -->
+    </div>
+
+    <button class="btn btn-primary w-100 rounded-pill mt-4 py-3 fw-bold" id="applyMobileFilters">Apply
+        Filters</button>
+</div>
+
+<!-- Tour Inquiry Modal -->
+<div class="modal fade" id="tourInquiryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 pt-2">
+                <div class="text-center mb-4">
+                    <h4 class="fw-bold mb-1" id="modalTourName">Tour Name</h4>
+                    <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt me-1"></i><span
+                            id="modalTourDest">Destination</span></p>
+                    <div class="mt-2">
+                        <span class="badge bg-primary" id="modalTourPrice">₹0</span>
+                        <span class="badge bg-light text-dark border ms-1" id="modalTourDuration">0 Days</span>
+                    </div>
+                </div>
+                <form id="modalInquiryForm">
+                    <!-- Row 1: Name, Pickup City -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-6">
+                            <input type="text" id="modalName" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="modalPickupCity" class="form-control" placeholder="Pickup City"
+                                required>
+                        </div>
+                    </div>
+                    <!-- Row 2: No. of Travelers, Travel Date -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-6">
+                            <input type="number" id="modalGroupSize" class="form-control" placeholder="No. of Travelers"
+                                required min="1">
+                        </div>
+                        <div class="col-6">
+                            <input type="date" id="modalTravelDate" class="form-control" title="Travel Date">
+                        </div>
+                    </div>
+                    <!-- Row 3: Stay Type, Meal Plan -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-6">
+                            <select id="modalStayType" class="form-select" title="Stay Type">
+                                <option value="" disabled selected>Stay Type</option>
+                                <option value="Budget">Budget</option>
+                                <option value="3-Star">3-Star</option>
+                                <option value="4-Star">4-Star</option>
+                                <option value="5-Star">5-Star</option>
+                                <option value="Homestay">Homestay</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <select id="modalMealPlan" class="form-select" title="Meal Plan">
+                                <option value="" disabled selected>Meal Plan</option>
+                                <option value="No Meals">No Meals</option>
+                                <option value="Breakfast Only">Breakfast Only</option>
+                                <option value="MAP">MAP (Breakfast + Dinner)</option>
+                                <option value="AP">AP (All Meals)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Row 4: Special Requests -->
+                    <div class="mb-2">
+                        <textarea id="modalMessage" class="form-control" rows="2"
+                            placeholder="Special Requests..."></textarea>
+                    </div>
+                    <button type="submit" class="btn w-100 py-3 fw-bold" title="Send WhatsApp Inquiry"
+                        style="background: linear-gradient(135deg, #25D366, #128C7E); color: white;">
+                        <i class="fab fa-whatsapp me-2"></i>Send Inquiry on WhatsApp
+                    </button>
+                </form>
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- New Data & Logic Scripts (CDN) -->
+<script src="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/group_tours_data.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SonuSahani/site-files@main/group_tours_logic.js"></script>
+<script>
+    /**
+     * Mosaic Logic - Infinite Collage Animation
+     * Handles random image swapping for the hero section grid.
+     */
+
+    const mosaicImages = [
+        "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop", // Family
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop", // Corporate
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop", // Educational
+        "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=800&auto=format&fit=crop", // Senior
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop", // Hero
+        "https://images.unsplash.com/photo-1528181304800-2f143c8c798d?q=80&w=800&auto=format&fit=crop", // Thailand
+        "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=800&auto=format&fit=crop", // Varanasi
+        "https://images.unsplash.com/photo-1589410769363-23a5477813a4?q=80&w=800&auto=format&fit=crop", // Sikkim
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop", // Dubai
+        "https://images.unsplash.com/photo-1622323062069-b5a0346a0690?q=80&w=800&auto=format&fit=crop", // Mayapur
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop", // Digha
+        "https://images.unsplash.com/photo-1600863892556-3c589886f78f?q=80&w=800&auto=format&fit=crop", // Sundarban
+        "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop", // Bali
+        "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop", // Goa
+        "https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=800&auto=format&fit=crop", // Corbett
+        "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=800&auto=format&fit=crop", // Rishikesh
+        "https://images.unsplash.com/photo-1590050752117-a38255298539?q=80&w=800&auto=format&fit=crop", // Udaipur
+        "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop", // Kerala
+        "https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop", // Jaipur
+        "https://images.unsplash.com/photo-1565967511849-76a60a516170?q=80&w=800&auto=format&fit=crop", // Singapore
+        "https://images.unsplash.com/photo-1589330273594-fade1ee91647?q=80&w=800&auto=format&fit=crop", // Andaman
+        "https://images.unsplash.com/photo-1580227974542-a81d4576ec8c?q=80&w=800&auto=format&fit=crop", // Sri Lanka
+        "https://images.unsplash.com/photo-1571408854848-1dbde5774d6f?q=80&w=800&auto=format&fit=crop", // Darjeeling
+        "https://images.unsplash.com/photo-1563214532-6a7e0c454792?q=80&w=800&auto=format&fit=crop", // Science City
+        "https://images.unsplash.com/photo-1506535995048-638aa1b62b77?q=80&w=800&auto=format&fit=crop", // Caving
+        "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop", // Maldives
+        "https://images.unsplash.com/photo-1520188741372-2d88bc5c0a32?q=80&w=800&auto=format&fit=crop"  // Paragliding
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.getElementById('mosaicGrid');
+        if (!grid) return;
+
+        // Use 16 tiles to fill the grid (6x4 with some spanning 2 cells)
+        const tileCount = 16;
+        const tiles = [];
+
+        // Initialize Grid with unique random images
+        let availableImages = [...mosaicImages];
+
+        // Shuffle helper
+        const shuffle = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        };
+
+        availableImages = shuffle(availableImages);
+
+        for (let i = 0; i < tileCount; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'mosaic-tile';
+
+            // Pick an image
+            const imgUrl = availableImages[i % availableImages.length];
+            tile.style.backgroundImage = `url('${imgUrl}')`;
+
+            // Add random slight animation delay for staggered entrance
+            tile.style.animationDelay = `${Math.random() * 1}s`;
+
+            grid.appendChild(tile);
+            tiles.push({ element: tile, currentUrl: imgUrl });
+
+            // Mark loaded after a tiny delay to trigger CSS fade-in
+            setTimeout(() => tile.classList.add('loaded'), 100);
+        }
+
+        // Infinite Swap Loop
+        setInterval(() => {
+            // Pick 3 unique random tiles to update at once
+            const indicesToUpdate = new Set();
+            while (indicesToUpdate.size < 3) {
+                indicesToUpdate.add(Math.floor(Math.random() * tiles.length));
+            }
+
+            indicesToUpdate.forEach(tileIndex => {
+                const tileObj = tiles[tileIndex];
+                const tile = tileObj.element;
+
+                // Pick a new random image that ISN'T currently displayed on this tile
+                let newImgUrl;
+                do {
+                    newImgUrl = mosaicImages[Math.floor(Math.random() * mosaicImages.length)];
+                } while (newImgUrl === tileObj.currentUrl);
+
+                // Animate the swap
+                // 1. Fade out
+                tile.style.opacity = '0';
+
+                setTimeout(() => {
+                    // 2. Change image
+                    tile.style.backgroundImage = `url('${newImgUrl}')`;
+                    tileObj.currentUrl = newImgUrl;
+
+                    // 3. Fade in
+                    tile.style.opacity = '1';
+                }, 1000); // Matches CSS transition time
+            });
+
+        }, 2000); // Swap 3 images every 2 seconds
+    });
+</script>
+<script>
+    AOS.init();
+    document.getElementById('groupForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const wa = document.getElementById('whatsapp').value;
+        const type = document.getElementById('groupType').value;
+        const size = document.getElementById('groupSize').value;
+        const dest = document.getElementById('destination').value;
+        const msg = document.getElementById('message').value;
+        const text = `Hi Seven Destination, I want to plan a Group Tour.%0A%0A*Contact:* ${name}%0A*WhatsApp:* ${wa}%0A*Group Type:* ${type}%0A*Size:* ${size}%0A*Destination:* ${dest}%0A*Details:* ${msg}`;
+        window.open(`https://wa.me/918585858400?text=${text}`, '_blank');
+    });
+</script>
