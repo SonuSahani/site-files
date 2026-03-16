@@ -1,0 +1,630 @@
+<!doctype html>
+<html ⚡ lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <title>Seven Destination Tour & Travel - AMP</title>
+    <link rel="canonical" href="https://www.sevendestination.com/">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style><noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+    <style amp-custom>
+        /* Custom Styles for AMP */
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e92;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            margin-top: 0;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .hamburger {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Sidebar */
+        amp-sidebar {
+            width: 250px;
+            background: white;
+            padding: 20px;
+        }
+
+        amp-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        amp-sidebar li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        amp-sidebar a {
+            color: var(--text-color);
+            font-weight: 500;
+            display: block;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 20%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 20px;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .col {
+            flex: 1 1 100%;
+        }
+
+        /* Mobile first 1 column */
+        @media (min-width: 768px) {
+            .col {
+                flex: 1 1 calc(50% - 20px);
+            }
+
+            /* Tablet 2 columns */
+        }
+
+        @media (min-width: 1024px) {
+            .col {
+                flex: 1 1 calc(33.333% - 20px);
+            }
+
+            /* Desktop 3 columns */
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .tour-price {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .discount {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ccc;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+
+        .d-block {
+            display: block;
+        }
+    </style>
+
+    <!-- Full Schema Suite: LocalBusiness enhancement, Event, HowTo -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Seven Destination Tour & Travel",
+        "image": "http://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png",
+        "@id": "https://sevendestination.com",
+        "url": "https://sevendestination.com",
+        "telephone": "+918585858400",
+        "priceRange": "₹₹-₹₹₹",
+        "areaServed": ["Kolkata", "Howrah", "West Bengal", "India"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "13/29A Mohanlal Bahalwala Road, Bally",
+          "addressLocality": "Howrah",
+          "postalCode": "711201",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 22.6545,
+          "longitude": 88.3426
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        "sameAs": [
+          "https://www.facebook.com/sevendestination.in",
+          "https://www.instagram.com/7destinationofficial",
+          "https://www.youtube.com/@Traveller_Sharma",
+          "https://x.com/7destinationoff",
+          "https://www.linkedin.com/in/7-destination/",
+          "https://in.pinterest.com/sevendestination/"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Book a Tour Package with Seven Destination",
+        "description": "A simple 4-step guide to booking your dream vacation with Seven Destination Tour & Travel.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Select Package",
+            "text": "Browse our website sections like 'Featured Packages' or 'Destinations' to find a tour that suits your interest.",
+            "position": 1,
+            "url": "https://sevendestination.com/index.amp.html#packages"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Customize Itinerary",
+            "text": "Contact our travel experts via phone or WhatsApp to customize the itinerary, hotels, or travel dates to your preference.",
+            "position": 2
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Secure Booking",
+            "text": "Pay a token advance amount securely via UPI, Bank Transfer, or Card to confirm your reservation.",
+            "position": 3
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Travel & Enjoy",
+            "text": "Receive your booking vouchers and tickets. Pack your bags and get ready for an unforgettable journey!",
+            "position": 4
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "New Year's Eve Manali Bash",
+        "startDate": "2024-12-28",
+        "endDate": "2025-01-02",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Manali",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Manali",
+            "addressRegion": "Himachal Pradesh",
+            "addressCountry": "IN"
+          }
+        },
+        "image": [
+          "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80"
+        ],
+        "description": "Celebrate New Year in the snowy peaks of Manali with a DJ night and bonfire.",
+        "offers": {
+          "@type": "Offer",
+          "price": "14999",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://sevendestination.com/index.amp.html#contact"
+        },
+        "organizer": {
+          "@type": "TravelAgency",
+          "name": "Seven Destination Tour & Travel",
+          "url": "https://sevendestination.com"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Royal Rajasthan Holi Tour",
+        "startDate": "2025-03-23",
+        "endDate": "2025-03-30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Jaipur",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Jaipur",
+            "addressRegion": "Rajasthan",
+            "addressCountry": "IN"
+          }
+        },
+        "image": [
+          "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80"
+        ],
+        "description": "Experience the festival of colors in Jaipur and Pushkar. A cultural extravaganza.",
+        "offers": {
+          "@type": "Offer",
+          "price": "18999",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://sevendestination.com/index.amp.html#contact"
+        },
+        "organizer": {
+          "@type": "TravelAgency",
+           "name": "Seven Destination Tour & Travel",
+          "url": "https://sevendestination.com"
+        }
+      },
+      {
+         "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Gangasagar Pilgrimage",
+        "startDate": "2025-01-12",
+        "endDate": "2025-01-15",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Sagar Island",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gangasagar",
+            "addressRegion": "West Bengal",
+            "addressCountry": "IN"
+          }
+        },
+        "image": [
+          "https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800&q=80"
+        ],
+        "description": "Holy dip and spiritual journey at the confluence of Ganga during Makar Sankranti.",
+        "offers": {
+          "@type": "Offer",
+          "price": "5999",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://sevendestination.com/index.amp.html#contact"
+        },
+        "organizer": {
+          "@type": "TravelAgency",
+           "name": "Seven Destination Tour & Travel",
+          "url": "https://sevendestination.com"
+        }
+      }
+    ]
+    </script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <amp-sidebar id="sidebar" layout="nodisplay" side="right">
+        <h3>Menu</h3>
+        <button on="tap:sidebar.close" class="hamburger">×</button>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#packages">Packages</a></li>
+                <li><a href="index.html#car-rental">Car Rental</a></li>
+                <li><a href="index.html#hotel-booking">Hotels</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </amp-sidebar>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html">
+            <amp-img src="http://www.sevendestination.com/wp-content/uploads/2025/10/seven-destination.png" width="150"
+                height="50" layout="fixed" alt="Logo" class="logo"></amp-img>
+        </a>
+        <button on="tap:sidebar.toggle" class="hamburger">☰</button>
+    </header>
+
+    <!-- Hero Carousel -->
+    <section class="hero" style="padding:0;">
+        <amp-carousel width="400" height="300" layout="responsive" type="slides" autoplay delay="4000">
+            <div class="slide">
+                <amp-img src="https://images.pexels.com/photos/13548311/pexels-photo-13548311.jpeg" width="800"
+                    height="600" layout="responsive" alt="Incredible India"></amp-img>
+                <div class="hero-content">
+                    <h1>Discover Incredible India</h1>
+                    <a href="index.html#packages" class="btn">Explore Now</a>
+                </div>
+            </div>
+            <div class="slide">
+                <amp-img
+                    src="https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+                    width="800" height="600" layout="responsive" alt="Taj Mahal"></amp-img>
+                <div class="hero-content">
+                    <h1>Experience the Taj Mahal</h1>
+                </div>
+            </div>
+        </amp-carousel>
+    </section>
+
+    <!-- Featured Packages -->
+    <section id="packages">
+        <h2 class="section-title">Featured Packages</h2>
+        <div class="grid">
+            <!-- Package 1 -->
+            <div class="card col">
+                <amp-img
+                    src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    width="400" height="300" layout="responsive" class="card-img"></amp-img>
+                <div class="card-body">
+                    <h3>Himalayan Trekking</h3>
+                    <p>7 Days / 6 Nights</p>
+                    <div class="tour-price">₹12,749 <span class="discount">₹14,999</span></div>
+                    <a href="index.html#packages" class="btn">View Details</a>
+                </div>
+            </div>
+            <!-- Package 2 -->
+            <div class="card col">
+                <amp-img
+                    src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    width="400" height="300" layout="responsive" class="card-img"></amp-img>
+                <div class="card-body">
+                    <h3>Kerala Backwaters</h3>
+                    <p>5 Days / 4 Nights</p>
+                    <div class="tour-price">₹9,999 <span class="discount">₹11,999</span></div>
+                    <a href="index.html#packages" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="bg-light">
+        <h2 class="section-title">Experience India</h2>
+        <div class="grid">
+            <div class="card col">
+                <amp-youtube data-videoid="IgAnj6r1O48" layout="responsive" width="480" height="270">
+                </amp-youtube>
+                <div class="card-body">
+                    <h3>Incredible India</h3>
+                </div>
+            </div>
+            <div class="card col">
+                <amp-youtube data-videoid="775X9i1iFfU" layout="responsive" width="480" height="270">
+                </amp-youtube>
+                <div class="card-body">
+                    <h3>Kerala Backwaters</h3>
+                </div>
+            </div>
+            <div class="card col">
+                <amp-youtube data-videoid="VPujXqJebjI" layout="responsive" width="480" height="270">
+                </amp-youtube>
+                <div class="card-body">
+                    <h3>Royal Rajasthan</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title">How To Book</h2>
+    <amp-accordion>
+        <section expanded>
+            <h4>1. Select Package</h4>
+            <p>Browse our website sections to find a tour that suits your interest.</p>
+        </section>
+        <section>
+            <h4>2. Customize</h4>
+            <p>Contact our travel experts to tweak the itinerary or hotels.</p>
+        </section>
+        <section>
+            <h4>3. Secure Booking</h4>
+            <p>Pay a token advance amount securely to confirm your reservation.</p>
+        </section>
+        <section>
+            <h4>4. Travel</h4>
+            <p>Receive your booking vouchers and tickets!</p>
+        </section>
+    </amp-accordion>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Seven Destination Tour & Travel</h3>
+        <p>13/29A Mohanlal Bahalwala Road, Bally, Howrah 711201</p>
+        <div class="social-icons">
+            <a href="https://wa.me/+918585858400">WhatsApp</a>
+            <a href="tel:+918585858400">Call Us</a>
+        </div>
+        <p>&copy; 2025 Seven Destination. All rights reserved.</p>
+        <p><a href="index.html">View Full Site</a></p>
+    </footer>
+
+</body>
+
+</html>
