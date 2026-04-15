@@ -1,0 +1,509 @@
+/* 
+ * Shared Tour Styles - Seven Destination 2025
+ * Centralized from 91+ tour pages to reduce redundancy.
+ */
+
+.hand-drawn-highlight {
+    position: relative;
+    display: inline-block;
+    padding: 6px 16px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.hand-drawn-highlight svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + 24px);
+    height: calc(100% + 20px);
+    transform: translate(-50%, -50%) rotate(-5deg);
+    pointer-events: none;
+}
+
+.hand-drawn-highlight svg ellipse {
+    fill: none;
+    stroke: #e74c3c;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawOval 2s ease-in-out infinite;
+}
+
+.hand-drawn-highlight svg ellipse.second-stroke {
+    stroke: rgba(231, 76, 60, 0.4);
+    stroke-width: 2;
+    stroke-dasharray: 320;
+    stroke-dashoffset: 320;
+    animation: drawOval 2s ease-in-out infinite 0.3s;
+}
+
+@keyframes drawOval {
+    0% {
+        stroke-dashoffset: 300;
+    }
+
+    40% {
+        stroke-dashoffset: 0;
+    }
+
+    60% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -300;
+    }
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+    align-items: center;
+}
+
+.trust-badges img {
+    height: auto;
+    max-width: 120px;
+    max-height: 70px;
+    object-fit: contain;
+    filter: grayscale(1);
+    transition: all 0.3s ease;
+}
+
+.trust-badges img:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+.footer-links {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links a {
+    color: var(--accent-color, #fff);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color, #f58220);
+    text-decoration: underline;
+}
+
+.popular-destinations {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.popular-destinations p {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.popular-destinations .dest-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.popular-destinations span {
+    color: #adb5bd;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.popular-destinations span:hover {
+    background: var(--primary-color, #f58220);
+    color: white;
+}
+
+.travel-agencies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.travel-agencies div {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.travel-agencies p {
+    color: #808080;
+    font-size: 0.75rem;
+    margin-bottom: 0;
+    transition: color 0.3s ease;
+}
+
+.travel-agencies div:hover p {
+    color: var(--accent-color, #fff);
+}
+
+.copyright-text {
+    color: #ffcccc;
+    font-size: 0.7rem;
+    text-align: center;
+    margin: 10px 0;
+    line-height: 1.4;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+    border-left: 3px solid #ff0000;
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    margin: 10px 0;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #adb5bd;
+    font-size: 0.8rem;
+}
+
+.dest-search-bar {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dest-search-bar .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    color: #333;
+}
+
+.dest-search-bar .form-control::placeholder {
+    color: #666 !important;
+}
+
+.dest-search-bar .form-control:focus {
+    border-color: var(--primary-color, #f58220);
+    box-shadow: 0 0 0 0.2rem rgba(245, 130, 32, 0.15);
+}
+
+.btn-custom {
+    background: linear-gradient(135deg, var(--primary-color, #f58220), #e67516);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.dest-search-bar .input-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.dest-search-bar .input-group .form-control {
+    border-radius: 8px 0 0 8px !important;
+    border-right: none !important;
+    height: 54px;
+}
+
+.dest-search-bar .input-group .btn-custom {
+    border-radius: 0 8px 8px 0 !important;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    margin: 0;
+    border: none;
+}
+
+@media (max-width: 767px) {
+    .sort-column {
+        display: none !important;
+    }
+
+    .search-column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #e67516, var(--primary-color, #f58220));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(245, 130, 32, 0.4);
+    color: white;
+}
+
+.trending-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.trending-tag {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.trending-tag:hover,
+.trending-tag.active {
+    background: var(--primary-color, #f58220);
+    border-color: var(--primary-color, #f58220);
+}
+
+.content-section {
+    padding: 40px 0;
+    background: #f8f9fa;
+}
+
+.dest-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    background: #fff;
+}
+
+.dest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dest-card img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.dest-card .card-body {
+    padding: 20px;
+}
+
+.dest-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.dest-card .badge-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--primary-color, #f58220);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.dest-card .price-tag {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color, #f58220);
+}
+
+.dest-card .price-tag span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #999;
+}
+
+.dest-card .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.dest-card .features span {
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.dest-card .detail-row {
+    display: flex;
+    gap: 15px;
+    margin: 8px 0;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.dest-card .btn-book {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.dest-card .btn-book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.filter-sidebar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 100px;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section h6 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.filter-check {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.filter-check input {
+    margin-right: 10px;
+    accent-color: var(--primary-color, #f58220);
+    width: 18px;
+    height: 18px;
+}
+
+.filter-check label {
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.mobile-bottom-bar {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: var(--primary-color, #f58220);
+    border-radius: 50px;
+    padding: 12px 30px;
+    box-shadow: 0 4px 20px rgba(245, 130, 32, 0.4);
+    gap: 5px;
+}
+
+.mobile-bottom-bar button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    position: relative;
+    border-radius: 25px;
+    transition: background 0.2s;
+}
+
+.mobile-bottom-bar button:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-bottom-bar button i {
+    margin-right: 6px;
+}
+
+.filter-drawer,
+.sort-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 24px 24px 0 0;
+    padding: 24px;
+    z-index: 1060;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-drawer.open,
+.sort-drawer.open {
+    transform: translateY(0);
+}
+
+.promo-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 2px;
+    transition: all 0.2s ease;
+    margin-bottom: 5px;
+}
+
+.promo-input-container:focus-within {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+#applyPromoBtn {
+    background: #0d6efd !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 8px 20px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    border: none !important;
+}
