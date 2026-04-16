@@ -10,22 +10,22 @@
        CONSTANTS
     ═══════════════════════════════════════════ */
     var C = {
-        primary:    [245, 130, 32],
-        primaryDk:  [230, 117, 22],
-        navy:       [23, 32, 51],
-        dark:       [34, 48, 77],
-        text:       [56, 72, 96],
-        muted:      [108, 122, 147],
-        divider:    [230, 232, 237],
-        white:      [255, 255, 255],
-        green:      [22, 101, 52],
-        greenBg:    [240, 253, 244],
-        red:        [185, 28, 28],
-        redBg:      [254, 242, 242],
-        warnBg:     [255, 251, 235],
-        warnBdr:    [251, 191, 36],
-        warnTxt:    [146, 64, 14],
-        lightBg:    [248, 249, 252]
+        primary: [245, 130, 32],
+        primaryDk: [230, 117, 22],
+        navy: [23, 32, 51],
+        dark: [34, 48, 77],
+        text: [56, 72, 96],
+        muted: [108, 122, 147],
+        divider: [230, 232, 237],
+        white: [255, 255, 255],
+        green: [22, 101, 52],
+        greenBg: [240, 253, 244],
+        red: [185, 28, 28],
+        redBg: [254, 242, 242],
+        warnBg: [255, 251, 235],
+        warnBdr: [251, 191, 36],
+        warnTxt: [146, 64, 14],
+        lightBg: [248, 249, 252]
     };
     var W = 210, H = 297, M = 18, CW = W - 2 * M;
 
@@ -98,9 +98,9 @@
         d.duration = ''; d.location = ''; d.rating = '';
         document.querySelectorAll('.tour-meta span').forEach(function (sp) {
             var t = san(sp.textContent);
-            if (sp.querySelector('.fa-clock'))           d.duration = t;
+            if (sp.querySelector('.fa-clock')) d.duration = t;
             else if (sp.querySelector('.fa-map-marker-alt')) d.location = t;
-            else if (sp.querySelector('.fa-star'))        d.rating = t;
+            else if (sp.querySelector('.fa-star')) d.rating = t;
         });
 
         /* Price */
@@ -122,9 +122,9 @@
             day.querySelectorAll('.s9-act span').forEach(function (s) { acts.push(san(s.textContent)); });
             day.querySelectorAll('.s9-mp, .s9-mn').forEach(function (m) { meals.push(san(m.textContent)); });
             d.itinerary.push({
-                num:   san((day.querySelector('.s9-num') || {}).textContent || ''),
+                num: san((day.querySelector('.s9-num') || {}).textContent || ''),
                 title: san((day.querySelector('.s9-title') || {}).textContent || ''),
-                acts:  acts,
+                acts: acts,
                 meals: meals
             });
         });
@@ -252,7 +252,7 @@
         function fc() { doc.setFillColor.apply(doc, arguments); }
         function tc() { doc.setTextColor.apply(doc, arguments); }
         function dc() { doc.setDrawColor.apply(doc, arguments); }
-        function bold(s)   { doc.setFont('helvetica', 'bold');   doc.setFontSize(s); }
+        function bold(s) { doc.setFont('helvetica', 'bold'); doc.setFontSize(s); }
         function normal(s) { doc.setFont('helvetica', 'normal'); doc.setFontSize(s); }
         function italic(s) { doc.setFont('helvetica', 'italic'); doc.setFontSize(s); }
         function wrap(t, w) { return doc.splitTextToSize(t, w || CW - 8); }
@@ -306,8 +306,8 @@
         // Meta boxes
         var metaItems = [];
         if (data.duration) metaItems.push({ label: 'DURATION', value: data.duration });
-        if (data.price)    metaItems.push({ label: 'STARTING FROM', value: data.price + ' /person' });
-        if (data.rating)   metaItems.push({ label: 'RATING', value: data.rating + ' / 5' });
+        if (data.price) metaItems.push({ label: 'STARTING FROM', value: data.price + ' /person' });
+        if (data.rating) metaItems.push({ label: 'RATING', value: data.rating + ' / 5' });
 
         if (metaItems.length) {
             var bw = (CW - (metaItems.length - 1) * 6) / metaItems.length;
@@ -353,7 +353,7 @@
         y = Math.max(y, 230);
         normal(8); tc.apply(null, C.muted);
         var today = new Date();
-        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var dateStr = today.getDate() + ' ' + months[today.getMonth()] + ' ' + today.getFullYear();
         italic(8);
         centerText('Generated on: ' + dateStr, y);
