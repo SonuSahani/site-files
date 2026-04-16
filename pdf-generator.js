@@ -609,7 +609,7 @@
         var btn = document.createElement('button');
         btn.className = 'btn-download-pdf';
         btn.type = 'button';
-        btn.innerHTML = '<i class="fas fa-file-pdf"></i><span class="pdf-spin"></span>Download Itinerary (PDF)';
+        btn.innerHTML = '<i class="fas fa-file-pdf"></i><span class="pdf-spin"></span>Download Itinerary';
         btn.addEventListener('click', function () { generatePDF(btn); });
         return btn;
     }
