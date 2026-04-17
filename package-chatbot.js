@@ -482,13 +482,15 @@
             if (qs('#sbFabPromo')) qs('#sbFabPromo').style.display = 'none';
             panel.classList.add('active');
             badge.style.display = 'none';
+            // Push state so Android back button closes chat instead of navigating away
+            try { history.pushState({ sbChatOpen: true }, ''); } catch(e) {}
         }
 
         function doClose() {
             isOpen = false;
             fab.style.display = '';
-            if (qs('#sbFabPromo')) qs('#sbFabPromo').style.display = '';
             panel.classList.remove('active');
+            // Don't restore promo — it has already auto-faded
         }
 
         /* ── sprite ─────── */
@@ -1140,6 +1142,25 @@
                 doClose();
             }
         });
+
+        /* ── Android back button → close chat, not the page ─────── */
+        window.addEventListener('popstate', function (e) {
+            if (isOpen) {
+                e.preventDefault();
+                if (isAIMode) exitAIMode();
+                doClose();
+            }
+        });
+
+        /* ── Auto-remove promo tooltip after fade-out animation ─── */
+        var promoEl = qs('#sbFabPromo');
+        if (promoEl) {
+            promoEl.addEventListener('animationend', function(e) {
+                if (e.animationName === 'sbPromoFadeOut') {
+                    promoEl.style.display = 'none';
+                }
+            });
+        }
 
         msgs.addEventListener('click', function (e) {
             if (e.target.tagName === 'A') {
