@@ -56,14 +56,43 @@
     var jsPDFPromise = null;
     function loadJsPDF() {
         if (jsPDFPromise) return jsPDFPromise;
-        if (window.jspdf) return (jsPDFPromise = Promise.resolve(window.jspdf));
-        jsPDFPromise = new Promise(function (resolve, reject) {
-            var s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js';
-            s.onload = function () { resolve(window.jspdf); };
-            s.onerror = function () { reject(new Error('Failed to load jsPDF library')); };
-            document.head.appendChild(s);
-        });
+        // Check all possible global names
+        var existing = window.jspdf || window.jsPDF;
+        if (existing) return (jsPDFPromise = Promise.resolve(existing));
+
+        // Multiple CDN sources — try each in order
+        var cdnUrls = [
+            'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+            'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js',
+            'https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js'
+        ];
+
+        function tryLoad(index) {
+            if (index >= cdnUrls.length) {
+                return Promise.reject(new Error('Could not load PDF library from any CDN. Please check your internet connection.'));
+            }
+            return new Promise(function (resolve, reject) {
+                var s = document.createElement('script');
+                s.src = cdnUrls[index];
+                s.onload = function () {
+                    var lib = window.jspdf || window.jsPDF;
+                    if (lib) {
+                        resolve(lib);
+                    } else {
+                        // Script loaded but global not found, try next CDN
+                        reject(new Error('jsPDF global not found'));
+                    }
+                };
+                s.onerror = function () {
+                    reject(new Error('CDN ' + (index + 1) + ' failed'));
+                };
+                document.head.appendChild(s);
+            }).catch(function () {
+                return tryLoad(index + 1);
+            });
+        }
+
+        jsPDFPromise = tryLoad(0);
         return jsPDFPromise;
     }
 
