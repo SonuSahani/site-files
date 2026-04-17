@@ -33,6 +33,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Push FAB above sticky CTA on mobile */
+@media (max-width: 991px) {
+    .sb-chatbot { bottom: 76px; }
+}
+
 /* ─── FAB Button ─────────────────────────────────────────────── */
 .sb-fab {
     position: relative;
@@ -62,17 +67,18 @@
     position: absolute;
     right: 80px; 
     bottom: 14px;
-    background: #ffffff;
+    background: linear-gradient(135deg, #fff8f0, #ffffff);
     color: var(--sb-orange-dark);
     padding: 10px 18px;
     border-radius: 16px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(245, 130, 32, 0.15);
+    box-shadow: 0 6px 20px rgba(245, 130, 32, 0.2);
     pointer-events: none;
-    border: 1px solid rgba(245, 130, 32, 0.2);
-    animation: sbFloat 3.5s ease-in-out infinite;
+    border: 1.5px solid rgba(245, 130, 32, 0.3);
+    animation: sbPromoPopIn 0.5s var(--sb-ease), sbPromoPulse 1.5s ease-in-out 0.5s 3, sbPromoFadeOut 0.6s ease 5.5s forwards;
+    opacity: 0;
 }
 
 /* Arrow Customization */
@@ -87,9 +93,22 @@
     border-left: 7px solid #ffffff;
 }
 
-@keyframes sbFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+/* Pop in from right */
+@keyframes sbPromoPopIn {
+    0% { opacity: 0; transform: translateX(20px) scale(0.8); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Gentle pulse to draw attention */
+@keyframes sbPromoPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(245,130,32,0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 8px 28px rgba(245,130,32,0.35); }
+}
+
+/* Fade out after 5.5s */
+@keyframes sbPromoFadeOut {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(20px); pointer-events: none; visibility: hidden; }
 }
 
 /* Pulse (only when inactive) */
@@ -581,8 +600,8 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 480px) {
-    .sb-chatbot { right: 16px; bottom: 16px; }
-    .sb-fab { width: 60px; height: 60px; }
+    .sb-chatbot { right: 16px; bottom: 76px; }
+    .sb-fab { width: 58px; height: 58px; }
     
     .sb-panel {
         right: 0; bottom: 0; top: 0;
@@ -595,6 +614,13 @@
     .sb-quick-bar { padding: 10px 16px; }
     .sb-messages { padding: 16px; }
     .sb-msg { max-width: 92%; }
+    
+    .sb-fab-promo {
+        right: 74px;
+        bottom: 10px;
+        font-size: 0.76rem;
+        padding: 8px 14px;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -604,5 +630,5 @@
         right: 20px;
         bottom: 20px;
     }
-    .sb-chatbot { right: 20px; bottom: 20px; }
+    .sb-chatbot { right: 20px; bottom: 76px; }
 }
