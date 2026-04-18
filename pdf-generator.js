@@ -158,7 +158,7 @@
             });
         });
 
-        /* Itinerary — generic accordion fallback */
+        /* Itinerary — generic accordion / day-item fallback */
         if (!d.itinerary.length) {
             var itinCard = cards.filter(function (c) {
                 var h = c.querySelector('.section-header');
@@ -168,12 +168,45 @@
                 var dayIdx = 0;
                 itinCard.querySelectorAll('.accordion-item, .day-item').forEach(function (item) {
                     dayIdx++;
-                    var title = san((item.querySelector('.accordion-button, .day-header') || {}).textContent || '');
                     var acts = [];
+
+                    /* Title — prefer .day-title (avoids concatenating day number) */
+                    var titleEl = item.querySelector('.day-title, .accordion-button');
+                    var title = san(titleEl ? titleEl.textContent : '');
+
+                    /* Day number — prefer .day-number span */
+                    var numEl = item.querySelector('.day-number');
+                    var num = numEl ? san(numEl.textContent).replace(/^Day\s*/i, '') : String(dayIdx).padStart(2, '0');
+
+                    /* Activities — check multiple possible structures:
+                       1. .accordion-body li  (accordion style)
+                       2. .day-content li     (old day-content style)
+                       3. .collapse p         (current collapse-paragraph style)
+                       4. .collapse li        (collapse with list items)
+                       5. .s9-act span        (Style 9)
+                    */
                     item.querySelectorAll('.accordion-body li, .day-content li, .s9-act span').forEach(function (li) {
-                        acts.push(san(li.textContent));
+                        var t = san(li.textContent);
+                        if (t) acts.push(t);
                     });
-                    d.itinerary.push({ num: String(dayIdx).padStart(2, '0'), title: title, acts: acts, meals: [] });
+
+                    /* If no list items found, grab paragraphs from collapse/accordion-body */
+                    if (!acts.length) {
+                        item.querySelectorAll('.collapse p, .accordion-body p, .accordion-collapse p').forEach(function (p) {
+                            var t = san(p.textContent);
+                            if (t && t.length > 5) acts.push(t);
+                        });
+                    }
+
+                    /* If still nothing, grab all list items inside the day container */
+                    if (!acts.length) {
+                        item.querySelectorAll('.collapse li').forEach(function (li) {
+                            var t = san(li.textContent);
+                            if (t) acts.push(t);
+                        });
+                    }
+
+                    d.itinerary.push({ num: num, title: title, acts: acts, meals: [] });
                 });
             }
         }
