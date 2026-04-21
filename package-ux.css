@@ -1,0 +1,211 @@
+/* ═══════════════════════════════════════════════════════════
+   package-ux.css — Skeleton Loader + UX Enhancement Styles
+   CDN: cdn.jsdelivr.net/gh/SonuSahani/site-files@main/package-ux.css
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── SKELETON PAGE LOADER ── */
+.sd-skeleton-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+.sd-skeleton-overlay.sd-fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+.sd-skeleton-brand {
+  width: 120px; height: 40px;
+  margin-bottom: 32px;
+  animation: sd-pulse 1.2s infinite ease-in-out;
+}
+.sd-skeleton-brand img {
+  width: 100%; height: auto; opacity: .7;
+}
+.sd-skeleton-bar {
+  width: 280px; height: 6px;
+  background: #e9ecef;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.sd-skeleton-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, #4f46e5, transparent);
+  border-radius: 999px;
+  animation: sd-bar-slide 1.2s infinite ease-in-out;
+}
+@keyframes sd-bar-slide {
+  0% { left: -60%; }
+  100% { left: 100%; }
+}
+@keyframes sd-pulse {
+  0%, 100% { opacity: .5; }
+  50% { opacity: 1; }
+}
+
+/* ── EXIT INTENT POPUP ── */
+.sd-exit-overlay {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: sd-fadeIn .3s ease;
+}
+.sd-exit-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: sd-scaleIn .3s ease;
+}
+.sd-exit-card h3 {
+  color: #1f2a44;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+.sd-exit-card p {
+  color: #666;
+  font-size: .92rem;
+  margin-bottom: 0;
+}
+.sd-exit-close {
+  position: absolute; top: 12px; right: 16px;
+  background: none; border: none;
+  font-size: 1.5rem; cursor: pointer;
+  color: #999; line-height: 1;
+}
+.sd-exit-close:hover { color: #333; }
+.sd-exit-cta {
+  display: block;
+  background: #25D366;
+  color: #fff !important;
+  padding: 14px;
+  border-radius: 999px;
+  text-decoration: none !important;
+  font-weight: 700;
+  margin-top: 18px;
+  font-size: .95rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.sd-exit-cta:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+}
+
+/* ── TIME OFFER BAR ── */
+.sd-time-offer {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1f2a44, #2e3f6e);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  z-index: 9998;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .85rem;
+  white-space: nowrap;
+  animation: sd-slideUp .5s ease;
+  max-width: 95vw;
+}
+.sd-time-offer a {
+  background: #25D366;
+  color: #fff !important;
+  padding: 6px 16px;
+  border-radius: 999px;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: .82rem;
+  flex-shrink: 0;
+}
+.sd-time-offer .sd-offer-close {
+  cursor: pointer;
+  opacity: .7;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.sd-time-offer .sd-offer-close:hover { opacity: 1; }
+
+/* ── BACK TO TOP ── */
+#sdBackToTop {
+  display: none;
+  position: fixed;
+  bottom: 140px;
+  right: 16px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--primary-color, #4f46e5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 9995;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.2);
+  font-size: .9rem;
+  transition: transform .2s, opacity .2s;
+  opacity: 0;
+}
+#sdBackToTop.sd-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+#sdBackToTop:hover {
+  transform: scale(1.1);
+}
+
+/* ── PHONE COPY TOOLTIP ── */
+.sd-copy-tip {
+  color: #22c55e;
+  font-size: .78rem;
+  font-weight: 700;
+  margin-left: 4px;
+  animation: sd-fadeIn .3s ease;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes sd-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes sd-scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes sd-slideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 576px) {
+  .sd-time-offer {
+    font-size: .78rem;
+    padding: 8px 14px;
+    gap: 6px;
+    bottom: 75px;
+  }
+  .sd-exit-card { padding: 24px 20px; }
+  #sdBackToTop { bottom: 80px; right: 12px; width: 38px; height: 38px; }
+}
