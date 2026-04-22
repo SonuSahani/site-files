@@ -166,7 +166,7 @@
   })();
 
   // ════════════════════════════════════════════
-  // 5. BACK TO TOP BUTTON
+  // 5. BACK TO TOP BUTTON (shows when footer visible)
   // ════════════════════════════════════════════
   (function () {
     var btn = document.createElement('button');
@@ -176,20 +176,38 @@
     btn.title = 'Back to top';
     document.body.appendChild(btn);
 
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          if (window.scrollY > 400) {
+    var footer = document.querySelector('footer');
+
+    if (footer && 'IntersectionObserver' in window) {
+      // Show only when footer is visible
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
             btn.classList.add('sd-visible');
           } else {
             btn.classList.remove('sd-visible');
           }
-          ticking = false;
         });
-        ticking = true;
-      }
-    });
+      }, { threshold: 0.1 });
+      observer.observe(footer);
+    } else {
+      // Fallback: show at 80% scroll depth if no footer found
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+            if (scrolled > 0.8) {
+              btn.classList.add('sd-visible');
+            } else {
+              btn.classList.remove('sd-visible');
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
 
     btn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
