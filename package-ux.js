@@ -59,52 +59,98 @@
   })();
 
   // ════════════════════════════════════════════
-  // 2. EXIT INTENT POPUP (Desktop only)
+  // 2. EXIT INTENT POPUP (Mobile back button + Desktop mouse exit)
+  // Works on: Android back button, PC browser back, Chrome, Edge, Firefox
   // ════════════════════════════════════════════
   (function () {
-    if ('ontouchstart' in window) return; // Skip mobile
+    if (sessionStorage.getItem('sd_exit_shown')) return;
+
     var shown = false;
 
-    document.addEventListener('mouseleave', function (e) {
-      if (e.clientY < 10 && !shown) {
-        shown = true;
-        sessionStorage.setItem('sd_exit_shown', '1');
+    function showExitPopup(onClose) {
+      if (shown) return;
+      shown = true;
+      sessionStorage.setItem('sd_exit_shown', '1');
 
-        var title = getPageTitle();
-        var price = getPagePrice();
-        var popup = document.createElement('div');
-        popup.className = 'sd-exit-overlay';
-        popup.innerHTML =
-          '<div class="sd-exit-card">' +
-          '<button class="sd-exit-close" aria-label="Close">&times;</button>' +
-          '<h3>Wait! Before You Go &#128591;</h3>' +
-          '<p>Get an <strong>exclusive quote</strong> for ' + title +
-          ' — starting &#8377;' + price + '</p>' +
-          '<a class="sd-exit-cta" href="https://wa.me/918585858400?text=' +
-          encodeWA('Hi, I want a quote for ' + title) +
-          '" target="_blank" rel="noopener">' +
-          '&#128172; Get WhatsApp Quote</a>' +
-          '</div>';
+      var title = getPageTitle();
+      var rawPrice = getPagePrice();
+      var numPrice = parseInt(rawPrice.replace(/,/g, ''), 10) || 10000;
+      var discounted = Math.round(numPrice * 0.9);
+      var savings = numPrice - discounted;
+      var fmtDiscount = discounted.toLocaleString('en-IN');
+      var fmtSavings = savings.toLocaleString('en-IN');
 
-        document.body.appendChild(popup);
+      var popup = document.createElement('div');
+      popup.className = 'sd-exit-overlay';
+      popup.innerHTML =
+        '<div class="sd-exit-card">' +
+        '<button class="sd-exit-close" aria-label="Close">&times;</button>' +
+        '<h3>Wait! Special Offer &#127881;</h3>' +
+        '<p style="margin-bottom:6px;">Get <strong>10% OFF</strong> on <em>' + title + '</em></p>' +
+        '<div style="margin:12px 0;">' +
+        '<span style="text-decoration:line-through;color:#999;font-size:.95rem;">&#8377;' + rawPrice + '</span> ' +
+        '<span style="font-size:1.4rem;font-weight:800;color:#e67516;">&#8377;' + fmtDiscount + '</span>' +
+        '<span style="color:#666;font-size:.85rem;">/person</span>' +
+        '</div>' +
+        '<p style="color:#16a34a;font-weight:700;font-size:.85rem;margin-bottom:14px;">You save &#8377;' + fmtSavings + ' per person!</p>' +
+        '<a class="sd-exit-cta" href="https://wa.me/918585858400?text=' +
+        encodeWA('Hi! I want the 10% exit offer on ' + title + ' (₹' + fmtDiscount + '/person)') +
+        '" target="_blank" rel="noopener">' +
+        '&#128172; Claim Offer on WhatsApp</a>' +
+        '<p style="color:#999;font-size:.72rem;margin-top:10px;margin-bottom:0;">Limited time offer. Quote on WhatsApp to lock this price.</p>' +
+        '</div>';
 
-        // Close handlers
-        popup.querySelector('.sd-exit-close').addEventListener('click', function () {
-          popup.remove();
-        });
-        popup.addEventListener('click', function (ev) {
-          if (ev.target === popup) popup.remove();
-        });
+      document.body.appendChild(popup);
 
-        // GA4 tracking
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'exit_intent_shown', {
-            event_category: 'engagement',
-            event_label: title
-          });
-        }
+      function closePopup() {
+        popup.remove();
+        if (typeof onClose === 'function') onClose();
       }
+
+      popup.querySelector('.sd-exit-close').addEventListener('click', closePopup);
+      popup.addEventListener('click', function (ev) {
+        if (ev.target === popup) closePopup();
+      });
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'exit_intent_shown', {
+          event_category: 'engagement',
+          event_label: title,
+          value: discounted
+        });
+      }
+    }
+
+    // ── A) BACK BUTTON detection (Android + Desktop) ──
+    // Push a fake history entry; intercept popstate when back is pressed
+    var armed = false;
+    setTimeout(function () {
+      history.pushState({ sd_exit: true }, '', location.href);
+      armed = true;
+    }, 3000); // Arm after 3s so it doesn't interfere with normal navigation
+
+    window.addEventListener('popstate', function (e) {
+      if (!armed || shown) return;
+      // Back button was pressed — show popup instead of leaving
+      showExitPopup(function () {
+        // If user dismisses popup, actually go back
+        history.back();
+      });
+      // Re-push state so back button can be caught again if needed
+      history.pushState({ sd_exit: true }, '', location.href);
     });
+
+    // ── B) MOUSE EXIT detection (Desktop only) ──
+    if (!('ontouchstart' in window)) {
+      var mouseReady = false;
+      setTimeout(function () { mouseReady = true; }, 5000);
+
+      document.addEventListener('mouseleave', function (e) {
+        if (!mouseReady || shown) return;
+        if (e.clientY > 10) return;
+        showExitPopup();
+      });
+    }
   })();
 
   // ════════════════════════════════════════════
