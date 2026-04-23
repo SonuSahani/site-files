@@ -112,14 +112,14 @@
 /* ── TIME OFFER BAR ── */
 .sd-time-offer {
   position: fixed;
-  bottom: 85px;
+  bottom: 65px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #1f2a44, #2e3f6e);
   color: #fff;
   padding: 10px 20px;
   border-radius: 999px;
-  z-index: 9998;
+  z-index: 1040;
   box-shadow: 0 4px 24px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
@@ -151,7 +151,7 @@
 #sdBackToTop {
   display: none;
   position: fixed;
-  bottom: 140px;
+  bottom: 130px;
   right: 16px;
   width: 42px; height: 42px;
   border-radius: 50%;
@@ -159,7 +159,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  z-index: 9995;
+  z-index: 1040;
   box-shadow: 0 2px 14px rgba(0,0,0,0.2);
   font-size: .9rem;
   transition: transform .2s, opacity .2s;
@@ -204,8 +204,29 @@
     font-size: .78rem;
     padding: 8px 14px;
     gap: 6px;
-    bottom: 75px;
+    bottom: 60px;
+    max-width: 72vw;
+    left: 4px;
+    transform: none;
+    border-radius: 12px 12px 0 0;
   }
   .sd-exit-card { padding: 24px 20px; }
-  #sdBackToTop { bottom: 80px; right: 12px; width: 38px; height: 38px; }
+  #sdBackToTop { bottom: 120px; right: 12px; width: 38px; height: 38px; }
+}
+
+/* ── Chatbot bubble shift when offer is visible ── */
+.vn-chatbot-container .vn-avatar {
+  bottom: 70px !important;
+  z-index: 1045 !important;
+}
+
+/* ── SIDEBAR STICKY FIX ── */
+@media (min-width: 992px) {
+  .tour-layout > .row {
+    align-items: flex-start !important;
+  }
+  .booking-sidebar {
+    position: sticky !important;
+    top: 90px !important;
+  }
 }
