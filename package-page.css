@@ -720,10 +720,14 @@
     .tour-layout > .row {
         align-items: flex-start !important;
     }
-    .booking-sidebar {
+    .tour-layout > .row > .col-lg-3 {
+        align-self: flex-start !important;
         position: sticky !important;
         top: 90px !important;
         z-index: 90;
+    }
+    .booking-sidebar {
+        position: static;
     }
 }
 
