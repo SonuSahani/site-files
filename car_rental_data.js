@@ -1,3 +1,5 @@
+const BASE_IMG = "http://www.sevendestination.com/wp-content/uploads/2026/04/";
+
 const carRentalData = [
     // --- SEDANS ---
     {
@@ -12,7 +14,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/45691/swift-dzire-exterior-right-front-three-quarter-3.jpeg?q=75",
+        "image": BASE_IMG + "modern-compact-sedan-car-Maruti-Dzire.webp",
         "rating": 4.8,
         "description": "Most popular compact sedan for city and outstation trips.",
         "features": ["AC", "Music System", "Comfortable Seats", "Boot Space"]
@@ -29,7 +31,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/26532/platinum-etios-exterior-right-front-three-quarter-56455.jpeg?q=75",
+        "image": BASE_IMG + "modern-compact-sedan-car-Toyota-Etios.webp",
         "rating": 4.7,
         "description": "Spacious sedan known for its reliability and large boot space.",
         "features": ["AC", "Spacious Boot", "Legroom", "Safety Airbags"]
@@ -46,7 +48,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/139317/aura-exterior-right-front-three-quarter-37.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "compact-sedan-car-Hyundai-Aura.webp",
         "rating": 4.6,
         "description": "Modern compact sedan with premium interiors.",
         "features": ["AC", "Rear Vents", "Bluetooth Audio", "Charging Ports"]
@@ -63,7 +65,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/45951/amaze-exterior-right-front-three-quarter-3.jpeg?q=75",
+        "image": BASE_IMG + "compact-sedan-car-Honda-Amaze.webp",
         "rating": 4.8,
         "description": "Premium sedan experience with smooth ride quality.",
         "features": ["AC", "Climate Control", "Armrest", "Smooth Ride"]
@@ -82,7 +84,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/115609/ertiga-exterior-right-front-three-quarter-11.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "multi-utility-vehicle-MUV-Maruti-Ertiga.webp",
         "rating": 4.7,
         "description": "Smart hybrid MUV, excellent for budget group travel.",
         "features": ["AC", "Reclining Seats", "Roof Blower", "CNG Option"]
@@ -99,7 +101,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "SUV-Toyota-Innova-Crysta.webp",
         "rating": 4.8,
         "description": "Reliable and spacious SUV for long distance travel.",
         "features": ["AC", "Captain Seats", "Safety Airbags", "Music System"]
@@ -116,7 +118,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/40432/scorpio-n-exterior-right-front-three-quarter-75.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "offroad-jeep-Thar.webp",
         "rating": 4.8,
         "description": "Rugged yet premium. Perfect for hill stations.",
         "features": ["4x4 Capable", "High Ground Clearance", "Power Styling", "Sunroof"]
@@ -133,7 +135,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/42355/xuv700-exterior-right-front-three-quarter-3.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "large-SUV-MPV-nnova-Hycross.webp",
         "rating": 4.9,
         "description": "Tech-loaded luxury SUV with panoramic viewing experience.",
         "features": ["Skyroof", "ADAS Safety", "Premium Audio", "Leatherette"]
@@ -147,12 +149,12 @@ const carRentalData = [
         "seats": 7,
         "bags": 4,
         "ac": true,
-        "price_per_km": 22, // Reduced from 24
+        "price_per_km": 22,
         "price_per_day": 6500,
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 400,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "SUV-Toyota-Innova-Crysta.webp",
         "rating": 5.0,
         "description": "Premium comfort with powerful performance and luxury interiors.",
         "features": ["Leather Seats", "Ambience Lighting", "Climate Control", "Cruise Control"]
@@ -164,12 +166,12 @@ const carRentalData = [
         "seats": 7,
         "bags": 4,
         "ac": true,
-        "price_per_km": 26, // Reduced from 28
+        "price_per_km": 26,
         "price_per_day": 7000,
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 500,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/135759/innova-hycross-exterior-right-front-three-quarter-112.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "large-SUV-MPV-nnova-Hycross.webp",
         "rating": 5.0,
         "description": "New hybrid technology with ultra-premium interiors and silence.",
         "features": ["Hybrid Quiet", "Sunroof", "Ottoman Seats", "Mood Lighting"]
@@ -181,12 +183,12 @@ const carRentalData = [
         "seats": 7,
         "bags": 4,
         "ac": true,
-        "price_per_km": 28, // Reduced from 30
+        "price_per_km": 28,
         "price_per_day": 8500,
         "rate_unit": "/ km",
         "min_daily_km": 250,
         "driver_allowance": 500,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/44709/fortuner-exterior-right-front-three-quarter-20.jpeg?q=75",
+        "image": BASE_IMG + "luxury-SUV-Toyota-Fortuner.webp",
         "rating": 5.0,
         "description": "Dominating presence with 4x4 capability and luxury features.",
         "features": ["4x4", "Sunroof", "Premium Audio", "Leather Interiors"]
@@ -200,12 +202,12 @@ const carRentalData = [
         "seats": 12,
         "bags": 8,
         "ac": true,
-        "price_per_km": 24, // Adjusted
+        "price_per_km": 24,
         "price_per_day": 7500,
         "rate_unit": "/ km",
         "min_daily_km": 300,
         "driver_allowance": 500,
-        "image": "https://files.prokerala.com/news/photos/imgs/1024/a-tempo-traveller-that-fell-into-a-gorge-killing-1327103.jpg",
+        "image": BASE_IMG + "tempo-traveller.webp",
         "rating": 4.8,
         "description": "Ideal for medium groups. Comfortable pushback seats.",
         "features": ["AC", "Pushback Seats", "Music System", "Curtains"]
@@ -222,7 +224,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 300,
         "driver_allowance": 600,
-        "image": "https://st.depositphotos.com/1004114/2550/i/950/depositphotos_25506045-stock-photo-white-minibus.jpg",
+        "image": BASE_IMG + "Tempo_traveller_van.webp",
         "rating": 4.9,
         "description": "Spacious traveller for larger groups with ample luggage space.",
         "features": ["Individual AC", "Reading Lights", "Reclining Seats", "Wide Aisle"]
@@ -234,12 +236,12 @@ const carRentalData = [
         "seats": 17,
         "bags": 10,
         "ac": true,
-        "price_per_km": 30, // Reduced from 35
+        "price_per_km": 30,
         "price_per_day": 12000,
         "rate_unit": "/ km",
         "min_daily_km": 300,
         "driver_allowance": 700,
-        "image": "https://st.depositphotos.com/1004114/2550/i/950/depositphotos_25506045-stock-photo-white-minibus.jpg",
+        "image": BASE_IMG + "premium-traveller-van-Force-Urbania.webp",
         "rating": 5.0,
         "description": "Next-gen luxury traveller. Best in class comfort and aesthetics.",
         "features": ["Individual AC Vents", "Reclining Seats", "Reading Lights", "Air Suspension"]
@@ -256,7 +258,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 300,
         "driver_allowance": 600,
-        "image": "https://5.imimg.com/data5/SELLER/Default/2022/9/OL/QG/CF/2626689/26-seater-tempo-traveller-rental-service-500x500.jpg",
+        "image": BASE_IMG + "Tempo_traveller_van.webp",
         "rating": 4.7,
         "description": "Perfect for corporate groups and extended families.",
         "features": ["2x1 Seating", "Sound System", "Charging Points", "Luggage Carrier"]
@@ -273,7 +275,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 300,
         "driver_allowance": 600,
-        "image": "https://5.imimg.com/data5/SELLER/Default/2022/9/OL/QG/CF/2626689/26-seater-tempo-traveller-rental-service-500x500.jpg",
+        "image": BASE_IMG + "Tempo_traveller_van.webp",
         "rating": 4.6,
         "description": "Mini-bus style comfort for large groups.",
         "features": ["2x2 Seating", "Spacious Interior", "PA System", "Comfortable Ride"]
@@ -292,7 +294,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 200,
         "driver_allowance": 1000,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/41443/a6-exterior-right-front-three-quarter-3.jpeg?q=75",
+        "image": BASE_IMG + "luxury-sedan-car-Audi.webp",
         "rating": 5.0,
         "description": "Executive luxury sedan for weddings and corporate delegates.",
         "features": ["Matrix LED", "Virtual Cockpit", "Bang & Olufsen Audio", "Massage Seats"]
@@ -309,7 +311,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 200,
         "driver_allowance": 1200,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/151975/5-series-exterior-right-front-three-quarter-4.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "luxury-sedan-car-BMW.webp",
         "rating": 5.0,
         "description": "The ultimate driving machine. Unparalleled status symbol.",
         "features": ["Gesture Control", "Sunroof", "Premium Leather", "Chauffeur Drive"]
@@ -326,7 +328,7 @@ const carRentalData = [
         "rate_unit": "/ km",
         "min_daily_km": 200,
         "driver_allowance": 1200,
-        "image": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/116241/c-class-exterior-right-front-three-quarter-3.jpeg?isig=0&q=75",
+        "image": BASE_IMG + "luxury-sedan-car-BMW.webp",
         "rating": 5.0,
         "description": "Sophisticated luxury with the three-pointed star legacy.",
         "features": ["Ambient Lighting", "Burmester Sound", "Panoramic Sunroof", "Recliner"]
@@ -340,12 +342,12 @@ const carRentalData = [
         "seats": 26,
         "bags": 20,
         "ac": false,
-        "price_per_km": 16000, // Fixed day rate
+        "price_per_km": 16000,
         "price_per_day": 16000,
         "rate_unit": "/ Day",
         "min_daily_km": 0,
         "driver_allowance": 0,
-        "image": "https://5.imimg.com/data5/ANDROID/Default/2021/1/KL/XK/XO/3757270/product-jpeg-500x500.jpg",
+        "image": BASE_IMG + "passenger-van-schoolstaff.webp",
         "rating": 4.5,
         "description": "Economical choice for large group excursions.",
         "features": ["Pushback Seats", "Ample Luggage", "Stereo", "First Aid"]
@@ -362,7 +364,7 @@ const carRentalData = [
         "rate_unit": "/ Day",
         "min_daily_km": 0,
         "driver_allowance": 0,
-        "image": "https://cpimg.tistatic.com/05471905/b/4/Deluxe-Bus-Rental-Service.jpg",
+        "image": BASE_IMG + "passenger-van-schoolstaff.webp",
         "rating": 4.6,
         "description": "Comfortable bus for weddings and long tours.",
         "features": ["AC", "Video Coach", "Air Suspension", "Reading Lights"]
@@ -379,7 +381,7 @@ const carRentalData = [
         "rate_unit": "/ Day",
         "min_daily_km": 0,
         "driver_allowance": 0,
-        "image": "https://img.staticmb.com/mbcontent/images/crop/uploads/2022/6/Bus-dimensions_0_1200.jpg",
+        "image": BASE_IMG + "luxury-Volvo-bus-coach.webp",
         "rating": 4.8,
         "description": "Premium Volvo/Mercedes coach for ultimate group luxury.",
         "features": ["Volvo/Scania", "Toilet (Optional)", "Wifi", "Reclining Seats"]
@@ -418,7 +420,7 @@ const routeDistances = [
     { route: "Siliguri ⇄ Lataguri", oneWay: 95, roundTrip: "190 – 200" },
     { route: "Siliguri ⇄ Jaldapara", oneWay: 135, roundTrip: "270 – 280" },
     { route: "Siliguri ⇄ Buxa", oneWay: 180, roundTrip: "360 – 380" },
-    { route: "Siliguri ⇄ Dooars Circuit", oneWay: 0, roundTrip: "300 – 350" }, // 0 for variable/undefined simple one-way
+    { route: "Siliguri ⇄ Dooars Circuit", oneWay: 0, roundTrip: "300 – 350" },
     { route: "Darjeeling ⇄ Tiger Hill", oneWay: 12, roundTrip: "25 – 30" },
     { route: "Darjeeling ⇄ Mirik", oneWay: 50, roundTrip: "100 – 110" },
     { route: "Darjeeling ⇄ Kalimpong", oneWay: 50, roundTrip: "100 – 110" },
